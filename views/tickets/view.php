@@ -17,19 +17,13 @@
                         </div>
                         <div class="col-sm-7">
                             <div class="product-information"><!--/product-information-->
-                                <img src="images/product-details/new.jpg" class="newarrival" alt=""/>
                                 <h2><?php echo $ticket['name']; ?></h2>
                                 <p>Код товара: <?php echo $ticket['code']; ?></p>
-                                <form action="#" method="post">
+                                <span>
                                     <span><?php echo $ticket['price']; ?> Р</span>
-                                    <label>Количество:</label>
-                                    <input type="text" value="1" name="amount"/><br>
-                                    <input type="submit" name="submit" class="btn btn-default" value="Отправить"/>
-                                    <button type="button" name="btnCart" class="btn btn-fefault cart">
-                                        <i class="fa fa-shopping-cart"></i>
-                                        В корзину
-                                    </button>
-                                </form>
+                                    <a href="#" data-id="<?php echo $ticket['id']; ?>" class="btn btn-default add-to-cart">
+                                        <i class="fa fa-shopping-cart"></i>В корзину</a>
+                                </span>
                             </div><!--/product-information-->
                         </div>
                     </div>

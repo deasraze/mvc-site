@@ -16,6 +16,7 @@
 <script src="/template/default/js/price-range.js"></script>
 <script src="/template/default/js/jquery.prettyPhoto.js"></script>
 <script src="/template/default/js/main.js"></script>
+<script src="/template/default/js/jquery.maskedinput.min.js"></script>
 <script>
     $(document).ready(function () { // Код должен быть выполнен только после загрузки документа
         $(".add-to-cart").click(function () { // Отвечает за нажатие на кнопку "В корзину"
@@ -30,6 +31,11 @@
             });
             return false;
         });
+    });
+</script>
+<script>
+    $(function () {
+        $(".phone_mask").mask("+9(999)999-99-99");
     });
 </script>
 </body>

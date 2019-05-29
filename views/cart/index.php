@@ -16,6 +16,7 @@
                                 <th>Название</th>
                                 <th>Стомость, р</th>
                                 <th>Количество, шт</th>
+                                <th>Удалить</th>
                             </tr>
                             <?php foreach ($tickets as $ticket): ?>
                                 <tr>
@@ -27,16 +28,24 @@
                                     </td>
                                     <td><?php echo $ticket['price'];?></td>
                                     <td><?php echo $ticketsInCart[$ticket['id']];?></td>
+                                    <td>
+                                        <a class="btn btn-default checkout" href="/cart/delete/<?echo $ticket['id'];?>">
+                                            <i class="fa fa-times"></i>
+                                        </a>
+                                    </td>
                                 </tr>
                             <?php endforeach; ?>
                                 <tr>
-                                    <td colspan="3">Общая стоимость:</td>
+                                    <td colspan="4">Общая стоимость, р:</td>
                                     <td><?php echo $totalPrice;?></td>
                                 </tr>
                             
                         </table>
+                        <a class="btn btn-default checkout" href="/cart/checkout/"><i class="fa fa-shopping-cart"></i> Оформить заказ</a>
                     <?php else: ?>
                         <p>Корзина пуста</p>
+
+                        <a class="btn btn-default checkout" href="/tickets/"><i class="fa fa-shopping-cart"></i> Вернуться к покупкам</a>
                     <?php endif; ?>
 
                 </div>

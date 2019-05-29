@@ -24,6 +24,8 @@
                         <form action="#" method="post">
                             <p>Ваша почта</p>
                             <input type="email" name="userEmail" placeholder="E-mail" value="<?php echo $userEmail; ?>"/>
+                            <p>Тема</p>
+                            <input type="text" name="userTheme" placeholder="Тема" value="<?php echo $userTheme ?>"/>
                             <p>Сообщение</p>
                             <input type="text" name="userText" placeholder="Сообщение" value="<?php echo $userText; ?>"/>
                             <br/>

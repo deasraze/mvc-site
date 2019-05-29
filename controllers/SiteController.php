@@ -23,13 +23,13 @@ class SiteController
     {
         $userEmail = '';
         $userText = '';
+        $userTheme = '';
         $result = false;
 
         if (isset($_POST['submit'])) {
             $userEmail = $_POST['userEmail'];
             $userText = $_POST['userText'];
-            var_dump($userText, $userEmail);
-            die;
+            $userTheme = $_POST['userTheme'];
 
             $errors = false;
 
@@ -42,10 +42,14 @@ class SiteController
                 $errors[] = 'Введите сообщение';
             }
 
+            if ($userTheme == null ) {
+                $errors[] = 'Введите тему';
+            }
+
             if ($errors == false) {
                 $adminEmail = 'museum@museum.ru';
-                $message = "Текст: {$userText}. От {$userEmail}";
-                $subject = 'Тема письма';
+                $subject =  $userTheme;
+                $message = "Текст: {$userText}." . PHP_EOL . "От {$userEmail}";
                 $result = mail($adminEmail, $subject, $message);
                 $result = true;
             }

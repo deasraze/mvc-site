@@ -76,6 +76,7 @@ class User
         $user = $result->fetch();
         // Если пользователь с заданными параметрами найден и введенный пароль совпадает с хешем в бд
         if ($user && password_verify($password, $user['password'])) {
+            // Возвращаем id юзера
             return $user['id'];
         }
 
@@ -119,7 +120,7 @@ class User
 
     /**
      * Проверяем, авторизован ли пользователь
-     * @return id
+     * @return int id
      */
     public static function checkLogged()
     {
@@ -149,6 +150,20 @@ class User
     {
         $regexp = '/^[а-яА-Я]{2,30}|[a-zA-Z]{2,30}$/';
         if (preg_match($regexp, $name)) {
+            return true;
+        }
+        return false;
+    }
+
+    /**
+     * Проверка телефона
+     * @param $phone
+     * @return bool
+     */
+    public static function checkPhone($phone)
+    {
+        $regexp = '/^(\s*)?(\+)?([- _():=+]?\d[- _():=+]?){10,14}(\s*)?$/';
+        if (preg_match($regexp, $phone)) {
             return true;
         }
         return false;

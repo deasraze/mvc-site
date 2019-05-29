@@ -16,6 +16,9 @@
 
         'cart' => 'cart/index', // actionIndex and CartController
         'cart/add/([0-9]+)' => 'cart/add/$1', // actionAdd and CartController
+        'cart/delete/([0-9]+)' => 'cart/delete/$1', // actionDelete and CartController
+        'cart/checkout' => 'cart/checkout', // actionCheckout and CartController
+
 
         'category/([0-9]+)' => 'collection/category/$1', // actionCategory and CollectionController
         'category/([0-9]+)/page-([0-9]+)' => 'collection/category/$1/$2', // actionCategory and CollectionController
