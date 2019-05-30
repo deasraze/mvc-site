@@ -26,6 +26,7 @@ class CabinetController
         $user = User::getUserById($userId);
 
         $name = $user['name'];
+        $surname = $user['surname'];
         $password = '';
         $old_password = '';
         $re_password = '';
@@ -34,14 +35,15 @@ class CabinetController
 
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
+            $surname = $_POST['surname'];
             $old_password = $_POST['old_password'];
             $password = $_POST['password'];
             $re_password = $_POST['re_password'];
 
             $errors = false;
 
-            if (!User::checkName($name)) {
-                $errors[] = 'Имя не должно быть короче 2-х символов';
+            if (!User::checkName($name) || !User::checkName($surname)) {
+                $errors[] = 'Имя и фамилия не должны быть короче 2-х символов';
             }
 
             if ($password != $re_password) {
@@ -57,7 +59,7 @@ class CabinetController
             }
 
             if ($errors == false) {
-                $result = User::edit($userId, $name, $password);
+                $result = User::edit($userId, $name, $surname, $password);
             }
         }
 

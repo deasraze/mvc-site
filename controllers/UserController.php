@@ -7,6 +7,7 @@ class UserController
     public function actionRegister()
     {
         $name = '';
+        $surname = '';
         $email = '';
         $password = '';
         $re_password = '';
@@ -16,6 +17,7 @@ class UserController
         // Если форма отправлена, считываем данные с формы
         if (isset($_POST['submit'])) {
             $name = $_POST['name'];
+            $surname = $_POST['surname'];
             $email = $_POST['email'];
             $password = $_POST['password'];
             $re_password = $_POST['re_password'];
@@ -23,8 +25,8 @@ class UserController
             // Создаем переменную для ошибок
             $errors = false;
 
-            if (!User::checkName($name)) {
-                $errors[] = 'Имя не должно быть короче 2-х символов';
+            if (!User::checkName($name) || !User::checkName($surname)) {
+                $errors[] = 'Имя и фамилия не должны быть короче 2-х символов';
             }
 
             if (!User::checkEmail($email)) {
@@ -44,7 +46,7 @@ class UserController
             }
 
             if ($errors == false) {
-                $result = User::register($name, $email, $password);
+                $result = User::register($name, $surname, $email, $password);
             }
         }
 
@@ -72,7 +74,7 @@ class UserController
                 $errors[] = 'Неправильный email';
             }
             if (!User::checkPassword($password)) {
-                $errors[] = 'Пароль не должен быть короче 6 символов. Должен содержать одну заглавную, маленькую буквы, и цифру';
+                $errors[] = 'Некорректный пароль';
             }
 
             // Проверяем существует ли пользователь

@@ -23,6 +23,7 @@
                         <h2>Регистрация на сайте</h2>
                         <form action="#" method="post">
                             <input type="text" name="name" placeholder="Имя" value="<?php echo $name; ?>"/>
+                            <input type="text" name="surname" placeholder="Фамилия" value="<?php echo $surname; ?>"/>
                             <input type="email" name="email" placeholder="E-mail" value="<?php echo $email; ?>"/>
                             <input type="password" name="password" placeholder="Пароль" value="<?php echo $password; ?>"/>
                             <input type="password" name="re_password" placeholder="Повторите пароль" value="<?php echo $re_password; ?>"/>

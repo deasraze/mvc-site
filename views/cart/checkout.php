@@ -36,8 +36,12 @@
                                     <p>Ваше имя</p>
                                     <input type="text" name="userName" placeholder="Имя" value="<?php echo $userName; ?>"/>
 
+                                    <p>Ваша фамилия</p>
+                                    <input type="text" name="userSurname" placeholder="Фамилия" value="<?php echo $userSurname; ?>"/>
+
                                     <p>Номер телефона</p>
                                     <input type="text" name="userPhone" class="phone_mask" placeholder="Телефон" value=""/>
+
                                     <p>Комментарий к заказу</p>
                                     <input type="text" name="userComment" placeholder="Сообщение" value="<?php echo $userComment; ?>"/>
 

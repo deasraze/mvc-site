@@ -57,13 +57,14 @@ class CartController
         if (isset($_POST['submit'])) {
             // Считываем данные с формы
             $userName = $_POST['userName'];
+            $userSurname = $_POST['userSurname'];
             $userPhone = $_POST['userPhone'];
             $userComment = $_POST['userComment'];
 
             // Валидация полей
             $errors = false;
-            if (!User::checkName($userName))
-                $errors[] = 'Неправильное имя';
+            if (!User::checkName($userName) || !User::checkName($userSurname))
+                $errors[] = 'Неправильное имя или фамилия';
             if (!User::checkPhone($userPhone))
                 $errors[] = 'Неправильный телефон';
 
@@ -81,7 +82,7 @@ class CartController
                 }
 
                 // Сохраняем заказ в БД
-                $result = Order::save($userName, $userPhone, $userComment, $userId, $ticketsInCart);
+                $result = Order::save($userName, $userSurname, $userPhone, $userComment, $userId, $ticketsInCart);
 
                 if ($result) {
                     // Отправляем письмо на почту администратора
@@ -122,6 +123,7 @@ class CartController
                 $totalQuantity = Cart::countItems(); // Считаем кол-во товаров в корзине
 
                 $userName = false;
+                $userSurname = false;
                 $userPhone = false;
                 $userComment = false;
 
@@ -133,6 +135,7 @@ class CartController
                     $userId = User::checkLogged(); // Получаем id юзера из сессии
                     $user = User::getUserById($userId); // Получаем информацию о пользователе по id из БД
                     $userName = $user['name'];
+                    $userSurname = $user['surname'];
                 }
             }
         }

@@ -4,19 +4,28 @@
 class User
 {
 
-    public static function register($name, $email, $password)
+    /**
+     * Метод регистрации нового пользователя
+     * @param $name
+     * @param $surname
+     * @param $email
+     * @param $password
+     * @return bool
+     */
+    public static function register($name, $surname, $email, $password)
     {
         // Хешируем введенный пароль
         $password = password_hash($password, PASSWORD_DEFAULT);
 
         $db = Db::getConnection();
         // Используем подготовленный запрос
-        $sql = 'INSERT INTO user (name, email, password) VALUES (:name, :email, :password)';
+        $sql = 'INSERT INTO user (name, surname, email, password) VALUES (:name, :surname, :email, :password)';
 
         // Подготавливаем запрос к выполнению
         $result = $db->prepare($sql);
         // Привязываем параметры к плейсхолдерам
         $result->bindParam(':name', $name, PDO::PARAM_STR);
+        $result->bindParam(':surname', $surname, PDO::PARAM_STR);
         $result->bindParam(':email', $email, PDO::PARAM_STR);
         $result->bindParam(':password', $password, PDO::PARAM_STR);
 
@@ -28,10 +37,11 @@ class User
      * Редактирование данных в лк
      * @param $id
      * @param $name
+     * @param $surname
      * @param $password
      * @return bool
      */
-    public static function edit($id, $name, $password)
+    public static function edit($id, $name, $surname, $password)
     {
         // Хешируем новый пароль
         $password = password_hash($password, PASSWORD_DEFAULT);
@@ -39,13 +49,14 @@ class User
         $db = Db::getConnection();
 
         // Используем подготовленный запрос
-        $sql = "UPDATE user SET name = :name, password = :password WHERE id = :id";
+        $sql = "UPDATE user SET name = :name, surname = :surname, password = :password WHERE id = :id";
 
         // Подготавливаем запрос к выполнению
         $result = $db->prepare($sql);
         // Привязываем полученные параметры
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->bindParam(':name', $name, PDO::PARAM_STR);
+        $result->bindParam(':surname', $surname, PDO::PARAM_STR);
         $result->bindParam(':password', $password, PDO::PARAM_STR);
 
         // Запускаем и возвращаем
@@ -83,9 +94,11 @@ class User
         return false;
     }
 
+
     /**
      * Получаем информацию о пользователе по id
      * @param $id
+     * @return mixed
      */
     public static function getUserById($id)
     {
@@ -111,6 +124,7 @@ class User
 
     /**
      * Запоминаем пользователя
+     * @param $userId
      */
     public static function auth($userId)
     {
@@ -145,10 +159,15 @@ class User
         return true;
     }
 
-    // Проверяем имя: не меньше двух символов(до 30)
+
+    /**
+     * Проверяем имя: не меньше двух символов(до 30)
+     * @param $name
+     * @return bool
+     */
     public static function checkName($name)
     {
-        $regexp = '/^[а-яА-Я]{2,30}|[a-zA-Z]{2,30}$/';
+        $regexp = '/^([А-ЯЁ]{1}[а-яё]{1,29})|([A-Z]{1}[a-z]{1,29})$/u';
         if (preg_match($regexp, $name)) {
             return true;
         }
@@ -169,8 +188,8 @@ class User
         return false;
     }
 
-    // Проверяем пароль (от 6 до 25), должны быть:
     /*
+     * Проверяем пароль (от 6 до 25), должны быть:
     (?=.*[a-z]) - маленькая буква
     (?=.*[A-Z]) - большая
     (?=.*\d) - число
@@ -186,7 +205,12 @@ class User
         return false;
     }
 
-    // Проверяем email
+
+    /**
+     * Проверяем email
+     * @param $email
+     * @return bool
+     */
     public static function checkEmail($email)
     {
         if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
@@ -195,7 +219,12 @@ class User
         return false;
     }
 
-    // Проверка на существующий email
+
+    /**
+     * Проверка на существующий email
+     * @param $email
+     * @return bool
+     */
     public static function checkEmailExists($email)
     {
         $db = Db::getConnection();

@@ -22,7 +22,10 @@
                         <form action="#" method="post">
                             <p>Имя:</p>
                             <input type="text" name="name" placeholder="Имя" value="<?php echo $name; ?>"/>
-                            
+
+                            <p>Фамилия:</p>
+                            <input type="text" name="surname" placeholder="Фамилия" value="<?php echo $surname; ?>"/>
+
                             <p>Старый пароль:</p>
                             <input type="password" name="old_password" placeholder="Старый пароль" value=""/>
 
