@@ -42,9 +42,9 @@ class Tickets
     }
 
     /**
-     * Метод возвращения билетов по заданым id
-     * @param $idsArray
-     * @return array
+     * Получаем список билетов по заданным id
+     * @param $idsArray - массив с id
+     * @return array - массив со списком билетов
      */
     public static function getTicketsByIds($idsArray)
     {

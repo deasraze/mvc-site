@@ -1,9 +1,12 @@
 <?php
 
     return array(
+        // Главная страница
         '' => 'site/index', // actionIndex and SiteController
+        // Страница обратной связи
         'contacts' => 'site/contact', // actionContact and SiteController
 
+        // Страницы с коллекциями
         'collection' => 'collection/index', // actionIndex and CollectionController
         'collection/([0-9]+)' => 'collection/view/$1', // actionView and CollectionController
         'collection/page-([0-9]+)' => 'collection/index/$1', // actionIndex and CollectionController
@@ -11,28 +14,52 @@
         // id + название
         //'collection/([0-9]+)-([a-z0-9-]+)' => 'collection/view/$1', // actionView and CollectionController
 
+        // Страницы с билетами
         'tickets' => 'tickets/index',
         'tickets/([0-9]+)' => 'tickets/view/$1',
 
+        // Страницы с корзиной
         'cart' => 'cart/index', // actionIndex and CartController
         'cart/add/([0-9]+)' => 'cart/add/$1', // actionAdd and CartController
         'cart/delete/([0-9]+)' => 'cart/delete/$1', // actionDelete and CartController
         'cart/checkout' => 'cart/checkout', // actionCheckout and CartController
 
-
+        // Страницы с категорями
         'category/([0-9]+)' => 'collection/category/$1', // actionCategory and CollectionController
         'category/([0-9]+)/page-([0-9]+)' => 'collection/category/$1/$2', // actionCategory and CollectionController
 
+        // Страницы с новостями
         'news/([0-9]+)' => 'news/view/$1',
         'news' => 'news/index',
 
+        // Страницы пользователя
         'user/register' => 'user/register', // actionRegister and UserController
         'user/login' => 'user/login', // actionLogin and UserController
         'user/logout' => 'user/logout', // actionLogout and UserController
 
+        // Страницы личного кабинета
         'cabinet' => 'cabinet/index',
         'cabinet/edit' => 'cabinet/edit',
 
+        // Главная страницы админки
+        'admin' => 'admin/index', // actionIndex and AdminController
+        // Управление коллекциями
+        'admin/collection' => 'adminCollection/index',
+        'admin/collection/create' => 'adminCollection/create',
+        'admin/collection/update/([0-9]+)' => 'adminCollection/update/$1',
+        'admin/collection/delete/([0-9]+)' => 'adminCollection/delete/$1',
+        // Управление категорями
+        'admin/category' => 'adminCategory/index',
+        'admin/category/create' => 'adminCategory/create',
+        'admin/category/update/([0-9]+)' => 'adminCategory/update/$1',
+        'admin/category/delete/([0-9]+)' => 'adminCategory/delete/$1',
+        // Управление заказами
+        'admin/order' => 'adminOrder/index',
+        'admin/order/view/([0-9]+)' => 'adminOrder/view/$1',
+        'admin/order/update/([0-9]+)' => 'adminOrder/update/$1',
+        'admin/order/delete/([0-9]+)' => 'adminOrder/delete/$1',
+
+        // 404
         '.+' => 'site/error',
         //'news' => 'news/index', //actionIndex в NewsController
         //'products' => 'product/list', //actionList в ProductController

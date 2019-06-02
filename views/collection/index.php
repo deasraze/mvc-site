@@ -31,7 +31,7 @@
                             <div class="product-image-wrapper">
                                 <div class="single-products">
                                     <div class="productinfo text-center">
-                                        <img src="/template/default/images/home/product1.jpg" alt=""/>
+                                        <img src="<?php echo Collection::getImage($collection['id']); ?>" alt=""/>
                                         <p>
                                             <a href="/collection/<?php echo $collection['id']; ?>">
                                                 <?php echo $collection['name']; ?>
