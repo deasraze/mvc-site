@@ -18,6 +18,8 @@
                 <li><a href="/admin/collection/">Управление коллекциями</a></li>
                 <li><a href="/admin/category/">Управление категориями</a></li>
                 <li><a href="/admin/order/">Управление заказами</a></li>
+                <li><a href="/admin/ticket/">Управление билетами</a></li>
+                <li><a href="/admin/user/">Управление пользователями</a></li>
             </ul>
             
         </div>

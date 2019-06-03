@@ -4,6 +4,7 @@
  * Контроллер для управления коллекциями в админке
  * AdminCollectionController
  */
+
 class AdminCollectionController extends AdminBase
 {
 

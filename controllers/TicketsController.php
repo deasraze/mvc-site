@@ -8,7 +8,7 @@ class TicketsController
     public function actionIndex()
     {
         $ticketList = array();
-        $ticketList = Tickets::getLatestTicket(3);
+        $ticketList = Tickets::getLatestTicket();
 
         require_once(ROOT.'/views/tickets/index.php');
 

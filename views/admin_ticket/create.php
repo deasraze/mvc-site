@@ -9,13 +9,13 @@
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
                     <li><a href="/admin/">Админпанель</a></li>
-                    <li><a href="/admin/collection/">Управление коллекциями</a></li>
-                    <li class="active">Добавить произведение</li>
+                    <li><a href="/admin/ticket/">Управление билетами</a></li>
+                    <li class="active">Добавить билет</li>
                 </ol>
             </div>
 
 
-            <h4>Добавить новое произведение</h4>
+            <h4>Добавить новый билет</h4>
 
             <br/>
 
@@ -31,30 +31,16 @@
                 <div class="login-form">
                     <form action="#" method="post" enctype="multipart/form-data">
 
-                        <p>Название произведения</p>
+                        <p>Название</p>
                         <input type="text" name="name" placeholder="" value="">
 
-                        <p>Автор</p>
-                        <input type="text" name="author" placeholder="" value="">
+                        <p>Артикул</p>
+                        <input type="text" name="code" placeholder="" value="">
 
-                        <p>Год создания</p>
-                        <input type="text" name="year" placeholder="" value="">
+                        <p>Цена</p>
+                        <input type="text" name="price" placeholder="" value="">
 
-                        <p>Категория</p>
-                        <select name="category_id">
-                            <?php if (is_array($categoriesList)): ?>
-                                <?php foreach ($categoriesList as $category): ?>
-                                    <option value="<?php echo $category['id']; ?>">
-                                        <?php echo $category['name']; ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        </select>
-
-                        <br/><br/>
-
-
-                        <p>Изображение товара</p>
+                        <p>Изображение билета</p>
                         <input type="file" name="image" placeholder="" value="">
 
                         <p>Детальное описание</p>
@@ -64,12 +50,11 @@
 
                         <p>Наличие</p>
                         <select name="availability">
-                            <option value="1" selected="selected">Да</option>
-                            <option value="0">Нет</option>
+                            <option value="1" selected="selected">В наличии</option>
+                            <option value="0">Закончились</option>
                         </select>
 
                         <br/><br/>
-
 
                         <p>Статус</p>
                         <select name="status">

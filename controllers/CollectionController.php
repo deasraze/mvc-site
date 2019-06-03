@@ -10,7 +10,7 @@ class CollectionController
         $categories = Category::getCategoriesList();
 
         $latestCollection = array();
-        $latestCollection = Collection::getLatestCollection(Collection::SHOW_BY_DEFAULT, $page);
+        $latestCollection = Collection::getLatestCollection($page);
 
         // $total - ко-во коллекций
         $total = Collection::getTotalCollection();

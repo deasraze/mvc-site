@@ -58,6 +58,16 @@
         'admin/order/view/([0-9]+)' => 'adminOrder/view/$1',
         'admin/order/update/([0-9]+)' => 'adminOrder/update/$1',
         'admin/order/delete/([0-9]+)' => 'adminOrder/delete/$1',
+        // Управление билетами
+        'admin/ticket' => 'adminTicket/index',
+        'admin/ticket/create' => 'adminTicket/create',
+        'admin/ticket/update/([0-9]+)' => 'adminTicket/update/$1',
+        'admin/ticket/delete/([0-9]+)' => 'adminTicket/delete/$1',
+        // Управление Пользователями
+        'admin/user' => 'adminUser/index',
+        'admin/user/create' => 'adminUser/create',
+        'admin/user/update/([0-9]+)' => 'adminUser/update/$1',
+        'admin/user/delete/([0-9]+)' => 'adminUser/delete/$1',
 
         // 404
         '.+' => 'site/error',

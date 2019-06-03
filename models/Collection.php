@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Class Collection - модель для работы с коллекциями
+ */
 
 class Collection
 {
@@ -8,21 +11,30 @@ class Collection
     const SHOW_BY_DEFAULT = 6;
 
     /**
-     * @param $id int
-     * @return collection item by id
+     * Получаем информацию о произведении по id
+     * @param $id
+     * @return array
      */
     public static function getCollectionById($id)
     {
-        $id = intval($id);
+        $db = Db::getConnection();
 
-        if ($id) {
-            $db = Db::getConnection();
+        // Используем подготовленный запрос
+        $sql = 'SELECT * FROM collection WHERE id = :id';
 
-            $result = $db->query('SELECT * FROM collection WHERE id=' . $id);
-            $result->setFetchMode(PDO::FETCH_ASSOC);
+        // Подготавливаем запрос к выполнению
+        $result = $db->prepare($sql);
+        // Привязываем параметр
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
 
-            return $result->fetch();
-        }
+        // Указываем, что хотим получить данные в виде массива
+        $result->setFetchMode(PDO::FETCH_ASSOC);
+
+        // Выполняем запрос
+        $result->execute();
+
+        // Получаем и возвращаем
+        return $result->fetch();
     }
 
     /**
@@ -34,22 +46,25 @@ class Collection
     {
         $db = Db::getConnection();
 
+        // Используем подготовленный запрос
         $sql = 'INSERT INTO collection (name, author, year, category_id, description, status) '
                 . 'VALUES (:name, :author, :year, :category_id, :description, :status)';
 
-        // Получение и возврат результатов
+        // Подготавливаем запрос
         $result = $db->prepare($sql);
+        // Привязываем параметры
         $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
         $result->bindParam(':author', $options['author'], PDO::PARAM_STR);
         $result->bindParam(':year', $options['year'], PDO::PARAM_INT);
         $result->bindParam(':category_id', $options['category_id'], PDO::PARAM_INT);
         $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
         $result->bindParam(':status', $options['status'], PDO::PARAM_INT);
+
         if ($result->execute()) {
             // Если добавление выполнено успешно, то возвращаем id добавленной записи
             return $db->lastInsertId();
         }
-
+        // Иначе вернем 0
         return 0;
     }
 
@@ -71,11 +86,12 @@ class Collection
                     year = :year, 
                     category_id = :category_id, 
                     description = :description, 
-                    status = :status
+                    status = :status 
                 WHERE id = :id";
 
-        // Получение и возврат результатов, используя подготовленный запрос
+        // Подготавливаем запрос
         $result = $db->prepare($sql);
+        // Привязываем параметры
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
         $result->bindParam(':author', $options['author'], PDO::PARAM_STR);
@@ -84,6 +100,7 @@ class Collection
         $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
         $result->bindParam(':status', $options['status'], PDO::PARAM_INT);
 
+        // Выполняем и возвращаем
         return $result->execute();
     }
 
@@ -107,50 +124,59 @@ class Collection
         return $result->execute();
     }
 
-
-
-    // Метод получения последних коллекций, который принимает параметр $count,
-    // либо значение по умолчанию SHOW_BY_DEFAULT
-    public static function getLatestCollection($count = self::SHOW_BY_DEFAULT, $page = 1)
+    /**
+     * Возвращаем массив последних произведений
+     * @param int $page - номер текущей страницы
+     * @return array
+     */
+    public static function getLatestCollection($page = 1)
     {
-        $count = intval($count);
-
+        $limit = self::SHOW_BY_DEFAULT;
         $page = intval($page);
+        // Считаем смещение для запроса
         $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
 
         $db = Db::getConnection();
 
+        // Используем подготовленный запрос
+        $sql = 'SELECT id, name FROM collection WHERE status = "1" '
+            . 'ORDER BY id DESC LIMIT :limit OFFSET :offset';
+
+        // Подготавливаем запрос
+        $result = $db->prepare($sql);
+        // Привязывем параметры
+        $result->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $result->bindParam(':offset', $offset, PDO::PARAM_INT);
+        // Выполняем запрос
+        $result->execute();
+
         $collectionList = array();
-
-        $result = $db->query('SELECT id, name, image FROM collection '
-            . 'WHERE status = "1" '
-            . 'ORDER BY id DESC '
-            . 'LIMIT ' . self::SHOW_BY_DEFAULT
-            . ' OFFSET ' . $offset);
-
         $i = 0;
-        // Кладем данные в результирующий массив $collectionList
+        // Получаем данные в виде массива
         while ($row = $result->fetch()) {
             $collectionList[$i]['id'] = $row['id'];
             $collectionList[$i]['name'] = $row['name'];
-            $collectionList[$i]['image'] = $row['image'];
             $i++;
         }
 
+        // Возвращаем массив
         return $collectionList;
     }
 
     /**
-     * Получаем список коллекций
+     * Получаем список коллекций в виде массива для админки
      * @return array
      */
     public static function getCollectionList()
     {
         $db = Db::getConnection(); // Создаем соединение
 
-        $result = $db->query('SELECT id, name, author, year, category_id FROM collection ORDER BY id ASC'); // Выполняем запрос
+        // Выполняем запрос
+        $result = $db->query('SELECT id, name, author, year, category_id FROM collection ORDER BY id ASC');
+
         $collectionList = array();
         $i = 0;
+        // Получаем данные в виде массива
         while ($row = $result->fetch()) {
             $collectionList[$i]['id'] = $row['id'];
             $collectionList[$i]['name'] = $row['name'];
@@ -160,60 +186,92 @@ class Collection
             $i++;
         }
 
+        // Возвращаем массив
         return $collectionList;
     }
 
-    // Подсчитываем количество коллекций для пагинатора c помощью count
+    /**
+     * Получаем количество произведений
+     * @return integer
+     */
     public static function getTotalCollection()
     {
         $db = Db::getConnection();
 
+        // Выполняем запрос
         $result = $db->query('SELECT count(id) AS count FROM collection WHERE status="1"');
-        $result->setFetchMode(PDO::FETCH_ASSOC);
-        $row = $result->fetch();
 
+        // Получаем и возвращаем count - количество
+        $row = $result->fetch();
         return $row['count'];
     }
 
-    // Метод получения коллекций по категорям
-    public static function getCollectionListByCategory($categoryId = false, $page = 1)
+
+    /**
+     * Возвращаем список произведений в определенной категории
+     * @param bool $categoryId
+     * @param int $page - номер страницы
+     * @return array - массив с произведениями
+     */
+    public static function getCollectionListByCategory($categoryId, $page = 1)
     {
-        if ($categoryId) {
+        // Указываем лимит
+        $limit = self::SHOW_BY_DEFAULT;
 
-            $page = intval($page);
-            $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+        $page = intval($page);
+        // Считаем смещение для запроса
+        $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
 
-            $db = Db::getConnection();
-            $collection = array();
-            $result = $db->query("SELECT id, name, image FROM collection "
-                . "WHERE status = '1' AND category_id = '$categoryId' "
-                . "ORDER BY id DESC "
-                . "LIMIT ".self::SHOW_BY_DEFAULT
-                . ' OFFSET '. $offset);
+        $db = Db::getConnection();
 
-            $i = 0;
-            while ($row = $result->fetch()) {
-                $collection[$i]['id'] = $row['id'];
-                $collection[$i]['name'] = $row['name'];
-                $collection[$i]['image'] = $row['image'];
-                $i++;
-            }
+        // Используем подготовленный запрос
+        $sql = 'SELECT id, name FROM collection '
+                . 'WHERE status = "1" AND category_id = :category_id '
+                . 'ORDER BY id DESC LIMIT :limit OFFSET :offset';
 
-            return $collection;
+        // Подготавливаем запрос
+        $result = $db->prepare($sql);
+        // Привязываем параметры
+        $result->bindParam(':category_id', $categoryId, PDO::PARAM_INT);
+        $result->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $result->bindParam(':offset', $offset, PDO::PARAM_INT);
+
+        // Выполняем запрос
+        $result->execute();
+
+        $collection = array();
+        $i = 0;
+        // Получаем данные в виде массива
+        while ($row = $result->fetch()) {
+            $collection[$i]['id'] = $row['id'];
+            $collection[$i]['name'] = $row['name'];
+            $i++;
         }
+        // Возвращаем массив
+        return $collection;
     }
 
-    // Подсчитываем количество коллекций c помощью count
-    // у которых status 1 и которые относятся к нужной категории
+    /**
+     * Возвращаем количество произведенний, которые относятся к категории
+     * @param $categoryId
+     * @return mixed
+     */
     public static function getTotalCollectionInCategory($categoryId)
     {
         $db = Db::getConnection();
 
-        $result = $db->query('SELECT count(id) AS count FROM collection '
-                            . 'WHERE status="1" AND category_id="'.$categoryId.'"');
-        $result->setFetchMode(PDO::FETCH_ASSOC);
-        $row = $result->fetch();
+        // Используем подготовленный запрос
+        $sql = 'SELECT count(id) AS count FROM collection WHERE status="1" AND category_id = :category_id';
 
+        // Подготавливаем запрос
+        $result = $db->prepare($sql);
+        // Привязываем параметры
+        $result->bindParam(':category_id', $categoryId, PDO::PARAM_INT);
+        // Выполняем
+        $result->execute();
+
+        // Возвращаем количество
+        $row = $result->fetch();
         return $row['count'];
     }
 

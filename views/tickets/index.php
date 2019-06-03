@@ -16,7 +16,7 @@
                                 <div class="product-image-wrapper">
                                     <div class="single-products">
                                         <div class="productinfo text-center">
-                                            <img src="/template/default/images/home/product1.jpg" alt=""/>
+                                            <img src="<?php echo Tickets::getImage($ticket['id']);?>" alt=""/>
                                             <h2><?php echo $ticket['price']; ?> Р</h2>
                                             <p>
                                                 <a href="/tickets/<?php echo $ticket['id']; ?>">
