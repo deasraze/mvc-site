@@ -160,6 +160,42 @@ class Tickets
     }
 
     /**
+     * Обновляем информацию о конкретном билете
+     * @param $id
+     * @param $options
+     * @return bool
+     */
+    public static function updateTicketById($id, $options)
+    {
+        $db = Db::getConnection();
+
+        // Используем подготовленный запрос
+        $sql = 'UPDATE tickets
+                SET 
+                    name = :name, 
+                    code = :code, 
+                    price = :price, 
+                    description = :description, 
+                    availability = :availability, 
+                    status = :status 
+                WHERE id = :id';
+
+        // Подготавливаем запрос к выполнению
+        $result = $db->prepare($sql);
+        // Привязываем параметры
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
+        $result->bindParam(':code', $options['code'], PDO::PARAM_INT);
+        $result->bindParam(':price', $options['price'], PDO::PARAM_INT);
+        $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
+        $result->bindParam(':availability', $options['availability'], PDO::PARAM_INT);
+        $result->bindParam(':status', $options['status'], PDO::PARAM_INT);
+
+        // Выполняем и возвращаем
+        return $result->execute();
+    }
+
+    /**
      * Удаление билета в админке
      * @param $id
      * @return bool
