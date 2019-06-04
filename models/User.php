@@ -1,8 +1,91 @@
 <?php
 
+/**
+ * Модель User
+ * Модель для работы с пользователями
+ */
 
 class User
 {
+
+    /**
+     * Возвращаем список пользователей для админки
+     * @return array
+     */
+    public static function getUserList()
+    {
+        $db = Db::getConnection();
+
+        // Выполняем запрос
+        $result = $db->query('SELECT id, name, surname, email, role FROM user ORDER BY id DESC');
+
+        $userList = array();
+        $i = 0;
+        // Получаем все данные в виде массива
+        while ($row = $result->fetch()) {
+            $userList[$i]['id'] = $row['id'];
+            $userList[$i]['name'] = $row['name'];
+            $userList[$i]['surname'] = $row['surname'];
+            $userList[$i]['email'] = $row['email'];
+            $userList[$i]['role'] = $row['role'];
+            $i++;
+        }
+
+        // Возвращаем массив
+        return $userList;
+    }
+
+    /**
+     * Метод добавления нового пользователя с правами администратора либо редактора
+     * @param $options
+     * @return int id пользователя
+     */
+    public static function createUser($options)
+    {
+        $db = Db::getConnection();
+
+        // Используем подготовленный запрос
+        $sql = 'INSERT INTO user (name, surname, email, password, role, admin_login, admin_password) 
+                 VALUES (:name, :surname, :email, :password, :role, :admin_login, :admin_password)';
+
+        // Подготавливаем запрос
+        $result = $db->prepare($sql);
+        // Привязываем параметры
+        $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
+        $result->bindParam(':surname', $options['surname'], PDO::PARAM_STR);
+        $result->bindParam(':email', $options['email'], PDO::PARAM_STR);
+        $result->bindParam(':password', $options['password'], PDO::PARAM_STR);
+        $result->bindParam(':role', $options['role'], PDO::PARAM_STR);
+        $result->bindParam(':admin_login', $options['admin_login'], PDO::PARAM_STR);
+        $result->bindParam(':admin_password', $options['admin_password'], PDO::PARAM_STR);
+
+        if ($result->execute()) {
+            // Если запрос выполнен успешно, возвращаем id добавленной записи
+            return $db->lastInsertId();
+        }
+        // Иначе возвращаем 0
+        return 0;
+    }
+
+    /**
+     * Метод удаления пользователя по переданному id
+     * @param $id
+     * @return bool
+     */
+    public static function deleteUserById($id)
+    {
+        $db = Db::getConnection();
+
+        // Используем подготовленный запрос
+        $sql = 'DELETE FROM user WHERE id = :id';
+
+        // Подготавливаем запрос
+        $result = $db->prepare($sql);
+        // Привязываем параметры
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        // Выполняем и возвращаем
+        return $result->execute();
+    }
 
     /**
      * Метод регистрации нового пользователя
@@ -238,9 +321,29 @@ class User
         // Запускаем запрос
         $result->execute();
 
-        // Проверяем есть ли записи
+        // Проверяем есть ли запись
         if ($result->fetchColumn())
             return true;
         return false;
+    }
+
+    /**
+     * Получаем текстовое пояснение для роли пользователей
+     * @param $role
+     * @return string
+     */
+    public static function getRoleText($role)
+    {
+        switch ($role) {
+            case 'admin':
+                return 'Администратор';
+                break;
+            case 'editor':
+                return 'Редактор';
+                break;
+            case 'user':
+                return 'Пользователь';
+                break;
+        }
     }
 }

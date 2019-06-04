@@ -9,13 +9,13 @@
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
                     <li><a href="/admin/">Админпанель</a></li>
-                    <li><a href="/admin/collection/">Управление коллекциями</a></li>
-                    <li class="active">Добавить произведение</li>
+                    <li><a href="/admin/user/">Управление пользователями</a></li>
+                    <li class="active">Добавить пользователя</li>
                 </ol>
             </div>
 
 
-            <h4>Добавить новое произведение</h4>
+            <h4>Добавить нового пользователя</h4>
 
             <br/>
 
@@ -31,50 +31,28 @@
                 <div class="login-form">
                     <form action="#" method="post" enctype="multipart/form-data">
 
-                        <p>Название произведения</p>
-                        <input type="text" name="name" placeholder="" value="">
+                        <p>Имя</p>
+                        <input type="text" name="name" placeholder="" value="<?php echo $options['name'];?>">
 
-                        <p>Автор</p>
-                        <input type="text" name="author" placeholder="" value="">
+                        <p>Фамилия</p>
+                        <input type="text" name="surname" placeholder="" value="<?php echo $options['surname'];?>">
 
-                        <p>Год создания</p>
-                        <input type="text" name="year" placeholder="" value="">
+                        <p>Почта</p>
+                        <input type="email" name="email" placeholder="" value="<?php echo $options['email'];?>">
 
-                        <p>Категория</p>
-                        <select name="category_id">
-                            <?php if (is_array($categoriesList)): ?>
-                                <?php foreach ($categoriesList as $category): ?>
-                                    <option value="<?php echo $category['id']; ?>">
-                                        <?php echo $category['name']; ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            <?php endif; ?>
-                        </select>
+                        <p>Пароль</p>
+                        <input type="password" name="password" placeholder="" value="<?php echo $options['password'];?>">
 
-                        <br/><br/>
-
-
-                        <p>Изображение товара</p>
+                        <p>Изображение пользователя</p>
                         <input type="file" name="image" placeholder="" value="">
 
-                        <p>Детальное описание</p>
-                        <textarea name="description"></textarea>
-
                         <br/><br/>
 
-                        <p>Наличие</p>
-                        <select name="availability">
-                            <option value="1" selected="selected">Да</option>
-                            <option value="0">Нет</option>
-                        </select>
-
-                        <br/><br/>
-
-
-                        <p>Статус</p>
-                        <select name="status">
-                            <option value="1" selected="selected">Отображается</option>
-                            <option value="0">Скрыт</option>
+                        <p>Роль</p>
+                        <select name="role">
+                            <option value="user" selected="selected">Пользователь</option>
+                            <option value="editor">Редактор</option>
+                            <option value="admin">Администратор</option>
                         </select>
 
                         <br/><br/>

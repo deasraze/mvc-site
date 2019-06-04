@@ -9,16 +9,16 @@
             <div class="breadcrumbs">
                 <ol class="breadcrumb">
                     <li><a href="/admin/">Админпанель</a></li>
-                    <li><a href="/admin/collection/">Управление коллекциями</a></li>
-                    <li class="active">Удалить произведение</li>
+                    <li><a href="/admin/user/">Управление пользователями</a></li>
+                    <li class="active">Удалить пользователя</li>
                 </ol>
             </div>
 
 
-            <h4>Удалить произведение <?php echo $collectionName; ?></h4>
+            <h4>Удалить пользователя <?php echo $user['name'] . ' ' . $user['surname']; ?></h4>
 
 
-            <p>Вы действительно хотите удалить это произведение ?</p>
+            <p>Вы действительно хотите удалить этого пользователя ?</p>
 
             <form method="post">
                 <input type="submit" name="submit" value="Удалить" />
