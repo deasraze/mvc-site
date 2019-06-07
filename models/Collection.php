@@ -8,7 +8,7 @@ class Collection
 {
 
     // Значение по умолчанию (сколько отображать)
-    const SHOW_BY_DEFAULT = 6;
+    const SHOW_BY_DEFAULT = 10;
 
     /**
      * Получаем информацию о произведении по id
@@ -129,12 +129,12 @@ class Collection
      * @param int $page - номер текущей страницы
      * @return array
      */
-    public static function getLatestCollection($page = 1)
+    public static function getLatestCollection($page)
     {
         $limit = self::SHOW_BY_DEFAULT;
         $page = intval($page);
         // Считаем смещение для запроса
-        $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+        $offset = ($page - 1) * $limit;
 
         $db = Db::getConnection();
 
@@ -165,14 +165,28 @@ class Collection
 
     /**
      * Получаем список коллекций в виде массива для админки
+     * @param int $page
      * @return array
      */
-    public static function getCollectionList()
+    public static function getCollectionListAdmin($page)
     {
-        $db = Db::getConnection(); // Создаем соединение
+        $page = intval($page);
+        $limit = self::SHOW_BY_DEFAULT;
+        // Считаем смещение для запроса
+        $offset = ($page - 1) * $limit;
 
+        $db = Db::getConnection();
+
+        // Используем подготовленный запрос
+        $sql = 'SELECT id, name, author, year, category_id, status FROM collection ORDER BY id DESC LIMIT :limit OFFSET :offset';
+
+        // Подготавливаем запрос
+        $result = $db->prepare($sql);
+        // Привязываем параметры
+        $result->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $result->bindParam(':offset', $offset, PDO::PARAM_INT);
         // Выполняем запрос
-        $result = $db->query('SELECT id, name, author, year, category_id FROM collection ORDER BY id ASC');
+        $result->execute();
 
         $collectionList = array();
         $i = 0;
@@ -183,6 +197,7 @@ class Collection
             $collectionList[$i]['author'] = $row['author'];
             $collectionList[$i]['year'] = $row['year'];
             $collectionList[$i]['category_id'] = $row['category_id'];
+            $collectionList[$i]['status'] = $row['status'];
             $i++;
         }
 
@@ -191,7 +206,7 @@ class Collection
     }
 
     /**
-     * Получаем количество произведений
+     * Возвращаем количество произведений, где статус = 1
      * @return integer
      */
     public static function getTotalCollection()
@@ -206,6 +221,22 @@ class Collection
         return $row['count'];
     }
 
+    /**
+     * Возвращаем общее количество произведений
+     * @return mixed
+     */
+    public static function getTotalCollectionAdmin()
+    {
+        $db = Db::getConnection();
+
+        // Выполняем запрос
+        $result = $db->query('SELECT count(id) AS count FROM collection');
+
+        // Получаем и возвращаем count - количество
+        $row = $result->fetch();
+        return $row['count'];
+    }
+
 
     /**
      * Возвращаем список произведений в определенной категории
@@ -213,14 +244,13 @@ class Collection
      * @param int $page - номер страницы
      * @return array - массив с произведениями
      */
-    public static function getCollectionListByCategory($categoryId, $page = 1)
+    public static function getCollectionListByCategory($categoryId, $page)
     {
+        $page = intval($page);
         // Указываем лимит
         $limit = self::SHOW_BY_DEFAULT;
-
-        $page = intval($page);
         // Считаем смещение для запроса
-        $offset = ($page - 1) * self::SHOW_BY_DEFAULT;
+        $offset = ($page - 1) * $limit;
 
         $db = Db::getConnection();
 
@@ -276,6 +306,36 @@ class Collection
     }
 
     /**
+     * Поиск коллекций в админ панели
+     * @param $query
+     */
+    public static function searchCollectionInAdminPanel($query)
+    {
+        $db = Db::getConnection();
+
+        // Испольуем подготовленный запрос
+        $sql = "SELECT * FROM collection WHERE name LIKE :query OR author LIKE :query limit 5";
+
+        // Подготавливаем запрос
+        $result = $db->prepare($sql);
+        // Привязываем параметры
+        $result->bindParam(':query', $query, PDO::PARAM_STR);
+        // Выполняем
+        $result->execute();
+
+
+        if ($result->rowCount() > 0) {
+            $output = "<div class=table-responsive>
+					<table class=table table bordered>";
+
+            while ($row = $result->fetch()) {
+                $output .= '<tr><td><a href="/admin/collection/update/' . $row['id'] . '">' . $row['name'] . '</a></td></tr>';
+            }
+            echo $output;
+        }
+    }
+
+    /**
      * Возвращаем путь к изображению произведения
      * @param $id
      * @return string
@@ -299,6 +359,23 @@ class Collection
 
         // Возвращаем изображение "Нет картинки"
         return $path . $noImage;
+    }
+
+    /**
+     * Возвращаем текстовое пояснение статусу
+     * @param $status
+     * @return string
+     */
+    public static function getStatusText($status)
+    {
+        switch ($status) {
+            case '1':
+                return 'Отображается';
+                break;
+            case '2':
+                return 'Скрыта';
+                break;
+        }
     }
 
 }

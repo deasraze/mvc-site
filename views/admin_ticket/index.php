@@ -14,9 +14,11 @@
             </div>
 
             <a href="/admin/ticket/create/" class="btn btn-default back"><i class="fa fa-plus"></i> Добавить билет</a>
-            <div class="form-group">
-                <input type="text" class="form-control pull-right" id="search" placeholder="Поиск по таблице">
+            <div class="input-group">
+                <span class="input-group-addon">Поиск</span>
+                <input type="text" name="search_text" id="search_text" placeholder="Введите текст для поиска" class="form-control" />
             </div>
+            <div id="result"></div>
             <h4>Список билетов</h4>
 
             <br/>
@@ -45,7 +47,7 @@
                 </tbody>
                 <?php endforeach; ?>
             </table>
-
+            <?php echo $pagination->get();?>
         </div>
     </div>
 </section>

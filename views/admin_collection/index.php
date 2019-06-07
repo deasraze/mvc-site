@@ -14,14 +14,19 @@
             </div>
 
             <a href="/admin/collection/create/" class="btn btn-default back"><i class="fa fa-plus"></i> Добавить произведение</a>
-            <div class="form-group">
-                <input type="text" class="form-control pull-right" id="search" placeholder="Поиск по таблице">
+            <br>
+            <div class="input-group">
+                <span class="input-group-addon">Поиск</span>
+                <input type="text" name="search_text" id="search_text" placeholder="Введите текст для поиска" class="form-control" />
             </div>
+            <div id="result"></div>
+        </div>
+            <br>
             <h4>Список коллекций</h4>
 
             <br/>
 
-            <table class="table-bordered table-striped table" id="mytable">
+            <table class="table-bordered table-striped table" id="grid">
                 <thead>
                 <tr>
                     <th>ID коллекции</th>
@@ -29,6 +34,7 @@
                     <th>Автор</th>
                     <th>Год</th>
                     <th>Категория</th>
+                    <th>Статус</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -46,13 +52,14 @@
                                 echo $category['name'];
                             ?>
                         </td>
+                        <td><?php echo Collection::getStatusText($collection['status']); ?></td>
                         <td><a href="/admin/collection/update/<?php echo $collection['id']; ?>" title="Редактировать"><i class="fa fa-pencil-square-o"></i></a></td>
                         <td><a href="/admin/collection/delete/<?php echo $collection['id']; ?>" title="Удалить"><i class="fa fa-times"></i></a></td>
                     </tr>
                 </tbody>
                 <?php endforeach; ?>
             </table>
-
+        <?php echo $pagination->get(); ?>
         </div>
     </div>
 </section>

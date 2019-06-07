@@ -14,7 +14,11 @@
             </div>
 
             <a href="/admin/category/create/" class="btn btn-default back"><i class="fa fa-plus"></i> Добавить категорию</a>
-            
+            <div class="input-group">
+                <span class="input-group-addon">Поиск</span>
+                <input type="text" name="search_text" id="search_text" placeholder="Введите текст для поиска" class="form-control" />
+            </div>
+            <div id="result"></div>
             <h4>Список категорий</h4>
 
             <br/>
@@ -39,7 +43,7 @@
                     </tr>
                 <?php endforeach; ?>
             </table>
-            
+            <?php echo $pagination->get();?>
         </div>
     </div>
 </section>

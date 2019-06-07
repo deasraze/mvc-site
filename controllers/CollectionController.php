@@ -1,14 +1,25 @@
 <?php
 
+/**
+ * Контроллер CollectionController
+ * Управление коллекциями
+ */
 
 class CollectionController
 {
 
+    /**
+     * Страница с коллекциями
+     * @param int $page
+     * @return bool
+     */
     public function actionIndex($page = 1)
     {
+        // Получаем список категорий
         $categories = array();
         $categories = Category::getCategoriesList();
 
+        // Получаем список последних произведений
         $latestCollection = array();
         $latestCollection = Collection::getLatestCollection($page);
 
@@ -24,11 +35,19 @@ class CollectionController
         return true;
     }
 
+    /**
+     * Страница просмотра коллекций в категории
+     * @param $categoryId
+     * @param int $page
+     * @return bool
+     */
     public function actionCategory($categoryId, $page = 1)
     {
+        // Получаем список категорий
         $categories = array();
         $categories = Category::getCategoriesList();
 
+        // Получаем список коллекций
         $categoryCollection = array();
         $categoryCollection = Collection::getCollectionListByCategory($categoryId, $page);
 
@@ -44,8 +63,14 @@ class CollectionController
         return true;
     }
 
+    /**
+     * Страница просмотра произведения
+     * @param $collectionId
+     * @return bool
+     */
     public function actionView($collectionId)
     {
+        // Получаем список категорий
         $categories = array();
         $categories = Category::getCategoriesList();
 

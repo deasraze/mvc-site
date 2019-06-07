@@ -8,16 +8,31 @@
 class User
 {
 
+    const SHOW_BY_DEFAULT = 10;
+
     /**
      * Возвращаем список пользователей для админки
+     * @param $page
      * @return array
      */
-    public static function getUserList()
+    public static function getUserListAdmin($page)
     {
+        $page = intval($page);
+        $limit = self::SHOW_BY_DEFAULT;
+        // Считаем сдвиг для запроса
+        $offset = ($page - 1) * $limit;
+
         $db = Db::getConnection();
 
+        // Используем подготовленный запрос
+        $sql = 'SELECT id, name, surname, email, role FROM user ORDER BY id DESC LIMIT :limit OFFSET :offset';
+        // Подготавливаем запрос к выполнению
+        $result = $db->prepare($sql);
+        // Привязываем параметры
+        $result->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $result->bindParam(':offset', $offset, PDO::PARAM_INT);
         // Выполняем запрос
-        $result = $db->query('SELECT id, name, surname, email, role FROM user ORDER BY id DESC');
+        $result->execute();
 
         $userList = array();
         $i = 0;
@@ -65,6 +80,44 @@ class User
         }
         // Иначе возвращаем 0
         return 0;
+    }
+
+    /**
+     * Метод обновления пользователя
+     * @param $id - пользователя
+     * @param $options - параметры
+     * @return bool
+     */
+    public static function updateUserById($id, $options)
+    {
+        $db = Db::getConnection();
+
+        // Используем подготовленный запрос
+        $sql = 'UPDATE user 
+                SET 
+                    name = :name, 
+                    surname = :surname, 
+                    email = :email, 
+                    password = :password, 
+                    role = :role, 
+                    admin_login = :admin_login, 
+                    admin_password = :admin_password 
+                WHERE id = :id';
+
+        // Подготавливаем запрос к выполнению
+        $result = $db->prepare($sql);
+        // Привязываем параметры
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
+        $result->bindParam(':surname', $options['surname'], PDO::PARAM_STR);
+        $result->bindParam(':email', $options['email'], PDO::PARAM_STR);
+        $result->bindParam(':password', $options['password'], PDO::PARAM_STR);
+        $result->bindParam(':role', $options['role'], PDO::PARAM_STR);
+        $result->bindParam(':admin_login', $options['admin_login'], PDO::PARAM_STR);
+        $result->bindParam(':admin_password', $options['admin_password'], PDO::PARAM_STR);
+
+        // Выполняем и возвращаем
+        return $result->execute();
     }
 
     /**
@@ -206,6 +259,21 @@ class User
     }
 
     /**
+     * Возвращаем общее количество пользователей
+     * @return mixed
+     */
+    public static function getTotalUserAdmin()
+    {
+        $db = Db::getConnection();
+
+        $result = $db->query('SELECT count(id) AS count FROM user');
+
+        // Получаем и возвращаем
+        $row = $result->fetch();
+        return $row['count'];
+    }
+
+    /**
      * Запоминаем пользователя
      * @param $userId
      */
@@ -344,6 +412,58 @@ class User
             case 'user':
                 return 'Пользователь';
                 break;
+        }
+    }
+
+    /**
+     * Возвращаем путь до изображения пользователя
+     * @param $id
+     * @return string
+     */
+    public static function getImage($id)
+    {
+        // Если нет изображения
+        $noImage = 'no-image.png';
+        // Путь до папки
+        $path = '/upload/images/users/';
+        // Путь до изображения
+        $pathToUserImage = $path . $id . '.jpg';
+
+        if (file_exists($_SERVER['DOCUMENT_ROOT'] . $pathToUserImage)) {
+            // Если изображение было найдено, то возвращаем до него путь
+            return $pathToUserImage;
+        }
+        // Возвращаем путь до заглушки
+        return $path . $noImage;
+    }
+
+    /**
+     * Поиск пользователей
+     * @param $query
+     */
+    public static function searchUserInAdminPanel($query)
+    {
+        $db = Db::getConnection();
+
+        // Испольуем подготовленный запрос
+        $sql = "SELECT * FROM user WHERE name LIKE :query OR surname LIKE :query limit 5";
+
+        // Подготавливаем запрос
+        $result = $db->prepare($sql);
+        // Привязываем параметры
+        $result->bindParam(':query', $query, PDO::PARAM_STR);
+        // Выполняем
+        $result->execute();
+
+
+        if ($result->rowCount() > 0) {
+            $output = "<div class=table-responsive>
+					<table class=table table bordered>";
+
+            while ($row = $result->fetch()) {
+                $output .= '<tr><td><a href="/admin/user/update/' . $row['id'] . '">' . $row['surname'] . '</a></td></tr>';
+            }
+            echo $output;
         }
     }
 }

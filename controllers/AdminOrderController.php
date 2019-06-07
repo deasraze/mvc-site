@@ -10,13 +10,19 @@ class AdminOrderController extends AdminBase
      * Страница с заказами
      * @return bool
      */
-    public function actionIndex()
+    public function actionIndex($page = 1)
     {
         // Проверяем права доступа
         self::checkAdmin();
 
         // Получаем список заказов
-        $ordersList = Order::getOrdersListByAdmin();
+        $ordersList = array();
+        $ordersList = Order::getOrdersListByAdmin($page);
+
+        // Получаем общее число заказов
+        $total = Order::getTotalOrderAdmin();
+        // Создаем новый объекс класса
+        $pagination = new Pagination($total, $page, Order::SHOW_BY_DEFAULT, 'page-');
 
         // Подключаем вид
         require_once (ROOT . '/views/admin_order/index.php');

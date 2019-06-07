@@ -54,7 +54,7 @@
                         <br/><br/>
 
 
-                        <p>Изображение товара</p>
+                        <p>Изображение произведения</p>
                         <input type="file" name="image" placeholder="" value="">
 
                         <p>Детальное описание</p>

@@ -43,28 +43,35 @@
 
         // Главная страницы админки
         'admin' => 'admin/index', // actionIndex and AdminController
+        'admin/search' => 'admin/search', // actionSearch and AdminController
         // Управление коллекциями
         'admin/collection' => 'adminCollection/index',
+        'admin/collection/page-([0-9]+)' => 'adminCollection/index/$1',
+        'admin/collection/search' => 'adminCollection/search',
         'admin/collection/create' => 'adminCollection/create',
         'admin/collection/update/([0-9]+)' => 'adminCollection/update/$1',
         'admin/collection/delete/([0-9]+)' => 'adminCollection/delete/$1',
         // Управление категорями
         'admin/category' => 'adminCategory/index',
+        'admin/category/page-([0-9]+)' => 'adminCategory/index/$1',
         'admin/category/create' => 'adminCategory/create',
         'admin/category/update/([0-9]+)' => 'adminCategory/update/$1',
         'admin/category/delete/([0-9]+)' => 'adminCategory/delete/$1',
         // Управление заказами
         'admin/order' => 'adminOrder/index',
+        'admin/order/page-([0-9]+)' => 'adminOrder/index/$1',
         'admin/order/view/([0-9]+)' => 'adminOrder/view/$1',
         'admin/order/update/([0-9]+)' => 'adminOrder/update/$1',
         'admin/order/delete/([0-9]+)' => 'adminOrder/delete/$1',
         // Управление билетами
         'admin/ticket' => 'adminTicket/index',
+        'admin/ticket/page-([0-9]+)' => 'adminTicket/index/$1',
         'admin/ticket/create' => 'adminTicket/create',
         'admin/ticket/update/([0-9]+)' => 'adminTicket/update/$1',
         'admin/ticket/delete/([0-9]+)' => 'adminTicket/delete/$1',
         // Управление Пользователями
         'admin/user' => 'adminUser/index',
+        'admin/user/page-([0-9]+)' => 'adminUser/index/$1',
         'admin/user/create' => 'adminUser/create',
         'admin/user/update/([0-9]+)' => 'adminUser/update/$1',
         'admin/user/delete/([0-9]+)' => 'adminUser/delete/$1',

@@ -5,9 +5,11 @@
  * Class Order
  * Модель для работы с заказами
  */
+
 class Order
 {
 
+    const SHOW_BY_DEFAULT = 10;
     /**
      * Сохранение заказа
      * @param $userName - имя
@@ -71,16 +73,28 @@ class Order
 
     /**
      * Возвращаем список заказов для админки
+     * @param $page
      * @return array
      */
-    public static function getOrdersListByAdmin()
+    public static function getOrdersListByAdmin($page)
     {
+        $page = intval($page);
+        $limit = self::SHOW_BY_DEFAULT;
+        $offset = ($page - 1) * $limit;
+
         $db = Db::getConnection();
 
+        // Используем подготовленный запрос
+        $sql = 'SELECT id, user_name, user_surname, 
+                user_phone, date, status 
+                FROM ticket_order ORDER BY id DESC LIMIT :limit OFFSET :offset';
+        // Подготавливаем запрос к выполнению
+        $result = $db->prepare($sql);
+        // Привязываем параметры
+        $result->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $result->bindParam(':offset', $offset, PDO::PARAM_INT);
         // Выполняем запрос
-        $result = $db->query('SELECT id, user_name, user_surname, 
-                            user_phone, date, status 
-                            FROM ticket_order ORDER BY id DESC ');
+        $result->execute();
 
         $orderList = array();
         $i = 0;
@@ -95,6 +109,22 @@ class Order
             $i++;
         }
         return $orderList;
+    }
+
+    /**
+     * Возвращаем общее количество заказов
+     * @return mixed
+     */
+    public static function getTotalOrderAdmin()
+    {
+        $db = Db::getConnection();
+
+        // Выполняем запрос
+        $result = $db->query('SELECT count(id) AS count FROM ticket_order');
+        // Получаем
+        $row = $result->fetch();
+        // Возвращаем
+        return $row['count'];
     }
 
     /**
@@ -172,6 +202,36 @@ class Order
             case '4':
                 return 'Закрыт';
                 break;
+        }
+    }
+
+    /**
+     * Поиск заказов
+     * @param $query
+     */
+    public static function searchOrderInAdminPanel($query)
+    {
+        $db = Db::getConnection();
+
+        // Испольуем подготовленный запрос
+        $sql = "SELECT * FROM ticket_order WHERE user_name LIKE :query OR user_surname LIKE :query limit 5";
+
+        // Подготавливаем запрос
+        $result = $db->prepare($sql);
+        // Привязываем параметры
+        $result->bindParam(':query', $query, PDO::PARAM_STR);
+        // Выполняем
+        $result->execute();
+
+
+        if ($result->rowCount() > 0) {
+            $output = "<div class=table-responsive>
+					<table class=table table bordered>";
+
+            while ($row = $result->fetch()) {
+                $output .= '<tr><td><a href="/admin/order/view/' . $row['id'] . '">' . $row['user_surname'] . '</a></td></tr>';
+            }
+            echo $output;
         }
     }
 }

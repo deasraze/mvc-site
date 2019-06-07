@@ -46,7 +46,7 @@
                         
                         <br/><br/>
 
-                        <p>Изображение товара</p>
+                        <p>Изображение произведения</p>
                         <img src="<?php echo Collection::getImage($collection['id']); ?>" width="200" alt="" />
                         <input type="file" name="image" placeholder="" value="<?php echo $collection['image']; ?>">
 

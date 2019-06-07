@@ -12,7 +12,11 @@
                     <li class="active">Управление заказами</li>
                 </ol>
             </div>
-
+            <div class="input-group">
+                <span class="input-group-addon">Поиск</span>
+                <input type="text" name="search_text" id="search_text" placeholder="Введите текст для поиска" class="form-control" />
+            </div>
+            <div id="result"></div>
             <h4>Список заказов</h4>
 
             <br/>
@@ -48,7 +52,7 @@
                     </tr>
                 <?php endforeach; ?>
             </table>
-
+            <?php echo $pagination->get();?>
         </div>
     </div>
 </section>

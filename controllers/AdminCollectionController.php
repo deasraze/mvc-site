@@ -10,14 +10,24 @@ class AdminCollectionController extends AdminBase
 
     /**
      * Страница управления коллекциями
+     * @param int $page
+     * @return bool
      */
-    public function actionIndex()
+    public function actionIndex($page = 1)
     {
         // Проверка доступа
         self::checkAdmin();
 
         // Получаем список коллекций
-        $collectionList = Collection::getCollectionList();
+        $collectionList = array();
+        $collectionList = Collection::getCollectionListAdmin($page);
+
+        // $total - ко-во коллекций
+        $total = Collection::getTotalCollectionAdmin();
+
+        // Создаем объект Pagination - постраничная навигация
+        // page- ключ который будет в url
+        $pagination = new Pagination($total, $page, Collection::SHOW_BY_DEFAULT, 'page-');
 
         // Подключаем вид
         require_once (ROOT . '/views/admin_collection/index.php');
@@ -34,7 +44,7 @@ class AdminCollectionController extends AdminBase
         self::checkAdmin();
 
         // Получение списка категорий
-        $categoriesList = Category::getCategoriesListAdmin();
+        $categoriesList = Category::getCategoriesListAdminByCollection();
 
         // Обработка формы
         if (isset($_POST['submit'])) {
@@ -86,7 +96,7 @@ class AdminCollectionController extends AdminBase
         self::checkAdmin();
 
         // Получаем список категорий
-        $categoriesList = Category::getCategoriesListAdmin();
+        $categoriesList = Category::getCategoriesListAdminByCollection();
 
         // Получаем данные о конкретном произведении
         $collection = Collection::getCollectionById($id);

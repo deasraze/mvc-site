@@ -11,13 +11,18 @@ class AdminTicketController extends AdminBase
      * Страница с билетами
      * @return bool
      */
-    public function actionIndex()
+    public function actionIndex($page = 1)
     {
         // Проверка прав доступа
         self::checkAdmin();
 
         // Получаем список билетов
-        $ticketList = Tickets::getTicketListAdmin();
+        $ticketList = Tickets::getTicketListAdmin($page);
+
+        // Считаем количество билетов
+        $total = Tickets::getTotalTicketsAdmin();
+        // Создаем новый объект класса
+        $pagination = new Pagination($total, $page, Tickets::SHOW_BY_DEFAULT, 'page-');
 
         // Подключаем вид
         require_once(ROOT . '/views/admin_ticket/index.php');

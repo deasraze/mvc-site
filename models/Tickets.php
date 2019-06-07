@@ -7,7 +7,7 @@
 class Tickets
 {
 
-    const SHOW_BY_DEFAULT = 6;
+    const SHOW_BY_DEFAULT = 10;
 
     /**
      * Возвращаем массив с последними билетами
@@ -104,14 +104,27 @@ class Tickets
 
     /**
      * Возвращаем массив билетов для админки
+     * @param $page
      * @return array
      */
-    public static function getTicketListAdmin()
+    public static function getTicketListAdmin($page)
     {
+        $page = intval($page);
+        $limit = self::SHOW_BY_DEFAULT;
+        $offset = ($page - 1) * $limit;
+
         $db = Db::getConnection();
 
+        // Используем подготовленный запрос
+        $sql = 'SELECT id, name, price, code, availability FROM tickets ORDER BY id DESC LIMIT :limit OFFSET :offset';
+
+        // Подготавливаем запрос к выполнению
+        $result = $db->prepare($sql);
+        // Привязываем паарметры
+        $result->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $result->bindParam(':offset', $offset, PDO::PARAM_INT);
         // Выполняем запрос
-        $result = $db->query('SELECT id, name, price, code, availability FROM tickets ORDER BY id DESC');
+        $result->execute();
 
         $ticketList = array();
         $i = 0;
@@ -125,6 +138,23 @@ class Tickets
         }
         // Возвращаем массив с билетами
         return $ticketList;
+    }
+
+    /**
+     * Возвращаем общее количество билетов
+     * @return mixed
+     */
+    public static function getTotalTicketsAdmin()
+    {
+        $db = Db::getConnection();
+
+        // Выполняем запрос
+        $result = $db->query('SELECT count(id) AS count FROM tickets');
+        // Извлекаем
+        $row = $result->fetch();
+
+        // Возвращаем
+        return $row['count'];
     }
 
     /**
@@ -255,5 +285,35 @@ class Tickets
 
         // Если оно не было найдено, возвращаем заглушку
         return $path . $noImage;
+    }
+
+    /**
+     * Поиск билетов
+     * @param $query
+     */
+    public static function searchTicketInAdminPanel($query)
+    {
+        $db = Db::getConnection();
+
+        // Испольуем подготовленный запрос
+        $sql = "SELECT * FROM tickets WHERE name LIKE :query limit 5";
+
+        // Подготавливаем запрос
+        $result = $db->prepare($sql);
+        // Привязываем параметры
+        $result->bindParam(':query', $query, PDO::PARAM_STR);
+        // Выполняем
+        $result->execute();
+
+
+        if ($result->rowCount() > 0) {
+            $output = "<div class=table-responsive>
+					<table class=table table bordered>";
+
+            while ($row = $result->fetch()) {
+                $output .= '<tr><td><a href="/admin/ticket/update/' . $row['id'] . '">' . $row['name'] . '</a></td></tr>';
+            }
+            echo $output;
+        }
     }
 }

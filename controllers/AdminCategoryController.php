@@ -8,15 +8,22 @@ class AdminCategoryController extends AdminBase
 {
     /**
      * Главная страница управления категорями
+     * @param $page
      * @return bool
      */
-    public function actionIndex()
+    public function actionIndex($page = 1)
     {
         // Проверка прав доступа
         self::checkAdmin();
 
         // Получение списка категорий
-        $categoriesList = Category::getCategoriesListAdmin();
+        $categoriesList = array();
+        $categoriesList = Category::getCategoriesListAdmin($page);
+
+        // Получаем количество категорий
+        $total = Category::getTotalCategoryAdmin();
+        // Создаем новый объект класса
+        $pagination = new Pagination($total, $page, Category::SHOW_BY_DEFAULT, 'page-');
 
         // Подключаем вид
         require_once (ROOT . '/views/admin_category/index.php');
