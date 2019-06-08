@@ -1,0 +1,132 @@
+body {
+  overflow: hidden;
+}
+body::-webkit-scrollbar {
+  display: none;
+}
+#header {
+
+}
+* {
+  transition: .4s ease-in-out;
+}
+#job {
+  display: flex;
+  .job-wrap {
+    width: 30%;
+    height: 100%;
+    position: fixed;
+    overflow: auto;
+    right: 0;
+    background: #fff;
+    border-left: 1px solid rgba(27, 31, 35, 0.15);
+    box-shadow: 0 3px 12px rgba(27, 31, 35, 0.15);
+    display: flex;
+    justify-content: center;
+    form {
+      padding-top: 120px;
+      width: 95%;
+      h2 {
+        font-size: 24px;
+        font-family: 'SpectralRegular' , sans-serif;
+        font-weight: bold;
+        text-transform: uppercase;
+      }
+      label {
+        font-size: 18px;
+        color: #757575;
+        font-family: 'PT_SansNarrowWebRegular' , sans-serif;
+        span {
+          color:#03A9F4;
+        }
+      }
+      select {
+        display: block;
+        padding-left: 8px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        font-family: 'PT_SansNarrowWebRegular' , sans-serif;
+        border: 1px solid #ccc;
+        font-size: 18px;
+        color: #000;
+        height: 40px;
+        border-radius: 4px!important;
+      }
+      .FIO {
+        @extend select;
+        width: 100%;
+      }
+      .nationality {
+        width: 45%;
+      }
+      .birth-date {
+        width: 45%;
+      }
+      .job-info {
+        display: flex;
+        justify-content: space-between;
+        input {
+          @extend select;
+          width: 100%;
+        }
+      }
+      .live-place {
+        width: 100%;
+        textarea {
+          @extend .FIO;
+        }
+      }
+    }
+    .send-profile {
+      font-family: 'SpectralRegular' , sans-serif;
+      font-size: 18px;
+      text-transform: uppercase;
+      width: 150px;
+      background: none;
+      border: 1px solid #ccc;
+      color: #ccc;
+      border-radius: 5px;
+      padding: 7px 0;
+      outline: none;
+      transition: .4s ease-in-out;
+      margin-bottom: 20px;
+      &:hover {
+        background: #80c7ba;
+        border: 1px solid #80c7ba;
+        color: #fff;
+        transition: .4s ease-in-out;
+      }
+    }
+  }
+  .information-about-job {
+    width: 70%;
+    .work {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      text-align: left;
+      height: 100vh;
+      margin-left: 25px;
+      h2 {
+        font-size: 48px;
+        text-transform: uppercase;
+        font-weight: bold;
+        letter-spacing: 2px;
+        color: #212121;
+      }
+      h3 {
+        font-size: 30px;
+        text-transform: uppercase;
+        margin: 15px 0;
+        color: #212121;
+      }
+      li {
+        font-family: 'PT_SansNarrowWebRegular' , sans-serif;
+        font-size: 1.6rem;
+        margin: 15px 0;
+        color: #757575;
+      }
+    }
+  }
+}

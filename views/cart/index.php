@@ -1,58 +1,180 @@
-<?php include ROOT . '/views/layouts/header.php'; ?>
-
-<section>
-    <div class="container">
-        <div class="row">
-
-            <div class="col-sm-9 padding-right">
-                <div class="features_items">
-                    <h2 class="title text-center">Корзина</h2>
-                    
-                    <?php if ($ticketsInCart): ?>
-                        <p>Вы выбрали такие товары:</p>
-                        <table class="table-bordered table-striped table">
-                            <tr>
-                                <th>Код товара</th>
-                                <th>Название</th>
-                                <th>Стомость, р</th>
-                                <th>Количество, шт</th>
-                                <th>Удалить</th>
-                            </tr>
-                            <?php foreach ($tickets as $ticket): ?>
-                                <tr>
-                                    <td><?php echo $ticket['code'];?></td>
-                                    <td>
-                                        <a href="/tickets/<?php echo $ticket['id'];?>">
-                                            <?php echo $ticket['name'];?>
-                                        </a>
-                                    </td>
-                                    <td><?php echo $ticket['price'];?></td>
-                                    <td><?php echo $ticketsInCart[$ticket['id']];?></td>
-                                    <td>
-                                        <a class="btn btn-default checkout" href="/cart/delete/<?echo $ticket['id'];?>">
-                                            <i class="fa fa-times"></i>
-                                        </a>
-                                    </td>
-                                </tr>
-                            <?php endforeach; ?>
-                                <tr>
-                                    <td colspan="4">Общая стоимость, р:</td>
-                                    <td><?php echo $totalPrice;?></td>
-                                </tr>
-                            
-                        </table>
-                        <a class="btn btn-default checkout" href="/cart/checkout/"><i class="fa fa-shopping-cart"></i> Оформить заказ</a>
-                    <?php else: ?>
-                        <p>Корзина пуста</p>
-
-                        <a class="btn btn-default checkout" href="/tickets/"><i class="fa fa-shopping-cart"></i> Вернуться к покупкам</a>
-                    <?php endif; ?>
-
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Корзина</title>
+    <!--    styles-->
+    <link rel="stylesheet" href="/template/stylesheet/all.css">
+    <link rel="stylesheet" href="/template/stylesheet/fonts.css">
+    <link rel="stylesheet" href="/template/stylesheet/animation.css">
+    <link rel="stylesheet" href="/template/stylesheet/animate.css">
+    <link rel="stylesheet" href="/template/stylesheet/default.css">
+    <link rel="stylesheet" href="/template/stylesheet/menuCSS.css">
+    <link rel="stylesheet" href="/template/stylesheet/mobilMenu.css">
+    <link rel="stylesheet" href="/template/stylesheet/cart.css">
+    <link rel="stylesheet" href="/template/stylesheet/media.css">
+    <link rel="stylesheet" href="/template/stylesheet/nprogress.css">
+    <!--    scripts-->
+    <script src="/template/scripts/jq.min.js"></script>
+    <script src="/template/scripts/masonry-docs.min.js"></script>
+    <script src="/template/scripts/viewportchecker.js"></script>
+    <script src="/template/scripts/nprogress.js"></script>
+</head>
+<body>
+<header id="header">
+    <div class="nav-container f-nav">
+        <div class="nav">
+            <ul>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/news/">Новости</a></li>
+                <li><a href="/tickets/">Касса</a></li>
+                <li><a href="/collection/">Произведения</a></li>
+                <li><a href="/jobs/">Вакансии</a></li>
+                <li><a href="/contacts/">Контакты</a></li>
+                <li><a href="/about/">О нас </a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="user-menu">
+            <div class="user-avatar" id="close__" onclick="openUserProfil()">
+                <img src="<?php echo User::getImage($idUser); ?>" alt="user-avatar">
+                <p><i class="fas fa-angle-down"></i></p>
+            </div>
+            <div class="menu-wrap">
+                <div class="menu">
+                    <ul class="user-menu-items">
+                        <?php if (User::isGuest()): ?>
+                            <li><a href="/cart/">Моя корзина (<span id="cart-count"><?php echo Cart::countItems(); ?></span>)</a></li>
+                            <li><a href="#">Помощь</a></li>
+                            <li><a href="/user/register/">Регистрация</a></li>
+                            <li><a href="/user/login/">Вход</a></li>
+                        <?php elseif (User::checkRole($idUser)): ?>
+                            <li><a href="/admin/">Админпанель</a></li>
+                            <li><a href="/cart/">Моя корзина (<span id="cart-count"><?php echo Cart::countItems(); ?></span>)</a></li>
+                            <li><a href="/cabinet/">Профиль</a></li>
+                            <li><a href="#">Настройки</a></li>
+                            <li><a href="#">Помощь</a></li>
+                            <li><a href="/user/logout/">Выход</a></li>
+                        <?php else: ?>
+                            <li><a href="/cart/">Моя корзина (<span id="cart-count"><?php echo Cart::countItems(); ?></span>)</a></li>
+                            <li><a href="/cabinet/">Профиль</a></li>
+                            <li><a href="#">Настройки</a></li>
+                            <li><a href="#">Помощь</a></li>
+                            <li><a href="/user/logout/">Выход</a></li>
+                        <?php endif; ?>
+                    </ul>
                 </div>
-
             </div>
         </div>
     </div>
+    <div class="mobil_menu">
+        <div class="wrap-menu">
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/news/">Новости</a></li>
+                    <li><a href="/tickets/">Касса</a></li>
+                    <li><a href="/collection/">Произведения</a></li>
+                    <li><a href="/jobs/">Вакансии</a></li>
+                    <li><a href="/contacts/">Контакты</a></li>
+                    <li><a href="/about/">О нас </a></li>
+                </ul>
+            </div>
+            <button class="open-the-menu" id="close" onclick="tranformation_btn()">
+                <div class="line line1"></div>
+                <div class="line line2"></div>
+                <div class="line line3"></div>
+            </button>
+        </div>
+    </div>
+</header>
+<section id="cart-main">
+    <div class="main-container-two">
+        <?php if ($ticketsInCart): ?>
+            <div class="cart-wrap">
+                <div class="header-text">
+                    <h3>Корзина</h3>
+                    <hr class="long">
+                    <hr class="medium">
+                    <hr class="short">
+                </div>
+                <div class="cart">
+                    <?php foreach ($tickets as $ticket): ?>
+                        <div id="cart-offer-1" class="cart-offer">
+                            <div class="wrap-cart-offer">
+                                <div class="cart-offer-navigation">
+                                    <p class="id-cart">Артикул</p>
+                                    <p class="name-cart">Название</p>
+                                    <p class="amount-cart">Кол-во,шт</p>
+                                    <div class="print-cart">
+                                        <p>Печать</p>
+                                    </div>
+                                    <p class="cost-cart">Стоимость, Р</p>
+                                </div>
+                                <div class="line-cart">
+                                </div>
+                                <div class="my-cart">
+                                    <div class="id-cart"><?php echo $ticket['code']; ?></div>
+                                    <div class="name-cart"><?php echo $ticket['name']; ?></div>
+                                    <div class="amount-cart"><?php echo $ticketsInCart[$ticket['id']]; ?></div>
+                                    <div class="print-cart">
+                                        <img src="/template/museums_pictures/pachat.png" alt="Печать">
+                                    </div>
+                                    <div class="cost-cart"><?php echo $ticket['price']; ?></div>
+                                </div>
+                                <div class="line-cart">
+                                </div>
+                                <div class="button-cart">
+                                    <div class="director-sign">
+                                        <p>Подпись Директора:</p>
+                                        <img src="/template/museums_pictures/pushkin.png" alt="Роспись">
+                                    </div>
+                                    <button onclick="location.href= '/cart/delete/<?php echo $ticket['id']; ?>'"
+                                            class="delete-offer-from-cart" id="delete-offer-from-cart-1" value="1">
+                                        Убрать из корзины
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
+                </div>
+                <div class="header-text">
+                    <hr class="short">
+                    <hr class="medium">
+                    <hr class="long">
+                </div>
+                <div class="total-amount">
+                    <div class="total-amount-wrap">
+                        <p>Итоговая стоимость: <span><?php echo $totalPrice; ?> р.</span></p>
+                        <button onclick="location.href= '/cart/checkout/'" class="place-your-order">Оформить заказ</button>
+                    </div>
+                </div>
+            </div>
+        <?php else: ?>
+            <div class="cart-wrap">
+                <div class="header-text">
+                    <h3>Ваша корзина пуста</h3>
+                    <hr class="long">
+                    <hr class="medium">
+                    <hr class="short">
+                </div>
+                <div class="cart">
+                    <button onclick="location.href= '/tickets/'" class="delete-offer-from-cart" id="delete-offer-from-cart-1" value="1">Вернуться к билетам</button>
+                    <div class="header-text">
+                        <hr class="short">
+                        <hr class="medium">
+                        <hr class="long">
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
 </section>
-
-<?php include ROOT . '/views/layouts/footer.php'; ?>
+<!--scripts-->
+<script src="/template/scripts/animationMobilMenu.js"></script>
+<script src="/template/scripts/deleteCart.js"></script>
+<script src="/template/scripts/loader.js"></script>
+</body>
+</html>

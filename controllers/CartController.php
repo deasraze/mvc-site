@@ -9,6 +9,9 @@ class CartController
 
     public function actionIndex()
     {
+        // Получаем фото пользователя по id
+        $idUser = User::checkLogged();
+
         $ticketsInCart = false;
 
         // Получаем данные из корзины (сессии)

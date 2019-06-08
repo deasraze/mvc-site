@@ -1,0 +1,197 @@
+.video-and-title {
+  height: 100%;
+  .title-header-block {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    z-index: 2;
+    top: 40%;
+    align-items: center;
+    font-size: 3em;
+    color: #fff;
+    height: 100%;
+  }
+  .title-info {
+    text-align: center;
+  }
+  .video-information {
+    height: 100%;
+    filter: brightness(70%);
+    object-fit: cover;
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .arrow-down {
+    background: none;
+    border: none;
+    i {
+      font-size: 60px;
+      background: none;
+      color: #fff;
+      border: none;
+      &:hover {
+        color: #80c7ba;
+      }
+    }
+    p {
+      color: #fff;
+    }
+  }
+}
+
+.two-boss {
+  .boos-answer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    left: 0;
+    margin-left: 15%;
+    text-align: center;
+    h2 {
+      color: #fff;
+      font-size: 40px;
+    }
+    h3 {
+      color: #fff;
+      width: 40%;
+      font-size: 28px;
+      font-style: italic;
+      font-weight: 400;
+    }
+    hr {
+      width: 40%;
+      background: #fff;
+    }
+    p {
+      margin-top: 15px;
+      font-size: 22px;
+      color: #fff;
+      span {
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+.information-about-top-museum {
+  height: 100%;
+  .main-container-two {
+    justify-content: flex-start;
+    .top-info {
+      margin-top: 20%;
+      position: relative;
+      display: block;
+      z-index: 3;
+      h2 {
+        text-transform: uppercase;
+        line-height: 1;
+        font-size: 60px;
+        color: #fff;
+        font-family: 'SpectralRegular', sans-serif;
+        span {
+          font-size: 110px;
+          color: #80c7ba;
+          font-family: 'SpectralRegular' , sans-serif;
+        }
+      }
+    }
+  }
+}
+
+.about-all-arts {
+  .main-container-two {
+    .all-arts-info {
+      position: relative;
+      z-index: 4;
+      display: block;
+      line-height: 1;
+      h2 {
+        font-size: 80px;
+        color: #1e1e1c;
+        font-family: 'SpectralRegular' , sans-serif;
+      }
+      span {
+        font-size: 110px;
+        color: #fff;
+        font-family: 'SpectralRegular' , sans-serif;
+      }
+      .default_button {
+        border: 1px solid #1f1f1f;
+        color: #1f1f1f;
+        &:hover {
+          background: #80c7ba;
+          color: #fff;
+          border: 1px solid #80c7ba;
+        }
+      }
+    }
+  }
+}
+
+.area-zona {
+  height: 100%;
+  overflow: hidden;
+  color: #fff;
+  text-align: center;
+  .main-fifty-container {
+    .fifty-container {
+      img {
+        position: absolute;
+        height: 100%;
+        filter: brightness(90%);
+        animation: boss-image-animation 24s linear infinite;
+      }
+      .info-amount {
+        position: relative;
+        z-index: 4;
+      }
+    }
+  }
+  .info-container-one {
+    justify-content: center;
+    align-items: center;
+    h2 {
+      font-size: 110px;
+      line-height: 1;
+      span {
+        font-size: 140px;
+        color: #1f1f1f;
+        font-family: 'SpectralRegular' , sans-serif;
+      }
+    }
+  }
+  .info-container-two {
+    justify-content: center;
+    align-items: center;
+    h2 {
+      font-size: 110px;
+      line-height: 1;
+      color: #1f1f1f;
+      span {
+        font-size: 140px;
+        color: #fff;
+        font-family: 'SpectralRegular' , sans-serif;
+      }
+    }
+  }
+}
+@keyframes boss-image-animation {
+  0% {
+    transform: scale(1,1) translate(0,0);
+  }
+  50% {
+    transform: scale(1.09,1.09) translate(20px , 0);
+  }
+  100% {
+    transform: scale(1,1) translate(0,0);
+  }
+}

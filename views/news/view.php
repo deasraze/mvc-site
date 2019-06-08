@@ -1,106 +1,162 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<<!DOCTYPE html>
+<html lang="ru">
 <head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Effloresce  by FCT</title>
-<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
-<link href="/template/news/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title><?php echo $newsItem['title']; ?></title>
+    <!--styles-->
+    <link rel="stylesheet" href="/template/stylesheet/default.css">
+    <link rel="stylesheet" href="/template/stylesheet/fonts.css">
+    <link rel="stylesheet" href="/template/stylesheet/scrollBar.css">
+    <link rel="stylesheet" href="/template/stylesheet/menuCSS.css">
+    <link rel="stylesheet" href="/template/stylesheet/mobilMenu.css">
+    <link rel="stylesheet" href="/template/stylesheet/all.css">
+    <link rel="stylesheet" href="/template/stylesheet/footer.css">
+    <link rel="stylesheet" href="/template/stylesheet/new.css">
+    <link rel="stylesheet" href="/template/stylesheet/media.css">
+    <link rel="stylesheet" href="/template/stylesheet/nprogress.css">
+    <!--scripts-->
+    <script src="/template/scripts/jq.min.js"></script>
+    <script src="/template/scripts/nprogress.js"></script>
 </head>
 <body>
-	<div id="menu-wrapper">
-		<div id="menu">
-			<ul>
-				<li class="current_page_item"><a href="#">Homepage</a></li>
-				<li><a href="#">Blog</a></li>
-				<li><a href="#">Photos</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Links</a></li>
-				<li><a href="#">Contact</a></li>
-			</ul>
-		</div>
-		<!-- end #menu -->
-	</div>
+<header id="header_">
+    <div class="nav-container f-nav">
+        <div class="nav">
+            <ul>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/news/">Новости</a></li>
+                <li><a href="/tickets/">Касса</a></li>
+                <li><a href="/collection/">Произведения</a></li>
+                <li><a href="/jobs/">Вакансии</a></li>
+                <li><a href="/contacts/">Контакты</a></li>
+                <li><a href="/about/">О нас </a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="user-menu">
+            <div class="user-avatar" id="close__" onclick="openUserProfil()" >
+                <img src="<?php echo User::getImage($idUser); ?>" alt="user-avatar">
+                <p><i class="fas fa-angle-down"></i></p>
+            </div>
+            <div class="menu-wrap">
+                <div class="menu">
+                    <ul class="user-menu-items">
+                        <?php if (User::isGuest()): ?>
+                            <li><a href="/cart/">Моя корзина (<span id="cart-count"><?php echo Cart::countItems(); ?></span>)</a></li>
+                            <li><a href="#">Помощь</a></li>
+                            <li><a href="/user/register/">Регистрация</a></li>
+                            <li><a href="/user/login/">Вход</a></li>
+                        <?php elseif (User::checkRole($idUser)): ?>
+                            <li><a href="/admin/">Админпанель</a></li>
+                            <li><a href="/cart/">Моя корзина (<span id="cart-count"><?php echo Cart::countItems(); ?></span>)</a></li>
+                            <li><a href="/cabinet/">Профиль</a></li>
+                            <li><a href="#">Настройки</a></li>
+                            <li><a href="#">Помощь</a></li>
+                            <li><a href="/user/logout/">Выход</a></li>
+                        <?php else: ?>
+                            <li><a href="/cart/">Моя корзина (<span id="cart-count"><?php echo Cart::countItems(); ?></span>)</a></li>
+                            <li><a href="/cabinet/">Профиль</a></li>
+                            <li><a href="#">Настройки</a></li>
+                            <li><a href="#">Помощь</a></li>
+                            <li><a href="/user/logout/">Выход</a></li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mobil_menu">
+        <div class="wrap-menu">
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/news/">Новости</a></li>
+                    <li><a href="/tickets/">Касса</a></li>
+                    <li><a href="/collection/">Произведения</a></li>
+                    <li><a href="/jobs/">Вакансии</a></li>
+                    <li><a href="/contacts/">Контакты</a></li>
+                    <li><a href="/about/">О нас </a></li>
+                </ul>
+            </div>
+            <button class="open-the-menu" id="close" onclick="tranformation_btn()">
+                <div class="line line1"></div>
+                <div class="line line2"></div>
+                <div class="line line3"></div>
+            </button>
+        </div>
+    </div>
+</header>
+<section id="new">
+    <div class="main-container-two">
+        <div class="header-text">
+            <h3>Новость <?php echo $newsItem['id']; ?></h3>
+            <hr class="long">
+            <hr class="medium">
+            <hr class="short">
+        </div>
+        <div class="new-title">
+            <div class="text-information">
+                <h2><?php echo $newsItem['title']; ?></h2>
+                <div class="image-new">
+                    <img src="/template/museums_pictures/slider1.jpg" alt="">
+                </div>
+                <p><?php echo $newsItem['content']; ?></p>
+                <div class="price">
+                    <h3></h3>
+                </div>
+                <div class="share">
+                    <h2>Поделится</h2>
+                    <ul>
+                        <li><a href=""><i class="fab fa-vk"></i></a></li>
+                        <li><a href=""><i class="fab fa-instagram"></i></a></li>
+                        <li><a href=""><i class="fab fa-twitter"></i></a></li>
+                        <li><a href=""><i class="fab fa-pinterest"></i></a></li>
+                        <li><a href=""><i class="fas fa-rss"></i></a></li>
+                    </ul>
+                </div>
+            </div>
 
-<div id="wrapper">
-	<div id="header-wrapper">
-		<div id="header">
-			<div id="logo">
-				<h1><a href="#">Effloresce </a></h1>
-				<p>template Шаблоны для сайта <a href="http://www.ftemplate.ru/">СКАЧАТЬ</a></p>
-			</div>
-		</div>
-	</div>
-	<!-- end #header -->
-	<div id="page">
-		<div id="page-bgtop">
-			<div id="page-bgbtm">
-				<div id="content">
-					<div class="post">
-						<h2 class="title"><a href='/news/<?php echo $newsItem['id'] ;?>'><?php echo $newsItem['title'].' # '.$newsItem['id'];?></a></h2>
-						<p class="meta">Posted by <a href="#"><?php echo $newsItem['author_name'];?></a> on <?php echo $newsItem['date'];?>
-							&nbsp;&bull;&nbsp; <a href='/news/' class="permalink"> Back to HomePage</a></p>
-						<div class="entry">
-							<p><img src="/template/images/pic01.jpg" width="800" height="300" alt="" /></p>
-							<p><?php echo $newsItem['short_content'];?></p>
-						</div>
-					</div>
-					<p><a href='/news/' class="permalink"> Back to HomePage</a></p>
-					<div style="clear: both;">&nbsp;</div>
-				</div>
-				<!-- end #content -->
-				<div id="sidebar">
-					<ul>
-						<li>
-							<h2>Aliquam tempus</h2>
-							<p>Mauris vitae nisl nec metus placerat perdiet est. Phasellus dapibus semper consectetuer hendrerit.</p>
-						</li>
-						<li>
-							<h2>Categories</h2>
-							<ul>
-								<li><a href="#">Aliquam libero</a></li>
-								<li><a href="#">Consectetuer adipiscing elit</a></li>
-								<li><a href="#">Metus aliquam pellentesque</a></li>
-								<li><a href="#">Suspendisse iaculis mauris</a></li>
-								<li><a href="#">Urnanet non molestie semper</a></li>
-								<li><a href="#">Proin gravida orci porttitor</a></li>
-							</ul>
-						</li>
-						<li>
-							<h2>Blogroll</h2>
-							<ul>
-								<li><a href="#">Aliquam libero</a></li>
-								<li><a href="#">Consectetuer adipiscing elit</a></li>
-								<li><a href="#">Metus aliquam pellentesque</a></li>
-								<li><a href="#">Suspendisse iaculis mauris</a></li>
-								<li><a href="#">Urnanet non molestie semper</a></li>
-								<li><a href="#">Proin gravida orci porttitor</a></li>
-							</ul>
-						</li>
-						<li>
-							<h2>Archives</h2>
-							<ul>
-								<li><a href="#">Aliquam libero</a></li>
-								<li><a href="#">Consectetuer adipiscing elit</a></li>
-								<li><a href="#">Metus aliquam pellentesque</a></li>
-								<li><a href="#">Suspendisse iaculis mauris</a></li>
-								<li><a href="#">Urnanet non molestie semper</a></li>
-								<li><a href="#">Proin gravida orci porttitor</a></li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-				<!-- end #sidebar -->
-				<div style="clear: both;">&nbsp;</div>
-			</div>
-		</div>
-	</div>
-	<!-- end #page -->
-</div>
-<div id="footer">
-	<p>Copyright (c) 2013 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org">FCT</a>. Photos by Fotogrph</a>.</p>
-</div>
-<!-- end #footer -->
+        </div>
+    </div>
+</section>
+<footer id="footer">
+    <div class="main-container-two">
+        <div class="last-information-about-museum">
+            <ul class="navs">
+                <li><a href="">Help</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Gift Cards</a></li>
+                <li><a href="">Dealers</a></li>
+                <li><a href="">Foundation</a></li>
+            </ul>
+        </div>
+        <div class="last-social-network">
+            <ul class="navs">
+                <li><a href=""><i class="fab fa-vk vk"></i></a></li>
+                <li><a href=""><i class="fab fa-instagram inst"></i></a></li>
+                <li><a href=""><i class="fab fa-twitter twit"></i></a></li>
+                <li><a href=""><i class="fas fa-rss rss"></i></a></li>
+                <li><a href=""><i class="fab fa-twitch twitch"></i></a></li>
+            </ul>
+        </div>
+        <div class="last-polity">
+            <ul class="navs">
+                <li><a href="">social compliance</a></li>
+                <li><a href="">terms</a></li>
+                <li><a href="">privacy policy</a></li>
+            </ul>
+        </div>
+        <div class="info-about-creature">
+            <p>Site by Chopper & Condecrom</p>
+        </div>
+    </div>
+</footer>
+<!--scripts-->
+<script src="/template/scripts/animationMobilMenu.js"></script>
+<script src="/template/scripts/loader.js"></script>
+<script src="/template/scripts/slider.js"></script>
 </body>
 </html>

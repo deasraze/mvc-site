@@ -1,0 +1,112 @@
+#header_ {
+  height: 8vh;
+  overflow: hidden;
+  .video-and-title {
+    height: 100%;
+    .title-header-block {
+      font-family: 'AlegreyaSCRegular' , sans-serif;
+      color: #fff;
+      height: 85vh;
+      position: absolute;
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: column;
+      margin-top: -40px;
+      font-size: 65px;
+      z-index: 2;
+      h1 {
+        border-right: 2px solid transparent;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 100%;
+        animation: flashingBorder 0.7s step-end infinite , writeText 5s ease-in-out;
+      }
+    }
+    .video-information {
+      height: 100%;
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+  .nav {
+    ul {
+      li {
+        a {
+          color: #000;
+          &:hover {
+            color: #80c7ba;
+          }
+        }
+      }
+    }
+  }
+}
+
+#signin {
+  height: 92vh;
+  .main-container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    min-width: 100%;
+    max-width: 100%;
+    height: 100%;
+    align-items: center;
+    .login-form {
+      margin-top: 10px;
+      input {
+        font-family: 'PT_SansNarrowWebRegular', sans-serif;
+        min-width: 290px;
+        max-width: 290px;
+        font-size: 18px;
+        padding: 10px 5px;
+        margin-top: 20px;
+        border: 1px solid #80c7ba;
+        border-radius: 3px;
+      }
+      button {
+        width: 290px;
+        padding: 10px 5px;
+        font-size: 18px;
+        font-family: 'PT_SansNarrowWebRegular' , sans-serif;
+        text-transform: uppercase;
+        margin-top: 20px;
+        border-radius: 3px;
+        border: 1px solid #80c7ba;
+        background: none;
+        transition: .2s ease-in-out;
+        &:hover {
+          background: #80c7ba;
+          color: #fff;
+          transition: .2s ease-in-out;
+        }
+      }
+    }
+    .login-or-sign {
+      ul {
+        display: flex;
+        justify-content: space-around;
+        li {
+          list-style: none;
+          margin: 0 10px 0 10px;
+          a {
+            font-family: 'PT_SansNarrowWebRegular' , sans-serif;
+            padding: 10px 10px;
+            background: rgba(251, 245, 254, 0.49);
+            text-decoration: none;
+            border-bottom: 1px solid #80c7ba;
+            color: #000;
+            transition: .2s ease-in-out;
+            &:hover {
+              background: #80c7ba;
+              color: #fff;
+              transition: .2s ease-in-out;
+            }
+          }
+        }
+      }
+    }
+  }
+}

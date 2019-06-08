@@ -1,0 +1,33 @@
+//fonts
+//@import url('https://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700');
+//@import url('https://fonts.googleapis.com/css?family=Alegreya+SC:400,700,800,900');
+//@import url('https://fonts.googleapis.com/css?family=Spectral');
+
+@font-face {
+  font-family: 'PT_SansNarrowWebRegular';
+  src: url('fonts/PT_SansNarrowWebRegular.eot');
+  src: url('fonts/PT_SansNarrowWebRegular.eot') format('embedded-opentype'),
+  url('fonts/PT_SansNarrowWebRegular.woff2') format('woff2'),
+  url('fonts/PT_SansNarrowWebRegular.woff') format('woff'),
+  url('fonts/PT_SansNarrowWebRegular.ttf') format('truetype'),
+  url('fonts/PT_SansNarrowWebRegular.svg#PT_SansNarrowWebRegular') format('svg');
+}
+@font-face {
+  font-family: 'SpectralRegular';
+  src: url('fonts/SpectralRegular.eot');
+  src: url('fonts/SpectralRegular.eot') format('embedded-opentype'),
+  url('fonts/SpectralRegular.woff2') format('woff2'),
+  url('fonts/SpectralRegular.woff') format('woff'),
+  url('fonts/SpectralRegular.ttf') format('truetype'),
+  url('fonts/SpectralRegular.svg#SpectralRegular') format('svg');
+}
+@font-face {
+  font-family: 'AlegreyaSCRegular';
+  src: url('fonts/AlegreyaSCRegular.eot');
+  src: url('fonts/AlegreyaSCRegular.eot') format('embedded-opentype'),
+  url('fonts/AlegreyaSCRegular.woff2') format('woff2'),
+  url('fonts/AlegreyaSCRegular.woff') format('woff'),
+  url('fonts/AlegreyaSCRegular.ttf') format('truetype'),
+  url('fonts/AlegreyaSCRegular.svg#AlegreyaSCRegular') format('svg');
+}
+

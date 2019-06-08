@@ -10,16 +10,11 @@ class TicketsController
         $ticketList = array();
         $ticketList = Tickets::getLatestTicket();
 
+        // Получаем id пользователя для аватара
+        $idUser = User::checkLogged();
+
         require_once(ROOT.'/views/tickets/index.php');
-
         return true;
     }
 
-    public function actionView($ticketId)
-    {
-        $ticket = Tickets::getTicketById($ticketId);
-        require_once (ROOT. '/views/tickets/view.php');
-
-        return true;
-    }
 }

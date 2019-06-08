@@ -5,11 +5,7 @@ class SiteController
 
     public function actionIndex()
     {
-        $categories = array();
-        $categories = Category::getCategoriesList();
-
-        $latestCollection = array();
-        $latestCollection = Collection::getLatestCollection(6);
+        $idUser = User::checkLogged();
         
         require_once(ROOT.'/views/site/index.php');
 

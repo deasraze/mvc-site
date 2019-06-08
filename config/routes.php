@@ -6,6 +6,9 @@
         // Страница обратной связи
         'contacts' => 'site/contact', // actionContact and SiteController
 
+        // Страница с вакансиями
+        'jobs' => 'jobs/index', // actionIndex and JobsController
+
         // Страницы с коллекциями
         'collection' => 'collection/index', // actionIndex and CollectionController
         'collection/([0-9]+)' => 'collection/view/$1', // actionView and CollectionController
@@ -43,6 +46,7 @@
 
         // Главная страницы админки
         'admin' => 'admin/index', // actionIndex and AdminController
+        'admin/login' => 'admin/login', // actionLogin and AdminController
         'admin/search' => 'admin/search', // actionSearch and AdminController
         // Управление коллекциями
         'admin/collection' => 'adminCollection/index',

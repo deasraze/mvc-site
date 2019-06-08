@@ -1,0 +1,1143 @@
+ //WIDTH
+/* Large desktops and laptops */
+@media (min-width: 1200px) and (max-width: 1440px) {
+  .main-container-two {
+    min-width: 980px;
+    max-width: 980px;
+  }
+  .grid {
+    min-width: 980px;
+    max-width: 980px;
+  }
+  .grid-sizer {
+    width: 321px;
+  }
+  .grid-item--width1 {
+    width: 321px;
+  }
+  .grid-item--width2 {
+    width: 321px;
+  }
+  .grid-item--width3 {
+    width: 321px;
+  }
+  .grid-item--width4 {
+    width: 321px;
+  }
+
+  //job
+  #job {
+    .information-about-job {
+      width: 60%;
+      .work {
+        h2 {
+          font-size: 42px;
+        }
+        h3 {
+          font-size: 25px;
+        }
+        li {
+          font-size: 1.2rem;
+        }
+      }
+    }
+    .job-wrap {
+      width: 40%;
+    }
+  }
+}
+
+/* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  .big-container {
+    min-width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .main-container-two {
+    min-width: 100%;
+    max-width: 100%;
+  }
+  #header {
+    .video-and-title {
+      .title-header-block {
+        display: flex;
+        justify-content: flex-end;
+        align-content: center;
+        font-size: 55px;
+        .title-header-block {
+          font-size: 55px;
+        }
+      }
+    }
+  }
+  #all-arts {
+    .main-container-two {
+      justify-content: center;
+    }
+    .search-art {
+      position: fixed;
+      display: flex;
+      background: #fff;
+      z-index: 88;
+      left: 0;
+      top: 0;
+      height: 100vh;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-width: 0;
+      max-width: 0;
+      overflow: auto;
+      .mini-container {
+        min-width: 85%;
+        max-width: 85%;
+        display: flex;
+      }
+    }
+  }
+  //job
+  #job {
+    .information-about-job {
+      width: 60%;
+      .work {
+        h2 {
+          font-size: 35px;
+        }
+        h3 {
+          font-size: 20px;
+        }
+        li {
+          font-size: 1rem;
+        }
+      }
+    }
+    .job-wrap {
+      width: 40%;
+    }
+  }
+  #news {
+    .main-container-two {
+      min-width: 95%;
+      max-width: 95%;
+    }
+  }
+  .grid {
+    min-width: 100%;
+    max-width: 100%;
+  }
+  .grid-sizer , .grid-item , .grid-item--width2  {
+    min-width: 33%;
+    max-width: 33%;
+  }
+  .grid-item--width3 , .grid-item--width4 {
+    min-width: 33%;
+    max-width: 33%;
+  }
+}
+
+//Готово
+/* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+  body{
+    overflow: auto;
+  }
+  .big-container {
+    min-width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .main-container-two {
+    min-width: 100%;
+    max-width: 100%;
+  }
+  .main-container {
+    min-width: 90%;
+    max-width: 90%;
+  }
+  .fp-viewing-0 , .fp-viewing-1 , .fp-viewing-2 , .fp-viewing-4 {
+    #header {
+      #close {
+        .line {
+          background: #fff;
+        }
+      }
+      #open {
+        .line {
+          background: #000;
+        }
+      }
+    }
+  }
+  //mainPage
+  .video-and-title {
+    .title-info {
+      h1 {
+        font-size: 1.5em;
+      }
+      p {
+        font-size: 1em;
+      }
+    }
+  }
+  #fp-nav {
+    display: none;
+  }
+  .two-boss {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    .boos-answer {
+      height: 50%;
+      margin-left: 0;
+      position: relative;
+      justify-content: flex-end;
+      width: 73%;
+      h2 {
+        font-size: 20px;
+      }
+      h3 {
+        font-size: 16px;
+        width: 71%;
+      }
+      p {
+        font-size: 16px;
+        span {
+          font-size: 14px;
+        }
+      }
+    }
+  }
+  .information-about-top-museum {
+    .main-container-two {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      .top-info {
+        width: 90%;
+        margin-top: 0;
+        h2 {
+          font-size: 38px;
+          span {
+            font-size: 50px;
+          }
+        }
+      }
+    }
+  }
+  .default_button {
+    font-size: 18px;
+  }
+  .about-all-arts {
+    .main-container-two {
+      display: flex;
+      justify-content: center;
+      .all-arts-info {
+        width: 90%;
+        h2 {
+          font-size: 38px;
+          span {
+            font-size: 50px;
+          }
+        }
+      }
+    }
+  }
+  .area-zona {
+    .fifty-container {
+      h2 {
+        font-size: 50px;
+        span {
+          font-size: 56px;
+        }
+      }
+    }
+  }
+  //index
+  #main {
+    .short-view-information-about-museum {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .picture-two-block-about-museum {
+        margin-top: 70px;
+      }
+    }
+  }
+  #how-to-come-here {
+    .main-container {
+      h1 {
+        font-size: 40px;
+        text-align: center;
+      }
+    }
+  }
+  #our-social-network {
+    .main-container {
+      h1 {
+        font-size: 40px;
+        text-align: center;
+      }
+    }
+    .out-social-network-links {
+      i {
+        font-size: 40px;
+      }
+    }
+  }
+  #ask-your-question {
+    .main-container {
+      h1 {
+        font-size: 40px;
+        text-align: center;
+      }
+      .your-question-form {
+        form {
+          input {
+            min-width: 80%;
+            max-width: 80%;
+          }
+          textarea {
+            min-width: 80%;
+            max-width: 80%;
+          }
+        }
+      }
+    }
+  }
+  //arts
+  #header {
+    .mobil_menu {
+      display: block;
+    }
+    .nav-container {
+      display: none;
+    }
+    .video-and-title {
+      .title-header-block {
+        display: flex;
+        justify-content: flex-end;
+        align-content: center;
+        height: 85vh;
+        h1 {
+          font-size: 90px;
+        }
+      }
+    }
+  }
+  #all-arts {
+    .main-container-two {
+      justify-content: center;
+    }
+    .search-art {
+      position: fixed;
+      display: flex;
+      background: #fff;
+      z-index: 88;
+      left: 0;
+      top: 0;
+      height: 100vh;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-width: 0;
+      max-width: 0;
+      overflow: auto;
+      .mini-container {
+        min-width: 85%;
+        max-width: 85%;
+        display: flex;
+      }
+    }
+  }
+  #job {
+    display: flex;
+    flex-direction: column;
+    .information-about-job {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .work {
+        text-align: center;
+        margin-left: 0;
+        h2 {
+          font-size: 40px;
+        }
+        h3 {
+          font-size: 30px;
+        }
+        li {
+          font-size: 1.2rem;
+          list-style: none;
+        }
+      }
+    }
+    .job-wrap {
+      width: 100%;
+      position: relative;
+    }
+  }
+  #news {
+    .main-container-two {
+      min-width: 95%;
+      max-width: 95%;
+    }
+    .news-wrap {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+  .grid {
+    min-width: 95%;
+    max-width: 95%;
+  }
+  .grid-sizer , .grid-item , .grid-item--width2  {
+    min-width: 49%;
+    max-width: 49%;
+  }
+  .grid-item--width3 , .grid-item--width4 {
+    min-width: 49%;
+    max-width: 49%;
+  }
+}
+
+//Готово arts
+/* Landscape phones and portrait tablets */
+@media screen and (max-width: 767px) {
+  body {
+    overflow: auto;
+  }
+  //default
+  .big-container {
+    min-width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .main-container-two {
+    min-width: 100%;
+    max-width: 100%;
+  }
+  .main-container {
+    min-width: 90%;
+    max-width: 90%;
+  }
+  .full-size-picture {
+    img {
+      width: 120%;
+      left: -20px;
+
+    }
+  }
+  .main-fifty-container {
+    flex-direction: column;
+  }
+  .fifty-size-picture {
+    position: relative;
+    flex-direction: column;
+    div {
+      position: relative;
+      width: 100%;
+      height: 50%;
+      img {
+        position: relative;
+        width: 100%;
+        height: 50%;
+      }
+    }
+  }
+  .fp-viewing-0 , .fp-viewing-1 , .fp-viewing-2 , .fp-viewing-4 {
+    #header {
+      #close {
+        .line {
+          background: #fff;
+        }
+      }
+      .open-the-menu {
+        .line {
+          background: #000;
+        }
+      }
+    }
+  }
+  //main page
+  .video-and-title {
+    .title-info {
+      h1 {
+        font-size: 1.5em;
+      }
+      p {
+        font-size: 1em;
+      }
+    }
+  }
+  #fp-nav {
+    display: none;
+  }
+  .two-boss {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .full-size-picture {
+      height: 50%;
+      overflow: hidden;
+      img {
+        position: relative;
+      }
+    }
+    .boos-answer {
+      height: 50%;
+      margin-left: 0;
+      position: relative;
+      h2 {
+        font-size: 26px;
+        color: #1f1f1f;
+      }
+      h3 {
+        font-size: 22px;
+        width: 90%;
+        color: #1f1f1f;
+      }
+      p {
+        font-size: 20px;
+        color: #1f1f1f;
+        span {
+          font-size: 20px;
+        }
+      }
+    }
+  }
+  .information-about-top-museum {
+    .main-container-two {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      .top-info {
+        width: 90%;
+        margin-top: 0;
+        h2 {
+          font-size: 38px;
+          span {
+            font-size: 50px;
+          }
+        }
+      }
+    }
+  }
+  .default_button {
+    font-size: 18px;
+  }
+  .about-all-arts {
+    .main-container-two {
+      display: flex;
+      justify-content: center;
+      .all-arts-info {
+        width: 90%;
+        h2 {
+          font-size: 38px;
+          span {
+            font-size: 50px;
+          }
+        }
+      }
+    }
+  }
+  .area-zona {
+    .fifty-container {
+      min-width: 100%;
+      max-width: 100%;
+      h2 {
+        font-size: 50px;
+        span {
+          font-size: 56px;
+        }
+      }
+      img {
+        width: 100% ;
+      }
+    }
+  }
+
+  //index
+  #main {
+    .short-view-information-about-museum {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .picture-two-block-about-museum {
+        margin-top: 70px;
+      }
+    }
+  }
+  #how-to-come-here {
+    .main-container {
+      h1 {
+        font-size: 40px;
+        text-align: center;
+      }
+    }
+  }
+  #our-social-network {
+    .main-container {
+      h1 {
+        font-size: 40px;
+        text-align: center;
+      }
+    }
+    .out-social-network-links {
+      i {
+        font-size: 40px;
+      }
+    }
+  }
+  #ask-your-question {
+    .main-container {
+      h1 {
+        font-size: 40px;
+        text-align: center;
+      }
+      .your-question-form {
+        form {
+          input {
+            min-width: 80%;
+            max-width: 80%;
+          }
+          textarea {
+            min-width: 80%;
+            max-width: 80%;
+          }
+        }
+      }
+    }
+  }
+  //arts
+
+  //job
+  #job {
+    display: flex;
+    flex-direction: column;
+    .information-about-job {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      .work {
+        text-align: center;
+        margin-left: 0;
+        h2 {
+          font-size: 22px;
+        }
+        h3 {
+          font-size: 18px;
+        }
+        li {
+          font-size: 0.9rem;
+          list-style: none;
+        }
+      }
+    }
+    .job-wrap {
+      width: 100%;
+      position: relative;
+    }
+  }
+  //admin panel
+  #panel {
+    padding-bottom: 40px;
+    .info-panel {
+      margin-left: -10%;
+      .search-in-table {
+        input {
+          width: 70%;
+        }
+      }
+      .navigation-admin-panel {
+        ol {
+          flex-direction: column;
+          align-items: center;
+
+          li {
+            margin: 5px 0 5px 0;
+          }
+        }
+      }
+    }
+  }
+  #header {
+    .mobil_menu {
+      display: block;
+    }
+    .nav-container {
+      display: none;
+    }
+    .video-and-title {
+      .title-header-block {
+        display: flex;
+        justify-content: flex-end;
+        align-content: center;
+        h1 {
+          font-size: 11vw;
+        }
+      }
+    }
+  }
+  #all-arts {
+    .main-container-two {
+      justify-content: center;
+    }
+    .search-art {
+      position: fixed;
+      display: flex;
+      background: #fff;
+      z-index: 88;
+      left: 0;
+      top: 0;
+      height: 100vh;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-width: 0;
+      max-width: 0;
+      overflow: auto;
+      .mini-container {
+        min-width: 85%;
+        max-width: 85%;
+        display: flex;
+      }
+    }
+  }
+  #news {
+    .main-container-two {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .slider {
+      width: 95%;
+    }
+    .news-wrap {
+      width: 60%;
+      grid-template-columns: 1fr;
+    }
+  }
+  //Grid Style
+  .grid {
+    min-width: 95%;
+    max-width: 95%;
+  }
+  .grid-sizer , .grid-item , .grid-item--width2  {
+    min-width: 49%;
+    max-width: 49%;
+  }
+  .grid-item--width3 , .grid-item--width4 {
+    min-width: 49%;
+    max-width: 49%;
+  }
+}
+
+//Готово Arts
+@media screen and (max-width: 650px) {
+  //default
+  #header {
+
+    .nav-container {
+      display: none;
+    }
+    .mobil_menu {
+      display: block;
+    }
+    .video-and-title {
+      .title-header-block {
+        display: flex;
+        justify-content: flex-end;
+        align-content: center;
+        height: 50vh;
+        h1 {
+          font-size: 10vw;
+        }
+      }
+    }
+  }
+  #footer {
+    .main-container-two {
+      min-width: 100%;
+      max-width: 100%;
+      .navs {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        li {
+          text-align: center;
+        }
+      }
+      .last-social-network {
+        .navs {
+          display: flex;
+          flex-direction: row;
+        }
+      }
+    }
+  }
+  .full-size-picture {
+    img {
+      width: 120%;
+      left: -20px;
+
+    }
+  }
+  .main-fifty-container {
+    flex-direction: column;
+  }
+  .fifty-size-picture {
+    position: relative;
+    flex-direction: column;
+    div {
+      position: relative;
+      width: 100%;
+      height: 50%;
+      img {
+        position: relative;
+        width: 100%;
+        height: 50%;
+      }
+    }
+  }
+  .fp-viewing-0 , .fp-viewing-1 , .fp-viewing-2 , .fp-viewing-4 {
+    #header {
+      #close {
+        .line {
+          background: #fff;
+        }
+      }
+      #open {
+        .line {
+          background: #000;
+        }
+      }
+    }
+  }
+
+  //main page
+  .video-and-title {
+    .title-info {
+      h1 {
+        font-size: 1em;
+      }
+      p {
+        font-size: .5em;
+      }
+    }
+  }
+  .two-boss {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    .full-size-picture {
+      height: 50%;
+      overflow: hidden;
+      img {
+        position: relative;
+      }
+    }
+    .boos-answer {
+      height: 50%;
+      margin-left: 0;
+      position: relative;
+      h2 {
+        font-size: 22px;
+        color: #1f1f1f;
+      }
+      h3 {
+        font-size: 18px;
+        width: 90%;
+        color: #1f1f1f;
+      }
+      p {
+        font-size: 16px;
+        color: #1f1f1f;
+        span {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+  #fp-nav {
+    display: none;
+  }
+  .information-about-top-museum {
+    .main-container-two {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100%;
+      .top-info {
+        width: 90%;
+        margin-top: 0;
+        h2 {
+          font-size: 20px;
+          span {
+            font-size: 26px;
+          }
+        }
+      }
+    }
+  }
+  .default_button {
+    font-size: 14px;
+  }
+  .about-all-arts {
+    .main-container-two {
+      display: flex;
+      justify-content: center;
+      .all-arts-info {
+        width: 90%;
+        h2 {
+          font-size: 22px;
+          span {
+            font-size: 26px;
+          }
+        }
+      }
+    }
+  }
+  .area-zona {
+    .fifty-container {
+      min-width: 100%;
+      max-width: 100%;
+      h2 {
+        font-size: 42px;
+        span {
+          font-size: 46px;
+        }
+      }
+      img {
+        width: 100% ;
+      }
+    }
+  }
+
+  //index
+  #main {
+    .short-view-information-about-museum {
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      .picture-two-block-about-museum {
+        margin-top: 70px;
+      }
+    }
+  }
+  #how-to-come-here {
+    .main-container {
+      h1 {
+        font-size: 40px;
+        text-align: center;
+      }
+    }
+  }
+  #our-social-network {
+    .main-container {
+      h1 {
+        font-size: 40px;
+        text-align: center;
+      }
+    }
+    .out-social-network-links {
+      i {
+        font-size: 40px;
+      }
+    }
+  }
+  #ask-your-question {
+    .main-container {
+      h1 {
+        font-size: 40px;
+        text-align: center;
+      }
+      .your-question-form {
+        form {
+          input {
+            min-width: 80%;
+            max-width: 80%;
+          }
+          textarea {
+            min-width: 80%;
+            max-width: 80%;
+          }
+        }
+      }
+    }
+  }
+  //arts
+  #all-arts {
+    .main-container-two {
+      justify-content: center;
+    }
+    .search-art {
+      position: fixed;
+      display: flex;
+      background: #fff;
+      z-index: 88;
+      left: 0;
+      top: 0;
+      height: 100vh;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      min-width: 0;
+      max-width: 0;
+      overflow: auto;
+      .mini-container {
+        min-width: 85%;
+        max-width: 85%;
+        display: flex;
+      }
+    }
+  }
+  //art
+  #all-commentaries {
+    .write-your-comment {
+      .profile-image {
+        display: none;
+      }
+      form {
+        label {
+          input {
+            min-width: 100%;
+            max-width: 100%;
+            padding: 5px 0 5px 5px;
+          }
+          textarea {
+            min-width: 100%;
+            max-width: 100%;
+            padding: 5px 0 5px 5px;
+          }
+        }
+        button {
+          padding: 8px 8px 8px 8px;
+          position: relative;
+          left: 7px;
+        }
+      }
+    }
+  }
+  //login
+  #header_ {
+    height: 75px;
+    .nav-container {
+      display: none;
+    }
+    .mobil_menu {
+      display: block;
+    }
+  }
+  .main-container {
+    min-width: 90%;
+    max-width: 90%;
+  }
+  .big-container {
+    min-width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: center;
+  }
+  .main-container-two {
+    min-width: 100%;
+    max-width: 100%;
+  }
+
+  //admin panel
+  #panel {
+    padding-bottom: 40px;
+    .info-panel {
+      margin-left: -10%;
+      text-align: center;
+      .button-add {
+        justify-content: center;
+      }
+      .navigation-admin-panel {
+        ol {
+          flex-direction: column;
+          align-items: center;
+          li {
+            margin: 5px 0 5px 0;
+          }
+        }
+      }
+      form {
+        .all-info {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          div {
+            flex-direction: column;
+            justify-content: center;
+            width: 90%;
+            align-items: center;
+          }
+          input {
+            width: 90%;
+            padding: 5px 0 5px 0;
+          }
+          select {
+            width: 90%;
+            padding: 5px 0 5px 0;
+          }
+          textarea {
+            width: 68%;
+            margin-top: -15px;
+          }
+          .status-select {
+            width: 73%;
+            margin-top: -15px;
+          }
+        }
+      }
+    }
+  }
+  //PhotoBox
+  .photobox {width: 100%;}
+  //Grid Style
+  .grid {
+    min-width: 90%;
+    max-width: 90%;
+  }
+  .grid-sizer , .grid-item , .grid-item--width2 , .grid-item--width3 , .grid-item--width4 {
+    min-width: 100%;
+    max-width: 100%;
+  }
+}
+
+
+
+/* Landscape phones and smaller */
+@media screen and (max-width: 480px) {
+
+}
+  //HEIGHT
+@media screen and (max-height: 750px) {
+  #all-arts {
+    .search-art {
+      .mini-container {
+        .header-search {
+          font-size: 13px;
+          margin-top: 10px;
+        }
+      }
+    }
+    .sorting-all-arts {
+      .body-search {
+        div {
+          margin-top: 10px;
+          input {
+            font-size: 10px;
+          }
+        }
+      }
+    }
+  }
+}

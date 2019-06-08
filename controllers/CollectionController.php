@@ -15,6 +15,9 @@ class CollectionController
      */
     public function actionIndex($page = 1)
     {
+        // Получаем id пользователя для аватара
+        $idUser = User::checkLogged();
+
         // Получаем список категорий
         $categories = array();
         $categories = Category::getCategoriesList();
@@ -43,6 +46,9 @@ class CollectionController
      */
     public function actionCategory($categoryId, $page = 1)
     {
+        // Получаем id пользователя
+        $idUser = User::checkLogged();
+
         // Получаем список категорий
         $categories = array();
         $categories = Category::getCategoriesList();
@@ -50,6 +56,9 @@ class CollectionController
         // Получаем список коллекций
         $categoryCollection = array();
         $categoryCollection = Collection::getCollectionListByCategory($categoryId, $page);
+
+        // Получаем информацию о текующей категории
+        $category = Category::getCategoryById($categoryId);
 
         // $total - ко-во товаров в текующей категории
         $total = Collection::getTotalCollectionInCategory($categoryId);
@@ -70,10 +79,10 @@ class CollectionController
      */
     public function actionView($collectionId)
     {
-        // Получаем список категорий
-        $categories = array();
-        $categories = Category::getCategoriesList();
+        // Получаем id пользователя
+        $idUser = User::checkLogged();
 
+        // Получаем информацию о произведении
         $collection = Collection::getCollectionById($collectionId);
         if ($collection != null) {
             require_once (ROOT. '/views/collection/view.php');

@@ -1,0 +1,28 @@
+@keyframes LightOn {
+  to {
+    background: rgba(255, 255, 255, 0.99); } }
+@keyframes LightOff {
+  from {
+    background: rgba(255, 255, 255, 0.99); }
+  to {
+    background: transparent; } }
+@keyframes flashingBorder {
+  to {
+    border-color: #03A9F4; }
+  from {
+    border-color: #03A9F4; } }
+@keyframes writeText {
+  from {
+    width: 0; } }
+@keyframes openMainMenu {
+  from {
+    height: 0; }
+  to {
+    height: 50px; } }
+@keyframes closeMainMenu {
+  from {
+    height: 0; }
+  to {
+    height: 75px; } }
+
+/*# sourceMappingURL=animation.css.map */

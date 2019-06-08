@@ -1,0 +1,172 @@
+#header {
+  .nav {
+    ul {
+      li {
+        a {
+          color: #1f1f1f;
+          &:hover {
+            color: #80c7ba;
+          }
+        }
+      }
+    }
+  }
+}
+#cart-main {
+  padding-top: 120px;
+  .main-container-two {
+    display: flex;
+    justify-content: center;
+    .cart-wrap {
+      .cart {
+        width: 855px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        padding: 20px 0;
+        border-radius: 2px;
+        .cart-offer {
+          width: 855px;
+          margin: 15px 0;
+          padding: 15px 0;
+          display: flex;
+          justify-content: center;
+          border-radius: 5px;
+          background: #FFFFFF;
+          border: 1px solid #BDBDBD;
+          -webkit-box-shadow: 10px 10px 31px -12px rgba(0,0,0,0.75);
+          -moz-box-shadow: 10px 10px 31px -12px rgba(0,0,0,0.75);
+          box-shadow: 10px 10px 31px -12px rgba(0,0,0,0.75);
+          .wrap-cart-offer {
+            width: 820px;
+            justify-content: center;
+            .cart-offer-navigation {
+              display: flex;
+              p {
+                color: #757575;
+              }
+            }
+            .line-cart {
+              display: block;
+              margin: 20px auto 20px auto;
+              height: 3px;
+              width: 90%;
+              border-radius: 50%;
+              background: #BDBDBD;
+            }
+            .my-cart {
+              display: flex;
+              font-family: 'PT_SansNarrowWebRegular' , sans-serif;
+              color: #212121;
+              font-size: 18px;
+              margin: 20px 0;
+            }
+            .button-cart {
+              display: flex;
+              justify-content: space-between;
+              .director-sign {
+                display: flex;
+                p {
+                  color: #757575;
+                  font-family: 'SpectralRegular' , sans-serif;
+                }
+                img {
+                  height: 40px;
+                  margin-left: 15px;
+                }
+              }
+              .delete-offer-from-cart {
+                background: none;
+                border: 1px solid #757575;
+                padding: 10px 15px;
+                border-radius: 5px;
+                font-family: "PT_SansNarrowWebRegular", sans-serif;
+                color: #757575;
+                font-size: 16px;
+                transition: .2s ease;
+                &:hover {
+                  transition: .2s ease;
+                  border: 1px solid #03A9f4;
+                  background: #03A9f4;
+                  color: #fff;
+                }
+              }
+            }
+          }
+          .id-cart {
+            width: 15%;
+          }
+          .name-cart {
+            width: 20%;
+          }
+          .amount-cart {
+            width: 15%;
+          }
+          .print-cart {
+            width: 15%;
+            text-align: center;
+            img {
+              position: absolute;
+              width: 169px;
+              display: block;
+              margin-top: -61px;
+              z-index: 7;
+              transform: rotate(-49deg);
+            }
+          }
+          .cost-cart {
+            width: 35%;
+            text-align: right;
+          }
+        }
+      }
+      .shadow-line {
+        height: 50px;
+        background: url("../museums_pictures/shadow__basket-content.png") no-repeat 50% 100%;
+        background-size: 100% auto;
+        z-index: 1;
+      }
+      .total-amount {
+        margin: 50px 0;
+        .total-amount-wrap {
+          width: 100%;
+          display: flex;
+          text-align: center;
+          justify-content: center;
+          p {
+            color: #80c7ba;
+            span {
+              color: #1f1f1f;
+              font-size: 24px;
+              font-family: 'PT_SansNarrowWebRegular' , sans-serif;
+            }
+          }
+          .place-your-order {
+            background: #b4aa9c;
+            height: 35px;
+            border: none;
+            margin-left: 300px;
+            position: absolute;
+            padding: 0 0 0 10px;
+            color: #fff;
+            font-family: 'SpectralRegular' , sans-serif;
+            &:after {
+              content: '';
+              position: absolute;
+              width: 15px;
+              height: 45px;
+              background: url("../museums_pictures/Arrow.png") no-repeat;
+              margin-top: -8px;
+            }
+            &:hover {
+              background: #998f7b;
+              &:after {
+                background-position-x: -30px;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

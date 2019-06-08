@@ -1,0 +1,56 @@
+#header .mobil_menu, #header_ .mobil_menu {
+  display: none;
+  position: fixed;
+  background: #fff;
+  height: 0;
+  z-index: 99;
+  min-width: 100%;
+  max-width: 100%;
+  border-bottom: 1px solid black;
+  overflow: hidden; }
+  #header .mobil_menu ul, #header_ .mobil_menu ul {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 50vh; }
+    #header .mobil_menu ul li, #header_ .mobil_menu ul li {
+      list-style: none; }
+      #header .mobil_menu ul li a, #header_ .mobil_menu ul li a {
+        color: #000;
+        text-decoration: none;
+        font-size: 24px;
+        font-family: 'Spectral' , sans-serif; }
+        #header .mobil_menu ul li a:hover, #header_ .mobil_menu ul li a:hover {
+          color: #80c7ba;
+          text-decoration: underline; }
+#header #close, #header_ #close {
+  animation: close-button 2s ease-in-out; }
+#header .open-the-menu, #header_ .open-the-menu {
+  outline: none;
+  transition: .2s ease-in-out;
+  width: 50px;
+  height: 50px;
+  position: fixed;
+  top: 2.5%;
+  right: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: none;
+  border: none; }
+  #header .open-the-menu .line, #header_ .open-the-menu .line {
+    width: 40px;
+    height: 3px;
+    background: black;
+    margin: 3px 0 3px 0;
+    transition: .2s ease-in-out; }
+  #header .open-the-menu:hover, #header_ .open-the-menu:hover {
+    transition: .2s ease-in-out; }
+    #header .open-the-menu:hover .line, #header_ .open-the-menu:hover .line {
+      background: #80c7ba;
+      transition: .2s ease-in-out; }
+
+/*# sourceMappingURL=mobilMenu.css.map */

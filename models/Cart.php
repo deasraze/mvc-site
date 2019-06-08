@@ -1,9 +1,10 @@
 <?php
 
 /**
- * Class Cart
+ * Модель Cart
  * Модель для работы с корзиной
  */
+
 class Cart
 {
 

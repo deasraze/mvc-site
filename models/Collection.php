@@ -139,7 +139,7 @@ class Collection
         $db = Db::getConnection();
 
         // Используем подготовленный запрос
-        $sql = 'SELECT id, name FROM collection WHERE status = "1" '
+        $sql = 'SELECT id, name, author, display_block FROM collection WHERE status = "1" '
             . 'ORDER BY id DESC LIMIT :limit OFFSET :offset';
 
         // Подготавливаем запрос
@@ -156,6 +156,8 @@ class Collection
         while ($row = $result->fetch()) {
             $collectionList[$i]['id'] = $row['id'];
             $collectionList[$i]['name'] = $row['name'];
+            $collectionList[$i]['author'] = $row['author'];
+            $collectionList[$i]['display_block'] = $row['display_block'];
             $i++;
         }
 
@@ -255,7 +257,7 @@ class Collection
         $db = Db::getConnection();
 
         // Используем подготовленный запрос
-        $sql = 'SELECT id, name FROM collection '
+        $sql = 'SELECT id, name, author, display_block FROM collection '
                 . 'WHERE status = "1" AND category_id = :category_id '
                 . 'ORDER BY id DESC LIMIT :limit OFFSET :offset';
 
@@ -275,6 +277,8 @@ class Collection
         while ($row = $result->fetch()) {
             $collection[$i]['id'] = $row['id'];
             $collection[$i]['name'] = $row['name'];
+            $collection[$i]['author'] = $row['author'];
+            $collection[$i]['display_block'] = $row['display_block'];
             $i++;
         }
         // Возвращаем массив
@@ -374,6 +378,26 @@ class Collection
                 break;
             case '2':
                 return 'Скрыта';
+                break;
+        }
+    }
+
+    /**
+     * Возвращаем текстовое пояснение блоку для отображения
+     * @param $block
+     * @return string
+     */
+    public static function getBlockName($block)
+    {
+        switch ($block) {
+            case '1':
+                return 'Горизонтальный';
+                break;
+            case '2':
+                return 'Квадратный';
+                break;
+            case '3':
+                return 'Вертикальный';
                 break;
         }
     }

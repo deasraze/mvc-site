@@ -230,6 +230,37 @@ class User
         return false;
     }
 
+    /**
+     * Проверяем правильность ввода логина и пароля для админ панели
+     * @param $admin_login
+     * @param $admin_password
+     * @return bool
+     */
+    public static function checkUserDataAdminPanel($admin_login, $admin_password)
+    {
+        $db = Db::getConnection();
+
+        // Используем подготовленный запрос
+        $sql = 'SELECT id, admin_login, admin_password FROM user WHERE admin_login = :admin_login';
+
+        // Подготавливаем запрос к выполнению
+        $result = $db->prepare($sql);
+        // Привязываем параметры
+        $result->bindParam(':admin_login', $admin_login, PDO::PARAM_STR);
+        // Выполняем запрос
+        $result->execute();
+
+        // Извлекаем строку
+        $user = $result->fetch();
+
+        if ($user && password_verify($admin_password, $user['admin_password'])) {
+            // Если пользователь с таким логином был найден и введенный пароль совпадает с хешем в бд
+            // Возвращаем его id
+            return $user['id'];
+        }
+
+        return false;
+    }
 
     /**
      * Получаем информацию о пользователе по id
@@ -284,6 +315,15 @@ class User
     }
 
     /**
+     * Запоминаем пользователя в админ панели
+     * @param $userId
+     */
+    public static function authAdminPanel($userId)
+    {
+        $_SESSION['admin_user'] = $userId;
+    }
+
+    /**
      * Проверяем, авторизован ли пользователь
      * @return int id
      */
@@ -296,6 +336,49 @@ class User
 
         // Если нет, то перенаправляем
         header("Location: /user/login");
+    }
+
+    /**
+     * Возвращаем id пользователя для фото, если он авторизован
+     * @return mixed
+     */
+    public static function checkLoggedForPhoto()
+    {
+        if (isset($_SESSION['user'])) {
+            return $_SESSION['user'];
+        }
+    }
+
+    /**
+     * Проверяем, авторизован ли пользователь в админ панели
+     * @return mixed
+     */
+    public static function checkLoggedAdminPanel()
+    {
+        if (isset($_SESSION['admin_user'])) {
+            // Если сессия есть, то возвращаем id
+            return $_SESSION['admin_user'];
+        }
+
+        // Если нет, то перенаправляем
+        header('Location: /admin/login');
+    }
+
+    /**
+     * Проверяем роль пользователя
+     * @param $userId
+     * @return bool
+     */
+    public static function checkRole($userId)
+    {
+        // Получаем информацию о пользователе по id
+        $user = self::getUserById($userId);
+
+        if ($user['role'] == 'admin' || 'editor') {
+            // Если пользователь администратор или редакторв, возвращаем true
+            return true;
+        }
+        return false;
     }
 
     /**

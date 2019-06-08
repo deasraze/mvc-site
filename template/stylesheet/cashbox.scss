@@ -1,0 +1,104 @@
+#header {
+  .nav {
+    ul {
+      li {
+        a {
+          color: #1f1f1f;
+          &:hover {
+            color: #80c7ba;
+          }
+        }
+      }
+    }
+  }
+}
+#cashbox {
+  padding-top: 120px;
+  display: flex;
+  justify-content: center;
+  .container {
+    justify-content: space-between;
+    .cashbox-wrap {
+      width: 100%;
+      display: grid;
+      grid-template-rows: 1fr 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
+      grid-gap: 1vw;
+      justify-items: center;
+      .cash {
+        width: 250px;
+        border-radius: 5px;
+        text-align: center;
+        background: transparent;
+        transition: .2s ease-in-out;
+        padding: 15px 0;
+        border: 1px solid transparent;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        &:hover {
+          transition: .2s ease-in;
+          border: 1px solid rgba(27, 31, 35, 0.15);
+          background: #fff;
+          box-shadow: 0 3px 12px rgba(27, 31, 35, 0.15);
+        }
+        .cash-text {
+          width: 95%;
+          h3 {
+            font-size: 24px;
+          }
+          p {
+            span {
+              font-family: 'PT_SansNarrowWebRegular' , sans-serif;
+              font-size: 18px;
+            }
+          }
+        }
+        .avatar {
+          display: block;
+          justify-content: center;
+          img {
+            width: 130px;
+            height: 130px;
+          }
+        }
+        .cash-buttons {
+          display: flex;
+          flex-direction: column;
+          justify-items: center;
+          grid-template-columns: 25px 1fr;
+          align-items: center;
+          .tooltip-btn {
+            outline: none;
+            border: none;
+            width: 25px;
+            height: 25px;
+            background: rgba(189, 189, 189, 0.29);
+            border-radius: 50%;
+            color: #ffffff;
+            margin-top: 10px;
+          }
+          #add-to-cart {
+            padding: 5px 15px;
+            border-radius: 5px;
+            border: 1px solid #BDBDBD;
+            background: #b2dfdb;
+            color: #757575;
+            font-size: 18px;
+            font-family: 'PT_SansNarrowWebRegular', sans-serif;
+            margin-top: 10px;
+            &:hover {
+              border: 1px solid #009688;
+              background: #009688;
+              color: #fff;
+            }
+            &:active {
+              background: #03A9F4;
+              border: 1px solid #03A9F4;
+            }
+          }
+        }
+      }
+    }
+  }
+}

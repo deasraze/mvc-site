@@ -1,0 +1,159 @@
+* {
+  box-sizing: border-box; }
+
+#header {
+  height: 85vh;
+  overflow: hidden; }
+  #header .video-and-title {
+    height: 100%; }
+    #header .video-and-title .title-header-block {
+      font-family: 'AlegreyaSCRegular' , sans-serif;
+      color: #fff;
+      height: 85vh;
+      position: absolute;
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: column;
+      margin-top: -40px;
+      font-size: 65px;
+      z-index: 2; }
+      #header .video-and-title .title-header-block h1 {
+        border-right: 2px solid transparent;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 100%;
+        animation: flashingBorder 0.7s step-end infinite , writeText 5s ease-in-out; }
+    #header .video-and-title .video-information {
+      height: 100%; }
+      #header .video-and-title .video-information img {
+        width: 100%;
+        height: 100%;
+        filter: brightness(80%); }
+
+#all-arts {
+  margin-top: 70px;
+  display: flex;
+  justify-content: center; }
+  #all-arts .main-container-two {
+    display: flex;
+    margin: 0; }
+  #all-arts .search-art {
+    min-width: 220px;
+    max-width: 220px;
+    margin-right: 20px; }
+    #all-arts .search-art .mini-container {
+      display: flex;
+      justify-content: center; }
+    #all-arts .search-art input {
+      width: 90%;
+      font-size: 18px;
+      padding: 7.5px 0 0 15px;
+      border: none;
+      border-bottom: 1px solid #212121;
+      color: #1f1f1f;
+      outline: none;
+      transition: .4s ease-in-out;
+      font-family: 'SpectralRegular' , sans-serif;
+      text-align: center;
+      background: transparent; }
+    #all-arts .search-art button {
+      outline: none;
+      padding: 10px 15px;
+      border: none;
+      border-bottom: 1px solid #212121;
+      margin-left: -6px;
+      background: none;
+      transition: .4s ease-in-out;
+      background: transparent; }
+      #all-arts .search-art button:hover i {
+        color: #009688;
+        transition: .4s ease-in-out; }
+      #all-arts .search-art button i {
+        font-size: 24px;
+        color: #212121; }
+    #all-arts .search-art .open-sort-menu {
+      position: fixed;
+      left: 0;
+      border: none; }
+      #all-arts .search-art .open-sort-menu i {
+        font-size: 30px; }
+      #all-arts .search-art .open-sort-menu:hover {
+        background: none; }
+        #all-arts .search-art .open-sort-menu:hover i {
+          color: #80c7ba; }
+  #all-arts .sorting-all-arts {
+    display: flex;
+    flex-direction: column; }
+    #all-arts .sorting-all-arts .header-search {
+      margin-top: 20px;
+      font-size: 20px;
+      border-bottom: 1px solid #212121;
+      font-family: 'SpectralRegular' , sans-serif; }
+    #all-arts .sorting-all-arts .body-search {
+      display: flex;
+      flex-direction: column; }
+      #all-arts .sorting-all-arts .body-search div {
+        display: flex;
+        margin-top: 20px; }
+        #all-arts .sorting-all-arts .body-search div label {
+          font-family: 'SpectralRegular' , sans-serif;
+          font-size: 16px; }
+        #all-arts .sorting-all-arts .body-search div input {
+          width: auto; }
+        #all-arts .sorting-all-arts .body-search div a {
+          font-family: "SpectralRegular" ,sans-serif;
+          text-decoration: none;
+          color: #212121; }
+
+/* ---- grid ---- */
+.grid {
+  min-width: 1155px;
+  max-width: 1155px; }
+
+/* clearfix */
+.grid:after {
+  content: '';
+  display: block;
+  clear: both; }
+
+/* ---- grid-item ---- */
+.grid-sizer,
+.grid-item {
+  width: 381px;
+  margin-bottom: 5px; }
+
+.grid-item {
+  height: 120px;
+  float: left;
+  background: #D26;
+  border-color: rgba(0, 0, 0, 0.5);
+  border-radius: 1px; }
+
+.grid-item--width2 {
+  width: 381px; }
+  .grid-item--width2 img {
+    width: 100%;
+    height: 100%; }
+
+.grid-item--width3 {
+  width: 381px; }
+  .grid-item--width3 img {
+    width: 100%;
+    height: 100%; }
+
+.grid-item--width4 {
+  width: 381px; }
+  .grid-item--width4 img {
+    width: 100%;
+    height: 100%; }
+
+.grid-item--height2 {
+  height: 261px; }
+
+.grid-item--height3 {
+  height: 294px; }
+
+.grid-item--height4 {
+  height: 570px; }
+
+/*# sourceMappingURL=arts.css.map */

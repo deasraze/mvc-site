@@ -1,0 +1,218 @@
+#header {
+  overflow: hidden;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  .video-and-title {
+    height: 100%;
+    width: 100%;
+    .title-header-block {
+      font-family: 'AlegreyaSCRegular' , sans-serif;
+      color: #fff;
+      height: 40vh;
+      position: absolute;
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: column;
+      margin-top: -40px;
+      font-size: 65px;
+      z-index: 2;
+      h1 {
+        border-right: 2px solid transparent;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 100%;
+        animation: flashingBorder 0.7s step-end infinite , writeText 5s ease-in-out;
+      }
+    }
+    .picture-information {
+      width: 100%;
+      height: 100%;
+      background: url("../museums_pictures/rab.jpg") no-repeat center;
+      background-size: cover;
+      img {
+        width: 100%;
+        filter: brightness(80%);
+      }
+    }
+  }
+  .nav-container {
+    .user-menu {
+      .user-avatar {
+        i {
+          color: #212121;
+          transition: .2s ease-in-out;
+          &:hover {
+            transition: .2s ease-in-out;
+            color: #80c7ba;
+          }
+        }
+      }
+    }
+  }
+  .nav {
+    ul {
+      li {
+        a {
+          transition: .2s ease-in-out;
+          color: #212121;
+          &:hover {
+            transition: .2s ease-in-out;
+            color: #80c7ba;
+          }
+        }
+      }
+    }
+  }
+}
+#all-information-about-art {
+  margin-top: 70px;
+  .main-container {
+
+  }
+  .picture-block {
+    width: 100%;
+    height: 600px;
+    display: flex;
+    overflow: hidden;
+    img {
+      width: 100%;
+      height: 100%;
+      border-radius: 5px;
+    }
+  }
+  .text-block-about-art {
+    text-align: left;
+    width: 100%;
+    p {
+      margin-top: 20px;
+      font-size: 24px;
+      font-family: 'AlegreyaSCRegular' , sans-serif;
+
+      font-weight: 100;
+      color: #757575;
+      span {
+        font-family: "PT_SansNarrowWebRegular" , sans-serif;
+        font-weight: bold;
+        color: #212121;
+      }
+    }
+  }
+}
+#all-commentaries {
+  .write-your-comment {
+    display: flex;
+    justify-content: center;
+    form {
+      display: flex;
+      label {
+        font-family: 'SpectralRegular' , sans-serif;
+        font-size: 20px;
+        input {
+          width: 400px;
+          padding: 5px 5px;
+          font-family: 'SpectralRegular', sans-serif;
+          font-size: 18px;
+          outline: #212121;
+          border: 1px solid #212121;
+          border-radius: 5px;
+        }
+        textarea {
+          width: 400px;
+          padding: 5px 5px;
+          font-family: 'SpectralRegular' , sans-serif;
+          font-size: 18px;
+          outline: #212121;
+          border: 1px solid #212121;
+          border-radius: 5px;
+          resize: none;
+        }
+      }
+      button {
+        font-family: 'SpectralRegular' , sans-serif;
+        font-size: 18px;
+        font-weight: bold;
+        text-transform: uppercase;
+        width: 150px;
+        background: none;
+        border: 1px solid #212121;
+        border-radius: 5px;
+        padding: 7px 0;
+        outline: none;
+        transition: .4s ease-in-out;
+        &:hover {
+          background: #80c7ba;
+          border: 1px solid #80c7ba;
+          color: #fff;
+          transition: .4s ease-in-out;
+        }
+      }
+    }
+    .profile-image {
+      width: 100px;
+      img {
+        width: 75px;
+        height: 75px;
+        border: .5px solid #212121;
+        border-radius: 5px;
+      }
+    }
+    .from-comment {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+  }
+  .all-commentaries-about-art {
+    h2 {
+      color: #212121;
+      font-family: 'AlegreyaSCRegular' , sans-serif;
+    }
+    i {
+      font-size: 35px;
+      &:before {
+        position: absolute;
+        margin-top: 7px;
+      }
+      span {
+        width: 100%;
+        height: 100%;
+        font-size: 20px;
+        text-align: center;
+        margin-left: 8px;
+        font-family: 'PT_SansNarrowWebRegular' ,sans-serif;
+      }
+    }
+    .comment {
+      display: flex;
+      margin-top: 20px;
+      .profile-image-comment {
+        width: 117px;
+        height: 75px;
+        img {
+          width: 75px;
+        }
+      }
+      .information-about-comment {
+        margin-left: 10px;
+        h3 {
+          font-family: "SpectralRegular" , sans-serif;
+          font-weight: bold;
+          font-size: 20px;
+          color: #212121;
+          span {
+            font-size: 16px;
+            margin-left: 15px;
+            color: #757575;
+          }
+        }
+        p {
+          font-family: "PT_SansNarrowWebRegular" , sans-serif;
+          font-size: 18px;
+          color: #212121;
+          font-weight: 500;
+        }
+      }
+    }
+  }
+}

@@ -1,107 +1,208 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="ru">
 <head>
-<meta name="keywords" content="" />
-<meta name="description" content="" />
-<meta http-equiv="content-type" content="text/html; charset=utf-8" />
-<title>Effloresce  by FCT</title>
-<link href='http://fonts.googleapis.com/css?family=Arvo' rel='stylesheet' type='text/css'>
-<link href="/template/news/css/style.css" rel="stylesheet" type="text/css" media="screen" />
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Новости</title>
+    <!--styles-->
+    <link rel="stylesheet" href="/template/stylesheet/all.css">
+    <link rel="stylesheet" href="/template/stylesheet/footer.css">
+    <link rel="stylesheet" href="/template/stylesheet/scrollBar.css">
+    <link rel="stylesheet" href="/template/stylesheet/nprogress.css">
+    <link rel="stylesheet" href="/template/stylesheet/default.css">
+    <link rel="stylesheet" href="/template/stylesheet/fonts.css">
+    <link rel="stylesheet" href="/template/stylesheet/menuCSS.css">
+    <link rel="stylesheet" href="/template/stylesheet/mobilMenu.css">
+    <link rel="stylesheet" href="/template/stylesheet/news.css">
+    <link rel="stylesheet" href="/template/stylesheet/slider.css">
+    <link rel="stylesheet" href="/template/stylesheet/media.css">
+    <!--scripts-->
+    <script src="/template/scripts/jq.min.js"></script>
+    <script src="/template/scripts/nprogress.js"></script>
 </head>
 <body>
-	<div id="menu-wrapper">
-		<div id="menu">
-			<ul>
-				<li class="current_page_item"><a href="#">Homepage</a></li>
-				<li><a href="#">Blog</a></li>
-				<li><a href="#">Photos</a></li>
-				<li><a href="#">About</a></li>
-				<li><a href="#">Links</a></li>
-				<li><a href="#">Contact</a></li>
-			</ul>
-		</div>
-		<!-- end #menu -->
-	</div>
-
-<div id="wrapper">
-	<div id="header-wrapper">
-		<div id="header">
-			<div id="logo">
-				<h1><a href="#">Effloresce </a></h1>
-				<p>template Шаблоны для сайта <a href="http://www.ftemplate.ru/">СКАЧАТЬ</a></p>
-			</div>
-		</div>
-	</div>
-	<!-- end #header -->
-	<div id="page">
-		<div id="page-bgtop">
-			<div id="page-bgbtm">
-				<div id="content">
-					<?php foreach ($newsList as $newsItem):?>
-					<div class="post">
-						<h2 class="title"><a href='/news/<?php echo $newsItem['id'] ;?>'><?php echo $newsItem['title'].' # '.$newsItem['id'];?></a></h2>
-						<p class="meta">Posted by <a href="#"><?php echo $newsItem['author_name'];?></a> on <?php echo $newsItem['date'];?>
-							&nbsp;&bull;&nbsp; <a href='/news/<?php echo $newsItem['id'] ;?>' class="permalink"> Full article</a></p>
-						<div class="entry">
-							<p><img src="/template/images/pic01.jpg" width="800" height="300" alt="" /></p>
-							<p><?php echo $newsItem['short_content'];?></p>
-						</div>
-					</div>
-				<?php endforeach;?>
-					<div style="clear: both;">&nbsp;</div>
-				</div>
-				<!-- end #content -->
-				<div id="sidebar">
-					<ul>
-						<li>
-							<h2>Aliquam tempus</h2>
-							<p>Mauris vitae nisl nec metus placerat perdiet est. Phasellus dapibus semper consectetuer hendrerit.</p>
-						</li>
-						<li>
-							<h2>Categories</h2>
-							<ul>
-								<li><a href="#">Aliquam libero</a></li>
-								<li><a href="#">Consectetuer adipiscing elit</a></li>
-								<li><a href="#">Metus aliquam pellentesque</a></li>
-								<li><a href="#">Suspendisse iaculis mauris</a></li>
-								<li><a href="#">Urnanet non molestie semper</a></li>
-								<li><a href="#">Proin gravida orci porttitor</a></li>
-							</ul>
-						</li>
-						<li>
-							<h2>Blogroll</h2>
-							<ul>
-								<li><a href="#">Aliquam libero</a></li>
-								<li><a href="#">Consectetuer adipiscing elit</a></li>
-								<li><a href="#">Metus aliquam pellentesque</a></li>
-								<li><a href="#">Suspendisse iaculis mauris</a></li>
-								<li><a href="#">Urnanet non molestie semper</a></li>
-								<li><a href="#">Proin gravida orci porttitor</a></li>
-							</ul>
-						</li>
-						<li>
-							<h2>Archives</h2>
-							<ul>
-								<li><a href="#">Aliquam libero</a></li>
-								<li><a href="#">Consectetuer adipiscing elit</a></li>
-								<li><a href="#">Metus aliquam pellentesque</a></li>
-								<li><a href="#">Suspendisse iaculis mauris</a></li>
-								<li><a href="#">Urnanet non molestie semper</a></li>
-								<li><a href="#">Proin gravida orci porttitor</a></li>
-							</ul>
-						</li>
-					</ul>
-				</div>
-				<!-- end #sidebar -->
-				<div style="clear: both;">&nbsp;</div>
-			</div>
-		</div>
-	</div>
-	<!-- end #page -->
-</div>
-<div id="footer">
-	<p>Copyright (c) 2013 Sitename.com. All rights reserved. Design by <a href="http://www.freecsstemplates.org">FCT</a>. Photos by Fotogrph</a>.</p>
-</div>
-<!-- end #footer -->
+<header id="header">
+    <div class="nav-container f-nav">
+        <div class="nav">
+            <ul>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/news/">Новости</a></li>
+                <li><a href="/tickets/">Касса</a></li>
+                <li><a href="/collection/">Произведения</a></li>
+                <li><a href="/jobs/">Вакансии</a></li>
+                <li><a href="/contacts/">Контакты</a></li>
+                <li><a href="/about/">О нас </a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="user-menu">
+            <div class="user-avatar" id="close__" onclick="openUserProfil()" >
+                <img src="<?php echo User::getImage($idUser); ?>" alt="user-avatar">
+                <p><i class="fas fa-angle-down"></i></p>
+            </div>
+            <div class="menu-wrap">
+                <div class="menu">
+                    <ul class="user-menu-items">
+                        <?php if (User::isGuest()): ?>
+                            <li><a href="/cart/">Моя корзина (<span id="cart-count"><?php echo Cart::countItems(); ?></span>)</a></li>
+                            <li><a href="#">Помощь</a></li>
+                            <li><a href="/user/register/">Регистрация</a></li>
+                            <li><a href="/user/login/">Вход</a></li>
+                        <?php elseif (User::checkRole($idUser)): ?>
+                            <li><a href="/admin/">Админпанель</a></li>
+                            <li><a href="/cart/">Моя корзина (<span id="cart-count"><?php echo Cart::countItems(); ?></span>)</a></li>
+                            <li><a href="/cabinet/">Профиль</a></li>
+                            <li><a href="#">Настройки</a></li>
+                            <li><a href="#">Помощь</a></li>
+                            <li><a href="/user/logout/">Выход</a></li>
+                        <?php else: ?>
+                            <li><a href="/cart/">Моя корзина (<span id="cart-count"><?php echo Cart::countItems(); ?></span>)</a></li>
+                            <li><a href="/cabinet/">Профиль</a></li>
+                            <li><a href="#">Настройки</a></li>
+                            <li><a href="#">Помощь</a></li>
+                            <li><a href="/user/logout/">Выход</a></li>
+                        <?php endif; ?>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="mobil_menu">
+        <div class="wrap-menu">
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/news/">Новости</a></li>
+                    <li><a href="/tickets/">Касса</a></li>
+                    <li><a href="/collection/">Произведения</a></li>
+                    <li><a href="/jobs/">Вакансии</a></li>
+                    <li><a href="/contacts/">Контакты</a></li>
+                    <li><a href="/about/">О нас </a></li>
+                </ul>
+            </div>
+            <button class="open-the-menu" id="close" onclick="tranformation_btn()">
+                <div class="line line1"></div>
+                <div class="line line2"></div>
+                <div class="line line3"></div>
+            </button>
+        </div>
+    </div>
+</header>
+<section id="news">
+    <div class="main-container-two">
+        <div class="header-text">
+            <h3>Новости </h3>
+            <hr class="long">
+            <hr class="medium">
+            <hr class="short">
+        </div>
+        <div class="slider">
+            <div class="slider-arrow">
+                <button class="arrow arrow-left"><i class="fas fa-chevron-left"></i></button>
+                <button class="arrow arrow-right"><i class="fas fa-chevron-right"></i></button>
+            </div>
+            <div class="slider-wrap">
+                <a class="slider-item-check" href="#">
+                    <div class="slider-item slider-item-1">
+                        <img src="/template/museums_pictures/slider1.jpg" alt="">
+                        <div class="slider-title">
+                            <h3><i class="fas fa-newspaper"></i> Татарстан наш общий дом</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, commodi deleniti dignissimos dolor dolore et illum ipsam minima, natus quis similique veniam vero voluptate? Accusamus debitis eius exercitationem expedita totam.</p>
+                        </div>
+                    </div>
+                </a>
+                <a class="slider-item-check" href="#">
+                    <div class="slider-item slider-item-2">
+                        <div></div>
+                        <img src="/template/museums_pictures/slider2.jpg" alt="">
+                        <div class="slider-title">
+                            <h3><i class="fas fa-newspaper"></i> "Стихия революции: 1917 год в России"</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, commodi deleniti dignissimos dolor dolore et illum ipsam minima, natus quis similique veniam vero voluptate? Accusamus debitis eius exercitationem expedita totam.</p>
+                        </div>
+                    </div>
+                </a>
+                <a class="slider-item-check" href="#">
+                    <div class="slider-item slider-item-3">
+                        <img src="/template/museums_pictures/slide3.jpg" alt="">
+                        <div class="slider-title">
+                            <h3><i class="fas fa-newspaper"></i> Татарстан наш общий дом</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, commodi deleniti dignissimos dolor dolore et illum ipsam minima, natus quis similique veniam vero voluptate? Accusamus debitis eius exercitationem expedita totam.</p>
+                        </div>
+                    </div>
+                </a>
+                <a class="slider-item-check" href="#">
+                    <div class="slider-item slider-item-4">
+                        <img src="/template/museums_pictures/slide6.jpg" alt="">
+                        <div class="slider-title">
+                            <h3><i class="fas fa-newspaper"></i> Татарстан наш общий дом</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, commodi deleniti dignissimos dolor dolore et illum ipsam minima, natus quis similique veniam vero voluptate? Accusamus debitis eius exercitationem expedita totam.</p>
+                        </div>
+                    </div>
+                </a>
+                <a class="slider-item-check slide-item-check-5" href="#">
+                    <div class="slider-item slider-item-5">
+                        <img src="/template/museums_pictures/slide5.jpg" alt="">
+                        <div class="slider-title">
+                            <h3><i class="fas fa-newspaper"></i> Татарстан наш общий дом</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, commodi deleniti dignissimos dolor dolore et illum ipsam minima, natus quis similique veniam vero voluptate? Accusamus debitis eius exercitationem expedita totam.</p>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <div class="header-text">
+            <hr class="medium">
+            <hr class="short">
+            <hr class="medium">
+        </div>
+        <div class="news-wrap">
+            <?php foreach ($newsList as $news): ?>
+            <div class="news-item">
+                <a href="/news/<?php echo $news['id']; ?>"><img src="/template/museums_pictures/slide3.jpg" alt=""></a>
+                <h3><?php echo $news['title']; ?></h3>
+                <p><?php echo $news['short_content']; ?></p>
+            </div>
+            <?php endforeach; ?>
+        </div>
+    </div>
+</section>
+<footer id="footer">
+    <div class="main-container-two">
+        <div class="last-information-about-museum">
+            <ul class="navs">
+                <li><a href="">Help</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Gift Cards</a></li>
+                <li><a href="">Dealers</a></li>
+                <li><a href="">Foundation</a></li>
+            </ul>
+        </div>
+        <div class="last-social-network">
+            <ul class="navs">
+                <li><a href=""><i class="fab fa-vk vk"></i></a></li>
+                <li><a href=""><i class="fab fa-instagram inst"></i></a></li>
+                <li><a href=""><i class="fab fa-twitter twit"></i></a></li>
+                <li><a href=""><i class="fas fa-rss rss"></i></a></li>
+                <li><a href=""><i class="fab fa-twitch twitch"></i></a></li>
+            </ul>
+        </div>
+        <div class="last-polity">
+            <ul class="navs">
+                <li><a href="">social compliance</a></li>
+                <li><a href="">terms</a></li>
+                <li><a href="">privacy policy</a></li>
+            </ul>
+        </div>
+        <div class="info-about-creature">
+            <p>Site by Chopper & Condecrom</p>
+        </div>
+    </div>
+</footer>
+<!--scripts-->
+<script src="/template/scripts/animationMobilMenu.js"></script>
+<script src="/template/scripts/loader.js"></script>
+<script src="/template/scripts/slider.js"></script>
 </body>
 </html>

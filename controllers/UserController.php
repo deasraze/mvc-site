@@ -6,6 +6,9 @@ class UserController
 
     public function actionRegister()
     {
+        // Получаем id пользователя для аватара в шапке
+        $idUser = User::checkLogged();
+
         $name = '';
         $surname = '';
         $email = '';
@@ -52,12 +55,14 @@ class UserController
         }
 
         require_once(ROOT . '/views/user/register.php');
-
         return true;
     }
 
     public function actionLogin()
     {
+        // Получаем id пользователя для аватара в шапке
+        $idUser = User::checkLogged();
+
         $email = '';
         $password = '';
 
@@ -93,8 +98,8 @@ class UserController
             }
         }
 
-        require_once(ROOT . '/views/user/login.php');
 
+        require_once(ROOT . '/views/user/login.php');
         return true;
     }
 

@@ -1,0 +1,169 @@
+#header {
+  height: 85vh;
+  overflow: hidden; }
+  #header .video-and-title {
+    height: 100%; }
+    #header .video-and-title .title-header-block {
+      font-family: 'Alegreya SC' , sans-serif;
+      color: #fff;
+      height: 85vh;
+      position: absolute;
+      display: flex;
+      justify-content: flex-end;
+      flex-direction: column;
+      left: 10%;
+      margin-top: -40px;
+      font-size: 65px;
+      z-index: 2; }
+      #header .video-and-title .title-header-block h1 {
+        border-right: 2px solid transparent;
+        white-space: nowrap;
+        overflow: hidden;
+        width: 100%;
+        animation: flashingBorder 0.7s step-end infinite , writeText 5s ease-in-out; }
+    #header .video-and-title .video-information {
+      height: 100%; }
+
+#main .short-text-information-about-museum {
+  margin-top: 70px; }
+  #main .short-text-information-about-museum p {
+    font-family: 'Spectral' , sans-serif;
+    font-size: 1.3125rem;
+    font-weight: 500;
+    letter-spacing: .1px; }
+#main .short-view-information-about-museum {
+  margin-top: 70px;
+  display: flex;
+  justify-content: space-around; }
+  #main .short-view-information-about-museum .picture-one-block-about-museum {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../museums_pictures/art.jpg") center center;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff; }
+    #main .short-view-information-about-museum .picture-one-block-about-museum h2 {
+      font-family: "Alegreya SC" , sans-serif;
+      font-size: 7rem;
+      height: 130px;
+      color: #ff4d1e; }
+    #main .short-view-information-about-museum .picture-one-block-about-museum p {
+      font-family: "Alegreya SC" , sans-serif;
+      font-size: 3rem; }
+  #main .short-view-information-about-museum .picture-two-block-about-museum {
+    width: 400px;
+    height: 400px;
+    background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url("../museums_pictures/art2.jpg") center center;
+    border-radius: 50%;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #fff; }
+    #main .short-view-information-about-museum .picture-two-block-about-museum h2 {
+      font-family: "Alegreya SC" , sans-serif;
+      font-size: 7rem;
+      height: 130px;
+      color: #ff4d1e; }
+    #main .short-view-information-about-museum .picture-two-block-about-museum p {
+      font-family: "Alegreya SC" , sans-serif;
+      font-size: 3rem; }
+
+#how-to-come-here .main-container h1 {
+  font-family: 'Alegreya SC' , sans-serif;
+  font-size: 65px;
+  width: 100%;
+  text-align: right;
+  text-transform: uppercase; }
+  #how-to-come-here .main-container h1 span {
+    color: red; }
+#how-to-come-here .main-container .our-map {
+  margin-top: 70px; }
+
+#our-social-network h1 {
+  font-family: 'Alegreya SC' , sans-serif;
+  font-size: 60px;
+  width: 100%;
+  text-align: center;
+  text-transform: uppercase; }
+  #our-social-network h1 span {
+    color: red; }
+#our-social-network .out-social-network-links {
+  margin-top: 70px;
+  width: 100%;
+  display: flex;
+  justify-content: space-around; }
+  #our-social-network .out-social-network-links i {
+    color: #ffff;
+    font-size: 85px; }
+  #our-social-network .out-social-network-links .vk {
+    color: #597da3; }
+  #our-social-network .out-social-network-links .inst {
+    color: #cc397a; }
+  #our-social-network .out-social-network-links .twit {
+    color: #00aced; }
+  #our-social-network .out-social-network-links .rss {
+    color: #f26522; }
+  #our-social-network .out-social-network-links .twitch {
+    color: #6441A4; }
+
+#ask-your-question .main-container h1 {
+  font-family: 'Alegreya SC' , sans-serif;
+  font-size: 65px;
+  width: 100%;
+  text-align: left;
+  text-transform: uppercase; }
+  #ask-your-question .main-container h1 span {
+    color: red; }
+#ask-your-question .main-container .your-question-form {
+  margin-top: 70px;
+  width: 100%; }
+  #ask-your-question .main-container .your-question-form form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Alegreya SC' , sans-serif;
+    font-weight: bold; }
+    #ask-your-question .main-container .your-question-form form label {
+      font-size: 24px;
+      text-transform: uppercase;
+      margin-top: 20px; }
+      #ask-your-question .main-container .your-question-form form label:first-child {
+        margin-top: 0; }
+    #ask-your-question .main-container .your-question-form form input, #ask-your-question .main-container .your-question-form form textarea {
+      margin-top: 10px;
+      min-width: 45%;
+      max-width: 45%;
+      font-size: 24px;
+      padding: 5px 10px;
+      border-radius: 5px;
+      border: 1.5px solid black;
+      font-family: 'Spectral' , sans-serif; }
+    #ask-your-question .main-container .your-question-form form textarea {
+      resize: none;
+      font-family: 'Spectral' , sans-serif; }
+    #ask-your-question .main-container .your-question-form form button {
+      width: 200px;
+      display: block;
+      margin: 20px auto;
+      font-size: 20px;
+      font-family: 'Alegreya SC' , sans-serif;
+      text-transform: uppercase;
+      background: none;
+      border: 1.5px solid black;
+      padding: 12px 0;
+      border-radius: 5px;
+      font-weight: bold;
+      transition: .4s ease-in; }
+      #ask-your-question .main-container .your-question-form form button:hover {
+        background: #80c7ba;
+        border: 1.5px solid #80c7ba;
+        color: #fff;
+        transition: .4s ease-out; }
+
+/*# sourceMappingURL=style.css.map */

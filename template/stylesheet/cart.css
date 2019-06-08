@@ -1,0 +1,133 @@
+#header .nav ul li a {
+  color: #1f1f1f; }
+  #header .nav ul li a:hover {
+    color: #80c7ba; }
+
+#cart-main {
+  padding-top: 120px; }
+  #cart-main .main-container-two {
+    display: flex;
+    justify-content: center; }
+    #cart-main .main-container-two .cart-wrap .cart {
+      width: 855px;
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      padding: 20px 0;
+      border-radius: 2px; }
+      #cart-main .main-container-two .cart-wrap .cart .cart-offer {
+        width: 855px;
+        margin: 15px 0;
+        padding: 15px 0;
+        display: flex;
+        justify-content: center;
+        border-radius: 5px;
+        background: #FFFFFF;
+        border: 1px solid #BDBDBD;
+        -webkit-box-shadow: 10px 10px 31px -12px rgba(0, 0, 0, 0.75);
+        -moz-box-shadow: 10px 10px 31px -12px rgba(0, 0, 0, 0.75);
+        box-shadow: 10px 10px 31px -12px rgba(0, 0, 0, 0.75); }
+        #cart-main .main-container-two .cart-wrap .cart .cart-offer .wrap-cart-offer {
+          width: 820px;
+          justify-content: center; }
+          #cart-main .main-container-two .cart-wrap .cart .cart-offer .wrap-cart-offer .cart-offer-navigation {
+            display: flex; }
+            #cart-main .main-container-two .cart-wrap .cart .cart-offer .wrap-cart-offer .cart-offer-navigation p {
+              color: #757575; }
+          #cart-main .main-container-two .cart-wrap .cart .cart-offer .wrap-cart-offer .line-cart {
+            display: block;
+            margin: 20px auto 20px auto;
+            height: 3px;
+            width: 90%;
+            border-radius: 50%;
+            background: #BDBDBD; }
+          #cart-main .main-container-two .cart-wrap .cart .cart-offer .wrap-cart-offer .my-cart {
+            display: flex;
+            font-family: 'PT_SansNarrowWebRegular' , sans-serif;
+            color: #212121;
+            font-size: 18px;
+            margin: 20px 0; }
+          #cart-main .main-container-two .cart-wrap .cart .cart-offer .wrap-cart-offer .button-cart {
+            display: flex;
+            justify-content: space-between; }
+            #cart-main .main-container-two .cart-wrap .cart .cart-offer .wrap-cart-offer .button-cart .director-sign {
+              display: flex; }
+              #cart-main .main-container-two .cart-wrap .cart .cart-offer .wrap-cart-offer .button-cart .director-sign p {
+                color: #757575;
+                font-family: 'SpectralRegular' , sans-serif; }
+              #cart-main .main-container-two .cart-wrap .cart .cart-offer .wrap-cart-offer .button-cart .director-sign img {
+                height: 40px;
+                margin-left: 15px; }
+            #cart-main .main-container-two .cart-wrap .cart .cart-offer .wrap-cart-offer .button-cart .delete-offer-from-cart {
+              background: none;
+              border: 1px solid #757575;
+              padding: 10px 15px;
+              border-radius: 5px;
+              font-family: "PT_SansNarrowWebRegular", sans-serif;
+              color: #757575;
+              font-size: 16px;
+              transition: .2s ease; }
+              #cart-main .main-container-two .cart-wrap .cart .cart-offer .wrap-cart-offer .button-cart .delete-offer-from-cart:hover {
+                transition: .2s ease;
+                border: 1px solid #03A9f4;
+                background: #03A9f4;
+                color: #fff; }
+        #cart-main .main-container-two .cart-wrap .cart .cart-offer .id-cart {
+          width: 15%; }
+        #cart-main .main-container-two .cart-wrap .cart .cart-offer .name-cart {
+          width: 20%; }
+        #cart-main .main-container-two .cart-wrap .cart .cart-offer .amount-cart {
+          width: 15%; }
+        #cart-main .main-container-two .cart-wrap .cart .cart-offer .print-cart {
+          width: 15%;
+          text-align: center; }
+          #cart-main .main-container-two .cart-wrap .cart .cart-offer .print-cart img {
+            position: absolute;
+            width: 169px;
+            display: block;
+            margin-top: -61px;
+            z-index: 7;
+            transform: rotate(-49deg); }
+        #cart-main .main-container-two .cart-wrap .cart .cart-offer .cost-cart {
+          width: 35%;
+          text-align: right; }
+    #cart-main .main-container-two .cart-wrap .shadow-line {
+      height: 50px;
+      background: url("../museums_pictures/shadow__basket-content.png") no-repeat 50% 100%;
+      background-size: 100% auto;
+      z-index: 1; }
+    #cart-main .main-container-two .cart-wrap .total-amount {
+      margin: 50px 0; }
+      #cart-main .main-container-two .cart-wrap .total-amount .total-amount-wrap {
+        width: 100%;
+        display: flex;
+        text-align: center;
+        justify-content: center; }
+        #cart-main .main-container-two .cart-wrap .total-amount .total-amount-wrap p {
+          color: #80c7ba; }
+          #cart-main .main-container-two .cart-wrap .total-amount .total-amount-wrap p span {
+            color: #1f1f1f;
+            font-size: 24px;
+            font-family: 'PT_SansNarrowWebRegular' , sans-serif; }
+        #cart-main .main-container-two .cart-wrap .total-amount .total-amount-wrap .place-your-order {
+          background: #b4aa9c;
+          height: 35px;
+          border: none;
+          margin-left: 300px;
+          position: absolute;
+          padding: 0 0 0 10px;
+          color: #fff;
+          font-family: 'SpectralRegular' , sans-serif; }
+          #cart-main .main-container-two .cart-wrap .total-amount .total-amount-wrap .place-your-order:after {
+            content: '';
+            position: absolute;
+            width: 15px;
+            height: 45px;
+            background: url("../museums_pictures/Arrow.png") no-repeat;
+            margin-top: -8px; }
+          #cart-main .main-container-two .cart-wrap .total-amount .total-amount-wrap .place-your-order:hover {
+            background: #998f7b; }
+            #cart-main .main-container-two .cart-wrap .total-amount .total-amount-wrap .place-your-order:hover:after {
+              background-position-x: -30px; }
+
+/*# sourceMappingURL=cart.css.map */

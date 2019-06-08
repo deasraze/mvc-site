@@ -10,6 +10,9 @@ class NewsController
         $newsList = array();
         $newsList = News::getNewsList();
 
+        // Получаем id пользователя для аватара в шапке
+        $idUser = User::checkLogged();
+
         require_once(ROOT . '/views/news/index.php');
 
         return true;
@@ -18,6 +21,9 @@ class NewsController
     public function actionView($id)
     {
         if ($id) {
+            // Получаем id пользователя для аватара в шапке
+            $idUser = User::checkLogged();
+
             $newsItem = News::getNewsItemById($id);
 
             require_once(ROOT . '/views/news/view.php');
