@@ -11,7 +11,7 @@ class TicketsController
         $ticketList = Tickets::getLatestTicket();
 
         // Получаем id пользователя для аватара
-        $idUser = User::checkLogged();
+        $idUser = User::getUserId();
 
         require_once(ROOT.'/views/tickets/index.php');
         return true;

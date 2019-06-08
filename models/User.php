@@ -339,6 +339,18 @@ class User
     }
 
     /**
+     * Возвращаем id пользователя
+     * @return mixed
+     */
+    public static function getUserId()
+    {
+        // Если сессия есть, то вернем id пользователя
+        if (isset($_SESSION['user'])) {
+            return $_SESSION['user'];
+        }
+    }
+
+    /**
      * Возвращаем id пользователя для фото, если он авторизован
      * @return mixed
      */

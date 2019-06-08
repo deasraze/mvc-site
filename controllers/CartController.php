@@ -10,7 +10,7 @@ class CartController
     public function actionIndex()
     {
         // Получаем фото пользователя по id
-        $idUser = User::checkLogged();
+        $idUser = User::getUserId();
 
         $ticketsInCart = false;
 

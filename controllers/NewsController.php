@@ -11,7 +11,7 @@ class NewsController
         $newsList = News::getNewsList();
 
         // Получаем id пользователя для аватара в шапке
-        $idUser = User::checkLogged();
+        $idUser = User::getUserId();
 
         require_once(ROOT . '/views/news/index.php');
 

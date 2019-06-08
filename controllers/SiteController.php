@@ -5,7 +5,7 @@ class SiteController
 
     public function actionIndex()
     {
-        $idUser = User::checkLogged();
+        $idUser = User::getUserId();
         
         require_once(ROOT.'/views/site/index.php');
 

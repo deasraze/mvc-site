@@ -16,7 +16,7 @@ class CollectionController
     public function actionIndex($page = 1)
     {
         // Получаем id пользователя для аватара
-        $idUser = User::checkLogged();
+        $idUser = User::getUserId();
 
         // Получаем список категорий
         $categories = array();
@@ -47,7 +47,7 @@ class CollectionController
     public function actionCategory($categoryId, $page = 1)
     {
         // Получаем id пользователя
-        $idUser = User::checkLogged();
+        $idUser = User::getUserId();
 
         // Получаем список категорий
         $categories = array();
@@ -80,7 +80,7 @@ class CollectionController
     public function actionView($collectionId)
     {
         // Получаем id пользователя
-        $idUser = User::checkLogged();
+        $idUser = User::getUserId();
 
         // Получаем информацию о произведении
         $collection = Collection::getCollectionById($collectionId);

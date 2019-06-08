@@ -7,7 +7,7 @@ class UserController
     public function actionRegister()
     {
         // Получаем id пользователя для аватара в шапке
-        $idUser = User::checkLogged();
+        $idUser = User::getUserId();
 
         $name = '';
         $surname = '';
@@ -61,7 +61,7 @@ class UserController
     public function actionLogin()
     {
         // Получаем id пользователя для аватара в шапке
-        $idUser = User::checkLogged();
+        $idUser = User::getUserId();
 
         $email = '';
         $password = '';
