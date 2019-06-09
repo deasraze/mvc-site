@@ -46,6 +46,7 @@
 
         // Главная страницы админки
         'admin' => 'admin/index', // actionIndex and AdminController
+        'admin/logout' => 'admin/logout', // actionLogout and AdminController
         'admin/login' => 'admin/login', // actionLogin and AdminController
         'admin/search' => 'admin/search', // actionSearch and AdminController
         // Управление коллекциями

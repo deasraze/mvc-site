@@ -4,6 +4,7 @@
  * Контроллер AdminCategoryController
  * Управление категорями в админке
  */
+
 class AdminCategoryController extends AdminBase
 {
     /**
@@ -14,20 +15,25 @@ class AdminCategoryController extends AdminBase
     public function actionIndex($page = 1)
     {
         // Проверка прав доступа
-        self::checkAdmin();
+        if (self::checkAdmin() || self::checkEditor()) {
+            // Получаем id пользователя
+            $idUser = User::checkLoggedAdminPanel();
 
-        // Получение списка категорий
-        $categoriesList = array();
-        $categoriesList = Category::getCategoriesListAdmin($page);
+            // Получение списка категорий
+            $categoriesList = array();
+            $categoriesList = Category::getCategoriesListAdmin($page);
 
-        // Получаем количество категорий
-        $total = Category::getTotalCategoryAdmin();
-        // Создаем новый объект класса
-        $pagination = new Pagination($total, $page, Category::SHOW_BY_DEFAULT, 'page-');
+            // Получаем количество категорий
+            $total = Category::getTotalCategoryAdmin();
+            // Создаем новый объект класса
+            $pagination = new Pagination($total, $page, Category::SHOW_BY_DEFAULT, 'page-');
 
-        // Подключаем вид
-        require_once (ROOT . '/views/admin_category/index.php');
-        return true;
+            // Подключаем вид
+            require_once(ROOT . '/views/admin_category/index.php');
+            return true;
+        }
+
+        die('Доступ запрещен');
     }
 
     /**
@@ -36,35 +42,40 @@ class AdminCategoryController extends AdminBase
      */
     public function actionCreate()
     {
-        // Проверяем права доступа
-        self::checkAdmin();
+        // Проверка прав доступа
+        if (self::checkAdmin() || self::checkEditor()) {
+            // Получаем id пользователя
+            $idUser = User::checkLoggedAdminPanel();
 
-        // Обработчик формы
-        if (isset($_POST['submit'])) {
-            // Если форма отправлена
-            $options['name'] = $_POST['name'];
-            $options['sort_order'] = $_POST['sort_order'];
-            $options['status'] = $_POST['status'];
+            // Обработчик формы
+            if (isset($_POST['submit'])) {
+                // Если форма отправлена
+                $options['name'] = $_POST['name'];
+                $options['sort_order'] = $_POST['sort_order'];
+                $options['status'] = $_POST['status'];
 
-            $errors = false;
+                $errors = false;
 
-            // Делаем валидацию
-            if (!isset($options['name']) || empty($options['name'])) {
-                $errors[] = 'Заполните поля';
+                // Делаем валидацию
+                if (!isset($options['name']) || empty($options['name'])) {
+                    $errors[] = 'Заполните поля';
+                }
+
+                if ($errors == false) {
+                    // Если ошибок нет, то сохраняем
+                    Category::createCategory($options);
+
+                    // Перенаправляем пользователя
+                    header('Location: /admin/category/');
+                }
             }
 
-            if ($errors == false) {
-                // Если ошибок нет, то сохраняем
-                Category::createCategory($options);
-
-                // Перенаправляем пользователя
-                header('Location: /admin/category/');
-            }
+            // Подключаем вид
+            require_once(ROOT . '/views/admin_category/create.php');
+            return true;
         }
 
-        // Подключаем вид
-        require_once (ROOT . '/views/admin_category/create.php');
-        return true;
+        die('Доступ запрещен');
     }
 
     /**
@@ -74,29 +85,34 @@ class AdminCategoryController extends AdminBase
      */
     public function actionUpdate($id)
     {
-        // Проверяем права доступа
-        self::checkAdmin();
+        // Проверка прав доступа
+        if (self::checkAdmin() || self::checkEditor()) {
+            // Получаем id пользователя
+            $idUser = User::checkLoggedAdminPanel();
 
-        // Получаем информацию о категории
-        $category = Category::getCategoryById($id);
+            // Получаем информацию о категории
+            $category = Category::getCategoryById($id);
 
-        // Обработчик формы
-        if (isset($_POST['submit'])) {
-            // Если форма отправлена, то считываем параметры
-            $options['name'] = $_POST['name'];
-            $options['sort_order'] = $_POST['sort_order'];
-            $options['status'] = $_POST['status'];
+            // Обработчик формы
+            if (isset($_POST['submit'])) {
+                // Если форма отправлена, то считываем параметры
+                $options['name'] = $_POST['name'];
+                $options['sort_order'] = $_POST['sort_order'];
+                $options['status'] = $_POST['status'];
 
-            // Сохраняем изменения
-            Category::updateCategoryById($id, $options);
+                // Сохраняем изменения
+                Category::updateCategoryById($id, $options);
 
-            // Перенаправляем
-            header('Location: /admin/category/');
+                // Перенаправляем
+                header('Location: /admin/category/');
+            }
+
+            // Подключаем вид
+            require_once(ROOT . '/views/admin_category/update.php');
+            return true;
         }
 
-        // Подключаем вид
-        require_once (ROOT . '/views/admin_category/update.php');
-        return true;
+        die('Доступ запрещен');
     }
 
     /**
@@ -106,22 +122,27 @@ class AdminCategoryController extends AdminBase
      */
     public function actionDelete($id)
     {
-        // Проверяем права доступа
-        self::checkAdmin();
+        // Проверка прав доступа
+        if (self::checkAdmin() || self::checkEditor()) {
+            // Получаем id пользователя
+            $idUser = User::checkLoggedAdminPanel();
 
-        // Получаем полную информацию по удаляемой категории для вывода имени
-        $categoryName = Category::getCategoryById($id);
+            // Получаем полную информацию по удаляемой категории для вывода имени
+            $categoryName = Category::getCategoryById($id);
 
-        if (isset($_POST['submit'])) {
-            // Если форма была отправлена, то удаляем категорию
-            Category::deleteCategoryById($id);
+            if (isset($_POST['submit'])) {
+                // Если форма была отправлена, то удаляем категорию
+                Category::deleteCategoryById($id);
 
-            // Перенаправляем пользователя к списку категорий
-            header('Location: /admin/category/');
+                // Перенаправляем пользователя к списку категорий
+                header('Location: /admin/category/');
+            }
+
+            // Подключаем вид
+            require_once(ROOT . '/views/admin_category/delete.php');
+            return true;
         }
 
-        // Подключаем вид
-        require_once (ROOT . '/views/admin_category/delete.php');
-        return true;
+        die('Доступ запрещен');
     }
 }

@@ -16,22 +16,27 @@ class AdminCollectionController extends AdminBase
     public function actionIndex($page = 1)
     {
         // Проверка доступа
-        self::checkAdmin();
+        if (self::checkAdmin() || self::checkEditor()) {
+            // Получаем id пользователя
+            $idUser = User::checkLoggedAdminPanel();
 
-        // Получаем список коллекций
-        $collectionList = array();
-        $collectionList = Collection::getCollectionListAdmin($page);
+            // Получаем список коллекций
+            $collectionList = array();
+            $collectionList = Collection::getCollectionListAdmin($page);
 
-        // $total - ко-во коллекций
-        $total = Collection::getTotalCollectionAdmin();
+            // $total - ко-во коллекций
+            $total = Collection::getTotalCollectionAdmin();
 
-        // Создаем объект Pagination - постраничная навигация
-        // page- ключ который будет в url
-        $pagination = new Pagination($total, $page, Collection::SHOW_BY_DEFAULT, 'page-');
+            // Создаем объект Pagination - постраничная навигация
+            // page- ключ который будет в url
+            $pagination = new Pagination($total, $page, Collection::SHOW_BY_DEFAULT, 'page-');
 
-        // Подключаем вид
-        require_once (ROOT . '/views/admin_collection/index.php');
-        return true;
+            // Подключаем вид
+            require_once (ROOT . '/views/admin_collection/index.php');
+            return true;
+        }
+
+        die('Доступ запрещен');
     }
 
     /**
@@ -41,48 +46,56 @@ class AdminCollectionController extends AdminBase
     public function actionCreate()
     {
         // Проверка доступа
-        self::checkAdmin();
+        if (self::checkAdmin() || self::checkEditor()) {
+            // Получаем id пользователя
+            $idUser = User::checkLoggedAdminPanel();
 
-        // Получение списка категорий
-        $categoriesList = Category::getCategoriesListAdminByCollection();
+            // Получение списка категорий
+            $categoriesList = Category::getCategoriesListAdminByCollection();
 
-        // Обработка формы
-        if (isset($_POST['submit'])) {
-            // Если форма отправлена, считываем данные
-            $options['name'] = $_POST['name'];
-            $options['author'] = $_POST['author'];
-            $options['year'] = $_POST['year'];
-            $options['category_id'] = $_POST['category_id'];
-            $options['description'] = $_POST['description'];
-            $options['status'] = $_POST['status'];
+            // Обработка формы
+            if (isset($_POST['submit'])) {
+                // Если форма отправлена, считываем данные
+                $options['name'] = $_POST['name'];
+                $options['author'] = $_POST['author'];
+                $options['year'] = $_POST['year'];
+                $options['material'] = $_POST['material'];
+                $options['size'] = $_POST['size'];
+                $options['category_id'] = $_POST['category_id'];
+                $options['description'] = $_POST['description'];
+                $options['status'] = $_POST['status'];
+                $options['display_block'] = $_POST['display_block'];
 
-            $errors = false;
+                $errors = false;
 
-            // Делаем валидацию
-            if (!isset($options['name']) || empty($options['name'])) {
-                $errors[] = 'Заполните поля';
+                // Делаем валидацию
+                if (!isset($options['name']) || empty($options['name'])) {
+                    $errors[] = 'Заполните поля';
+                }
+
+                if ($errors == false) {
+                    // Если ошибок нет, то добавляем новое произведение
+                    $id = Collection::createCollection($options);
+
+                    if ($id) {
+                        // Если запись успешно добавлена, то проверяем было ли загружено изображение
+                        if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
+                            // Если загружалось, переместим его в нужную папку и дадим новое имя
+                            move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/upload/images/collections/{$id}.jpg");
+                        }
+                    };
+
+                    // Перенаправляем в раздел с коллекциями
+                    header('Location: /admin/collection/');
+                }
             }
 
-            if ($errors == false) {
-                // Если ошибок нет, то добавляем новое произведение
-                $id = Collection::createCollection($options);
-
-                if ($id) {
-                    // Если запись успешно добавлена, то проверяем было ли загружено изображение
-                    //echo '<pre>'; print_r($_FILES["image"]); die;
-                    if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
-                        // Если загружалось, переместим его в нужную папку и дадим новое имя
-                        move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/upload/images/collections/{$id}.jpg");
-                    }
-                };
-
-                // Перенаправляем в раздел с коллекциями
-                header('Location: /admin/collection/');
-            }
+            // Подключаем вид
+            require_once (ROOT . '/views/admin_collection/create.php');
+            return true;
         }
 
-        require_once (ROOT . '/views/admin_collection/create.php');
-        return true;
+        die('Доступ запрещен');
     }
 
     /**
@@ -93,41 +106,58 @@ class AdminCollectionController extends AdminBase
     public function actionUpdate($id)
     {
         // Проверка доступа
-        self::checkAdmin();
+        if (self::checkAdmin() || self::checkEditor()) {
+            // Получаем id пользователя
+            $idUser = User::checkLoggedAdminPanel();
 
-        // Получаем список категорий
-        $categoriesList = Category::getCategoriesListAdminByCollection();
+            // Получаем список категорий
+            $categoriesList = Category::getCategoriesListAdminByCollection();
 
-        // Получаем данные о конкретном произведении
-        $collection = Collection::getCollectionById($id);
+            // Получаем данные о конкретном произведении
+            $collection = Collection::getCollectionById($id);
 
-        // Обработка формы
-        if (isset($_POST['submit'])) {
-            // Если форма отправлена, считываем данные
-            $options['name'] = $_POST['name'];
-            $options['author'] = $_POST['author'];
-            $options['year'] = $_POST['year'];
-            $options['category_id'] = $_POST['category_id'];
-            $options['description'] = $_POST['description'];
-            $options['status'] = $_POST['status'];
+            // Обработка формы
+            if (isset($_POST['submit'])) {
+                // Если форма отправлена, считываем данные
+                $options['name'] = $_POST['name'];
+                $options['author'] = $_POST['author'];
+                $options['year'] = $_POST['year'];
+                $options['material'] = $_POST['material'];
+                $options['size'] = $_POST['size'];
+                $options['category_id'] = $_POST['category_id'];
+                $options['description'] = $_POST['description'];
+                $options['status'] = $_POST['status'];
+                $options['display_block'] = $_POST['display_block'];
 
-            // Сохраняем изменения
-            if (Collection::updateCollectionById($id, $options)) {
+                $errors = false;
 
-                // Если запись успешно сохранена, то проверяем было ли загружено изображение
-                if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
-                    // Если загружалось, переместим его в нужную папку и дадим новое имя
-                    move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/upload/images/collections/{$id}.jpg");
+                // Делаем валидацию
+                if (!isset($options['name']) || empty($options['name'])) {
+                    $errors[] = 'Заполните поля';
+                }
+
+                if ($errors == false) {
+                    // Если ошибок нет
+                    // Сохраняем изменения
+                    if (Collection::updateCollectionById($id, $options)) {
+                        // Если запись успешно сохранена, то проверяем было ли загружено изображение
+                        if (is_uploaded_file($_FILES["image"]["tmp_name"])) {
+                            // Если загружалось, переместим его в нужную папку и дадим новое имя
+                            move_uploaded_file($_FILES["image"]["tmp_name"], $_SERVER['DOCUMENT_ROOT'] . "/upload/images/collections/{$id}.jpg");
+                        }
+                    }
+
+                    // Перенаправляем пользователя на страницу управления коллекциями
+                    header('Location: /admin/collection/');
                 }
             }
 
-            // Перенаправляем пользователя на страницу управления коллекциями
-            header('Location: /admin/collection/');
+            // Подключаем вид
+            require_once (ROOT . '/views/admin_collection/update.php');
+            return true;
         }
 
-        // Подключаем вид
-        require_once (ROOT . '/views/admin_collection/update.php');
-        return true;
+        die('Доступ запрещен');
     }
 
 
@@ -139,22 +169,24 @@ class AdminCollectionController extends AdminBase
     public function actionDelete($id)
     {
         // Проверка доступа
-        self::checkAdmin();
+        if (self::checkAdmin() || self::checkEditor()) {
+            // Получаем полную инф-ю по удаляемому произведению
+            $collection = Collection::getCollectionById($id);
+            $collectionName = $collection['name'];
 
-        // Получаем полную инф-ю по удаляемому произведению
-        $collection = Collection::getCollectionById($id);
-        $collectionName = $collection['name'];
+            if (isset($_POST['submit'])) {
+                // Если форма отправлена, то удаляем выбранное произведение
+                Collection::deleteCollectionById($id);
 
-        if (isset($_POST['submit'])) {
-            // Если форма отправлена, то удаляем выбранное произведение
-            Collection::deleteCollectionById($id);
+                // Перенаправляем пользователя на страницу с коллекциями
+                header('Location: /admin/collection/');
+            }
 
-            // Перенаправляем пользователя на страницу с коллекциями
-            header('Location: /admin/collection/');
+            // Подключаем вид
+            require_once (ROOT . '/views/admin_collection/delete.php');
+            return true;
         }
 
-        // Подключаем вид
-        require_once (ROOT . '/views/admin_collection/delete.php');
-        return true;
+        die('Доступ запрещен');
     }
 }

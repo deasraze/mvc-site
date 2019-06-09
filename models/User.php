@@ -351,17 +351,6 @@ class User
     }
 
     /**
-     * Возвращаем id пользователя для фото, если он авторизован
-     * @return mixed
-     */
-    public static function checkLoggedForPhoto()
-    {
-        if (isset($_SESSION['user'])) {
-            return $_SESSION['user'];
-        }
-    }
-
-    /**
      * Проверяем, авторизован ли пользователь в админ панели
      * @return mixed
      */

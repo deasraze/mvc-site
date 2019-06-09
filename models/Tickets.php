@@ -20,7 +20,7 @@ class Tickets
         $db = Db::getConnection();
 
         // Используем подготовленный запрос
-        $sql = 'SELECT id, name, price, description FROM tickets WHERE status = "1" ORDER BY id DESC LIMIT :limit';
+        $sql = 'SELECT id, name, price, description FROM tickets WHERE status = "1" AND availability = "1" ORDER BY id DESC LIMIT :limit';
 
         //Подготавливаем запрос к выполнению
         $result = $db->prepare($sql);

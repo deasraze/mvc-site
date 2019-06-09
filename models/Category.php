@@ -97,7 +97,7 @@ class Category
         $db = Db::getConnection();
 
         // Используем подготовленный запрос
-        $sql = 'SELECT id, name, sort_order, status FROM category ORDER BY id DESC LIMIT :limit OFFSET :offset';
+        $sql = 'SELECT id, name, sort_order, status FROM category ORDER BY sort_order ASC LIMIT :limit OFFSET :offset';
 
         // Подготавливаем запрос
         $result = $db->prepare($sql);

@@ -47,18 +47,21 @@ class Collection
         $db = Db::getConnection();
 
         // Используем подготовленный запрос
-        $sql = 'INSERT INTO collection (name, author, year, category_id, description, status) '
-                . 'VALUES (:name, :author, :year, :category_id, :description, :status)';
+        $sql = 'INSERT INTO collection (name, author, year, material, size, category_id, description, status, display_block) '
+                . 'VALUES (:name, :author, :year, :material, :size, :category_id, :description, :status, :display_block)';
 
         // Подготавливаем запрос
         $result = $db->prepare($sql);
         // Привязываем параметры
         $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
         $result->bindParam(':author', $options['author'], PDO::PARAM_STR);
-        $result->bindParam(':year', $options['year'], PDO::PARAM_INT);
+        $result->bindParam(':year', $options['year'], PDO::PARAM_STR);
+        $result->bindParam(':material', $options['material'], PDO::PARAM_STR);
+        $result->bindParam(':size', $options['size'], PDO::PARAM_STR);
         $result->bindParam(':category_id', $options['category_id'], PDO::PARAM_INT);
         $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
         $result->bindParam(':status', $options['status'], PDO::PARAM_INT);
+        $result->bindParam(':display_block', $options['display_block'], PDO::PARAM_INT);
 
         if ($result->execute()) {
             // Если добавление выполнено успешно, то возвращаем id добавленной записи
@@ -84,9 +87,12 @@ class Collection
                     name = :name, 
                     author = :author, 
                     year = :year, 
+                    material = :material, 
+                    size = :size, 
                     category_id = :category_id, 
                     description = :description, 
-                    status = :status 
+                    status = :status, 
+                    display_block = :display_block  
                 WHERE id = :id";
 
         // Подготавливаем запрос
@@ -95,10 +101,13 @@ class Collection
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->bindParam(':name', $options['name'], PDO::PARAM_STR);
         $result->bindParam(':author', $options['author'], PDO::PARAM_STR);
-        $result->bindParam(':year', $options['year'], PDO::PARAM_INT);
+        $result->bindParam(':year', $options['year'], PDO::PARAM_STR);
+        $result->bindParam(':material', $options['material'], PDO::PARAM_STR);
+        $result->bindParam(':size', $options['size'], PDO::PARAM_STR);
         $result->bindParam(':category_id', $options['category_id'], PDO::PARAM_INT);
         $result->bindParam(':description', $options['description'], PDO::PARAM_STR);
         $result->bindParam(':status', $options['status'], PDO::PARAM_INT);
+        $result->bindParam(':display_block', $options['display_block'], PDO::PARAM_INT);
 
         // Выполняем и возвращаем
         return $result->execute();

@@ -3,6 +3,7 @@
 /**
  * Контроллер AdminController
  */
+
 class AdminController extends AdminBase
 {
 
@@ -13,11 +14,16 @@ class AdminController extends AdminBase
     public function actionIndex()
     {
         // Проверка доступа
-        self::checkAdmin();
+        if (self::checkAdmin() || self::checkEditor()) {
+            // Получаем id пользователя
+            $idUser = User::checkLoggedAdminPanel();
 
-        // Подключаем вид
-        require_once (ROOT . '/views/admin/index.php');
-        return true;
+            // Подключаем вид
+            require_once (ROOT . '/views/admin/index.php');
+            return true;
+        }
+
+        die('Доступ запрещен');
     }
 
     /**
@@ -68,11 +74,22 @@ class AdminController extends AdminBase
     }
 
     /**
+     * Выход из админ панели
+     */
+    public function actionLogout()
+    {
+        // Удаляем данные из сесси и перенаправляем
+        unset($_SESSION['admin_user']);
+        header("Location: /");
+    }
+
+    /**
      * Страница поиска в админ панели
      * @return bool
      */
     public function actionSearch()
     {
+        // TODO: added check access
         if (isset($_POST['query'])) {
             // Если запрос был отправлен, считываем с какой страницы был запрос и определяем метод для поиска
             $url = $_SERVER['HTTP_REFERER'];

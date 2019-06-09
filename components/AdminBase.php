@@ -23,8 +23,7 @@ abstract class AdminBase
             return true;
         }
 
-        // Если нет, то завершаем работу и выводим сообщение
-        die('Доступ запрещен');
+        return false;
     }
 
     /**
@@ -44,7 +43,6 @@ abstract class AdminBase
             return true;
         }
 
-        // Если нет, то завершаем работу и выводим сообщение
-        die('Доступ запрещен');
+        return false;
     }
 }
