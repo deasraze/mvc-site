@@ -46,6 +46,10 @@
           width: 95%;
           h3 {
             font-size: 24px;
+            height: 49px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
           }
           p {
             span {
@@ -98,6 +102,21 @@
             }
           }
         }
+      }
+    }
+  }
+  .popupInfo {
+    position: fixed;
+    top: 90%;
+    right: 5%;
+    background: #03A9F4;
+    padding: 10px 15px;
+    color: #fff;
+    border-radius: 5px;
+    h3 {
+      font-family: "PT_SansNarrowWebRegular", sans-serif;
+      a {
+        color: #fff;
       }
     }
   }

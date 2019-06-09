@@ -46,7 +46,7 @@
       top: 50px;
       right: 0;
       padding: 10px 0;
-      width: 120px;
+      width: 130px;
       &:after {
         content: '';
         border: 10px solid transparent;
@@ -130,7 +130,7 @@
     li {
       a {
         letter-spacing: 2px;
-        color: #757575;
+        color: #212121;
         transition: .3s ease-in-out;
         border-bottom: 1px solid transparent;
         &:hover {
@@ -156,7 +156,7 @@
       }
       i {
         transition: .1s ease-in-out;
-        color: #757575;
+        color: #212121;
       }
       &:hover {
         transition: .1s ease-in-out;

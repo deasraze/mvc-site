@@ -101,7 +101,7 @@
             </ul>
         </div>
         <?php if (isset($errors) && is_array($errors)): ?>
-            <ul>
+            <ul class="error-message">
                 <?php foreach ($errors as $error): ?>
                     <li> - <?php echo $error; ?></li>
                 <?php endforeach; ?>

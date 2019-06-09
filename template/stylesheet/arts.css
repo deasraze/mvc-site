@@ -36,7 +36,26 @@
   justify-content: center; }
   #all-arts .main-container-two {
     display: flex;
-    margin: 0; }
+    margin: 0;
+    flex-direction: column; }
+  #all-arts .pagination {
+    margin-top: 20px;
+    display: flex;
+    width: 100%;
+    justify-content: center; }
+    #all-arts .pagination li {
+      padding: 10px;
+      list-style: none;
+      margin: 0 10px 0 10px;
+      border-radius: 4px;
+      box-shadow: 0 3px 12px rgba(27, 31, 35, 0.15); }
+      #all-arts .pagination li a {
+        font-family: "PT_SansNarrowWebRegular", sans-serif;
+        font-weight: bold;
+        color: #212121;
+        text-decoration: none; }
+        #all-arts .pagination li a:hover {
+          color: #009688; }
   #all-arts .search-art {
     min-width: 220px;
     max-width: 220px;

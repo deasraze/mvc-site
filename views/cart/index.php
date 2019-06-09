@@ -162,7 +162,7 @@
                     <hr class="short">
                 </div>
                 <div class="cart">
-                    <button onclick="location.href= '/tickets/'" class="delete-offer-from-cart" id="delete-offer-from-cart-1" value="1">Вернуться к билетам</button>
+                    <h3>Корзина пуста, <a href="/tickets/">купить билет</a>.</h3>
                     <div class="header-text">
                         <hr class="short">
                         <hr class="medium">

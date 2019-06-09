@@ -41,7 +41,7 @@
       top: 50px;
       right: 0;
       padding: 10px 0;
-      width: 120px; }
+      width: 130px; }
       .nav-container .user-menu .menu-wrap:after {
         content: '';
         border: 10px solid transparent;
@@ -116,7 +116,7 @@
   border: 1px solid rgba(27, 31, 35, 0.15); }
   .f-nav .nav li a {
     letter-spacing: 2px;
-    color: #757575;
+    color: #212121;
     transition: .3s ease-in-out;
     border-bottom: 1px solid transparent; }
     .f-nav .nav li a:hover {
@@ -137,7 +137,7 @@
         margin: 0; }
       .f-nav .user-menu .user-avatar i {
         transition: .1s ease-in-out;
-        color: #757575; }
+        color: #212121; }
       .f-nav .user-menu .user-avatar:hover {
         transition: .1s ease-in-out; }
         .f-nav .user-menu .user-avatar:hover i {

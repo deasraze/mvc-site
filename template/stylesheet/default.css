@@ -35,7 +35,8 @@ textarea, input, button, i, select, option {
   outline: none; }
 
 h1, h2, h3 {
-  font-family: 'AlegreyaSCRegular' , sans-serif; }
+  font-family: 'AlegreyaSCRegular' , sans-serif;
+  font-weight: 400; }
 
 p {
   font-family: 'SpectralRegular' , sans-serif; }
@@ -52,6 +53,12 @@ dl, ol, ul {
 
 .visible {
   opacity: 1; }
+
+.error-message {
+  margin: 40px 0 0 0;
+  font-family: "PT_SansNarrowWebRegular", sans-serif;
+  font-size: 18px;
+  color: #212121; }
 
 .main-fifty-container {
   width: 100%;

@@ -154,8 +154,9 @@
             </div>
             <?php endforeach; ?>
         </div>
+        <?php echo $pagination->get(); ?>
     </div>
-    <?php echo $pagination->get(); ?>
+
 </section>
 <footer id="footer">
     <div class="main-container-two">

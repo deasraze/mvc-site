@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/template/stylesheet/mobilMenu.css">
     <link rel="stylesheet" href="/template/stylesheet/cashbox.css">
     <link rel="stylesheet" href="/template/stylesheet/animation.css">
+    <link rel="stylesheet" href="/template/stylesheet/animate.css">
     <link rel="stylesheet" href="/template/stylesheet/all.css">
     <link rel="stylesheet" href="/template/stylesheet/nprogress.css">
     <!--scripts-->
@@ -98,17 +99,20 @@
                 <div class="avatar children">
                     <img src="<?php echo Tickets::getImage($ticket['id']); ?>" alt="<?php echo $ticket['name']; ?>">
                 </div>
-                <div class="cash-text">
+                <div class="cash-text cash-item-<?php echo $ticket['id'] ?>">
                     <h3><?php echo $ticket['name']; ?></h3>
                     <p><span><?php echo $ticket['price']; ?> р.</span></p>
                 </div>
                 <div class="cash-buttons">
                     <button id="btn-tooltip" class="tooltip-btn" title="<?php echo $ticket['description']; ?>"><i class="fas fa-exclamation"></i></button>
-                    <button id="add-to-cart"  class="add-to-cart" data-id="<?php echo $ticket['id']; ?>">Добавить в корзину</button>
+                    <button id="add-to-cart"  class="add-to-cart-<?php echo $ticket['id']; ?> add-to-cart"   data-id="<?php echo $ticket['id']; ?>" onclick="addToCart(<?php echo $ticket['id']; ?>)">Добавить в корзину</button>
                 </div>
             </div>
             <?php endforeach; ?>
         </div>
+    </div>
+    <div class="popupInfo animated slideOutRight">
+        <h3>Добавлено в <a href="/cart/">корзину!</a></h3>
     </div>
 </section>
 <footer id="footer">
@@ -147,7 +151,7 @@
 <script src="/template/scripts/bootstrap.bundle.min.js"></script>
 <script src="/template/scripts/animationMobilMenu.js"></script>
 <script src="/template/scripts/loader.js"></script>
-
+<script src="/template/scripts/addToCart.js"></script>
 <script src="/template/scripts/tooltip.js"></script>
 <script>
     $(document).ready(function () { // Код должен быть выполнен только после загрузки документа

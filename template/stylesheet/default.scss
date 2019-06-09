@@ -16,6 +16,7 @@ hr {height: 1px;background: #212121; margin-top: 15px}
 textarea,input,button,i,select,option {outline: none;}
 h1,h2,h3 {
   font-family: 'AlegreyaSCRegular' , sans-serif;
+  font-weight: 400;
 }
 p {
   font-family: 'SpectralRegular' , sans-serif;
@@ -30,6 +31,12 @@ dl , ol , ul {
 .hidden {opacity: 0;}
 .visible {opacity: 1;}
 .post {
+}
+.error-message {
+  margin: 40px 0 0 0;
+  font-family: "PT_SansNarrowWebRegular", sans-serif;
+  font-size: 18px;
+  color: #212121;
 }
 .main-fifty-container {
   width: 100%;
