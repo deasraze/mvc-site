@@ -148,16 +148,8 @@ class AdminTicketController extends AdminBase
         // Проверка прав доступа
         self::checkAdmin();
 
-        if (isset($_POST['submit'])) {
-            // Если кнопка была нажата, то удаляем выбранный билет
-            Tickets::deleteTicketById($id);
-
-            // Перенаправляем
-            header('Location: /admin/ticket/');
-        }
-
-        // Подключаем вид
-        require_once (ROOT . '/views/admin_ticket/delete.php');
+        // Удаляем
+        Tickets::deleteTicketById($id);
         return true;
     }
 }

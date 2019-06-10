@@ -127,19 +127,8 @@ class AdminCategoryController extends AdminBase
             // Получаем id пользователя
             $idUser = User::checkLoggedAdminPanel();
 
-            // Получаем полную информацию по удаляемой категории для вывода имени
-            $categoryName = Category::getCategoryById($id);
-
-            if (isset($_POST['submit'])) {
-                // Если форма была отправлена, то удаляем категорию
-                Category::deleteCategoryById($id);
-
-                // Перенаправляем пользователя к списку категорий
-                header('Location: /admin/category/');
-            }
-
-            // Подключаем вид
-            require_once(ROOT . '/views/admin_category/delete.php');
+            // Удаляем
+            Category::deleteCategoryById($id);
             return true;
         }
 

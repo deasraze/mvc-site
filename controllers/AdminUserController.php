@@ -252,16 +252,8 @@ class AdminUserController extends AdminBase
             // Получаем информацию о пользователе
             $user = User::getUserById($id);
 
-            if (isset($_POST['submit'])) {
-                // Если кнопка была нажата, то удаляем пользователя
-                User::deleteUserById($id);
-
-                // Перенаправляем
-                header('Location: /admin/user/');
-            }
-
-            // Подключаем вид
-            require_once (ROOT . '/views/admin_user/delete.php');
+            // Удаляем
+            User::deleteUserById($id);
             return true;
         }
 

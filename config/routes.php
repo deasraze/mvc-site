@@ -45,6 +45,7 @@
         // Страницы личного кабинета
         'cabinet' => 'cabinet/index', // actionIndex and CabinetController
         'cabinet/edit' => 'cabinet/edit', // actionEdit and CabinetController
+        'cabinet/editpassword' => 'cabinet/editpassword', // actionEditpassword and CabinetController
 
         // Главная страницы админки
         'admin' => 'admin/index', // actionIndex and AdminController

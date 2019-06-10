@@ -124,16 +124,8 @@ class AdminOrderController extends AdminBase
         // Проверяем права доступа
         self::checkAdmin();
 
-        if (isset($_POST['submit'])) {
-            // Если форма была отправлена, то удаляем
-            Order::deleteOrderById($id);
-
-            // Перенаправляем
-            header('Location: /admin/order');
-        }
-
-        // Подключаем вид
-        require_once (ROOT . '/views/admin_order/delete.php');
+        // Удаляем
+        Order::deleteOrderById($id);
         return true;
     }
 

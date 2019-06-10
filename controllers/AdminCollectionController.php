@@ -170,20 +170,9 @@ class AdminCollectionController extends AdminBase
     {
         // Проверка доступа
         if (self::checkAdmin() || self::checkEditor()) {
-            // Получаем полную инф-ю по удаляемому произведению
-            //$collection = Collection::getCollectionById($id);
-            //$collectionName = $collection['name'];
 
-            //if (isset($_POST['submit'])) {
-                // Если форма отправлена, то удаляем выбранное произведение
-                Collection::deleteCollectionById($id);
-
-                // Перенаправляем пользователя на страницу с коллекциями
-                header('Location: /admin/collection/');
-            //}
-
-            // Подключаем вид
-            //require_once (ROOT . '/views/admin_collection/delete.php');
+            // Удаляем
+            Collection::deleteCollectionById($id);
             return true;
         }
 

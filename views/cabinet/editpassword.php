@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Редактирование профиля</title>
+    <title>Редактирование пароля</title>
     <link rel="stylesheet" href="/template/stylesheet/all.css">
     <link rel="stylesheet" href="/template/stylesheet/fonts.css">
     <link rel="stylesheet" href="/template/stylesheet/default.css">
@@ -87,26 +87,35 @@
         </div>
     </div>
 </header>
-<section id="profile-view">
+<section id="profile-edit">
     <div class="main-container-two">
         <div class="header-text">
-            <h3>Профиль</h3>
+            <h3>Сменить пароль</h3>
             <hr class="long">
             <hr class="medium">
             <hr class="short">
         </div>
-        <div class="profile">
-            <div class="avatar">
-                <img src="<?php echo User::getImage($user['id']); ?>" alt="">
-            </div>
-            <div class="info">
-                <h3><?php echo $user['surname'] . $user['name']; ?></h3>
-                <div class="profile-button">
-                    <button onclick="location.href='/cabinet/edit/'">Редактировать профиль</button>
-                    <button onclick="location.href='/cabinet/editpassword/'">Сменить пароль</button>
+        <?php if ($result): ?>
+            <p>Данные отредактированы!</p>
+        <?php else: ?>
+        <?php if (isset($errors) && is_array($errors)): ?>
+            <ul>
+                <?php foreach ($errors as $error): ?>
+                    <li> - <?php echo $error; ?></li>
+                <?php endforeach; ?>
+            </ul>
+        <?php endif; ?>
+        <div class="user-edit">
+            <form action="#" method="post">
+                <div class="user-data">
+                    <input type="password" placeholder="Старый пароль" name="old_password">
+                    <input type="password" placeholder="Новый пароль" name="password">
+                    <input type="password" placeholder="Повторите новый пароль" name="re_password">
+                    <button type="submit" name="submit">Сохранить</button>
                 </div>
-            </div>
+            </form>
         </div>
+        <?php endif; ?>
     </div>
 </section>
 

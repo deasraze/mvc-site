@@ -174,18 +174,14 @@ class User
      * @param $id
      * @param $name
      * @param $surname
-     * @param $password
      * @return bool
      */
-    public static function edit($id, $name, $surname, $password)
+    public static function edit($id, $name, $surname)
     {
-        // Хешируем новый пароль
-        $password = password_hash($password, PASSWORD_DEFAULT);
-
         $db = Db::getConnection();
 
         // Используем подготовленный запрос
-        $sql = "UPDATE user SET name = :name, surname = :surname, password = :password WHERE id = :id";
+        $sql = "UPDATE user SET name = :name, surname = :surname WHERE id = :id";
 
         // Подготавливаем запрос к выполнению
         $result = $db->prepare($sql);
@@ -193,9 +189,31 @@ class User
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->bindParam(':name', $name, PDO::PARAM_STR);
         $result->bindParam(':surname', $surname, PDO::PARAM_STR);
-        $result->bindParam(':password', $password, PDO::PARAM_STR);
 
         // Запускаем и возвращаем
+        return $result->execute();
+    }
+
+    /**
+     * Редактирование пароля в лк
+     * @param $id
+     * @param $password
+     * @return bool
+     */
+    public static function editPassword($id, $password)
+    {
+        $db = Db::getConnection();
+
+        // Используем подготовленный запрос
+        $sql = 'UPDATE user SET password = :password WHERE id = :id';
+
+        // Подготавливаем запрос к выполнению
+        $result = $db->prepare($sql);
+        // Привязываем параметры
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->bindParam(':password', $password, PDO::PARAM_STR);
+
+        // Выполняем и возвращаем
         return $result->execute();
     }
 
