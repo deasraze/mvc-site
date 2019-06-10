@@ -1,0 +1,52 @@
+#checkout {
+  padding-top: 120px;
+  .checkout-body {
+    form {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      h3 {
+        margin: 20px 0 20px 0;
+        span {
+          font-family: "PT_SansNarrowWebRegular" , sans-serif;
+          font-size: 24px;
+        }
+      }
+      p {
+        min-width: 400px;
+        max-width: 400px;
+        text-align: center;
+      }
+      input {
+        font-family: 'PT_SansNarrowWebRegular', sans-serif;
+        min-width: 400px;
+        max-width: 400px;
+        font-size: 18px;
+        padding: 10px 5px;
+        margin-top: 20px;
+        border: 1px solid #80c7ba;
+        border-radius: 3px;
+      }
+      textarea {
+        @extend input;
+      }
+      button {
+        width: 290px;
+        padding: 10px 5px;
+        font-size: 18px;
+        font-family: 'PT_SansNarrowWebRegular' , sans-serif;
+        text-transform: uppercase;
+        margin-top: 20px;
+        border-radius: 3px;
+        border: 1px solid #80c7ba;
+        background: none;
+        transition: .2s ease-in-out;
+        &:hover {
+          background: #80c7ba;
+          color: #fff;
+          transition: .2s ease-in-out;
+        }
+      }
+    }
+  }
+}

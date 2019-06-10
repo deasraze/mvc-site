@@ -7,7 +7,9 @@
   padding-top: 120px; }
   #cart-main .main-container-two {
     display: flex;
-    justify-content: center; }
+    justify-content: center;
+    min-width: 890px;
+    max-width: 890px; }
     #cart-main .main-container-two .cart-wrap .cart {
       width: 855px;
       display: flex;
@@ -130,7 +132,8 @@
           position: absolute;
           padding: 0 0 0 10px;
           color: #fff;
-          font-family: 'SpectralRegular' , sans-serif; }
+          font-family: 'SpectralRegular' , sans-serif;
+          white-space: nowrap; }
           #cart-main .main-container-two .cart-wrap .total-amount .total-amount-wrap .place-your-order:after {
             content: '';
             position: absolute;

@@ -629,6 +629,14 @@
     .area-zona .fifty-container img {
       width: 100%; }
 
+  #contact .contact-body form input {
+    width: 90%; }
+
+  #checkout .checkout-body form p {
+    width: 90%; }
+  #checkout .checkout-body form input {
+    width: 90%; }
+
   #main .short-view-information-about-museum {
     flex-direction: column;
     justify-content: center;

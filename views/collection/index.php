@@ -29,7 +29,7 @@
 </head>
 <body>
 <header id="header">
-    <div class="nav-container f-nav">
+    <div class="nav-container">
         <div class="nav">
             <ul>
                 <li><a href="/">Главная</a></li>

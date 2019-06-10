@@ -75,7 +75,9 @@
       letter-spacing: 1px; }
 
 .nav {
-  height: 42px; }
+  height: 42px;
+  display: flex;
+  align-items: center; }
 
 .nav ul {
   list-style: none; }

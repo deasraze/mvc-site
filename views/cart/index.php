@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/template/stylesheet/mobilMenu.css">
     <link rel="stylesheet" href="/template/stylesheet/cart.css">
     <link rel="stylesheet" href="/template/stylesheet/media.css">
+    <link rel="stylesheet" href="/template/stylesheet/scrollBar.css">
     <link rel="stylesheet" href="/template/stylesheet/nprogress.css">
     <!--    scripts-->
     <script src="/template/scripts/jq.min.js"></script>

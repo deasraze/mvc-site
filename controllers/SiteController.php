@@ -48,7 +48,7 @@ class SiteController
             }
         }
 
-        require_once (ROOT . '/views/site/contact.php');
+        require_once(ROOT . '/views/site/contact.php');
 
         return true;
     }

@@ -17,6 +17,8 @@
   .main-container-two {
     display: flex;
     justify-content: center;
+    min-width: 890px;
+    max-width: 890px;
     .cart-wrap {
       .cart {
         width: 855px;
@@ -170,6 +172,7 @@
             padding: 0 0 0 10px;
             color: #fff;
             font-family: 'SpectralRegular' , sans-serif;
+            white-space: nowrap;
             &:after {
               content: '';
               position: absolute;

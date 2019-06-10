@@ -919,6 +919,27 @@
       }
     }
   }
+  #contact {
+    .contact-body {
+      form {
+        input {
+          width: 90%;
+        }
+      }
+    }
+  }
+  #checkout {
+    .checkout-body {
+      form {
+        p {
+          width: 90%;
+        }
+        input {
+          width: 90%;
+        }
+      }
+    }
+  }
 
   //index
   #main {

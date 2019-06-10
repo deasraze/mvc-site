@@ -2,17 +2,25 @@ let amount = $(".amount-sum");
 let cart = $("#cart-count");
 
 
-
+function checkCartTickets() {
+    let cart_offer = $(".cart-offer").length;
+    if (cart_offer <= 1) {
+        setTimeout(function () {
+            let zero = '<h3>Корзина пуста, <a href=\"/tickets/\">купить билет</a>.</h3>';
+            $(".cart").html(zero);
+        },500)
+    }
+}
 
 async function addItem(id) {
-    let delition = await fetch("http://mvc-site/cart/add/"+id);
+    let delition = await fetch("/cart/add/"+id);
     increaseCart(id);
 }
 
 async function deleteItem(id) {
     let count = $('.amount-cart-span-'+id);
     if (+count.text() > 1) {
-        let delition = await fetch("http://mvc-site/cart/delete/"+id);
+        let delition = await fetch("/cart/delamount/"+id);
         decreaseCart(id);
     }
 }
@@ -43,48 +51,39 @@ function decreaseCart(id) {
     countingTheAmount(countingTheAmount(id,""));
 }
 
+
 function countingTheAmount(id,value) {
+    console.log("Обработало")
     if (value === "increase") {
         let amount_one_item  = $("#cost-cart-" + id).text();
         let sum = +amount.text() + + amount_one_item;
         amount.text(sum);
+    }else if (value === "full") {
+        let count = $('.amount-cart-span-'+id);
+        let cost_cart = $("#cost-cart-"+id);
+        let amountt = $(".amount-sum");
+        amount.text((+amountt.text() - ( +count.text() * +cost_cart.text() ) ) );
+
+        let sum_cart = +cart.text() - +count.text();
+        cart.text(sum_cart);
+
     }else {
         let amount_one_item  = $("#cost-cart-" + id).text();
         let sum = +amount.text() - + amount_one_item;
         amount.text(sum);
-        console.log("сработало")
-
     }
 }
 
 async function btnDeleteTicketClick(id) {
-    //let $('.cart-offer-'+id + " " + "amount-cart").text();
-    let cart_check = $(".amount-cart-"+id).text();
+    $("#cart-offer-" + id).slideToggle();
+    $("#cart-offer-" + id + " " + "img").css({"opacity": "0", "transition": "0.2s ease-in-out"});
+    checkCartTickets(id);
+    countingTheAmount(id,"full")
+    setTimeout(function () {
+        $("#cart-offer-"+id).remove();
+    },500);
+    let delition = await fetch("/cart/delete/"+id);
 
-    if (+cart_check > 1) {
-        let delition = await fetch("http://mvc-site/cart/delete/"+id);
-        let amount_one_item  = $("#cost-cart-" + id).text();
-        let sum = +amount.text() - + amount_one_item;
-        let sum_cart = +cart.text() - 1;
-        let sum_check = +cart_check - 1;
-        amount.text(sum);
-        cart.text(sum_cart);
-        $('.amount-cart-'+id).text(sum_check);
-        console.log(sum_check);
-        return delition;
-    }else {
-        $("#cart-offer-" + id).slideToggle();
-        $("#cart-offer-" + id + " " + "img").css({"opacity": "0", "transition": "0.2s ease-in-out"});
-        setTimeout(function () {
-            $("#cart-offer-"+id).remove();
-        },1500);
-        let delition = await fetch("http://mvc-site/cart/delete/"+id);
-        return delition;
-    }
-
-
-
-
-
-
+    return delition;
 }
+
