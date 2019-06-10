@@ -69,6 +69,8 @@
     <div class="admin-panel">
         <nav id="menuVertical">
             <ul>
+                <li><a href="/admin/settings/"><div class="img_n"><img src="/template/img/gradient@2x/pencil.png"></div><span>Настройки</span></a></li>
+
                 <li><a href="#"><div class="img_n"><img src="/template/img/gradient@2x/folder.png"></div><span>Коллекции</span></a>
                     <ul>
                         <li><a href="/admin/collection/create/">Добавить</a></li>
@@ -100,6 +102,13 @@
                 <li><a href="#"><div class="img_n"><img src="/template/img/gradient@2x/bell.png"></div><span>Заказы</span></a>
                     <ul>
                         <li><a href="/admin/order/">Посмотреть</a></li>
+                    </ul>
+                </li>
+
+                <li><a href="/admin/jobs/"><div class="img_n"><img src="/template/img/gradient@2x/folder.png"></div><span>Вакансии</span></a>
+                    <ul>
+                        <li><a href="/admin/jobs/create/">Добавить</a></li>
+                        <li><a href="/admin/jobs/">Посмотреть</a></li>
                     </ul>
                 </li>
 

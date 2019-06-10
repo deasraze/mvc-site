@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Редактировать категорию <?php echo $category['name']; ?></title>
+    <title>Редактировать категорию <?php echo mb_strtolower($category['name']); ?></title>
     <link rel="stylesheet" href="/template/stylesheet/all.css">
     <link rel="stylesheet" href="/template/stylesheet/fonts.css">
     <link rel="stylesheet" href="/template/stylesheet/scrollBar.css">
@@ -67,6 +67,8 @@
     <div class="admin-panel">
         <nav id="menuVertical">
             <ul>
+                <li><a href="/admin/settings/"><div class="img_n"><img src="/template/img/gradient@2x/pencil.png"></div><span>Настройки</span></a></li>
+
                 <li><a href="#"><div class="img_n"><img src="/template/img/gradient@2x/folder.png"></div><span>Коллекции</span></a>
                     <ul>
                         <li><a href="/admin/collection/create/">Добавить</a></li>
@@ -101,6 +103,13 @@
                     </ul>
                 </li>
 
+                <li><a href="/admin/jobs/"><div class="img_n"><img src="/template/img/gradient@2x/folder.png"></div><span>Вакансии</span></a>
+                    <ul>
+                        <li><a href="/admin/jobs/create/">Добавить</a></li>
+                        <li><a href="/admin/jobs/">Посмотреть</a></li>
+                    </ul>
+                </li>
+
                 <li><a href="/admin/logout/"><div class="img_n"><img src="/template/img/gradient@2x/tactics.png"></div><span>Выход</span></a></li>
             </ul>
         </nav>
@@ -125,7 +134,7 @@
             </ul>
         <?php endif; ?>
         <form action="#" method="post">
-            <label class="header-table" for=""><h3>Редактировать категорию <?php echo $category['name']; ?></h3></label>
+            <label class="header-table" for=""><h3>Редактировать категорию <?php echo mb_strtolower($category['name']); ?></h3></label>
             <div class="all-info">
                 <div>
                     <div>

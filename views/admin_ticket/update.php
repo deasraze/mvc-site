@@ -1,73 +1,196 @@
-<?php include ROOT . '/views/layouts/header_admin.php'; ?>
-
-<section>
-    <div class="container">
-        <div class="row">
-
-            <br/>
-
-            <div class="breadcrumbs">
-                <ol class="breadcrumb">
-                    <li><a href="/admin/">Админпанель</a></li>
-                    <li><a href="/admin/ticket/">Управление билетами</a></li>
-                    <li class="active">Редактировать билет</li>
-                </ol>
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Редактировать билет <?php echo mb_strtolower($ticket['name']); ?></title>
+    <link rel="stylesheet" href="/template/stylesheet/all.css">
+    <link rel="stylesheet" href="/template/stylesheet/fonts.css">
+    <link rel="stylesheet" href="/template/stylesheet/scrollBar.css">
+    <link rel="stylesheet" href="/template/stylesheet/default.css">
+    <link rel="stylesheet" href="/template/stylesheet/menuCSS.css">
+    <link rel="stylesheet" href="/template/stylesheet/mobilMenu.css">
+    <link rel="stylesheet" href="/template/stylesheet/admin.css">
+    <link rel="stylesheet" href="/template/stylesheet/tooltip.css">
+    <link rel="stylesheet" href="/template/stylesheet/nprogress.css">
+    <link rel="stylesheet" href="/template/stylesheet/media.css">
+    <!--scripts-->
+    <script src="/template/scripts/jq.min.js"></script>
+    <script src="/template/scripts/nprogress.js"></script>
+</head>
+<body>
+<header id="header">
+    <div class="nav-container f-nav">
+        <div class="nav">
+            <ul>
+                <li><a href="/">Главная</a></li>
+                <li><a href="/news/">Новости</a></li>
+                <li><a href="/tickets/">Касса</a></li>
+                <li><a href="/collection/">Произведения</a></li>
+                <li><a href="/jobs/">Вакансии</a></li>
+                <li><a href="/contacts/">Контакты</a></li>
+                <li><a href="/about/">О нас </a></li>
+            </ul>
+            <div class="clear"></div>
+        </div>
+        <div class="user-menu">
+            <div class="user-avatar" id="close__" onclick="openUserProfil()" >
+                <img src="<?php echo User::getImage($idUser); ?>" alt="user-avatar">
+                <p><i class="fas fa-angle-down"></i></p>
             </div>
+        </div>
+    </div>
+    <div class="mobil_menu">
+        <div class="wrap-menu">
+            <div class="nav-menu">
+                <ul>
+                    <li><a href="/">Главная</a></li>
+                    <li><a href="/news/">Новости</a></li>
+                    <li><a href="/tickets/">Касса</a></li>
+                    <li><a href="/collection/">Произведения</a></li>
+                    <li><a href="/jobs/">Вакансии</a></li>
+                    <li><a href="/contacts/">Контакты</a></li>
+                    <li><a href="/about/">О нас </a></li>
+                </ul>
+            </div>
+            <button class="open-the-menu" id="close" onclick="tranformation_btn()">
+                <div class="line line1"></div>
+                <div class="line line2"></div>
+                <div class="line line3"></div>
+            </button>
+        </div>
+    </div>
+</header>
+<section id="panel">
+    <div class="admin-panel">
+        <nav id="menuVertical">
+            <ul>
+                <li><a href="/admin/settings/"><div class="img_n"><img src="/template/img/gradient@2x/pencil.png"></div><span>Настройки</span></a></li>
 
+                <li><a href="#"><div class="img_n"><img src="/template/img/gradient@2x/folder.png"></div><span>Коллекции</span></a>
+                    <ul>
+                        <li><a href="/admin/collection/create/">Добавить</a></li>
+                        <li><a href="/admin/collection/">Посмотреть</a></li>
+                    </ul>
+                </li>
 
-            <h4>Редактировать <?php echo $ticket['name']; ?></h4>
+                <li><a href="#"><div class="img_n"><img src="/template/img/gradient@2x/pencil.png"></div><span>Категории</span></a>
+                    <ul>
+                        <li><a href="/admin/category/create/">Добавить</a></li>
+                        <li><a href="/admin/category/">Посмотреть</a></li>
+                    </ul>
+                </li>
 
-            <br/>
+                <li><a href="#"><div class="img_n"><img src="/template/img/gradient@2x/printer.png"></div><span>Билеты</span></a>
+                    <ul>
+                        <li><a href="/admin/ticket/create/">Добавить</a></li>
+                        <li><a href="/admin/ticket/">Посмотреть</a></li>
+                    </ul>
+                </li>
 
-            <div class="col-lg-4">
-                <div class="login-form">
-                    <form action="#" method="post" enctype="multipart/form-data">
+                <li><a href="#"><div class="img_n"><img src="/template/img/gradient@2x/bell.png"></div><span>Пользователи</span></a>
+                    <ul>
+                        <li><a href="/admin/user/create/">Добавить</a></li>
+                        <li><a href="/admin/user/">Посмотреть</a></li>
+                    </ul>
+                </li>
 
-                        <p>Название</p>
-                        <input type="text" name="name" placeholder="" value="<?php echo $ticket['name']; ?>">
+                <li><a href="#"><div class="img_n"><img src="/template/img/gradient@2x/bell.png"></div><span>Заказы</span></a>
+                    <ul>
+                        <li><a href="/admin/order/">Посмотреть</a></li>
+                    </ul>
+                </li>
 
-                        <p>Артикул</p>
-                        <input type="text" name="code" placeholder="" value="<?php echo $ticket['code']; ?>">
+                <li><a href="/admin/jobs/"><div class="img_n"><img src="/template/img/gradient@2x/folder.png"></div><span>Вакансии</span></a>
+                    <ul>
+                        <li><a href="/admin/jobs/create/">Добавить</a></li>
+                        <li><a href="/admin/jobs/">Посмотреть</a></li>
+                    </ul>
+                </li>
 
-                        <p>Цена</p>
-                        <input type="text" name="price" placeholder="" value="<?php echo $ticket['price']; ?>">
-
-                        <p>Изображение билета</p>
-                        <img src="<?php echo Tickets::getImage($ticket['id']); ?>" width="200" alt="" />
-                        <input type="file" name="image" placeholder="" value="">
-
-                        <p>Детальное описание</p>
-                        <textarea name="description"><?php echo $ticket['description']; ?></textarea>
-
-                        <br/><br/>
-
-                        <p>Наличие</p>
-                        <select name="availability">
-                            <option value="1" <?php if ($ticket['availability'] == 1) echo ' selected="selected"'; ?>>В наличии</option>
-                            <option value="0" <?php if ($ticket['availability'] == 0) echo ' selected="selected"'; ?>>Закончились</option>
-                        </select>
-
-                        <br/><br/>
-
-                        <p>Статус</p>
+                <li><a href="/admin/logout/"><div class="img_n"><img src="/template/img/gradient@2x/tactics.png"></div><span>Выход</span></a></li>
+            </ul>
+        </nav>
+        <div class="menu"><div class="footer">Copyright © 2019<br>
+                powered by <a href="#"><font color="#9dacaa">Chopper & Condecrom</font></a>
+            </div>
+        </div>
+    </div>
+    <div class="info-panel">
+        <div class="navigation-admin-panel">
+            <ol>
+                <li><a href="/admin/">Панель администратора</a></li>
+                <li><a href="/admin/ticket/">Управление билетами</a></li>
+                <li class="active">Редактировать билет</li>
+            </ol>
+        </div>
+        <?php if (isset($errors) && is_array($errors)): ?>
+            <ul>
+                <?php foreach ($errors as $error): ?>
+                    <li> - <?php echo $error; ?></li>
+                <?php endforeach; ?>
+            </ul>
+        <?php endif; ?>
+        <form action="#" method="post" enctype="multipart/form-data">
+            <label class="header-table" for=""><h3>Редактировать <?php echo mb_strtolower($ticket['name']); ?></h3></label>
+            <div class="all-info">
+                <div>
+                    <div>
+                        <label for="name_of_art">Названние билета:</label>
+                        <input type="text" name="name" value="<?php echo $ticket['name']; ?>">
+                    </div>
+                    <div>
+                        <label for="author">Артикул:</label>
+                        <input type="text" name="code" value="<?php echo $ticket['code']; ?>">
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <div>
+                        <label for="name_of_art">Цена:</label>
+                        <input type="text" name="price" value="<?php echo $ticket['price']; ?>">
+                    </div>
+                    <div>
+                        <label for="">Статус</label>
                         <select name="status">
                             <option value="1" <?php if ($ticket['status'] == 1) echo ' selected="selected"'; ?>>Отображается</option>
                             <option value="0" <?php if ($ticket['status'] == 0) echo ' selected="selected"'; ?>>Скрыт</option>
                         </select>
-
-                        <br/><br/>
-
-                        <input type="submit" name="submit" class="btn btn-default" value="Сохранить">
-
-                        <br/><br/>
-
-                    </form>
+                    </div>
                 </div>
+                <br>
+                <div>
+                    <div>
+                        <label for="">Загрузка изображения</label>
+                        <img src="<?php echo Tickets::getImage($ticket['id']); ?>" width="200" alt="<?php echo $ticket['name']; ?>">
+                        <input type="file" name="image">
+                    </div>
+                </div>
+                <br>
+                <br>
+                <label for="description">Полное описание</label> <br>
+                <textarea name="description"><?php echo $ticket['description']; ?></textarea> <br>
+                <br>
+                <div>
+                    <div>
+                        <label for="">Доступность</label>
+                        <select name="availability">
+                            <option value="1" <?php if ($ticket['availability'] == 1) echo ' selected="selected"'; ?>>В наличии</option>
+                            <option value="0" <?php if ($ticket['availability'] == 0) echo ' selected="selected"'; ?>>Закончились</option>
+                        </select>
+                    </div>
+                </div>
+                <br>
+                <button type="submit" name="submit" class="save-btn">Сохранить</button>
             </div>
-
-        </div>
+        </form>
     </div>
 </section>
-
-<?php include ROOT . '/views/layouts/footer_admin.php'; ?>
+<!--scripts-->
+<script src="/template/scripts/loader.js"></script>
+<script src="/template/scripts/animationMobilMenu.js"></script>
+</body>
+</html>
 

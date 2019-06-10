@@ -13,20 +13,25 @@ class AdminOrderController extends AdminBase
     public function actionIndex($page = 1)
     {
         // Проверяем права доступа
-        self::checkAdmin();
+        if (self::checkAdmin() || self::checkEditor()) {
+            // Получаем id пользователя для авы
+            $idUser = User::checkLoggedAdminPanel();
 
-        // Получаем список заказов
-        $ordersList = array();
-        $ordersList = Order::getOrdersListByAdmin($page);
+            // Получаем список заказов
+            $ordersList = array();
+            $ordersList = Order::getOrdersListByAdmin($page);
 
-        // Получаем общее число заказов
-        $total = Order::getTotalOrderAdmin();
-        // Создаем новый объекс класса
-        $pagination = new Pagination($total, $page, Order::SHOW_BY_DEFAULT, 'page-');
+            // Получаем общее число заказов
+            $total = Order::getTotalOrderAdmin();
+            // Создаем новый объекс класса
+            $pagination = new Pagination($total, $page, Order::SHOW_BY_DEFAULT, 'page-');
 
-        // Подключаем вид
-        require_once (ROOT . '/views/admin_order/index.php');
-        return true;
+            // Подключаем вид
+            require_once (ROOT . '/views/admin_order/index.php');
+            return true;
+        }
+
+        die('Доступ запрещен');
     }
 
     /**
@@ -37,23 +42,28 @@ class AdminOrderController extends AdminBase
     public function actionView($id)
     {
         // Проверяем права доступа
-        self::checkAdmin();
+        if (self::checkAdmin() || self::checkEditor()) {
+            // Получаем id пользователя для авы
+            $idUser = User::checkLoggedAdminPanel();
 
-        // Получаем данные о конкретном заказе
-        $order = Order::getOrderById($id);
+            // Получаем данные о конкретном заказе
+            $order = Order::getOrderById($id);
 
-        // Получаем массив с идентификаторами и количеством билетов
-        $ticketsQuantity = json_decode($order['tickets'], true);
+            // Получаем массив с идентификаторами и количеством билетов
+            $ticketsQuantity = json_decode($order['tickets'], true);
 
-        // Получаем массив только с id билетов
-        $ticketsIds = array_keys($ticketsQuantity);
+            // Получаем массив только с id билетов
+            $ticketsIds = array_keys($ticketsQuantity);
 
-        // Получаем список билетов в заказе
-        $tickets = Tickets::getTicketsByIds($ticketsIds);
+            // Получаем список билетов в заказе
+            $tickets = Tickets::getTicketsByIds($ticketsIds);
 
-        // Подключаем вид
-        require_once (ROOT . '/views/admin_order/view.php');
-        return true;
+            // Подключаем вид
+            require_once (ROOT . '/views/admin_order/view.php');
+            return true;
+        }
+
+        die('Доступ запрещен');
     }
 
     /**
@@ -64,39 +74,44 @@ class AdminOrderController extends AdminBase
     public function actionUpdate($id)
     {
         // Проверяем права доступа
-        self::checkAdmin();
+        if (self::checkAdmin() || self::checkEditor()) {
+            // Получаем id пользователя для авы
+            $idUser = User::checkLoggedAdminPanel();
 
-        // Получаем информацию о заказе
-        $order = Order::getOrderById($id);
+            // Получаем информацию о заказе
+            $order = Order::getOrderById($id);
 
-        // Проверяем отправку формы
-        if (isset($_POST['submit'])) {
-            // Если форма была отправлена, считываем данные
-            $options['user_name'] = $_POST['user_name'];
-            $options['user_surname'] = $_POST['user_surname'];
-            $options['user_phone'] = $_POST['user_phone'];
-            $options['user_comment'] = $_POST['user_comment'];
-            $options['date'] = $_POST['date'];
-            $options['status'] = $_POST['status'];
+            // Проверяем отправку формы
+            if (isset($_POST['submit'])) {
+                // Если форма была отправлена, считываем данные
+                $options['user_name'] = $_POST['user_name'];
+                $options['user_surname'] = $_POST['user_surname'];
+                $options['user_phone'] = $_POST['user_phone'];
+                $options['user_comment'] = $_POST['user_comment'];
+                $options['date'] = $_POST['date'];
+                $options['status'] = $_POST['status'];
 
-            // При желании можно доделать валидацию
-            $errors = false;
-            if (!isset($options['user_name']) || empty($options['user_name'])) {
-                $errors[] = 'Заполните поля';
+                // При желании можно доделать валидацию
+                $errors = false;
+                if (!isset($options['user_name']) || empty($options['user_name'])) {
+                    $errors[] = 'Заполните поля';
+                }
+
+                if ($errors == false) {
+                    // Если ошибок нет, то обновляем данные о заказе
+                    Order::updateOrderById($id, $options);
+
+                    // Перенаправляем
+                    header('Location: /admin/order/view/' . $id);
+                }
             }
 
-            if ($errors == false) {
-                // Если ошибок нет, то обновляем данные о заказе
-                Order::updateOrderById($id, $options);
-
-                // Перенаправляем
-                header('Location: /admin/order/view/' . $id);
-            }
+            // Подключаем вид
+            require_once (ROOT . '/views/admin_order/update.php');
+            return true;
         }
 
-        // Подключаем вид
-        require_once (ROOT . '/views/admin_order/update.php');
-        return true;
+        die('Доступ запрещен');
     }
 
     /**

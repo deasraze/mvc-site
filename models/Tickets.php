@@ -117,7 +117,7 @@ class Tickets
         $db = Db::getConnection();
 
         // Используем подготовленный запрос
-        $sql = 'SELECT id, name, price, code, availability FROM tickets ORDER BY id DESC LIMIT :limit OFFSET :offset';
+        $sql = 'SELECT id, name, price, code, status, availability FROM tickets ORDER BY id DESC LIMIT :limit OFFSET :offset';
 
         // Подготавливаем запрос к выполнению
         $result = $db->prepare($sql);
@@ -134,6 +134,7 @@ class Tickets
             $ticketList[$i]['name'] = $row['name'];
             $ticketList[$i]['price'] = $row['price'];
             $ticketList[$i]['code'] = $row['code'];
+            $ticketList[$i]['status'] = $row['status'];
             $ticketList[$i]['availability'] = $row['availability'];
             $i++;
         }
@@ -259,6 +260,24 @@ class Tickets
                 break;
             case '0':
                 return 'Закончились';
+                break;
+        }
+    }
+
+    /**
+     * Возвращаем текстовое пояснение для статуса
+     * @param $status
+     * @return string
+     */
+    public static function getStatusText($status)
+    {
+        switch ($status)
+        {
+            case '1':
+                return 'Отображается';
+                break;
+            case '0':
+                return 'Скрыто';
                 break;
         }
     }
