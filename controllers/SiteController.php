@@ -14,6 +14,9 @@ class SiteController
 
     public function actionContact()
     {
+        // Получаем фото пользователя по id
+        $idUser = User::getUserId();
+
         $userEmail = '';
         $userText = '';
         $userTheme = '';

@@ -5,7 +5,7 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
+    <title>Оформление заказа</title>
 <!--    styles-->
     <link rel="stylesheet" href="/template/stylesheet/all.css">
     <link rel="stylesheet" href="/template/stylesheet/fonts.css">
@@ -99,20 +99,32 @@
             <hr class="short">
         </div>
         <div class="checkout-body">
-            <form action="">
-                <h3>Выбрано товаров: <span>4</span>, на сумму: <span>400</span><span>р.</span></h3>
-                <p>Для оформления заказа заполните форму.Наш менеджер свяжется с Вами.</p>
-                <input type="text" placeholder="Имя">
-                <input type="text" placeholder="Фамилия">
-                <input type="text" placeholder="Телефон">
-                <textarea placeholder="Сообщение"></textarea>
-                <button>Оформить</button>
-            </form>
+            <?php if ($result): ?>
+                <p>Ваш заказ оформлен. Мы вам перезвоним.</p>
+            <?php else: ?>
+                <?php if (isset($errors) && is_array($errors)): ?>
+                    <?php foreach ($errors as $error): ?>
+                        <li> - <?php echo $error; ?></li>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+                <form action="#" method="post">
+                    <h3>Выбрано товаров: <span><?php echo $totalQuantity; ?></span>, на сумму:
+                        <span><?php echo $totalPrice; ?></span><span> р.</span></h3>
+                    <p>Для оформления заказа заполните форму. Наш менеджер свяжется с Вами.</p>
+                    <input type="text" placeholder="Имя" name="userName">
+                    <input type="text" placeholder="Фамилия" name="userSurname">
+                    <input type="text" placeholder="Телефон" id="phone" name="userPhone">
+                    <textarea placeholder="Комментарий к заказу" name="userComment"></textarea>
+                    <button type="submit" name="submit">Оформить</button>
+                </form>
+            <?php endif; ?>
         </div>
     </div>
 </section>
 <!--scripts-->
 <script src="/template/scripts/animationMobilMenu.js"></script>
 <script src="/template/scripts/loader.js"></script>
+<script src="/template/scripts/jquery.maskedinput.min.js"></script>
+<script src="/template/scripts/masks.js"></script>
 </body>
 </html>

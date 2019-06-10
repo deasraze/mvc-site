@@ -56,6 +56,9 @@ class CartController
 
     public function actionCheckout()
     {
+        // Получаем фото пользователя по id
+        $idUser = User::getUserId();
+        
         // Статус оформления заказа
         $result = false;
 

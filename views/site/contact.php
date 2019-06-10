@@ -100,12 +100,23 @@
             <hr class="short">
         </div>
         <div class="contact-body">
-            <form action="">
-                <input type="text" placeholder="Ваше имя">
-                <input type="text" placeholder="Тема">
-                <textarea name="message" value="Ваше вообщение" placeholder="Ваше сообщение"></textarea>
-                <button type="submit">Отправить</button>
-            </form>
+            <?php if ($result): ?>
+                <p>Сообщение отправлено! Мы ответим Вам на указанный E-mail.</p>
+            <?php else: ?>
+                <?php if (isset($errors) && is_array($errors)): ?>
+                    <ul>
+                        <?php foreach ($errors as $error): ?>
+                            <li> - <?php echo $error; ?></li>
+                        <?php endforeach; ?>
+                    </ul>
+                <?php endif; ?>
+                <form action="#" method="post">
+                    <input type="email" placeholder="Ваш E-mail" name="userEmail">
+                    <input type="text" placeholder="Тема" name="userTheme">
+                    <textarea name="userText" placeholder="Ваше сообщение"></textarea>
+                    <button type="submit" name="submit">Отправить</button>
+                </form>
+            <?php endif; ?>
         </div>
     </div>
 </section>
