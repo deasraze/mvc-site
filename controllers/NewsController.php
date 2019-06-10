@@ -1,34 +1,57 @@
 <?php
 
-include_once ROOT . '/models/News.php';
+/**
+ * Управление новостями
+ * Контроллер NewsController
+ */
 
 class NewsController
 {
 
-    public function actionIndex()
+    /**
+     * Главная страница новостей
+     * @param int $page
+     * @return bool
+     */
+    public function actionIndex($page = 1)
     {
-        $newsList = array();
-        $newsList = News::getNewsList();
-
         // Получаем id пользователя для аватара в шапке
         $idUser = User::getUserId();
 
-        require_once(ROOT . '/views/news/index.php');
+        // Получаем массив новостей
+        $newsList = array();
+        $newsList = News::getNewsList($page);
 
+        // Получаем общее количество новостей для пагинатора
+        $total = News::getNewsCount();
+
+        // Создаем новый объект класса
+        $pagination = new Pagination($total, $page, News::SHOW_BY_DEFAULT, 'page-');
+
+        // Получаем массив новостей для слайдера
+        $newsListForSlider = array();
+        $newsListForSlider = News::getNewsListForSlider();
+
+        // Подключаем вид
+        require_once(ROOT . '/views/news/index.php');
         return true;
     }
 
+    /**
+     * Страница просмотра новости
+     * @param $id
+     * @return bool
+     */
     public function actionView($id)
     {
-        if ($id) {
-            // Получаем id пользователя для аватара в шапке
-            $idUser = User::getUserId();
+        // Получаем id пользователя для аватара в шапке
+        $idUser = User::getUserId();
 
-            $newsItem = News::getNewsItemById($id);
+        // Получаем информацию о новости
+        $newsItem = News::getNewsItemById($id);
 
-            require_once(ROOT . '/views/news/view.php');
-        }
-
+        // Подключаем вид
+        require_once(ROOT . '/views/news/view.php');
         return true;
     }
 

@@ -104,52 +104,17 @@
                 <button class="arrow arrow-right"><i class="fas fa-chevron-right"></i></button>
             </div>
             <div class="slider-wrap">
-                <a class="slider-item-check" href="#">
-                    <div class="slider-item slider-item-1">
+                <?php foreach ($newsListForSlider as $newsSlider): ?>
+                <a class="slider-item-check" href="/news/<?php echo $newsSlider['id']; ?>">
+                    <div class="slider-item slider-item-<?php echo $newsSlider['id']; ?>">
                         <img src="/template/museums_pictures/slider1.jpg" alt="">
                         <div class="slider-title">
-                            <h3><i class="fas fa-newspaper"></i> Татарстан наш общий дом</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, commodi deleniti dignissimos dolor dolore et illum ipsam minima, natus quis similique veniam vero voluptate? Accusamus debitis eius exercitationem expedita totam.</p>
+                            <h3><i class="fas fa-newspaper"></i> <?php echo $newsSlider['title']; ?></h3>
+                            <p><?php echo $newsSlider['short_content']; ?></p>
                         </div>
                     </div>
                 </a>
-                <a class="slider-item-check" href="#">
-                    <div class="slider-item slider-item-2">
-                        <div></div>
-                        <img src="/template/museums_pictures/slider2.jpg" alt="">
-                        <div class="slider-title">
-                            <h3><i class="fas fa-newspaper"></i> "Стихия революции: 1917 год в России"</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, commodi deleniti dignissimos dolor dolore et illum ipsam minima, natus quis similique veniam vero voluptate? Accusamus debitis eius exercitationem expedita totam.</p>
-                        </div>
-                    </div>
-                </a>
-                <a class="slider-item-check" href="#">
-                    <div class="slider-item slider-item-3">
-                        <img src="/template/museums_pictures/slide3.jpg" alt="">
-                        <div class="slider-title">
-                            <h3><i class="fas fa-newspaper"></i> Татарстан наш общий дом</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, commodi deleniti dignissimos dolor dolore et illum ipsam minima, natus quis similique veniam vero voluptate? Accusamus debitis eius exercitationem expedita totam.</p>
-                        </div>
-                    </div>
-                </a>
-                <a class="slider-item-check" href="#">
-                    <div class="slider-item slider-item-4">
-                        <img src="/template/museums_pictures/slide6.jpg" alt="">
-                        <div class="slider-title">
-                            <h3><i class="fas fa-newspaper"></i> Татарстан наш общий дом</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, commodi deleniti dignissimos dolor dolore et illum ipsam minima, natus quis similique veniam vero voluptate? Accusamus debitis eius exercitationem expedita totam.</p>
-                        </div>
-                    </div>
-                </a>
-                <a class="slider-item-check slide-item-check-5" href="#">
-                    <div class="slider-item slider-item-5">
-                        <img src="/template/museums_pictures/slide5.jpg" alt="">
-                        <div class="slider-title">
-                            <h3><i class="fas fa-newspaper"></i> Татарстан наш общий дом</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Blanditiis, commodi deleniti dignissimos dolor dolore et illum ipsam minima, natus quis similique veniam vero voluptate? Accusamus debitis eius exercitationem expedita totam.</p>
-                        </div>
-                    </div>
-                </a>
+                <?php endforeach; ?>
             </div>
         </div>
         <div class="header-text">
@@ -166,6 +131,7 @@
             </div>
             <?php endforeach; ?>
         </div>
+        <?php echo $pagination->get(); ?>
     </div>
 </section>
 <footer id="footer">

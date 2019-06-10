@@ -150,7 +150,7 @@ class Category
                 return 'Отображается';
                 break;
             case '0':
-                return 'Скрыта';
+                return 'Скрыто';
                 break;
         }
     }

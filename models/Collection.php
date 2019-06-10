@@ -385,8 +385,8 @@ class Collection
             case '1':
                 return 'Отображается';
                 break;
-            case '2':
-                return 'Скрыта';
+            case '0':
+                return 'Скрыто';
                 break;
         }
     }

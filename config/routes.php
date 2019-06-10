@@ -33,8 +33,9 @@
         'category/([0-9]+)/page-([0-9]+)' => 'collection/category/$1/$2', // actionCategory and CollectionController
 
         // Страницы с новостями
-        'news/([0-9]+)' => 'news/view/$1',
-        'news' => 'news/index',
+        'news' => 'news/index', // actionIndex and NewsController
+        'news/page-([0-9]+)' => 'news/index/$1', // actionIndex and NewsController
+        'news/([0-9]+)' => 'news/view/$1', // actionView and NewsController
 
         // Страницы пользователя
         'user/register' => 'user/register', // actionRegister and UserController
@@ -42,8 +43,8 @@
         'user/logout' => 'user/logout', // actionLogout and UserController
 
         // Страницы личного кабинета
-        'cabinet' => 'cabinet/index',
-        'cabinet/edit' => 'cabinet/edit',
+        'cabinet' => 'cabinet/index', // actionIndex and CabinetController
+        'cabinet/edit' => 'cabinet/edit', // actionEdit and CabinetController
 
         // Главная страницы админки
         'admin' => 'admin/index', // actionIndex and AdminController
