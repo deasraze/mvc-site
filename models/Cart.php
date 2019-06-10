@@ -54,13 +54,25 @@ class Cart
         // Получаем массив с id  и кол-ом билетов в корзине
         $ticketsInCart = self::getTickets();
 
-        // Если одного билета больше 1
+        // Удаляем из массива элемент с указанными id
+        unset($ticketsInCart[$id]);
+
+        // Записываем массив билетов с удаленным элементом в сессию
+        $_SESSION['tickets'] = $ticketsInCart;
+    }
+
+    /**
+     * Удаляем 1 билет, если их несколько шт
+     * @param $id
+     */
+    public static function deleteAmountTicket($id)
+    {
+        // Получаем массив с id  и кол-ом билетов в корзине
+        $ticketsInCart = self::getTickets();
+
         if ($ticketsInCart[$id] > 1) {
-            // Удаляем 1
+            // Если одного билета несколько шт, то удаляем 1
             $ticketsInCart[$id] --;
-        } else {
-            // Удаляем из массива элемент с указанными id
-            unset($ticketsInCart[$id]);
         }
 
         // Записываем массив билетов с удаленным элементом в сессию

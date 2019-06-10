@@ -46,9 +46,12 @@ class CartController
     {
         // Удаляем билет из корзины
         Cart::deleteTicket($id);
+    }
 
-        // Возвразаем пользователя в корзину
-        header("Location: /cart/");
+    public function actionDelamount($id)
+    {
+        // Удаляем 1 шт одного билета, если их несколько
+        Cart::deleteAmountTicket($id);
     }
 
     public function actionCheckout()

@@ -22,7 +22,7 @@ class NewsController
     {
         if ($id) {
             // Получаем id пользователя для аватара в шапке
-            $idUser = User::checkLogged();
+            $idUser = User::getUserId();
 
             $newsItem = News::getNewsItemById($id);
 

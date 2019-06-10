@@ -25,6 +25,7 @@
         'cart' => 'cart/index', // actionIndex and CartController
         'cart/add/([0-9]+)' => 'cart/add/$1', // actionAdd and CartController
         'cart/delete/([0-9]+)' => 'cart/delete/$1', // actionDelete and CartController
+        'cart/delamount/([0-9]+)' => 'cart/delamount/$1', // actionDelamount and CartController
         'cart/checkout' => 'cart/checkout', // actionCheckout and CartController
 
         // Страницы с категорями
