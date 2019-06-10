@@ -103,7 +103,7 @@
                 </div>
                 <div class="cart">
                     <?php foreach ($tickets as $ticket): ?>
-                        <div id="cart-offer-1" class="cart-offer">
+                        <div id="cart-offer-<?php echo $ticket['id'] ?>" class="cart-offer">
                             <div class="wrap-cart-offer">
                                 <div class="cart-offer-navigation">
                                     <p class="id-cart">Артикул</p>
@@ -119,11 +119,19 @@
                                 <div class="my-cart">
                                     <div class="id-cart"><?php echo $ticket['code']; ?></div>
                                     <div class="name-cart"><?php echo $ticket['name']; ?></div>
-                                    <div class="amount-cart"><?php echo $ticketsInCart[$ticket['id']]; ?></div>
+                                    <div class="amount-cart amount-cart-<?php echo $ticket['id'] ?>">
+                                        <button class="delete-amount-cart delete-amount-cart-<?php echo $ticket['id'] ?>" onclick="deleteItem(<?php echo $ticket['id'] ?>)">
+                                            <i class="fas fa-minus"></i>
+                                        </button>
+                                        <span class="amount-cart-span-<?php echo $ticket['id'] ?>"><?php echo $ticketsInCart[$ticket['id']]; ?> </span>
+                                        <button class="add-amount-cart add-amount-cart-<?php echo $ticket['id'] ?>" onclick="addItem(<?php echo $ticket['id'] ?>)">
+                                            <i class="fas fa-plus"></i>
+                                        </button>
+                                    </div>
                                     <div class="print-cart">
                                         <img src="/template/museums_pictures/pachat.png" alt="Печать">
                                     </div>
-                                    <div class="cost-cart"><?php echo $ticket['price']; ?></div>
+                                    <div class="cost-cart" id="cost-cart-<?php echo $ticket['id'] ?>"><?php echo $ticket['price']; ?></div>
                                 </div>
                                 <div class="line-cart">
                                 </div>
@@ -132,7 +140,7 @@
                                         <p>Подпись Директора:</p>
                                         <img src="/template/museums_pictures/pushkin.png" alt="Роспись">
                                     </div>
-                                    <button onclick="location.href= '/cart/delete/<?php echo $ticket['id']; ?>'"
+                                    <button onclick="btnDeleteTicketClick(<?php echo $ticket['id']; ?>)"
                                             class="delete-offer-from-cart" id="delete-offer-from-cart-1" value="1">
                                         Убрать из корзины
                                     </button>
@@ -148,7 +156,7 @@
                 </div>
                 <div class="total-amount">
                     <div class="total-amount-wrap">
-                        <p>Итоговая стоимость: <span><?php echo $totalPrice; ?> р.</span></p>
+                        <p>Итоговая стоимость: <span class="amount-sum"><?php echo $totalPrice; ?></span><span>р.</span></p>
                         <button onclick="location.href= '/cart/checkout/'" class="place-your-order">Оформить заказ</button>
                     </div>
                 </div>

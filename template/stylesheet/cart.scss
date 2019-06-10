@@ -107,6 +107,20 @@
           }
           .amount-cart {
             width: 15%;
+            button {
+              background: none;
+              border: none;
+              margin: 0 3px 0 3px;
+              &:first-child {
+                margin-right: 5px;
+              }
+              i {
+                color: #212121;
+                &:hover {
+                  color: #009688;
+                }
+              }
+            }
           }
           .print-cart {
             width: 15%;
