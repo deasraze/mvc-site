@@ -13,6 +13,11 @@
     <link rel="stylesheet" href="/template/stylesheet/menuCSS.css">
     <link rel="stylesheet" href="/template/stylesheet/mobilMenu.css">
     <link rel="stylesheet" href="/template/stylesheet/profile.css">
+    <link rel="stylesheet" href="/template/stylesheet/nprogress.css">
+    <link rel="stylesheet" href="/template/stylesheet/media.css">
+
+    <script src="/template/scripts/jq.min.js"></script>
+    <script src="/template/scripts/nprogress.js"></script>
 
 </head>
 <body>
@@ -103,5 +108,6 @@
     </section>
 
     <script src="/template/scripts/animationMobilMenu.js"></script>
+    <script src="/template/scripts/loader.js"></script>
 </body>
 </html>
