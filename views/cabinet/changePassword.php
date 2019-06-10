@@ -69,25 +69,23 @@
         </div>
     </div>
 </header>
-<section id="profile-view">
+<section id="profile-edit">
     <div class="main-container-two">
         <div class="header-text">
-            <h3>Профиль</h3>
+            <h3>Сменить пароль</h3>
             <hr class="long">
             <hr class="medium">
             <hr class="short">
         </div>
-        <div class="profile">
-            <div class="avatar">
-                <img src="/template/museums_pictures/User.png" alt="">
-            </div>
-            <div class="info">
-                <h3>Иванов Иван Иванович</h3>
-                <div class="profile-button">
-                    <button>Редактировать профильм</button>
-                    <button>Сменить пароль</button>
+        <div class="user-edit">
+            <form action="">
+                <div class="user-data">
+                    <input type="password" placeholder="Старый пароль">
+                    <input type="password" placeholder="Новый пароль">
+                    <input type="password" placeholder="Повтор нового пароля">
+                    <button>Сохранить</button>
                 </div>
-            </div>
+            </form>
         </div>
     </div>
 </section>
