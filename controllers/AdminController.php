@@ -74,6 +74,44 @@ class AdminController extends AdminBase
     }
 
     /**
+     * Страница с настройками сайта
+     * @return bool
+     */
+    public function actionSettings()
+    {
+        // Проверка прав доступа
+        if (self::checkAdmin()) {
+            // Получаем id для авы
+            $idUser = User::checkLoggedAdminPanel();
+
+            // Получаем массив с настройками
+            $settings = SiteConfig::getSiteSettings();
+
+            if (isset($_POST['submit'])) {
+                // Если форма была отправлена, считываем данные
+                $options['site_title'] = $_POST['site_title'];
+                $options['site_description'] = $_POST['site_description'];
+                $options['admin_email'] = $_POST['admin_email'];
+                $options['collection_count'] = $_POST['collection_count'];
+                $options['news_count'] = $_POST['news_count'];
+                $options['tickets_count'] = $_POST['tickets_count'];
+
+                // Сохраняем изменения
+                SiteConfig::updateSiteSettings($options);
+
+                // Перенаправляем
+                header("Location: /admin/");
+            }
+
+            // Подключаем вид
+            require_once (ROOT . '/views/admin/settings.php');
+            return true;
+        }
+
+        die('Доступ запрещен');
+    }
+
+    /**
      * Выход из админ панели
      */
     public function actionLogout()

@@ -52,6 +52,7 @@
         'admin/logout' => 'admin/logout', // actionLogout and AdminController
         'admin/login' => 'admin/login', // actionLogin and AdminController
         'admin/search' => 'admin/search', // actionSearch and AdminController
+        'admin/settings' => 'admin/settings', // actionSettings and AdminController
         // Управление коллекциями
         'admin/collection' => 'adminCollection/index',
         'admin/collection/page-([0-9]+)' => 'adminCollection/index/$1',
