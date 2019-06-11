@@ -26,7 +26,7 @@ class NewsController
         $total = News::getNewsCount();
 
         // Создаем новый объект класса
-        $pagination = new Pagination($total, $page, News::SHOW_BY_DEFAULT, 'page-');
+        $pagination = new Pagination($total, $page, News::getNewsShowByDefault(), 'page-');
 
         // Получаем массив новостей для слайдера
         $newsListForSlider = array();

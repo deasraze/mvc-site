@@ -110,6 +110,7 @@
             </div>
             <?php endforeach; ?>
         </div>
+        <?php echo $pagination->get(); ?>
     </div>
     <div class="popupInfo animated slideOutRight">
         <h3>Добавлено в <a href="/cart/">корзину!</a></h3>

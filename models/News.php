@@ -39,7 +39,7 @@ class News
     public static function getNewsList($page)
     {
         $page = intval($page);
-        $limit = self::SHOW_BY_DEFAULT;
+        $limit = self::getNewsShowByDefault();
         // Считаем сдвиг для запроса
         $offset = ($page - 1) * $limit;
 
@@ -154,5 +154,18 @@ class News
                 return 'Скрыто';
                 break;
         }
+    }
+
+    /**
+     * Возвращаем количество отображаемых новостей
+     * @return mixed
+     */
+    public static function getNewsShowByDefault()
+    {
+        // Получаем настройки
+        $settings = SiteConfig::getSiteSettings();
+
+        // Возвращаем
+        return $show = $settings['news_count'];
     }
 }

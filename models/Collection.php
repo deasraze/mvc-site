@@ -140,7 +140,7 @@ class Collection
      */
     public static function getLatestCollection($page)
     {
-        $limit = self::SHOW_BY_DEFAULT;
+        $limit = self::getCollectionShowByDefault();
         $page = intval($page);
         // Считаем смещение для запроса
         $offset = ($page - 1) * $limit;
@@ -259,7 +259,7 @@ class Collection
     {
         $page = intval($page);
         // Указываем лимит
-        $limit = self::SHOW_BY_DEFAULT;
+        $limit = self::getCollectionShowByDefault();;
         // Считаем смещение для запроса
         $offset = ($page - 1) * $limit;
 
@@ -410,6 +410,19 @@ class Collection
                 return 'Вертикальный';
                 break;
         }
+    }
+
+    /**
+     * Возвращаем количество отображаемых коллекций
+     * @return mixed
+     */
+    public static function getCollectionShowByDefault()
+    {
+        // Получаем настройки
+        $setting = SiteConfig::getSiteSettings();
+
+        // Получаем количество отображаемых коллекций и возвращаем
+        return $show = $setting['collection_count'];
     }
 
 }

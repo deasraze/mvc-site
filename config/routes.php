@@ -18,8 +18,8 @@
         //'collection/([0-9]+)-([a-z0-9-]+)' => 'collection/view/$1', // actionView and CollectionController
 
         // Страницы с билетами
-        'tickets' => 'tickets/index',
-        'tickets/([0-9]+)' => 'tickets/view/$1',
+        'tickets' => 'tickets/index', // actionIndex and TicketsController
+        'tickets/page-([0-9]+)' => 'tickets/index/$1', // // actionIndex and TicketsController
 
         // Страницы с корзиной
         'cart' => 'cart/index', // actionIndex and CartController

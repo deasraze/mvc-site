@@ -11,21 +11,26 @@ class Tickets
 
     /**
      * Возвращаем массив с последними билетами
+     * @param $page
      * @return array
      */
-    public static function getLatestTicket()
+    public static function getLatestTicket($page)
     {
-        $limit = self::SHOW_BY_DEFAULT;
+        $page = intval($page);
+        $limit = Collection::getCollectionShowByDefault();
+        $offset = ($page - 1) * $limit;
 
         $db = Db::getConnection();
 
         // Используем подготовленный запрос
-        $sql = 'SELECT id, name, price, description FROM tickets WHERE status = "1" AND availability = "1" ORDER BY id DESC LIMIT :limit';
+        $sql = 'SELECT id, name, price, description FROM tickets WHERE status = "1" 
+                AND availability = "1" ORDER BY id DESC LIMIT :limit OFFSET :offset';
 
         //Подготавливаем запрос к выполнению
         $result = $db->prepare($sql);
         // Привязываем параметры
         $result->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $result->bindParam(':offset', $offset, PDO::PARAM_INT);
         // Выполняем запрос
         $result->execute();
 
@@ -143,7 +148,7 @@ class Tickets
     }
 
     /**
-     * Возвращаем общее количество билетов
+     * Возвращаем общее количество билетов для админ панели
      * @return mixed
      */
     public static function getTotalTicketsAdmin()
@@ -152,6 +157,23 @@ class Tickets
 
         // Выполняем запрос
         $result = $db->query('SELECT count(id) AS count FROM tickets');
+        // Извлекаем
+        $row = $result->fetch();
+
+        // Возвращаем
+        return $row['count'];
+    }
+
+    /**
+     * Возвращаем количество билетов
+     * @return mixed
+     */
+    public static function getTotalTickets()
+    {
+        $db = Db::getConnection();
+
+        // Выполняем запрос
+        $result = $db->query('SELECT count(id) as count FROM tickets WHERE status = "1" AND availability = "1"');
         // Извлекаем
         $row = $result->fetch();
 
@@ -335,5 +357,18 @@ class Tickets
             }
             echo $output;
         }
+    }
+
+    /**
+     * Возвращаем количество отображаемых билетов
+     * @return mixed
+     */
+    public static function getTicketsShowByDefault()
+    {
+        // Получаем настройки
+        $settings = SiteConfig::getSiteSettings();
+
+        // Возвращаем
+        return $show = $settings['tickets_count'];
     }
 }

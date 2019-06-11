@@ -31,7 +31,7 @@ class CollectionController
 
         // Создаем объект Pagination - постраничная навигация
         // page- ключ который будет в url
-        $pagination = new Pagination($total, $page, Collection::SHOW_BY_DEFAULT, 'page-');
+        $pagination = new Pagination($total, $page, Collection::getCollectionShowByDefault(), 'page-');
 
         require_once(ROOT.'/views/collection/index.php');
 
@@ -65,7 +65,7 @@ class CollectionController
 
         // Создаем объект Pagination - постраничная навигация
         // page- ключ который будет в url
-        $pagination = new Pagination($total, $page, Collection::SHOW_BY_DEFAULT, 'page-');
+        $pagination = new Pagination($total, $page, Collection::getCollectionShowByDefault(), 'page-');
 
         require_once(ROOT.'/views/collection/category.php');
 
