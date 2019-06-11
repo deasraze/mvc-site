@@ -5,7 +5,8 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Музей искусств</title>
+    <title><?php echo $settings['site_title']; ?></title>
+    <meta name="description" content ="<?php echo $settings['site_description']; ?>">
     <!--    styles-->
     <link rel="stylesheet" href="/template/stylesheet/fullpage.css">
     <link rel="stylesheet" href="/template/stylesheet/fonts.css">
@@ -95,7 +96,7 @@
         <div class="video-and-title">
             <div class="title-header-block">
                 <div class="title-info">
-                    <h1>Музей исскуств</h1>
+                    <h1><?php echo $settings['site_title']; ?></h1>
                     <p>С вами с <span style="color: #80c7ba;">1841</span> года</p>
                 </div>
             </div>

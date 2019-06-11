@@ -1,17 +1,34 @@
 <?php
 
+/**
+ * Контроллер для управления главной страницей сайта
+ * Контроллер SiteController
+ */
+
 class SiteController
 {
 
+    /**
+     * Главная страница
+     * @return bool
+     */
     public function actionIndex()
     {
+        // Получаем id пользователя для авы
         $idUser = User::getUserId();
-        
-        require_once(ROOT.'/views/site/index.php');
 
+        // Получаем настройки сайта
+        $settings = SiteConfig::getSiteSettings();
+
+        // Подключаем вид
+        require_once(ROOT.'/views/site/index.php');
         return true;
     }
 
+    /**
+     * Страница обратной связи
+     * @return bool
+     */
     public function actionContact()
     {
         // Получаем фото пользователя по id
@@ -46,17 +63,24 @@ class SiteController
                 $adminEmail = SiteConfig::getSiteSettings();
                 $subject =  $userTheme;
                 $message = "Текст: {$userText}." . PHP_EOL . "От {$userEmail}";
+
                 $result = mail($adminEmail['admin_email'], $subject, $message);
                 $result = true;
             }
         }
 
+        /**
+         * Подключаем вид
+         */
         require_once(ROOT . '/views/site/contact.php');
-
         return true;
     }
 
 
+    /**
+     * Вывод ошибки, ели страница не найдена
+     * @return bool
+     */
     public function actionError()
     {
         echo '404 - не найдено';
