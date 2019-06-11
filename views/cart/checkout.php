@@ -116,10 +116,10 @@
                     <h3>Выбрано товаров: <span><?php echo $totalQuantity; ?></span>, на сумму:
                         <span><?php echo $totalPrice; ?></span><span> р.</span></h3>
                     <p>Для оформления заказа заполните форму. Наш менеджер свяжется с Вами.</p>
-                    <input type="text" placeholder="Имя" name="userName">
-                    <input type="text" placeholder="Фамилия" name="userSurname">
+                    <input type="text" placeholder="Имя" name="userName" value="<?php echo $userName; ?>">
+                    <input type="text" placeholder="Фамилия" name="userSurname" value="<?php echo $userSurname; ?>">
                     <input type="text" placeholder="Телефон" id="phone" name="userPhone">
-                    <textarea placeholder="Комментарий к заказу" name="userComment"></textarea>
+                    <textarea placeholder="Комментарий к заказу" name="userComment"><?php echo $userComment; ?></textarea>
                     <button type="submit" name="submit">Оформить</button>
                 </form>
             <?php endif; ?>
