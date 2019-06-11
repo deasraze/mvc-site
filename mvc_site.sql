@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 11 2019 г., 09:59
+-- Время создания: Июн 12 2019 г., 01:36
 -- Версия сервера: 5.6.41
 -- Версия PHP: 7.1.22
 
@@ -91,7 +91,7 @@ INSERT INTO `collection` (`id`, `name`, `category_id`, `author`, `year`, `materi
 (19, 'ооооооооооооооо', 1, 'оооооооооооооооо', '0', '', '', '', 1, 2),
 (20, 'лллллллллллллллллл', 1, 'лллллллллллллл', '0', '', '', '', 1, 1),
 (21, 'dasd', 4, 'dasdsa', '132', '3123', '12х122', '', 1, 1),
-(22, 'dasdsss', 3, 'dasdsa', '132', '', '', 'Lorem Ipsum - это текст-\"рыба\", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной \"рыбой\" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.', 1, 3);
+(22, 'dasdsss', 3, 'dasdsadsa', '132', '', '', 'Lorem Ipsum - это текст-\"рыба\", часто используемый в печати и вэб-дизайне. Lorem Ipsum является стандартной \"рыбой\" для текстов на латинице с начала XVI века. В то время некий безымянный печатник создал большую коллекцию размеров и форм шрифтов, используя Lorem Ipsum для распечатки образцов. Lorem Ipsum не только успешно пережил без заметных изменений пять веков, но и перешагнул в электронный дизайн. Его популяризации в новое время послужили публикация листов Letraset с образцами Lorem Ipsum в 60-х годах и, в более недавнее время, программы электронной вёрстки типа Aldus PageMaker, в шаблонах которых используется Lorem Ipsum.', 1, 3);
 
 -- --------------------------------------------------------
 
@@ -152,6 +152,28 @@ INSERT INTO `news` (`id`, `title`, `short_content`, `content`, `status`, `date`)
 -- --------------------------------------------------------
 
 --
+-- Структура таблицы `site_config`
+--
+
+CREATE TABLE `site_config` (
+  `site_title` varchar(255) NOT NULL,
+  `site_description` text NOT NULL,
+  `admin_email` varchar(255) NOT NULL,
+  `collection_count` int(11) NOT NULL DEFAULT '10',
+  `news_count` int(11) NOT NULL DEFAULT '6',
+  `tickets_count` int(11) NOT NULL DEFAULT '9'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Дамп данных таблицы `site_config`
+--
+
+INSERT INTO `site_config` (`site_title`, `site_description`, `admin_email`, `collection_count`, `news_count`, `tickets_count`) VALUES
+('Музей искусств', 'С 2009 года входим в топ-10 лучших музеев мира. 12 экскурсий ежедневно, 94% положительных отзывов. Ждем вас в нашем музее!', 'admin@admin.ru', 10, 6, 9);
+
+-- --------------------------------------------------------
+
+--
 -- Структура таблицы `tickets`
 --
 
@@ -207,7 +229,10 @@ INSERT INTO `ticket_order` (`id`, `user_name`, `user_surname`, `user_phone`, `us
 (6, 'Jess', 'Аывавыавы', '+8(999)955-65-43', '', 1, '2019-06-03 20:59:39', '{\"3\":1,\"2\":1}', 1),
 (7, 'Jess', 'Dsdsds', '+8(999)955-65-66', '', 1, '2019-06-04 17:42:13', '{\"3\":3}', 1),
 (8, 'Jess', 'Jess', '+8(999)955-65-66', '', 1, '2019-06-06 20:23:01', '{\"3\":3}', 1),
-(9, 'Ваываывq', 'Аывавыавыq', '+8(999)955-65-55', 'dasdasdassadqweq', 0, '2019-06-10 13:01:20', '{\"6\":1}', 2);
+(9, 'Ваываывq', 'Аывавыавыq', '+8(999)955-65-55', 'dasdasdassadqweq', 0, '2019-06-10 13:01:20', '{\"6\":1}', 2),
+(10, 'Ваываыв', 'Аывавыавы', '+8(999)955-65-66', 'fdsfsdf', 1, '2019-06-11 20:25:59', '{\"7\":1,\"6\":1}', 1),
+(11, 'Ваываыв', 'Аывавыавы', '+8(965)581-29-75', 'bcvbcv', 1, '2019-06-11 20:29:35', '{\"3\":1}', 1),
+(12, 'Jesss', 'Jesss', '+8(965)581-29-75', 'fdsfds', 1, '2019-06-11 20:33:42', '{\"2\":2}', 1);
 
 -- --------------------------------------------------------
 
@@ -232,9 +257,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `surname`, `email`, `password`, `role`, `admin_login`, `admin_password`, `reg_date`) VALUES
-(1, 'Jess', 'Jess', 'condecrom@gmail.com', '$2y$10$0kfF9hdPRy8BsJ5uPYLYi.9YALKi3xZwS1GtjbBzEogS8GZt7rmie', 'admin', 'gSjJDGvSu', '$2y$10$eJzqw7SLIDPjtnLdeS3hn.D9.LIKRLDwIoTOst9ohL2xffsMYKCwu', '2019-05-22 14:11:58'),
+(1, 'Jesss', 'Jesss', 'condecrom@gmail.com', '$2y$10$0kfF9hdPRy8BsJ5uPYLYi.9YALKi3xZwS1GtjbBzEogS8GZt7rmie', 'admin', 'gSjJDGvSu', '$2y$10$eJzqw7SLIDPjtnLdeS3hn.D9.LIKRLDwIoTOst9ohL2xffsMYKCwu', '2019-05-22 14:11:58'),
 (2, 'Chopper', 'Chopper', 'chopper@gmail.com', '$2y$10$nkfcANaZZyW3lsEU8UvPoez1Y2Q8FP4jEs2arR1.icpAdjXCXTBNa', 'admin', 'JFUckYHxq', '$2y$10$JG2wgdvFHMxBTbPaLq/HuOPp6Ypwim4DUw7UQ2Qj2CWtO.lA7YL1W', '2019-06-07 21:41:24'),
-(3, 'Иван', 'Иванов', 'ivan@ivan.ru', '$2y$10$0gE4amGlz8jBPpBXIPvU2.XodjWVlWLSAEnOdZ0a0kipzSRPHA.DS', 'user', NULL, NULL, '2019-06-10 17:05:47');
+(3, 'Иван', 'Иванов', 'ivan@ivan.ru', '$2y$10$0gE4amGlz8jBPpBXIPvU2.XodjWVlWLSAEnOdZ0a0kipzSRPHA.DS', 'editor', 'ufveWMHhi', '$2y$10$Il3W7wPf7ltarllh40cVpOGe4Q5Uv/VqoSX6Qo3ppusQ0NCbBVc7S', '2019-06-10 17:05:47');
 
 --
 -- Индексы сохранённых таблиц
@@ -296,7 +321,7 @@ ALTER TABLE `category`
 -- AUTO_INCREMENT для таблицы `collection`
 --
 ALTER TABLE `collection`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=23;
 
 --
 -- AUTO_INCREMENT для таблицы `jobs`
@@ -320,13 +345,13 @@ ALTER TABLE `tickets`
 -- AUTO_INCREMENT для таблицы `ticket_order`
 --
 ALTER TABLE `ticket_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
