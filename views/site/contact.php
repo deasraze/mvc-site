@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/template/stylesheet/all.css">
     <link rel="stylesheet" href="/template/stylesheet/fonts.css">
     <link rel="stylesheet" href="/template/stylesheet/nprogress.css">
+    <link rel="stylesheet" href="/template/stylesheet/bootstrap.min.css">
     <link rel="stylesheet" href="/template/stylesheet/default.css">
     <link rel="stylesheet" href="/template/stylesheet/scrollBar.css">
     <link rel="stylesheet" href="/template/stylesheet/menuCSS.css">
@@ -101,12 +102,15 @@
         </div>
         <div class="contact-body">
             <?php if ($result): ?>
-                <p>Сообщение отправлено! Мы ответим Вам на указанный E-mail.</p>
+            <div class="successful" >
+                <p class="alert alert-success" style="max-width: 500px">Сообщение отправлено! Мы ответим Вам на указанный E-mail.</p>
+            </div>
+
             <?php else: ?>
                 <?php if (isset($errors) && is_array($errors)): ?>
-                    <ul>
+                    <ul class="error-message">
                         <?php foreach ($errors as $error): ?>
-                            <li> - <?php echo $error; ?></li>
+                            <li class="list-group-item list-group-item-danger"> - <?php echo $error; ?></li>
                         <?php endforeach; ?>
                     </ul>
                 <?php endif; ?>

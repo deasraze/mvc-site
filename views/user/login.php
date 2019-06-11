@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/template/stylesheet/scrollBar.css">
     <link rel="stylesheet" href="/template/stylesheet/animate.css">
     <link rel="stylesheet" href="/template/stylesheet/animation.css">
+    <link rel="stylesheet" href="/template/stylesheet/bootstrap.min.css">
     <link rel="stylesheet" href="/template/stylesheet/default.css">
     <link rel="stylesheet" href="/template/stylesheet/login.css">
     <link rel="stylesheet" href="/template/stylesheet/fonts.css">
@@ -103,7 +104,7 @@
         <?php if (isset($errors) && is_array($errors)): ?>
             <ul class="error-message">
                 <?php foreach ($errors as $error): ?>
-                    <li> - <?php echo $error; ?></li>
+                    <li class="list-group-item list-group-item-danger"> - <?php echo $error; ?></li>
                 <?php endforeach; ?>
             </ul>
         <?php endif; ?>

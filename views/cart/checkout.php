@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="/template/stylesheet/all.css">
     <link rel="stylesheet" href="/template/stylesheet/fonts.css">
     <link rel="stylesheet" href="/template/stylesheet/nprogress.css">
+    <link rel="stylesheet" href="/template/stylesheet/bootstrap.min.css">
     <link rel="stylesheet" href="/template/stylesheet/default.css">
     <link rel="stylesheet" href="/template/stylesheet/scrollBar.css">
     <link rel="stylesheet" href="/template/stylesheet/menuCSS.css">
@@ -100,12 +101,16 @@
         </div>
         <div class="checkout-body">
             <?php if ($result): ?>
-                <p>Ваш заказ оформлен. Мы вам перезвоним.</p>
+            <div class="successful">
+                <p class="alert alert-success">Ваш заказ оформлен. Мы вам перезвоним.</p>
+            </div>
             <?php else: ?>
                 <?php if (isset($errors) && is_array($errors)): ?>
+                <div class="error">
                     <?php foreach ($errors as $error): ?>
-                        <li> - <?php echo $error; ?></li>
+                        <li class="list-group-item list-group-item-danger" style="max-width: 450px"> - <?php echo $error; ?></li>
                     <?php endforeach; ?>
+                </div>
                 <?php endif; ?>
                 <form action="#" method="post">
                     <h3>Выбрано товаров: <span><?php echo $totalQuantity; ?></span>, на сумму:
