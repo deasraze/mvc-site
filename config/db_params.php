@@ -1,7 +1,7 @@
 <?php
 
 return array(
-    'host' => '127.0.0.1:3307',
+    'host' => 'localhost',
     'dbname' => 'mvc_site',
     'user' => 'root',
     'password' => '',

@@ -7,15 +7,15 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Список коллекций</title>
     <link rel="stylesheet" href="/template/stylesheet/all.css">
-    <link rel="stylesheet" href="/template/stylesheet/scrollBar.css">
+    <link rel="stylesheet" href="/template/stylesheet/tooltip.css">
     <link rel="stylesheet" href="/template/stylesheet/bootstrap.min.css">
+    <link rel="stylesheet" href="/template/stylesheet/scrollBar.css">
     <link rel="stylesheet" href="/template/stylesheet/animation.css">
     <link rel="stylesheet" href="/template/stylesheet/fonts.css">
     <link rel="stylesheet" href="/template/stylesheet/default.css">
     <link rel="stylesheet" href="/template/stylesheet/menuCSS.css">
     <link rel="stylesheet" href="/template/stylesheet/mobilMenu.css">
     <link rel="stylesheet" href="/template/stylesheet/admin.css">
-    <link rel="stylesheet" href="/template/stylesheet/tooltip.css">
     <link rel="stylesheet" href="/template/stylesheet/media.css">
     <link rel="stylesheet" href="/template/stylesheet/nprogress.css">
     <!--scripts-->
@@ -168,7 +168,14 @@
                             onclick="location.href='/admin/collection/update/<?php echo $collection['id']; ?>'">
                         <i class="fas fa-edit"></i>
                     </button>
-                    <button id="btn-tooltip" class="tooltip-btn" title="Удалить"><i class="fas fa-trash-alt"></i></button>
+                    <button
+                            id="btn-tooltip colletction-<?php echo $collection['id']; ?>"
+                            data-toggle="modal"
+                            data-target=".bd-example-modal-sm"
+                            class="tooltip-btn" title="Удалить"
+                            onclick="deleletBtn(<?php echo $collection['id']; ?>, 1)">
+                        <i class="fas fa-trash-alt"></i>
+                    </button>
                 </td>
             </tr>
             </tbody>
@@ -177,12 +184,33 @@
         <?php echo $pagination->get(); ?>
     </div>
 </section>
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLongTitle">Удаление</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Вы уверены что хотите удалить эту запись?</p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger delete-btn">Удалить</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Отмена</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!--scripts-->
-<script src="/template/scripts/checkStatus.js"></script>
 <script src="/template/scripts/bootstrap.bundle.min.js"></script>
 <script src="/template/scripts/loader.js"></script>
 <script src="/template/scripts/tooltip.js"></script>
+<script src="/template/scripts/modal.js"></script>
 <script src="/template/scripts/animationMobilMenu.js"></script>
+<script src="/template/scripts/checkStatus.js"></script>
 <script>
     $(document).ready(function () {
         load_data();
