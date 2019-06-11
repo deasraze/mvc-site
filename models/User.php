@@ -393,7 +393,7 @@ class User
         // Получаем информацию о пользователе по id
         $user = self::getUserById($userId);
 
-        if ($user['role'] == 'admin' || 'editor') {
+        if ($user['role'] == 'admin' || $user['role'] == 'editor') {
             // Если пользователь администратор или редакторв, возвращаем true
             return true;
         }
@@ -548,12 +548,13 @@ class User
         $db = Db::getConnection();
 
         // Испольуем подготовленный запрос
-        $sql = "SELECT * FROM user WHERE name LIKE :query OR surname LIKE :query limit 5";
+        $sql = "SELECT * FROM user WHERE name LIKE :query_name OR surname LIKE :query_surname limit 5";
 
         // Подготавливаем запрос
         $result = $db->prepare($sql);
         // Привязываем параметры
-        $result->bindParam(':query', $query, PDO::PARAM_STR);
+        $result->bindValue(':query_name', "%{$query}%", PDO::PARAM_STR);
+        $result->bindValue(':query_surname', "%{$query}%", PDO::PARAM_STR);
         // Выполняем
         $result->execute();
 

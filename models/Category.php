@@ -242,7 +242,7 @@ class Category
         // Подготавливаем запрос
         $result = $db->prepare($sql);
         // Привязываем параметры
-        $result->bindParam(':query', $query, PDO::PARAM_STR);
+        $result->bindValue(':query', "%{$query}%", PDO::PARAM_STR);
         // Выполняем
         $result->execute();
 

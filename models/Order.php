@@ -214,12 +214,13 @@ class Order
         $db = Db::getConnection();
 
         // Испольуем подготовленный запрос
-        $sql = "SELECT * FROM ticket_order WHERE user_name LIKE :query OR user_surname LIKE :query limit 5";
+        $sql = "SELECT * FROM ticket_order WHERE user_name LIKE :query_name OR user_surname LIKE :query_surname limit 5";
 
         // Подготавливаем запрос
         $result = $db->prepare($sql);
         // Привязываем параметры
-        $result->bindParam(':query', $query, PDO::PARAM_STR);
+        $result->bindValue(':query_name', "%{$query}%", PDO::PARAM_STR);
+        $result->bindValue(':query_surname', "%{$query}%", PDO::PARAM_STR);
         // Выполняем
         $result->execute();
 

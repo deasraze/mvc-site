@@ -327,12 +327,13 @@ class Collection
         $db = Db::getConnection();
 
         // Испольуем подготовленный запрос
-        $sql = "SELECT * FROM collection WHERE name LIKE :query OR author LIKE :query limit 5";
+        $sql = "SELECT * FROM collection WHERE name LIKE :query_name OR author LIKE :query_author limit 5";
 
         // Подготавливаем запрос
         $result = $db->prepare($sql);
         // Привязываем параметры
-        $result->bindParam(':query', $query, PDO::PARAM_STR);
+        $result->bindValue(':query_name', "%{$query}%", PDO::PARAM_STR);
+        $result->bindValue(':query_author', "%{$query}%", PDO::PARAM_STR);
         // Выполняем
         $result->execute();
 

@@ -5,4 +5,5 @@ return array(
     'dbname' => 'mvc_site',
     'user' => 'root',
     'password' => '',
+    'charset' => 'utf8',
 );
