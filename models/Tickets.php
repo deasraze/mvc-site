@@ -17,7 +17,7 @@ class Tickets
     public static function getLatestTicket($page)
     {
         $page = intval($page);
-        $limit = Collection::getCollectionShowByDefault();
+        $limit = self::getTicketsShowByDefault();
         $offset = ($page - 1) * $limit;
 
         $db = Db::getConnection();
