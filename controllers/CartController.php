@@ -95,10 +95,10 @@ class CartController
 
                 if ($result) {
                     // Отправляем письмо на почту администратора
-                    $adminEmail = 'museum@museum.ru';
+                    $adminEmail = SiteConfig::getSiteSettings();
                     $subject = 'Новый заказ';
-                    $message = 'http://mvc-site/admin/orders';
-                    mail($adminEmail, $subject, $message);
+                    $message = 'http://mvc-site/admin/order';
+                    mail($adminEmail['admin_email'], $subject, $message);
 
                     // Очищаем корзину
                     Cart::clear();

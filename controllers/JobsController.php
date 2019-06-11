@@ -39,7 +39,7 @@ class JobsController
             $start_date = $_POST['start_date'];
 
             // Отправляемь письмо на почту администратора
-            $to = 'museum@museum.ru';
+            $to = SiteConfig::getSiteSettings();
             $subject = 'Откликнулись на вакансию ' . mb_strtolower($vacancy_to_job);
             $message =
                 'ФИО: ' . $fio . PHP_EOL .
@@ -55,7 +55,7 @@ class JobsController
                 'Личные качества: ' . $personal_qualities . PHP_EOL .
                 'Возможность приступить к работе с: ' . $start_date . PHP_EOL;
 
-            mail($to, $subject, $message);
+            mail($to['admin_email'], $subject, $message);
         }
 
         // Подключаем вид

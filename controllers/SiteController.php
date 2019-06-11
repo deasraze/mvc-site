@@ -43,10 +43,10 @@ class SiteController
             }
 
             if ($errors == false) {
-                $adminEmail = 'museum@museum.ru';
+                $adminEmail = SiteConfig::getSiteSettings();
                 $subject =  $userTheme;
                 $message = "Текст: {$userText}." . PHP_EOL . "От {$userEmail}";
-                $result = mail($adminEmail, $subject, $message);
+                $result = mail($adminEmail['admin_email'], $subject, $message);
                 $result = true;
             }
         }
