@@ -384,6 +384,19 @@ class User
     }
 
     /**
+     * Проверяем авторизован ли пользователь в админ панели без редиректа
+     * @return bool
+     */
+    public static function checkLoggedAdminPanelNoRedirect()
+    {
+        if (isset($_SESSION['admin_user'])) {
+            return true;
+        }
+
+        return false;
+    }
+
+    /**
      * Проверяем роль пользователя
      * @param $userId
      * @return bool
