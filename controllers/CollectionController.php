@@ -92,4 +92,23 @@ class CollectionController
 
         return true;
     }
+
+    /**
+     * Поиск на сайте
+     */
+    public function actionSearch()
+    {
+        if (isset($_POST['query'])) {
+            // Если запрос был отправлен, то считываем
+            $query = $_POST['query'];
+            // Предотвращаем XSS
+            $query = htmlspecialchars($query, ENT_QUOTES);
+
+            // Делаем поиск и выводим результат
+            Collection::searchCollectionInSite($query);
+
+        }
+
+        return true;
+    }
 }

@@ -11,6 +11,7 @@
 
         // Страницы с коллекциями
         'collection' => 'collection/index', // actionIndex and CollectionController
+        'collection/search' => 'collection/search', // actionSearch and CollectionController
         'collection/([0-9]+)' => 'collection/view/$1', // actionView and CollectionController
         'collection/page-([0-9]+)' => 'collection/index/$1', // actionIndex and CollectionController
 

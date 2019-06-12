@@ -350,6 +350,38 @@ class Collection
     }
 
     /**
+     * Поиск коллекций на сайте
+     * @param $query
+     */
+    public static function searchCollectionInSite($query)
+    {
+        $db = Db::getConnection();
+
+        // Испольуем подготовленный запрос
+        $sql = "SELECT * FROM collection WHERE name LIKE :query_name OR author LIKE :query_author limit 5";
+
+        // Подготавливаем запрос
+        $result = $db->prepare($sql);
+        // Привязываем параметры
+        $result->bindValue(':query_name', "%{$query}%", PDO::PARAM_STR);
+        $result->bindValue(':query_author', "%{$query}%", PDO::PARAM_STR);
+        // Выполняем
+        $result->execute();
+
+
+        if ($result->rowCount() > 0) {
+            $output = "<div class=table-responsive>
+					<table class=table table bordered>";
+
+            while ($row = $result->fetch()) {
+                $output .= '<tr><td><a href="/collection/' . $row['id'] . '">' . $row['name'] . '</a></td></tr>';
+            }
+            echo $output;
+
+        }
+    }
+
+    /**
      * Возвращаем путь к изображению произведения
      * @param $id
      * @return string

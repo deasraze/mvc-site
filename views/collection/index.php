@@ -106,8 +106,8 @@
 <section id="all-arts">
     <div class="search-art" id="close_">
         <div class="mini-container">
-            <input placeholder="Поиск" type="text">
-            <button><i class="fas fa-search"></i></button>
+            <input type="text" placeholder="Начните ввод для поиска" name="search_text" id="search_text">
+            <div id="result"></div>
         </div>
 
         <div class="mini-container sorting-all-arts">
@@ -116,7 +116,7 @@
             </div>
             <div class="body-search">
                 <?php foreach ($categories as $categoryItem): ?>
-                <div><a href="/category/<?php echo $categoryItem['id']; ?>"><?php echo $categoryItem['name'];?> (45)</a></div>
+                <div><a href="/category/<?php echo $categoryItem['id']; ?>"><?php echo $categoryItem['name'];?> (<?php echo Collection::getTotalCollectionInCategory($categoryItem['id']); ?>)</a></div>
                 <?php endforeach; ?>
             </div>
         </div>
@@ -196,6 +196,31 @@
         columnWidth: '.grid-sizer',
         gutter: 5,
         percentPosition: true
+    });
+</script>
+<script>
+    $(document).ready(function () {
+        load_data();
+
+        function load_data(query) {
+            $.ajax({
+                url: "/collection/search",
+                method: "post",
+                data: {query: query},
+                success: function (data) {
+                    $('#result').html(data);
+                }
+            });
+        }
+
+        $('#search_text').keyup(function () {
+            var search = $(this).val();
+            if (search != '') {
+                load_data(search);
+            } else {
+                load_data();
+            }
+        });
     });
 </script>
 <script src="/template/scripts/animationMobilMenu.js"></script>
