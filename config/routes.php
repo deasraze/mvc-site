@@ -84,7 +84,11 @@
         'admin/user/create' => 'adminUser/create',
         'admin/user/update/([0-9]+)' => 'adminUser/update/$1',
         'admin/user/delete/([0-9]+)' => 'adminUser/delete/$1',
-
+        // Управление вакансиями
+        'admin/jobs' => 'adminJobs/index',
+        'admin/jobs/create' => 'adminJobs/create',
+        'admin/jobs/update/([0-9]+)' => 'adminJobs/update/$1',
+        'admin/jobs/delete/([0-9]+)' => 'adminJobs/delete/$1',
         // 404
         '.+' => 'site/error',
         //'news' => 'news/index', //actionIndex в NewsController

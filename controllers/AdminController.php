@@ -136,33 +136,41 @@ class AdminController extends AdminBase
      */
     public function actionSearch()
     {
-        // TODO: added check access
-        if (isset($_POST['query'])) {
-            // Если запрос был отправлен, считываем с какой страницы был запрос и определяем метод для поиска
-            $url = $_SERVER['HTTP_REFERER'];
+        // Проверяем права доступа
+        if (self::checkAdmin() || self::checkEditor()) {
 
-            if (strpos($url, 'collection') !== false) {
-                $query = $_POST['query'];
-                Collection::searchCollectionInAdminPanel($query);
+            if (isset($_POST['query'])) {
+                // Если запрос был отправлен, считываем с какой страницы был запрос и определяем метод для поиска
+                $url = $_SERVER['HTTP_REFERER'];
 
-            } elseif (strpos($url, 'user') !== false) {
-                $query = $_POST['query'];
-                User::searchUserInAdminPanel($query);
+                if (strpos($url, 'collection') !== false) {
+                    $query = $_POST['query'];
+                    Collection::searchCollectionInAdminPanel($query);
 
-            } elseif (strpos($url, 'order') !== false) {
-                $query = $_POST['query'];
-                Order::searchOrderInAdminPanel($query);
+                } elseif (strpos($url, 'user') !== false) {
+                    $query = $_POST['query'];
+                    User::searchUserInAdminPanel($query);
 
-            } elseif (strpos($url, 'ticket') !== false) {
-                $query = $_POST['query'];
-                Tickets::searchTicketInAdminPanel($query);
+                } elseif (strpos($url, 'order') !== false) {
+                    $query = $_POST['query'];
+                    Order::searchOrderInAdminPanel($query);
 
-            } elseif (strpos($url, 'category') !== false) {
-                $query = $_POST['query'];
-                Category::searchCategoryInAdminPanel($query);
+                } elseif (strpos($url, 'ticket') !== false) {
+                    $query = $_POST['query'];
+                    Tickets::searchTicketInAdminPanel($query);
+
+                } elseif (strpos($url, 'category') !== false) {
+                    $query = $_POST['query'];
+                    Category::searchCategoryInAdminPanel($query);
+                } elseif (strpos($url, 'jobs') !== false) {
+                    $query = $_POST['query'];
+                    Jobs::searchJobInAdminPanel($query);
+                }
             }
+
+            return true;
         }
 
-        return true;
+        die('Доступ запрещен');
     }
 }
