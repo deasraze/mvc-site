@@ -65,50 +65,77 @@
     <div class="admin-panel">
         <nav id="menuVertical">
             <ul>
+                <?php if (AdminBase::checkAdmin()): ?>
                 <li><a href="/admin/settings/"><div class="img_n"><img src="/template/img/gradient@2x/pencil.png"></div><span>Настройки</span></a></li>
-
                 <li><a href="#"><div class="img_n"><img src="/template/img/gradient@2x/folder.png"></div><span>Коллекции</span></a>
                     <ul>
                         <li><a href="/admin/collection/create/">Добавить</a></li>
                         <li><a href="/admin/collection/">Посмотреть</a></li>
                     </ul>
                 </li>
-
                 <li><a href="#"><div class="img_n"><img src="/template/img/gradient@2x/pencil.png"></div><span>Категории</span></a>
                     <ul>
                         <li><a href="/admin/category/create/">Добавить</a></li>
                         <li><a href="/admin/category/">Посмотреть</a></li>
                     </ul>
                 </li>
-
                 <li><a href="#"><div class="img_n"><img src="/template/img/gradient@2x/printer.png"></div><span>Билеты</span></a>
                     <ul>
                         <li><a href="/admin/ticket/create/">Добавить</a></li>
                         <li><a href="/admin/ticket/">Посмотреть</a></li>
                     </ul>
                 </li>
-
                 <li><a href="#"><div class="img_n"><img src="/template/img/gradient@2x/bell.png"></div><span>Пользователи</span></a>
                     <ul>
                         <li><a href="/admin/user/create/">Добавить</a></li>
                         <li><a href="/admin/user/">Посмотреть</a></li>
                     </ul>
                 </li>
-
                 <li><a href="#"><div class="img_n"><img src="/template/img/gradient@2x/bell.png"></div><span>Заказы</span></a>
                     <ul>
                         <li><a href="/admin/order/">Посмотреть</a></li>
                     </ul>
                 </li>
-
                 <li><a href="/admin/jobs/"><div class="img_n"><img src="/template/img/gradient@2x/folder.png"></div><span>Вакансии</span></a>
                     <ul>
                         <li><a href="/admin/jobs/create/">Добавить</a></li>
                         <li><a href="/admin/jobs/">Посмотреть</a></li>
                     </ul>
                 </li>
-
                 <li><a href="/admin/logout/"><div class="img_n"><img src="/template/img/gradient@2x/tactics.png"></div><span>Выход</span></a></li>
+
+                <?php elseif (AdminBase::checkEditor()): ?>
+                <li><a href="#"><div class="img_n"><img src="/template/img/gradient@2x/folder.png"></div><span>Коллекции</span></a>
+                    <ul>
+                        <li><a href="/admin/collection/create/">Добавить</a></li>
+                        <li><a href="/admin/collection/">Посмотреть</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><div class="img_n"><img src="/template/img/gradient@2x/pencil.png"></div><span>Категории</span></a>
+                    <ul>
+                        <li><a href="/admin/category/create/">Добавить</a></li>
+                        <li><a href="/admin/category/">Посмотреть</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><div class="img_n"><img src="/template/img/gradient@2x/printer.png"></div><span>Билеты</span></a>
+                    <ul>
+                        <li><a href="/admin/ticket/create/">Добавить</a></li>
+                        <li><a href="/admin/ticket/">Посмотреть</a></li>
+                    </ul>
+                </li>
+                <li><a href="#"><div class="img_n"><img src="/template/img/gradient@2x/bell.png"></div><span>Заказы</span></a>
+                    <ul>
+                        <li><a href="/admin/order/">Посмотреть</a></li>
+                    </ul>
+                </li>
+                <li><a href="/admin/jobs/"><div class="img_n"><img src="/template/img/gradient@2x/folder.png"></div><span>Вакансии</span></a>
+                    <ul>
+                        <li><a href="/admin/jobs/create/">Добавить</a></li>
+                        <li><a href="/admin/jobs/">Посмотреть</a></li>
+                    </ul>
+                </li>
+                <li><a href="/admin/logout/"><div class="img_n"><img src="/template/img/gradient@2x/tactics.png"></div><span>Выход</span></a></li>
+                <?php endif; ?>
             </ul>
         </nav>
         <div class="menu"><div class="footer">Copyright © 2019<br>

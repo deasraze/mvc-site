@@ -55,13 +55,13 @@
                             <li><a href="/admin/">Админпанель</a></li>
                             <li><a href="/cart/">Моя корзина (<span id="cart-count"><?php echo Cart::countItems(); ?></span>)</a></li>
                             <li><a href="/cabinet/">Профиль</a></li>
-                            <li><a href="#">Настройки</a></li>
+                            <li><a href="/cabinet/edit/">Настройки</a></li>
                             <li><a href="#">Помощь</a></li>
                             <li><a href="/user/logout/">Выход</a></li>
                         <?php else: ?>
                             <li><a href="/cart/">Моя корзина (<span id="cart-count"><?php echo Cart::countItems(); ?></span>)</a></li>
                             <li><a href="/cabinet/">Профиль</a></li>
-                            <li><a href="#">Настройки</a></li>
+                            <li><a href="/cabinet/edit/">Настройки</a></li>
                             <li><a href="#">Помощь</a></li>
                             <li><a href="/user/logout/">Выход</a></li>
                         <?php endif; ?>

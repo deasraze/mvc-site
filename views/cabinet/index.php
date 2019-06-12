@@ -50,13 +50,13 @@
                             <li><a href="/admin/">Админпанель</a></li>
                             <li><a href="/cart/">Моя корзина (<span id="cart-count"><?php echo Cart::countItems(); ?></span>)</a></li>
                             <li><a href="/cabinet/">Профиль</a></li>
-                            <li><a href="#">Настройки</a></li>
+                            <li><a href="/cabinet/edit/">Настройки</a></li>
                             <li><a href="#">Помощь</a></li>
                             <li><a href="/user/logout/">Выход</a></li>
                         <?php else: ?>
                             <li><a href="/cart/">Моя корзина (<span id="cart-count"><?php echo Cart::countItems(); ?></span>)</a></li>
                             <li><a href="/cabinet/">Профиль</a></li>
-                            <li><a href="#">Настройки</a></li>
+                            <li><a href="/cabinet/edit/">Настройки</a></li>
                             <li><a href="#">Помощь</a></li>
                             <li><a href="/user/logout/">Выход</a></li>
                         <?php endif; ?>
@@ -98,7 +98,7 @@
                 <img src="<?php echo User::getImage($user['id']); ?>" alt="">
             </div>
             <div class="info">
-                <h3><?php echo $user['surname'] . $user['name']; ?></h3>
+                <h3><?php echo $user['surname'] . ' ' . $user['name']; ?></h3>
                 <div class="profile-button">
                     <button onclick="location.href='/cabinet/edit/'">Редактировать профиль</button>
                     <button onclick="location.href='/cabinet/editpassword/'">Сменить пароль</button>
