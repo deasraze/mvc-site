@@ -2,6 +2,25 @@ body {
   font-family: 'PT_SansNarrowWebRegular' , sans-serif;
   font-weight: 400;
 }
+#header {
+  .user-menu {
+    display: none;
+  }
+  .mobil_menu {
+    .wrap-menu {
+      #close {
+        .line {
+          background: #212121;
+        }
+        &:hover {
+          .line {
+            background: #009688;
+          }
+        }
+      }
+    }
+  }
+}
 #panel {
   display: flex;
   justify-content: space-between;

@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="/template/stylesheet/scrollBar.css">
     <link rel="stylesheet" href="/template/stylesheet/default.css">
     <link rel="stylesheet" href="/template/stylesheet/animate.css">
-    <link rel="stylesheet" href="/template/stylesheet/animation.css">
     <link rel="stylesheet" href="/template/stylesheet/fonts.css">
     <link rel="stylesheet" href="/template/stylesheet/footer.css">
     <link rel="stylesheet" href="/template/stylesheet/menuCSS.css">
