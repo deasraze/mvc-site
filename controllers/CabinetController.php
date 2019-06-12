@@ -81,6 +81,10 @@ class CabinetController
         return true;
     }
 
+    /**
+     * Страница изменения пароля в лк
+     * @return bool
+     */
     public function actionEditpassword()
     {
         // Получаем id пользователя из сессии
@@ -113,6 +117,10 @@ class CabinetController
             if (!User::checkPassword($password)) {
                 $errors[] = 'Пароль должен содержать не менее 6 символов, из них цифр - не менее 1, 
                     строчных букв - не менее 1, заглавных букв - не менее 1';
+            }
+
+            if (password_verify($password, $user['password'])) {
+                $errors[] = 'Новый пароль совпадает со старым';
             }
 
             if ($errors == false) {
