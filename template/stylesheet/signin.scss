@@ -1,43 +1,13 @@
-
-#header_ {
-  height: 8vh;
-  overflow: hidden;
-  .video-and-title {
-    height: 100%;
-    .title-header-block {
-      font-family: 'AlegreyaSCRegular' , sans-serif;
-      color: #fff;
-      height: 85vh;
-      position: absolute;
-      display: flex;
-      justify-content: flex-end;
-      flex-direction: column;
-      margin-top: -40px;
-      font-size: 65px;
-      z-index: 2;
-      h1 {
-        border-right: 2px solid transparent;
-        white-space: nowrap;
-        overflow: hidden;
-        width: 100%;
-        animation: flashingBorder 0.7s step-end infinite , writeText 5s ease-in-out;
-      }
-    }
-    .video-information {
-      height: 100%;
-      img {
-        width: 100%;
-        height: 100%;
-      }
-    }
-  }
-  .nav {
-    ul {
-      li {
-        a {
-          color: #000;
-          &:hover {
-            color: #80c7ba;
+#header {
+  .mobil_menu {
+    .wrap-menu {
+      #close {
+        .line {
+          background: #212121;
+        }
+        &:hover {
+          .line {
+            background: #009688;
           }
         }
       }

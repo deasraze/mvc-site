@@ -34,14 +34,13 @@
                 <li><a href="/collection/">Произведения</a></li>
                 <li><a href="/jobs/">Вакансии</a></li>
                 <li><a href="/contacts/">Контакты</a></li>
-                <li><a href="/about/">О нас </a></li>
             </ul>
             <div class="clear"></div>
         </div>
         <div class="user-menu">
             <div class="user-avatar" id="close__" onclick="openUserProfil()" >
                 <img src="<?php echo User::getImage($idUser); ?>" alt="user-avatar">
-                <p><i class="fas fa-angle-down"></i></p>
+                <p><i id="user-arrow" class="fas fa-angle-down"></i></p>
             </div>
             <div class="menu-wrap">
                 <div class="menu">
@@ -80,7 +79,6 @@
                     <li><a href="/collection/">Произведения</a></li>
                     <li><a href="/jobs/">Вакансии</a></li>
                     <li><a href="/contacts/">Контакты</a></li>
-                    <li><a href="/about/">О нас </a></li>
                 </ul>
             </div>
             <button class="open-the-menu" id="close" onclick="tranformation_btn()">
@@ -166,7 +164,6 @@
             <div class="main-fifty-container info-container-one"></div>
         </div>
     </div>
-    <div class="section" id="section5"><h1>test2</h1></div>
 </div>
 <!--scripts-->
 <script src="/template/scripts/animationMobilMenu.js"></script>

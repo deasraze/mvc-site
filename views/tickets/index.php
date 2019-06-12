@@ -7,18 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Билеты</title>
     <!--styles-->
-    <link rel="stylesheet" href="/template/stylesheet/tooltip.css">
-    <link rel="stylesheet" href="/template/stylesheet/scrollBar.css">
-    <link rel="stylesheet" href="/template/stylesheet/fonts.css">
+    <link rel="stylesheet" href="/template/stylesheet/all.css">
     <link rel="stylesheet" href="/template/stylesheet/footer.css">
+    <link rel="stylesheet" href="/template/stylesheet/scrollBar.css">
+    <link rel="stylesheet" href="/template/stylesheet/tooltip.css">
+    <link rel="stylesheet" href="/template/stylesheet/nprogress.css">
+    <link rel="stylesheet" href="/template/stylesheet/fonts.css">
     <link rel="stylesheet" href="/template/stylesheet/default.css">
     <link rel="stylesheet" href="/template/stylesheet/menuCSS.css">
     <link rel="stylesheet" href="/template/stylesheet/mobilMenu.css">
-    <link rel="stylesheet" href="/template/stylesheet/cashbox.css">
-    <link rel="stylesheet" href="/template/stylesheet/animation.css">
     <link rel="stylesheet" href="/template/stylesheet/animate.css">
-    <link rel="stylesheet" href="/template/stylesheet/all.css">
-    <link rel="stylesheet" href="/template/stylesheet/nprogress.css">
+    <link rel="stylesheet" href="/template/stylesheet/cashbox.css">
+    <link rel="stylesheet" href="/template/stylesheet/media.css">
     <!--scripts-->
     <script src="/template/scripts/jq.min.js"></script>
     <script src="/template/scripts/nprogress.js"></script>
@@ -34,7 +34,6 @@
                 <li><a href="/collection/">Произведения</a></li>
                 <li><a href="/jobs/">Вакансии</a></li>
                 <li><a href="/contacts/">Контакты</a></li>
-                <li><a href="/about/">О нас </a></li>
             </ul>
             <div class="clear"></div>
         </div>
@@ -80,7 +79,6 @@
                     <li><a href="/collection/">Произведения</a></li>
                     <li><a href="/jobs/">Вакансии</a></li>
                     <li><a href="/contacts/">Контакты</a></li>
-                    <li><a href="/about/">О нас </a></li>
                 </ul>
             </div>
             <button class="open-the-menu" id="close" onclick="tranformation_btn()">

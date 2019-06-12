@@ -1,12 +1,13 @@
-
 #header {
-  .nav {
-    ul {
-      li {
-        a {
-          color: #1f1f1f;
-          &:hover {
-            color: #80c7ba;
+  .mobil_menu {
+    .wrap-menu {
+      #close {
+        .line {
+          background: #212121;
+        }
+        &:hover {
+          .line {
+            background: #009688;
           }
         }
       }
@@ -133,7 +134,7 @@
               width: 169px;
               display: block;
               margin-top: -61px;
-              z-index: 7;
+              z-index: 4;
               transform: rotate(-49deg);
             }
           }

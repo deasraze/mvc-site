@@ -33,7 +33,6 @@
                 <li><a href="/collection/">Произведения</a></li>
                 <li><a href="/jobs/">Вакансии</a></li>
                 <li><a href="/contacts/">Контакты</a></li>
-                <li><a href="/about/">О нас </a></li>
             </ul>
             <div class="clear"></div>
         </div>
@@ -54,7 +53,6 @@
                     <li><a href="/collection/">Произведения</a></li>
                     <li><a href="/jobs/">Вакансии</a></li>
                     <li><a href="/contacts/">Контакты</a></li>
-                    <li><a href="/about/">О нас </a></li>
                 </ul>
             </div>
             <button class="open-the-menu" id="close" onclick="tranformation_btn()">

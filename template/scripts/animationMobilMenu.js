@@ -5,6 +5,7 @@ let line2 = document.getElementsByClassName('line2')[0];
 let line3= document.getElementsByClassName('line3')[0];
 let mobil_menu = document.getElementsByClassName('mobil_menu')[0];
 let search_block = document.getElementsByClassName('search-art')[0];
+let arrow = $("#user-arrow");
 function tranformation_btn() {
     if (document.getElementsByClassName('open-the-menu')[0].id === 'close') {
         line1.style.transition = '.2s ease-in-out';
@@ -16,6 +17,7 @@ function tranformation_btn() {
         line3.style.transform = 'rotate(45deg) translate(-2px,0px)';
         mobil_menu.style.transition = '.2s ease-in-out';
         mobil_menu.style.height = '50vh';
+        arrow.css({"color": "#212121"});
         MAIN_BUTTON.id = 'open';
     }else {
         line1.style.transition = '.2s ease-in-out';
@@ -26,6 +28,7 @@ function tranformation_btn() {
         line1.style.transform = 'rotate(0) translate(0px,0px)';
         line3.style.transform = 'rotate(0) translate(0px,0px)';
         mobil_menu.style.height = '0';
+        arrow.attr("style",null);
         MAIN_BUTTON.id = 'close';
     }
 }

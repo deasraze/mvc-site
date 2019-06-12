@@ -25,6 +25,9 @@
   .grid-item--width4 {
     width: 321px;
   }
+  .grid-item--height4 {
+    height: 530px;
+  }
 
   //job
   #job {
@@ -158,19 +161,9 @@
     min-width: 90%;
     max-width: 90%;
   }
-  .fp-viewing-0 , .fp-viewing-1 , .fp-viewing-2 , .fp-viewing-4 {
-    #header {
-      #close {
-        .line {
-          background: #fff;
-        }
-      }
-      #open {
-        .line {
-          background: #000;
-        }
-      }
-    }
+  .container {
+    min-width: 95%;
+    max-width: 95%;
   }
   //mainPage
   .video-and-title {
@@ -309,13 +302,40 @@
       }
     }
   }
+  //cashbox
+  #cashbox {
+    .container {
+      .cashbox-wrap {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+      }
+    }
+  }
   //arts
   #header {
     .mobil_menu {
       display: block;
+      position: fixed;
+      z-index: 5;
     }
     .nav-container {
-      display: none;
+      display: flex;
+      position: absolute;
+      z-index: 11;
+      height: 0;
+      .nav {
+        display: none;
+      }
+      .user-menu {
+        right: 88%;
+        top: 25px;
+        .menu-wrap {
+          right: -75px;
+          &:after {
+            right: 102px;
+          }
+        }
+      }
     }
     .video-and-title {
       .title-header-block {
@@ -332,6 +352,7 @@
   #all-arts {
     .main-container-two {
       justify-content: center;
+      align-items: center;
     }
     .search-art {
       position: fixed;
@@ -450,19 +471,9 @@
       }
     }
   }
-  .fp-viewing-0 , .fp-viewing-1 , .fp-viewing-2 , .fp-viewing-4 {
-    #header {
-      #close {
-        .line {
-          background: #fff;
-        }
-      }
-      .open-the-menu {
-        .line {
-          background: #000;
-        }
-      }
-    }
+  .container {
+    min-width: 95%;
+    max-width: 95%;
   }
   //main page
   .video-and-title {
@@ -562,7 +573,6 @@
       }
     }
   }
-
   //index
   #main {
     .short-view-information-about-museum {
@@ -615,8 +625,23 @@
       }
     }
   }
-  //arts
-
+  //cashbox
+  #cashbox {
+    .container {
+      .cashbox-wrap {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+      }
+    }
+  }
+  //new
+  #new {
+    .new-title {
+      .text-information {
+        width: 95%;
+      }
+    }
+  }
   //job
   #job {
     display: flex;
@@ -671,9 +696,27 @@
   #header {
     .mobil_menu {
       display: block;
+      position: fixed;
+      z-index: 5;
     }
     .nav-container {
-      display: none;
+      display: flex;
+      position: absolute;
+      z-index: 11;
+      height: 0;
+      .nav {
+        display: none;
+      }
+      .user-menu {
+        right: 88%;
+        top: 25px;
+        .menu-wrap {
+          right: -75px;
+          &:after {
+            right: 102px;
+          }
+        }
+      }
     }
     .video-and-title {
       .title-header-block {
@@ -685,10 +728,17 @@
         }
       }
     }
+    #user-arrow {
+      color: #fff;
+      &:hover {
+        color: #009688;
+      }
+    }
   }
   #all-arts {
     .main-container-two {
       justify-content: center;
+      align-items: center;
     }
     .search-art {
       position: fixed;
@@ -738,18 +788,38 @@
     min-width: 49%;
     max-width: 49%;
   }
+  .grid-item--height4 {
+    height: 530px;
+  }
 }
 
 //Готово Arts
 @media screen and (max-width: 650px) {
   //default
   #header {
-
-    .nav-container {
-      display: none;
-    }
     .mobil_menu {
       display: block;
+      position: fixed;
+      z-index: 5;
+    }
+    .nav-container {
+      display: flex;
+      position: absolute;
+      z-index: 11;
+      height: 0;
+      .nav {
+        display: none;
+      }
+      .user-menu {
+        right: 85%;
+        top: 25px;
+        .menu-wrap {
+          right: -75px;
+          &:after {
+            right: 102px;
+          }
+        }
+      }
     }
     .video-and-title {
       .title-header-block {
@@ -807,21 +877,10 @@
       }
     }
   }
-  .fp-viewing-0 , .fp-viewing-1 , .fp-viewing-2 , .fp-viewing-4 {
-    #header {
-      #close {
-        .line {
-          background: #fff;
-        }
-      }
-      #open {
-        .line {
-          background: #000;
-        }
-      }
-    }
+  .container {
+    min-width: 95%;
+    max-width: 95%;
   }
-
   //main page
   .video-and-title {
     .title-info {
@@ -941,7 +1000,6 @@
       }
     }
   }
-
   //index
   #main {
     .short-view-information-about-museum {
@@ -998,6 +1056,7 @@
   #all-arts {
     .main-container-two {
       justify-content: center;
+      align-items: center;
     }
     .search-art {
       position: fixed;
@@ -1048,15 +1107,6 @@
     }
   }
   //login
-  #header_ {
-    height: 75px;
-    .nav-container {
-      display: none;
-    }
-    .mobil_menu {
-      display: block;
-    }
-  }
   .main-container {
     min-width: 90%;
     max-width: 90%;
@@ -1071,7 +1121,23 @@
     min-width: 100%;
     max-width: 100%;
   }
-
+  //cashbox
+  #cashbox {
+    .container {
+      .cashbox-wrap {
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr;
+      }
+    }
+  }
+  //new
+  #new {
+    .new-title {
+      .text-information {
+        width: 95%;
+      }
+    }
+  }
   //admin panel
   #panel {
     padding-bottom: 40px;

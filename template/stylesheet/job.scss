@@ -6,7 +6,20 @@ body::-webkit-scrollbar {
   display: none;
 }
 #header {
-
+  .mobil_menu {
+    .wrap-menu {
+      #close {
+        .line {
+          background: #212121;
+        }
+        &:hover {
+          .line {
+            background: #009688;
+          }
+        }
+      }
+    }
+  }
 }
 * {
   transition: .4s ease-in-out;

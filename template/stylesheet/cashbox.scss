@@ -1,3 +1,20 @@
+#header {
+  .mobil_menu {
+    .wrap-menu {
+      #close {
+        .line {
+          background: #212121;
+        }
+        &:hover {
+          .line {
+            background: #009688;
+          }
+        }
+      }
+    }
+  }
+}
+
 #cashbox {
   padding-top: 120px;
   display: flex;
