@@ -56,7 +56,11 @@ class AdminController extends AdminBase
                     // Проверяем данные для входа
                     $getUserId = User::checkUserDataAdminPanel($login, $password);
 
-                    if ($getUserId == false) {
+                    if ($userId != $getUserId) {
+                        // Если id пользователя не равно id пользователя, чьи данные были введены
+                        // Выводим ошибку
+                        $errors[] = 'Неправильный логин или пароль';
+                    } elseif ($getUserId == false) {
                         // Если данные не верны, выводим ошибку
                         $errors[] = 'Неправильный логин или пароль';
                     } else {
