@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 12 2019 г., 01:36
+-- Время создания: Июн 13 2019 г., 01:28
 -- Версия сервера: 5.6.41
 -- Версия PHP: 7.1.22
 
@@ -75,7 +75,6 @@ INSERT INTO `collection` (`id`, `name`, `category_id`, `author`, `year`, `materi
 (3, 'ффффффф', 1, 'фффффф', '0', '', '', '', 1, 1),
 (4, 'йййййййййй', 1, 'ййййййй', '0', '', '', '', 1, 3),
 (5, 'ццццццццццц', 1, 'цццццц', '0', '', '', '', 1, 1),
-(6, 'ууууууууу', 1, 'ууууууууууу', '0', '', '', '', 1, 1),
 (7, 'ккккккккк', 1, 'кккккк', '0', '', '', '', 1, 2),
 (8, 'ееееееееее', 1, 'еееееее', '0', '', '', '', 1, 2),
 (9, 'ннннннннн', 1, 'ннннннн', '0', '', '', '', 1, 1),
@@ -116,7 +115,8 @@ INSERT INTO `jobs` (`id`, `name`, `what_to_do`, `requirements`, `status`) VALUES
 (2, 'Консультант', 'Это экспереаментальный тест созданный для просмотра как он будет выглядеть на странице. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, deleniti dignissimos dolore.', 'Это экспереаментальный тест созданный для просмотра как он будет выглядеть на странице. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, deleniti dignissimos dolore.', 1),
 (3, 'Музейный смотритель', 'Это экспереаментальный тест созданный для просмотра как он будет выглядеть на странице. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, deleniti dignissimos dolore.', 'Это экспереаментальный тест созданный для просмотра как он будет выглядеть на странице. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, deleniti dignissimos dolore.', 1),
 (4, 'Методист', 'Это экспереаментальный тест созданный для просмотра как он будет выглядеть на странице. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, deleniti dignissimos dolore.', 'Это экспереаментальный тест созданный для просмотра как он будет выглядеть на странице. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, deleniti dignissimos dolore.', 1),
-(5, 'Слесарь-сантехник', 'Это экспереаментальный тест созданный для просмотра как он будет выглядеть на странице. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, deleniti dignissimos dolore.', 'Это экспереаментальный тест созданный для просмотра как он будет выглядеть на странице. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, deleniti dignissimos dolore.', 1);
+(5, 'Слесарь-сантехник', 'Это экспереаментальный тест созданный для просмотра как он будет выглядеть на странице. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, deleniti dignissimos dolore.', 'Это экспереаментальный тест созданный для просмотра как он будет выглядеть на странице. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Cum, deleniti dignissimos dolore.', 1),
+(6, 'уйцуйц', 'Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации \"Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст..\" Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по ключевым словам \"lorem ipsum\" сразу показывает, как много веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).', 'Давно выяснено, что при оценке дизайна и композиции читаемый текст мешает сосредоточиться. Lorem Ipsum используют потому, что тот обеспечивает более или менее стандартное заполнение шаблона, а также реальное распределение букв и пробелов в абзацах, которое не получается при простой дубликации \"Здесь ваш текст.. Здесь ваш текст.. Здесь ваш текст..\" Многие программы электронной вёрстки и редакторы HTML используют Lorem Ipsum в качестве текста по умолчанию, так что поиск по ключевым словам \"lorem ipsum\" сразу показывает, как много веб-страниц всё ещё дожидаются своего настоящего рождения. За прошедшие годы текст Lorem Ipsum получил много версий. Некоторые версии появились по ошибке, некоторые - намеренно (например, юмористические варианты).', 0);
 
 -- --------------------------------------------------------
 
@@ -232,7 +232,9 @@ INSERT INTO `ticket_order` (`id`, `user_name`, `user_surname`, `user_phone`, `us
 (9, 'Ваываывq', 'Аывавыавыq', '+8(999)955-65-55', 'dasdasdassadqweq', 0, '2019-06-10 13:01:20', '{\"6\":1}', 2),
 (10, 'Ваываыв', 'Аывавыавы', '+8(999)955-65-66', 'fdsfsdf', 1, '2019-06-11 20:25:59', '{\"7\":1,\"6\":1}', 1),
 (11, 'Ваываыв', 'Аывавыавы', '+8(965)581-29-75', 'bcvbcv', 1, '2019-06-11 20:29:35', '{\"3\":1}', 1),
-(12, 'Jesss', 'Jesss', '+8(965)581-29-75', 'fdsfds', 1, '2019-06-11 20:33:42', '{\"2\":2}', 1);
+(12, 'Jesss', 'Jesss', '+8(965)581-29-75', 'fdsfds', 1, '2019-06-11 20:33:42', '{\"2\":2}', 1),
+(13, 'Jesss', 'Jesss', '+8(999)955-65-66', '', 1, '2019-06-12 20:43:55', '{\"3\":1,\"1\":1}', 1),
+(14, 'Иван', 'Иванов', '+8(999)955-65-66', 'sdfsdfdsfds', 3, '2019-06-12 22:00:46', '{\"3\":4}', 1);
 
 -- --------------------------------------------------------
 
@@ -257,9 +259,9 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `name`, `surname`, `email`, `password`, `role`, `admin_login`, `admin_password`, `reg_date`) VALUES
-(1, 'Jesss', 'Jesss', 'condecrom@gmail.com', '$2y$10$0kfF9hdPRy8BsJ5uPYLYi.9YALKi3xZwS1GtjbBzEogS8GZt7rmie', 'admin', 'gSjJDGvSu', '$2y$10$eJzqw7SLIDPjtnLdeS3hn.D9.LIKRLDwIoTOst9ohL2xffsMYKCwu', '2019-05-22 14:11:58'),
+(1, 'Jess', 'Jess', 'condecrom@gmail.com', '$2y$10$0kfF9hdPRy8BsJ5uPYLYi.9YALKi3xZwS1GtjbBzEogS8GZt7rmie', 'admin', 'gSjJDGvSu', '$2y$10$eJzqw7SLIDPjtnLdeS3hn.D9.LIKRLDwIoTOst9ohL2xffsMYKCwu', '2019-05-22 14:11:58'),
 (2, 'Chopper', 'Chopper', 'chopper@gmail.com', '$2y$10$nkfcANaZZyW3lsEU8UvPoez1Y2Q8FP4jEs2arR1.icpAdjXCXTBNa', 'admin', 'JFUckYHxq', '$2y$10$JG2wgdvFHMxBTbPaLq/HuOPp6Ypwim4DUw7UQ2Qj2CWtO.lA7YL1W', '2019-06-07 21:41:24'),
-(3, 'Иван', 'Иванов', 'ivan@ivan.ru', '$2y$10$0gE4amGlz8jBPpBXIPvU2.XodjWVlWLSAEnOdZ0a0kipzSRPHA.DS', 'editor', 'ufveWMHhi', '$2y$10$Il3W7wPf7ltarllh40cVpOGe4Q5Uv/VqoSX6Qo3ppusQ0NCbBVc7S', '2019-06-10 17:05:47');
+(3, 'Иван', 'Иванов', 'ivan@ivan.ru', '$2y$10$Lp/EMF1A400LcDLSzrVR0uoyFwfp9zMuxLldvE8I1rWRDe1Ox6zM.', 'editor', 'xWYjmjFWj', '$2y$10$ryfbzLM8.b42jPIpj6kLCurghs1E4QSJhwqaaNVQs9IswrthvEZia', '2019-06-10 17:05:47');
 
 --
 -- Индексы сохранённых таблиц
@@ -327,7 +329,7 @@ ALTER TABLE `collection`
 -- AUTO_INCREMENT для таблицы `jobs`
 --
 ALTER TABLE `jobs`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT для таблицы `news`
@@ -345,13 +347,13 @@ ALTER TABLE `tickets`
 -- AUTO_INCREMENT для таблицы `ticket_order`
 --
 ALTER TABLE `ticket_order`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
 
 --
 -- AUTO_INCREMENT для таблицы `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
