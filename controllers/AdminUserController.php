@@ -87,7 +87,7 @@ class AdminUserController extends AdminBase
                         // Отправляем письмо на почту пользователя с данными для входа
                         $to = $options['email'];
                         $subject = 'Доступ в админ панель';
-                        $message = 'http://'.$_SERVER['HTTP_HOST'] . '/admin/login/' . PHP_EOL . 'Ваш логин: ' . $options['admin_login'] . PHP_EOL . 'Ваш пароль: ' . $options['admin_password'];
+                        $message = 'http://'.$_SERVER['HTTP_HOST'] . '/admin/' . PHP_EOL . 'Ваш логин: ' . $options['admin_login'] . PHP_EOL . 'Ваш пароль: ' . $options['admin_password'];
                         mail($to, $subject, $message);
 
                         // Хешируем пароль для входа в админ панель
@@ -199,7 +199,7 @@ class AdminUserController extends AdminBase
                         // Отправляем письмо на почту пользователя с данными для входа в админ панель
                         $to = $options['email'];
                         $subject = 'Доступ в админ панель';
-                        $message = 'http://' . $_SERVER['HTTP_HOST'] . '/admin/login/' . PHP_EOL . 'Ваш логин: ' . $options['admin_login'] . PHP_EOL . 'Ваш пароль: ' . $options['admin_password'];
+                        $message = 'http://' . $_SERVER['HTTP_HOST'] . '/admin/' . PHP_EOL . 'Ваш логин: ' . $options['admin_login'] . PHP_EOL . 'Ваш пароль: ' . $options['admin_password'];
                         mail($to, $subject, $message);
 
                         // Хешируем пароль

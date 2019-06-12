@@ -97,7 +97,7 @@ class CartController
                     // Отправляем письмо на почту администратора
                     $adminEmail = SiteConfig::getSiteSettings();
                     $subject = 'Новый заказ';
-                    $message = 'http://mvc-site/admin/order';
+                    $message = 'http://'.$_SERVER['HTTP_HOST'] . '/admin/order/';
                     mail($adminEmail['admin_email'], $subject, $message);
 
                     // Очищаем корзину

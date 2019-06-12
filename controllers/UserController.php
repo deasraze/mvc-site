@@ -1,9 +1,17 @@
 <?php
 
+/**
+ * Контроллер для управления пользователями
+ * Контроллер UserController
+ */
 
 class UserController
 {
 
+    /**
+     * Страница регистрации
+     * @return bool
+     */
     public function actionRegister()
     {
         // Получаем id пользователя для аватара в шапке
@@ -58,6 +66,10 @@ class UserController
         return true;
     }
 
+    /**
+     * Страница авторизации
+     * @return bool
+     */
     public function actionLogin()
     {
         // Получаем id пользователя для аватара в шапке
@@ -104,6 +116,7 @@ class UserController
     }
 
     /**
+     * Экшн выхода
      * Удаляем данные о пользователе из сессии
      */
     public function actionLogout()
