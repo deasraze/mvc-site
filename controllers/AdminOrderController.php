@@ -91,9 +91,13 @@ class AdminOrderController extends AdminBase
                 $options['date'] = $_POST['date'];
                 $options['status'] = $_POST['status'];
 
-                // При желании можно доделать валидацию
+                // Валидация
                 $errors = false;
-                if (!isset($options['user_name']) || empty($options['user_name'])) {
+
+                if (!isset($options['user_name']) || empty($options['user_name']) ||
+                    !isset($options['user_surname']) || empty($options['user_surname']) ||
+                    !isset($options['user_phone']) || empty($options['user_phone']) ||
+                    !isset($options['date']) || empty($options['date'])) {
                     $errors[] = 'Заполните поля';
                 }
 

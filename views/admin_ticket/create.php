@@ -165,18 +165,18 @@
                 <div>
                     <div>
                         <label for="name_of_art">Названние билета:</label>
-                        <input type="text" name="name" value="">
+                        <input type="text" name="name" value="<?php echo $options['name']; ?>">
                     </div>
                     <div>
                         <label for="author">Артикул:</label>
-                        <input type="text" name="code" value="">
+                        <input type="text" name="code" value="<?php echo $options['code']; ?>">
                     </div>
                 </div>
                 <br>
                 <div>
                     <div>
                         <label for="name_of_art">Цена:</label>
-                        <input type="text" name="price" value="">
+                        <input type="text" name="price" value="<?php echo $options['price']; ?>">
                     </div>
                     <div>
                         <label for="">Статус</label>
@@ -196,7 +196,7 @@
                 <br>
                 <br>
                 <label for="description">Полное описание</label> <br>
-                <textarea name="description"></textarea> <br>
+                <textarea name="description"><?php echo $options['description']; ?></textarea> <br>
                 <br>
                 <div>
                     <div>

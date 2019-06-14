@@ -165,11 +165,11 @@
                 <div>
                     <div>
                         <label for="name_of_art">Имя:</label>
-                        <input type="text" name="name" value="">
+                        <input type="text" name="name" value="<?php echo $options['name']; ?>">
                     </div>
                     <div>
                         <label for="author">Фамилия:</label>
-                        <input type="text" name="surname" value="">
+                        <input type="text" name="surname" value="<?php echo $options['surname']; ?>">
                     </div>
                 </div>
                 <br>

@@ -165,14 +165,14 @@
                 <div>
                     <div>
                         <label for="name_of_art">Названние категории:</label>
-                        <input type="text" name="name" value="">
+                        <input type="text" name="name" value="<?php echo $options['name']; ?>">
                     </div>
                 </div>
                 <br>
                 <div>
                     <div>
                         <label for="author">Порядковый номер:</label>
-                        <input type="text" name="sort_order" value="">
+                        <input type="number" name="sort_order" value="<?php echo $options['sort_order']; ?>">
                     </div>
                 </div>
                 <br>

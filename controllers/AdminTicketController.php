@@ -46,6 +46,12 @@ class AdminTicketController extends AdminBase
             // Получаем id пользователя для авы
             $idUser = User::checkLoggedAdminPanel();
 
+            // Очищаем поля
+            $options['name'] = '';
+            $options['code'] = '';
+            $options['price'] = '';
+            $options['description'] = '';
+
             if (isset($_POST['submit'])) {
                 // Если форма отправлена, то считываем параметры
                 $options['name'] = $_POST['name'];
@@ -57,7 +63,10 @@ class AdminTicketController extends AdminBase
 
                 // Делаем валидацию
                 $errors = false;
-                if (!isset($options['name']) || empty($options['name'])) {
+                if (!isset($options['name']) || empty($options['name']) ||
+                    !isset($options['code']) || empty($options['code']) ||
+                    !isset($options['price']) || empty($options['price']) ||
+                    !isset($options['description']) || empty($options['description'])) {
                     $errors[] = 'Заполните поля';
                 }
 

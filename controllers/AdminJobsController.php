@@ -42,6 +42,11 @@ class AdminJobsController extends AdminBase
             // Получаем id для авы
             $idUser = User::checkLoggedAdminPanel();
 
+            // Очищаем поля
+            $options['name'] = '';
+            $options['what_to_do'] = '';
+            $options['requirements'] =  '';
+
             if (isset($_POST['submit'])) {
                 // Если форма была отправлена, считываем данные
                 $options['name'] = $_POST['name'];
@@ -52,7 +57,9 @@ class AdminJobsController extends AdminBase
                 // Делаем валидацию
                 $errors = false;
 
-                if (!isset($options['name']) && empty($options['name'])) {
+                if (!isset($options['name']) || empty($options['name']) ||
+                    !isset($options['what_to_do']) || empty($options['what_to_do']) ||
+                    !isset($options['requirements']) || empty($options['requirements'])) {
                     $errors[] = 'Заполните поля';
                 }
 
@@ -98,7 +105,9 @@ class AdminJobsController extends AdminBase
                 // Делаем валидацию
                 $errors = false;
 
-                if (!isset($options['name']) && empty($options['name'])) {
+                if (!isset($options['name']) || empty($options['name']) ||
+                    !isset($options['what_to_do']) || empty($options['what_to_do']) ||
+                    !isset($options['requirements']) || empty($options['requirements'])) {
                     $errors[] = 'Заполните поля';
                 }
 

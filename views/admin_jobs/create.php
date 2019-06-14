@@ -165,15 +165,15 @@
                 <div>
                     <div>
                         <label for="name_of_art">Названние вакансии:</label>
-                        <input type="text" name="name" value="">
+                        <input type="text" name="name" value="<?php echo  $options['name']; ?>">
                     </div>
                 </div>
                 <br>
                 <label for="description">Чем предстоить заниматься:</label> <br>
-                <textarea name="what_to_do"></textarea> <br>
+                <textarea name="what_to_do"><?php echo  $options['what_to_do']; ?></textarea> <br>
                 <br>
                 <label for="description">Требования к кандидату:</label> <br>
-                <textarea name="requirements"></textarea> <br>
+                <textarea name="requirements"><?php echo  $options['requirements']; ?></textarea> <br>
                 <br>
                 <div>
                     <div>

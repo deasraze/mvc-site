@@ -165,29 +165,29 @@
                 <div>
                     <div>
                         <label for="name_of_art">Названние произведения:</label>
-                        <input type="text" name="name" value="">
+                        <input type="text" name="name" value="<?php echo $options['name']; ?>">
                     </div>
                     <div>
                         <label for="author">Автор:</label>
-                        <input type="text" name="author" value="">
+                        <input type="text" name="author" value="<?php echo $options['author']; ?>">
                     </div>
                 </div>
                 <br>
                 <div>
                     <div>
                         <label for="name_of_art">Годы создания:</label>
-                        <input type="text" name="year" value="">
+                        <input type="text" name="year" value="<?php echo $options['year']; ?>">
                     </div>
                     <div>
                         <label for="author">Материал:</label>
-                        <input type="text" name="material" value="">
+                        <input type="text" name="material" value="<?php echo $options['material']; ?>">
                     </div>
                 </div>
                 <br>
                 <div>
                     <div>
                         <label for="year_of_create">Размеры</label>
-                        <input type="text" name="size" value="">
+                        <input type="text" name="size" value="<?php echo $options['size']; ?>">
                     </div>
                     <div>
                         <label for="">Категория</label>
@@ -205,7 +205,7 @@
                 <br>
                 <br>
                 <label for="description">Полное описание</label> <br>
-                <textarea name="description"></textarea> <br>
+                <textarea name="description"><?php echo $options['description']; ?></textarea><br>
                 <br>
                 <div>
                     <div>

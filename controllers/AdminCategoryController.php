@@ -47,6 +47,9 @@ class AdminCategoryController extends AdminBase
             // Получаем id пользователя
             $idUser = User::checkLoggedAdminPanel();
 
+            // Очищаем данные
+            $options['name'] = '';
+            $options['sort_order'] = '';
             // Обработчик формы
             if (isset($_POST['submit'])) {
                 // Если форма отправлена
@@ -57,7 +60,8 @@ class AdminCategoryController extends AdminBase
                 $errors = false;
 
                 // Делаем валидацию
-                if (!isset($options['name']) || empty($options['name'])) {
+                if (!isset($options['name']) || empty($options['name']) ||
+                    !isset($options['sort_order']) || empty($options['sort_order'])) {
                     $errors[] = 'Заполните поля';
                 }
 

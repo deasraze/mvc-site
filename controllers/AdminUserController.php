@@ -78,6 +78,10 @@ class AdminUserController extends AdminBase
                     $errors[] = 'Пользователь с такой почтой уже существует';
                 }
 
+                if (!User::checkEmail($options['email'])) {
+                    $errors[] = 'Неправильная почта';
+                }
+
                 if ($errors == false) {
                     if ($options['role'] == 'admin' || $options['role'] == 'editor') {
                         // Если роль пользователя админ либо редактор, то генерируем логин и пароль для входа в админку

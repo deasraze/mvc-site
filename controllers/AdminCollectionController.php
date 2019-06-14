@@ -53,6 +53,14 @@ class AdminCollectionController extends AdminBase
             // Получение списка категорий
             $categoriesList = Category::getCategoriesListAdminByCollection();
 
+            // Очищаем поля
+            $options['name'] = '';
+            $options['author'] = '';
+            $options['year'] = '';
+            $options['material'] = '';
+            $options['size'] = '';
+            $options['description'] = '';
+
             // Обработка формы
             if (isset($_POST['submit'])) {
                 // Если форма отправлена, считываем данные
@@ -69,7 +77,11 @@ class AdminCollectionController extends AdminBase
                 $errors = false;
 
                 // Делаем валидацию
-                if (!isset($options['name']) || empty($options['name'])) {
+                if (!isset($options['name']) || empty($options['name']) ||
+                    !isset($options['author']) || empty($options['author']) ||
+                    !isset($options['year']) || empty($options['year']) ||
+                    !isset($options['size']) || empty($options['size']) ||
+                    !isset($options['description']) || empty($options['description'])) {
                     $errors[] = 'Заполните поля';
                 }
 
@@ -132,7 +144,11 @@ class AdminCollectionController extends AdminBase
                 $errors = false;
 
                 // Делаем валидацию
-                if (!isset($options['name']) || empty($options['name'])) {
+                if (!isset($options['name']) || empty($options['name']) ||
+                    !isset($options['author']) || empty($options['author']) ||
+                    !isset($options['year']) || empty($options['year']) ||
+                    !isset($options['size']) || empty($options['size']) ||
+                    !isset($options['description']) || empty($options['description'])) {
                     $errors[] = 'Заполните поля';
                 }
 
