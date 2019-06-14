@@ -192,7 +192,7 @@ class Tickets
 
         // Используем подготовленный запрос
         $sql = 'INSERT INTO tickets (name, price, description, status, code, availability) '
-            . 'VALUES (:name, :price :code, :description, :status, :code, :availability)';
+            . 'VALUES (:name, :price, :description, :status, :code, :availability)';
 
         // Подготавливаем запрос
         $result = $db->prepare($sql);
