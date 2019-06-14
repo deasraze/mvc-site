@@ -40,7 +40,10 @@ dl , ol , ul {
 }
 .error {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  width: 90%;
+  align-items: flex-start;
+  margin-bottom: 20px;
 }
 .error-message {
   margin: 25px 0 0 0;
@@ -54,6 +57,7 @@ dl , ol , ul {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  margin-bottom: 25px;
   li {
     max-width: 425px;
   }
@@ -119,35 +123,8 @@ dl , ol , ul {
 #section0 , #section1 , #section2 , #section3 ,#section4 ,#section5 {
   overflow: hidden;
 }
-.fp-viewing-3 {
-  .nav {
-    ul {
-      li {
-        a {
-          color: #1e1e1c;
-          &:hover {
-            color: #fff;
-          }
-        }
-      }
-    }
-  }
-}
-.fp-viewing-3 {
-  #fp-nav {
-    ul {
-      li {
-        a {
-          span {
-            background: #1e1e1c;
-            &:hover {
-              background: #fff;
-            }
-          }
-        }
-      }
-    }
-  }
+.fp-tableCell {
+  position: relative;
 }
 .container {
   min-width: 1000px;

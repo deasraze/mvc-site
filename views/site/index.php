@@ -140,7 +140,7 @@
             <div class="main-container-two">
                 <div class="all-arts-info">
                     <h2><span>12</span> экскурсий ежедневно <br> <span>84</span> еженедельно <br> <span>90%</span> положительных отзывов </h2>
-                    <button class="default_button">Сходить на экскурсию</button>
+                    <button class="default_button" onclick="location.href='/tickets/'">Сходить на экскурсию</button>
                 </div>
             </div>
         </div>

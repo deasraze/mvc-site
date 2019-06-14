@@ -9,11 +9,12 @@
     <link rel="stylesheet" href="/template/stylesheet/all.css">
     <link rel="stylesheet" href="/template/stylesheet/fonts.css">
     <link rel="stylesheet" href="/template/stylesheet/scrollBar.css">
+    <link rel="stylesheet" href="/template/stylesheet/tooltip.css">
+    <link rel="stylesheet" href="/template/stylesheet/bootstrap.min.css">
     <link rel="stylesheet" href="/template/stylesheet/default.css">
     <link rel="stylesheet" href="/template/stylesheet/menuCSS.css">
     <link rel="stylesheet" href="/template/stylesheet/mobilMenu.css">
     <link rel="stylesheet" href="/template/stylesheet/admin.css">
-    <link rel="stylesheet" href="/template/stylesheet/tooltip.css">
     <link rel="stylesheet" href="/template/stylesheet/nprogress.css">
     <link rel="stylesheet" href="/template/stylesheet/media.css">
     <!--scripts-->
@@ -208,14 +209,39 @@
                     </div>
                 </div>
                 <br>
-                <button type="submit" name="submit" class="save-btn">Сохранить</button>
+                <div class="button-choice">
+                    <button type="submit" name="submit" class="save-btn">Сохранить</button>
+                    <button type="button" id="btn-tooltip" data-toggle="modal" data-target=".bd-example-modal-sm" onclick="deleletBtn(<?php echo $ticket['id']; ?>,8)" class="delete-btn-admin">Удалить</button>
+                </div>
             </div>
         </form>
     </div>
 </section>
+<div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title" id="exampleModalLongTitle">Удаление</h3>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>Вы уверены что хотите удалить эту запись?</p>
+            </div>
+
+            <div class="modal-footer">
+                <button type="submit" class="btn btn-danger delete-btn">Удалить</button>
+                <button type="button" class="btn btn-success" data-dismiss="modal">Отмена</button>
+            </div>
+        </div>
+    </div>
+</div>
 <!--scripts-->
 <script src="/template/scripts/loader.js"></script>
 <script src="/template/scripts/animationMobilMenu.js"></script>
+<script src="/template/scripts/bootstrap.bundle.min.js"></script>
+<script src="/template/scripts/checkStatus.js"></script>
 </body>
 </html>
 

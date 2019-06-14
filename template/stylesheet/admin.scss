@@ -172,7 +172,7 @@ body {
           width: 200px;
         }
         .save-btn {
-          width: 220px;
+          width: 207px;
           padding: 10px 5px 10px 5px;
           border: 1px solid #212121;
           border-radius: 5px;
@@ -187,6 +187,14 @@ body {
             color: #fff;
             transition: .2s ease;
           }
+        }
+        .delete-btn-admin {
+          @extend .save-btn;
+          margin-left: 30px;
+        }
+        .button-choice {
+          display: flex;
+          justify-content: flex-start;
         }
         textarea {
           @extend input;

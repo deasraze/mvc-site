@@ -6,9 +6,10 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Список коллекций</title>
+
     <link rel="stylesheet" href="/template/stylesheet/all.css">
-    <link rel="stylesheet" href="/template/stylesheet/tooltip.css">
     <link rel="stylesheet" href="/template/stylesheet/bootstrap.min.css">
+    <link rel="stylesheet" href="/template/stylesheet/tooltip.css">
     <link rel="stylesheet" href="/template/stylesheet/scrollBar.css">
     <link rel="stylesheet" href="/template/stylesheet/fonts.css">
     <link rel="stylesheet" href="/template/stylesheet/default.css">

@@ -1,4 +1,4 @@
-
+@import "prefix";
 .video-and-title {
   height: 100%;
   .title-header-block {
@@ -44,6 +44,9 @@
 }
 
 .two-boss {
+  position: relative;
+  height: 100%;
+  width: 100%;
   .boos-answer {
     display: flex;
     justify-content: center;
@@ -84,7 +87,7 @@
 }
 
 .information-about-top-museum {
-  height: 100%;
+
   .main-container-two {
     justify-content: flex-start;
     .top-info {
@@ -149,7 +152,7 @@
         position: absolute;
         height: 100%;
         filter: brightness(90%);
-        animation: boss-image-animation 24s linear infinite;
+        @include animation(boss-image-animation 24s linear infinite)
       }
       .info-amount {
         position: relative;

@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="/template/stylesheet/fonts.css">
     <link rel="stylesheet" href="/template/stylesheet/nprogress.css">
     <link rel="stylesheet" href="/template/stylesheet/bootstrap.min.css">
+    <link rel="stylesheet" href="/template/stylesheet/footer.css">
     <link rel="stylesheet" href="/template/stylesheet/default.css">
     <link rel="stylesheet" href="/template/stylesheet/scrollBar.css">
     <link rel="stylesheet" href="/template/stylesheet/menuCSS.css">
@@ -104,7 +105,7 @@
             </div>
             <?php else: ?>
                 <?php if (isset($errors) && is_array($errors)): ?>
-                <div class="error">
+                <div class="error-message">
                     <?php foreach ($errors as $error): ?>
                         <li class="list-group-item list-group-item-danger" style="max-width: 450px"> - <?php echo $error; ?></li>
                     <?php endforeach; ?>
@@ -124,6 +125,38 @@
         </div>
     </div>
 </section>
+<footer id="footer">
+    <div class="main-container-two">
+        <div class="last-information-about-museum">
+            <ul class="navs">
+                <li><a href="">Help</a></li>
+                <li><a href="">Contact</a></li>
+                <li><a href="">Gift Cards</a></li>
+                <li><a href="">Dealers</a></li>
+                <li><a href="">Foundation</a></li>
+            </ul>
+        </div>
+        <div class="last-social-network">
+            <ul class="navs">
+                <li><a href=""><i class="fab fa-vk vk"></i></a></li>
+                <li><a href=""><i class="fab fa-instagram inst"></i></a></li>
+                <li><a href=""><i class="fab fa-twitter twit"></i></a></li>
+                <li><a href=""><i class="fas fa-rss rss"></i></a></li>
+                <li><a href=""><i class="fab fa-twitch twitch"></i></a></li>
+            </ul>
+        </div>
+        <div class="last-polity">
+            <ul class="navs">
+                <li><a href="">social compliance</a></li>
+                <li><a href="">terms</a></li>
+                <li><a href="">privacy policy</a></li>
+            </ul>
+        </div>
+        <div class="info-about-creature">
+            <p>Site by Chopper & Condecrom</p>
+        </div>
+    </div>
+</footer>
 <!--scripts-->
 <script src="/template/scripts/animationMobilMenu.js"></script>
 <script src="/template/scripts/loader.js"></script>

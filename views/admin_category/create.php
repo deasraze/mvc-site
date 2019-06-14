@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/template/stylesheet/all.css">
     <link rel="stylesheet" href="/template/stylesheet/fonts.css">
     <link rel="stylesheet" href="/template/stylesheet/scrollBar.css">
+    <link rel="stylesheet" href="/template/stylesheet/bootstrap.min.css">
     <link rel="stylesheet" href="/template/stylesheet/default.css">
     <link rel="stylesheet" href="/template/stylesheet/menuCSS.css">
     <link rel="stylesheet" href="/template/stylesheet/mobilMenu.css">
@@ -152,7 +153,7 @@
             </ol>
         </div>
         <?php if (isset($errors) && is_array($errors)): ?>
-            <ul class="error-message">
+            <ul class="error-message-two">
                 <?php foreach ($errors as $error): ?>
                     <li class="list-group-item list-group-item-danger"> - <?php echo $error; ?></li>
                 <?php endforeach; ?>
