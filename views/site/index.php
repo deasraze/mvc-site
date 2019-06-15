@@ -8,6 +8,7 @@
     <title><?php echo $settings['site_title']; ?></title>
     <meta name="description" content ="<?php echo $settings['site_description']; ?>">
     <!--    styles-->
+    <link rel="stylesheet" href="/template/stylesheet/preloader.css">
     <link rel="stylesheet" href="/template/stylesheet/fullpage.css">
     <link rel="stylesheet" href="/template/stylesheet/fonts.css">
     <link rel="stylesheet" href="/template/stylesheet/menuCSS.css">
@@ -24,6 +25,27 @@
     <script src="/template/scripts/viewportchecker.js"></script>
 </head>
 <body>
+<div class="preloader">
+    <div class="loader">
+        <div class="loader-inner">
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+            <div class="loader-line-wrap">
+                <div class="loader-line"></div>
+            </div>
+        </div>
+    </div>
+</div>
 <header id="header">
     <div class="nav-container">
         <div class="nav">
@@ -180,5 +202,6 @@
     });
 </script>
 <script src="/template/scripts/jqScroll.js"></script>
+<script src="/template/scripts/preloader.js"></script>
 </body>
 </html>
