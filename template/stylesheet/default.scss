@@ -46,11 +46,12 @@ dl , ol , ul {
   margin-bottom: 20px;
 }
 .error-message {
-  margin: 25px 0 0 0;
   font-family: "PT_SansNarrowWebRegular", sans-serif;
   font-size: 18px;
   color: #212121;
   max-width: 450px;
+  display: block;
+  margin: 0 auto;
 }
 .error-message-two {
   width: 90%;

@@ -106,7 +106,7 @@
     <div class="search-art" id="close_">
         <div class="mini-container">
             <input type="text" placeholder="Начните ввод для поиска" name="search_text" id="search_text">
-            <div id="result"></div>
+            <div id="result" class="result-inp"></div>
         </div>
 
         <div class="mini-container sorting-all-arts">
@@ -217,8 +217,10 @@
             var search = $(this).val();
             if (search != '') {
                 load_data(search);
+                $(".result-inp").css({"display" : "block"});
             } else {
                 load_data();
+                $(".result-inp").css({"display" : "none"});
             }
         });
     });

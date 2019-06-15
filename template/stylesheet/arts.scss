@@ -65,11 +65,41 @@
     .mini-container {
       display: flex;
       justify-content: center;
+      position: relative;
+    }
+    .result-inp {
+      position: absolute;
+      display: block;
+      background: #fff;
+      width: 220px;
+      top: 25px;
+      left: 0;
+      z-index: 10;
+      border-radius: 4px;
+      box-shadow: 0 3px 12px rgba(27,31,35,0.15);
+      font-family: "PT_SansNarrowWebRegular", sans-serif;
+      tr {
+        td {
+          padding: 5px 5px;
+          a {
+            color: #212121;
+          }
+        }
+      }
+      &:after {
+        content: '';
+        border: 10px solid transparent;
+        border-top: 0;
+        border-bottom-color: #fff;
+        position: absolute;
+        top: -10px;
+        left: 25px;
+      }
     }
     input {
-      width: 90%;
+      width: 100%;
       font-size: 18px;
-      padding: 7.5px 0 0 15px;
+      padding: 7.5px 0 0 0;
       border: none;
       border-bottom: 1px solid #212121;
       color: #1f1f1f;
@@ -78,6 +108,12 @@
       font-family: 'SpectralRegular' , sans-serif;
       text-align: center;
       background: transparent;
+      &:active {
+        background: #fff;
+      }
+      &:focus {
+        background: #fff;
+      }
     }
     button {
       outline: none;
