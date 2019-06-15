@@ -70,6 +70,12 @@
             <ul>
                 <?php if (AdminBase::checkAdmin()): ?>
                 <li><a href="/admin/settings/"><div class="img_n"><img src="/template/img/gradient@2x/pencil.png"></div><span>Настройки</span></a></li>
+                <li><a href="#"><div class="img_n"><img src="/template/img/gradient@2x/folder.png"></div><span>Новости</span></a>
+                    <ul>
+                        <li><a href="/admin/news/create/">Добавить</a></li>
+                        <li><a href="/admin/news/">Посмотреть</a></li>
+                    </ul>
+                </li>
                 <li><a href="#"><div class="img_n"><img src="/template/img/gradient@2x/folder.png"></div><span>Коллекции</span></a>
                     <ul>
                         <li><a href="/admin/collection/create/">Добавить</a></li>
@@ -108,6 +114,12 @@
                 <li><a href="/admin/logout/"><div class="img_n"><img src="/template/img/gradient@2x/tactics.png"></div><span>Выход</span></a></li>
 
                 <?php elseif (AdminBase::checkEditor()): ?>
+                <li><a href="#"><div class="img_n"><img src="/template/img/gradient@2x/folder.png"></div><span>Новости</span></a>
+                    <ul>
+                        <li><a href="/admin/news/create/">Добавить</a></li>
+                        <li><a href="/admin/news/">Посмотреть</a></li>
+                    </ul>
+                </li>
                 <li><a href="#"><div class="img_n"><img src="/template/img/gradient@2x/folder.png"></div><span>Коллекции</span></a>
                     <ul>
                         <li><a href="/admin/collection/create/">Добавить</a></li>
