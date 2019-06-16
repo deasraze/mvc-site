@@ -54,10 +54,15 @@
         'admin/login' => 'admin/login', // actionLogin and AdminController
         'admin/search' => 'admin/search', // actionSearch and AdminController
         'admin/settings' => 'admin/settings', // actionSettings and AdminController
+        // Управление новостями
+        'admin/news' => 'adminNews/index',
+        'admin/news/page-([0-9]+)' => 'adminNews/index/$1',
+        'admin/news/create' => 'adminNews/create',
+        'admin/news/update/([0-9]+)' => 'adminNews/update/$1',
+        'admin/news/delete/([0-9]+)' => 'adminNews/delete/$1',
         // Управление коллекциями
         'admin/collection' => 'adminCollection/index',
         'admin/collection/page-([0-9]+)' => 'adminCollection/index/$1',
-        'admin/collection/search' => 'adminCollection/search',
         'admin/collection/create' => 'adminCollection/create',
         'admin/collection/update/([0-9]+)' => 'adminCollection/update/$1',
         'admin/collection/delete/([0-9]+)' => 'adminCollection/delete/$1',

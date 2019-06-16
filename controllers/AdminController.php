@@ -166,9 +166,13 @@ class AdminController extends AdminBase
                 } elseif (strpos($url, 'category') !== false) {
                     $query = $_POST['query'];
                     Category::searchCategoryInAdminPanel($query);
+
                 } elseif (strpos($url, 'jobs') !== false) {
                     $query = $_POST['query'];
                     Jobs::searchJobInAdminPanel($query);
+                } elseif (strpos($url, 'news') !== false) {
+                    $query = $_POST['query'];
+                    News::searchNewsInAdminPanel($query);
                 }
             }
 
