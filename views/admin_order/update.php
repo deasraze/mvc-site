@@ -166,9 +166,9 @@
             </ol>
         </div>
         <?php if (isset($errors) && is_array($errors)): ?>
-            <ul>
+            <ul class="error-message-two">
                 <?php foreach ($errors as $error): ?>
-                    <li> - <?php echo $error; ?></li>
+                    <li class="list-group-item list-group-item-danger"> - <?php echo $error; ?></li>
                 <?php endforeach; ?>
             </ul>
         <?php endif; ?>
