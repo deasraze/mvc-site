@@ -96,6 +96,7 @@
             <ul>
                 <li><a href="/user/register/" style="background: #80c7ba;color: #fff;">Регистрация</a></li>
                 <li><a href="/user/login/">Войти</a></li>
+                <li><a href="/user/restore/">Восстановить пароль</a></li>
             </ul>
         </div>
         <?php if ($result): ?>
@@ -115,7 +116,7 @@
         <?php endif; ?>
         <form action="#" method="post" class="login-form">
             <input placeholder="Имя" type="text" name="name" value="<?php echo $name; ?>"> <br>
-            <input placeholder="Фамилия" type="password" name="surname" value="<?php echo $surname; ?>"> <br>
+            <input placeholder="Фамилия" type="text" name="surname" value="<?php echo $surname; ?>"> <br>
             <input placeholder="E-mail" type="email" name="email" value="<?php echo $email; ?>"> <br>
             <input placeholder="Пароль" type="password" name="password" value="<?php echo $password; ?>"> <br>
             <input placeholder="Повторите пароль" type="password" name="re_password" value="<?php echo $re_password; ?>"> <br>

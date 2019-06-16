@@ -67,6 +67,57 @@ class UserController
     }
 
     /**
+     * Страница восстановления пароля
+     * @return bool
+     */
+    public function actionRestore()
+    {
+        // Получаем id для авы
+        $idUser = User::getUserId();
+
+        $email = '';
+        $result = false;
+
+        if (isset($_POST['submit'])) {
+            // Если форма была отправлена, то считываем
+            $email = $_POST['email'];
+
+            // Делаем валидацию
+            $errors = false;
+
+            if (!User::checkEmail($email)) {
+                $errors[] = 'Некорректная почта';
+            }
+
+            if (!User::checkEmailExists($email)) {
+                $errors[] = 'Пользователь с такой почтой не найден';
+            }
+
+            if ($errors == false) {
+                // Если ошибок нет, то генерируем новый пароль
+                $password = Random::generateUserPassword(10);
+
+                // Отправляем письмо на почту с новым паролем
+                $to = $email;
+                $subject = 'Восстановление пароля';
+                $message =  'http://'.$_SERVER['HTTP_HOST'] . '/user/login/' . PHP_EOL . 'Ваш новый пароль: ' . $password;
+                mail($to, $subject, $message);
+
+                // Хешируем новый пароль
+                $password = password_hash($password, PASSWORD_DEFAULT);
+                // Получаем id пользователя указанной почты
+                $id = User::checkEmailExistsForRestore($email);
+                // Обновляем пароль
+                $result = User::restoreUserPassword($id, $password);
+            }
+        }
+
+        // Подключаем вид
+        require_once (ROOT . '/views/user/restore.php');
+        return true;
+    }
+
+    /**
      * Страница авторизации
      * @return bool
      */

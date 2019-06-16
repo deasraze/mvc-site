@@ -95,10 +95,16 @@
         <div class="login-or-sign">
             <ul>
                 <li><a href="/user/register/">Регистрация</a></li>
-                <li><a href="/user/login/" style="background: #80c7ba;color: #fff;">Войти</a></li>
-                <li><a href="/user/restore/">Восстановить пароль</a></li>
+                <li><a href="/user/login/">Войти</a></li>
+                <li><a href="/user/restore/" style="background: #80c7ba;color: #fff;">Восстановить пароль</a></li>
             </ul>
         </div>
+        <?php if ($result): ?>
+            <div class="successful">
+                <p class="alert alert-success">Новый пароль был отправлен на указанную почту.</p>
+            </div>
+
+        <?php else: ?>
         <?php if (isset($errors) && is_array($errors)): ?>
             <ul class="error-message">
                 <?php foreach ($errors as $error): ?>
@@ -108,9 +114,9 @@
         <?php endif; ?>
         <form action="#" method="post" class="login-form">
             <input placeholder="Ваш адрес эл.почты" type="email" name="email" value="<?php echo $email; ?>"> <br>
-            <input placeholder="Ваш пароль" type="password" name="password" value="<?php echo $password; ?>"> <br>
-            <button type="submit" name="submit">Вход</button>
+            <button type="submit" name="submit">Восстановить</button>
         </form>
+        <?php endif; ?>
     </div>
 </section>
 <!--scripts-->
