@@ -99,7 +99,10 @@
             </ul>
         </div>
         <?php if ($result): ?>
-            <p>Вы зарегистрированы!</p>
+            <div class="successful">
+                <p class="alert alert-success">Вы зарегистрированы!</p>
+            </div>
+
         <?php else: ?>
         <!--Проверяем есть ли записи в $errors и является ли массивом
         и выводим списком-->
