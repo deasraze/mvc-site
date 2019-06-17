@@ -173,13 +173,13 @@
                 <div class="fifty-container info-container-one">
                     <img src="/template/museums_pictures/art.jpg" alt="">
                     <div class="info-amount">
-                        <h2><span>90</span> <br> картин</h2>
+                        <h2>картин <br><span><?php echo Collection::getTotalCollectionForPainting(); ?></span></h2>
                     </div>
                 </div>
                 <div class="fifty-container info-container-two">
                     <img src="/template/museums_pictures/1.jpg" alt="">
                     <div class="info-amount">
-                        <h2><span>60</span> <br> скульптур</h2>
+                        <h2>скульптур <br><span><?php echo Collection::getTotalCollectionForSculpture(); ?></span></h2>
                     </div>
                 </div>
             </div>

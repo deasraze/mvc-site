@@ -95,7 +95,9 @@
                 <hr class="short">
             </div>
             <?php if ($result): ?>
-                <p>Данные отредактированы!</p>
+                <div class="successful">
+                    <p class="alert alert-success">Данные отредактированы!</p>
+                </div>
             <?php else: ?>
             <?php if (isset($errors) && is_array($errors)): ?>
                 <ul class="error-message">

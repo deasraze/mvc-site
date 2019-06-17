@@ -121,6 +121,29 @@ class User
     }
 
     /**
+     * Метод восстановления пароля для пользователя
+     * @param $id
+     * @param $password
+     * @return bool
+     */
+    public static function restoreUserPassword($id, $password)
+    {
+        $db = Db::getConnection();
+
+        // Используем подготовленный запрос
+        $sql = 'UPDATE user SET password = :password WHERE id = :id';
+
+        // Подготавливаем запрос к выполнению
+        $result = $db->prepare($sql);
+        // Привязываем параметры
+        $result->bindParam(':id', $id, PDO::PARAM_INT);
+        $result->bindParam(':password', $password, PDO::PARAM_STR);
+
+        // Выполняем
+        return $result->execute();
+    }
+
+    /**
      * Метод удаления пользователя по переданному id
      * @param $id
      * @return bool
@@ -507,6 +530,35 @@ class User
         // Проверяем есть ли запись
         if ($result->fetchColumn())
             return true;
+        return false;
+    }
+
+    /**
+     * Возвращаем id пользователя для восстановления пароля, если он был найден
+     * @param $email
+     * @return bool
+     */
+    public static function checkEmailExistsForRestore($email)
+    {
+        $db = Db::getConnection();
+
+        // Используем подготовленный запрос
+        $sql = 'SELECT id FROM user WHERE email = :email';
+
+        // Подготавливаем запрос
+        $result = $db->prepare($sql);
+        // Привязываем параметры
+        $result->bindParam(':email', $email, PDO::PARAM_STR);
+        // Выполняем запрос
+        $result->execute();
+
+        // Извлекаем строку
+        $user = $result->fetch();
+        if ($user) {
+            // Если пользователь с такой почтой был найден, то вовзаращаем его id
+            return $user['id'];
+        }
+
         return false;
     }
 

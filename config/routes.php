@@ -42,6 +42,7 @@
         'user/register' => 'user/register', // actionRegister and UserController
         'user/login' => 'user/login', // actionLogin and UserController
         'user/logout' => 'user/logout', // actionLogout and UserController
+        'user/restore' => 'user/restore', // actionRestore and UserController
 
         // Страницы личного кабинета
         'cabinet' => 'cabinet/index', // actionIndex and CabinetController

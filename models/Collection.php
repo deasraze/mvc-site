@@ -248,6 +248,38 @@ class Collection
         return $row['count'];
     }
 
+    /**
+     * Возвращаем количество произведений, которые относятся к скульптуре
+     * @return mixed
+     */
+    public static function getTotalCollectionForSculpture()
+    {
+        $db = Db::getConnection();
+
+        // Выполняем запрос
+        $result = $db->query('SELECT count(id) AS count FROM collection WHERE category_id = 3');
+
+        // Получаем и возвращаем
+        $row = $result->fetch();
+        return $row['count'];
+    }
+
+    /**
+     * Возвращаем количество произведений, которые относятся к живописи
+     * @return mixed
+     */
+    public static function getTotalCollectionForPainting()
+    {
+        $db = Db::getConnection();
+
+        // Выполняем запрос
+        $result = $db->query('SELECT count(id) AS count FROM collection WHERE category_id = 1');
+
+        // Получаем и возвращаем
+        $row = $result->fetch();
+        return $row['count'];
+    }
+
 
     /**
      * Возвращаем список произведений в определенной категории
