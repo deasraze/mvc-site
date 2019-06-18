@@ -1,4 +1,23 @@
-
+#header {
+  overflow: hidden;
+  width: 100%;
+  justify-content: center;
+  display: flex;
+  .mobil_menu {
+    .wrap-menu {
+      #close {
+        .line {
+          background: #212121;
+        }
+        &:hover {
+          .line {
+            background: #009688;
+          }
+        }
+      }
+    }
+  }
+}
 #profile-edit {
   padding-top: 120px;
   padding-bottom: 65px;
@@ -88,6 +107,9 @@
 #profile-view {
   padding-top: 120px;
   .main-container-two {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     .profile {
       display: flex;
       justify-content: center;
@@ -130,9 +152,42 @@
             border: 1px solid #009688;
             color: #fff;
           }
+          &:active {
+            background: #03A9F4;
+            border: 1px solid #03A9F4;
+            color: #fff;
+          }
           &:last-child {
             margin-left: 10px;
             transition: .2s ease-in-out;
+          }
+        }
+      }
+    }
+    .history-offer {
+      display: flex;
+      flex-direction: column;
+      align-self: center;
+      width: 95%;
+      font-family: "PT_SansNarrowWebRegular" , sans-serif;
+      margin-top: 40px;
+      margin-bottom: 60px;
+      button {
+        background: none;
+        border: none;
+        &:hover {
+          i {
+            color: #009688;
+          }
+        }
+        &:active {
+          i {
+            color: #03A9F4;
+          }
+        }
+        &:focus {
+          i {
+            color: #03A9F4;
           }
         }
       }

@@ -209,7 +209,7 @@
                 <br>
                 <div class="button-choice">
                     <button type="submit" name="submit" class="save-btn">Сохранить</button>
-                    <button type="button" id="btn-tooltip colletction-<?php echo $news['id']; ?>" data-toggle="modal" data-target=".bd-example-modal-sm" onclick="deleletBtn(<?php echo $news['id']; ?>,6)" class="delete-btn-admin">Удалить</button>
+                    <button type="button" id="btn-tooltip colletction-<?php echo $news['id']; ?>" data-toggle="modal" data-target=".bd-example-modal-sm" onclick="deleletBtn(<?php echo $news['id']; ?>,14)" class="delete-btn-admin">Удалить</button>
                 </div>
             </div>
         </form>

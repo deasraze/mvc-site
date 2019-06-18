@@ -201,7 +201,7 @@
                             data-toggle="modal"
                             data-target=".bd-example-modal-sm"
                             class="tooltip-btn" title="Удалить"
-                            onclick="deleletBtn(<?php echo $news['id']; ?>, 1)">
+                            onclick="deleletBtn(<?php echo $news['id']; ?>, 13)">
                         <i class="fas fa-trash-alt"></i>
                     </button>
                 </td>

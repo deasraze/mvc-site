@@ -48,6 +48,12 @@ async function deletePromise(id,number) {
                 location.reload();
             },300);
             break;
+        case 13:
+            let data13 = await fetch("/admin/news/delete/"+id);
+            setTimeout(function () {
+                location.reload();
+            },300);
+            break;
 
 
         case 6:
@@ -84,6 +90,12 @@ async function deletePromise(id,number) {
             let data12 = await fetch("/admin/jobs/delete/"+id);
             setTimeout(function () {
                 document.location.href = "/admin/jobs/";
+            },300);
+            break;
+        case 14:
+            let data14 = await fetch("/admin/news/delete/"+id);
+            setTimeout(function () {
+                document.location.href = "/admin/news/";
             },300);
             break;
     }

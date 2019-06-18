@@ -8,6 +8,8 @@
     <title>Редактирование профиля</title>
     <link rel="stylesheet" href="/template/stylesheet/all.css">
     <link rel="stylesheet" href="/template/stylesheet/fonts.css">
+    <link rel="stylesheet" href="/template/stylesheet/tooltip.css">
+    <link rel="stylesheet" href="/template/stylesheet/bootstrap.min.css">
     <link rel="stylesheet" href="/template/stylesheet/default.css">
     <link rel="stylesheet" href="/template/stylesheet/scrollBar.css">
     <link rel="stylesheet" href="/template/stylesheet/menuCSS.css">
@@ -105,11 +107,178 @@
                 </div>
             </div>
         </div>
+        <div class="history-offer">
+            <label class="header-table" for=""><h3>История заказов</h3></label>
+            <table class="table table-hover">
+                <thead class="thead-light">
+                <tr>
+                    <th scope="col">ID заказа</th>
+                    <th scope="col">Имя покупателя</th>
+                    <th scope="col">Фамилия покупателя</th>
+                    <th scope="col">Телефон</th>
+                    <th scope="col">Дата оформления</th>
+                    <th scope="col">Статус</th>
+                    <th scope="col">Действия</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <th scope="row">15</th>
+                    <td>Chopper</td>
+                    <td>Chopper</td>
+                    <td>+1(111)111-11-11</td>
+                    <td>2019-06-15 23:00:04</td>
+                    <td>Новый заказ</td>
+                    <td>
+                        <button id="btn-tooltip colletction-15" data-toggle="modal" data-target=".bd-example-modal-sm" class="tooltip-btn" title="" onclick="deleletBtn(15,5)" data-original-title="Удалить">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody>
+                <tr>
+                    <th scope="row">14</th>
+                    <td>Chopper</td>
+                    <td>Chopper</td>
+                    <td>+1(111)111-11-11</td>
+                    <td>2019-06-15 22:54:27</td>
+                    <td>Новый заказ</td>
+                    <td>
+                        <button id="btn-tooltip colletction-14" data-toggle="modal" data-target=".bd-example-modal-sm" class="tooltip-btn" title="" onclick="deleletBtn(14,5)" data-original-title="Удалить">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody>
+                <tr>
+                    <th scope="row">13</th>
+                    <td>Jesss</td>
+                    <td>Jesss</td>
+                    <td>+8(999)955-65-66</td>
+                    <td>2019-06-12 23:43:55</td>
+                    <td>Новый заказ</td>
+                    <td>
+                        <button id="btn-tooltip colletction-13" data-toggle="modal" data-target=".bd-example-modal-sm" class="tooltip-btn" title="" onclick="deleletBtn(13,5)" data-original-title="Удалить">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody>
+                <tr>
+                    <th scope="row">12</th>
+                    <td>Jesss</td>
+                    <td>Jesss</td>
+                    <td>+8(965)581-29-75</td>
+                    <td>2019-06-11 23:33:42</td>
+                    <td>Новый заказ</td>
+                    <td>
+                        <button id="btn-tooltip colletction-12" data-toggle="modal" data-target=".bd-example-modal-sm" class="tooltip-btn" title="" onclick="deleletBtn(12,5)" data-original-title="Удалить">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody>
+                <tr>
+                    <th scope="row">11</th>
+                    <td>Ваываыв</td>
+                    <td>Аывавыавы</td>
+                    <td>+8(965)581-29-75</td>
+                    <td>2019-06-11 23:29:35</td>
+                    <td>Новый заказ</td>
+                    <td>
+                        <button id="btn-tooltip colletction-11" data-toggle="modal" data-target=".bd-example-modal-sm" class="tooltip-btn" title="" onclick="deleletBtn(11,5)" data-original-title="Удалить">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody>
+                <tr>
+                    <th scope="row">10</th>
+                    <td>Ваываыв</td>
+                    <td>Аывавыавы</td>
+                    <td>+8(999)955-65-66</td>
+                    <td>2019-06-11 23:25:59</td>
+                    <td>Новый заказ</td>
+                    <td>
+                        <button id="btn-tooltip colletction-10" data-toggle="modal" data-target=".bd-example-modal-sm" class="tooltip-btn" title="" onclick="deleletBtn(10,5)" data-original-title="Удалить">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody>
+                <tr>
+                    <th scope="row">9</th>
+                    <td>Ваываывq</td>
+                    <td>Аывавыавыq</td>
+                    <td>+8(999)955-65-55</td>
+                    <td>2019-06-10 16:01:20</td>
+                    <td>В обработке</td>
+                    <td>
+                        <button id="btn-tooltip colletction-9" data-toggle="modal" data-target=".bd-example-modal-sm" class="tooltip-btn" title="" onclick="deleletBtn(9,5)" data-original-title="Удалить">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody>
+                <tr>
+                    <th scope="row">8</th>
+                    <td>Jess</td>
+                    <td>Jess</td>
+                    <td>+8(999)955-65-66</td>
+                    <td>2019-06-06 23:23:01</td>
+                    <td>Новый заказ</td>
+                    <td>
+                        <button id="btn-tooltip colletction-8" data-toggle="modal" data-target=".bd-example-modal-sm" class="tooltip-btn" title="" onclick="deleletBtn(8,5)" data-original-title="Удалить">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody>
+                <tr>
+                    <th scope="row">7</th>
+                    <td>Jess</td>
+                    <td>Dsdsds</td>
+                    <td>+8(999)955-65-66</td>
+                    <td>2019-06-04 20:42:13</td>
+                    <td>Новый заказ</td>
+                    <td>
+                        <button id="btn-tooltip colletction-7" data-toggle="modal" data-target=".bd-example-modal-sm" class="tooltip-btn" title="" onclick="deleletBtn(7,5)" data-original-title="Удалить">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+                <tbody>
+                <tr>
+                    <th scope="row">6</th>
+                    <td>Jess</td>
+                    <td>Аывавыавы</td>
+                    <td>+8(999)955-65-43</td>
+                    <td>2019-06-03 23:59:39</td>
+                    <td>Новый заказ</td>
+                    <td>
+                        <button id="btn-tooltip colletction-6" data-toggle="modal" data-target=".bd-example-modal-sm" class="tooltip-btn" title="" onclick="deleletBtn(6,5)" data-original-title="Удалить">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </section>
 
 <script src="/template/scripts/animationMobilMenu.js"></script>
-<script src="/template/scripts/animationMobilMenu.js"></script>
 <script src="/template/scripts/loader.js"></script>
+<script src="/template/scripts/bootstrap.bundle.min.js"></script>
+<script src="/template/scripts/tooltip.js"></script>
 </body>
 </html>
