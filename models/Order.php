@@ -118,6 +118,44 @@ class Order
     }
 
     /**
+     * Возвращаем список заказов конкретного пользователя
+     * @param $idUser
+     * @return array
+     */
+    public static function getOrderByIdUser($idUser)
+    {
+        $db = Db::getConnection();
+
+        // Используем подготовленный запрос
+        $sql = 'SELECT id, user_name, user_surname, 
+                user_patronymic, user_phone, date, status 
+                FROM ticket_order WHERE user_id = :user_id ORDER BY id DESC';
+
+        // Подготавливаем запрос к выполнению
+        $result = $db->prepare($sql);
+        // Привязываем параметры
+        $result->bindParam(':user_id', $idUser, PDO::PARAM_INT);
+        // Выполняем запрос
+        $result->execute();
+
+        $orderList = array();
+        $i = 0;
+        // Извлекаем данные в виде массива и возвращаем
+        while ($row = $result->fetch()) {
+            $orderList[$i]['id'] = $row['id'];
+            $orderList[$i]['user_name'] = $row['user_name'];
+            $orderList[$i]['user_surname'] = $row['user_surname'];
+            $orderList[$i]['user_patronymic'] = $row['user_patronymic'];
+            $orderList[$i]['user_phone'] = $row['user_phone'];
+            $orderList[$i]['date'] = $row['date'];
+            $orderList[$i]['status'] = $row['status'];
+            $i ++;
+        }
+
+        return $orderList;
+    }
+
+    /**
      * Возвращаем общее количество заказов
      * @return mixed
      */

@@ -20,6 +20,10 @@ class CabinetController
         // Получаем информацию о пользователе из БД
         $user = User::getUserById($userId);
 
+        // Получаем массив заказов пользователя
+        $orderList = array();
+        $orderList = Order::getOrderByIdUser($userId);
+
         // Подключаем вид
         require_once (ROOT . '/views/cabinet/index.php');
         return true;
