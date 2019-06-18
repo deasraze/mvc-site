@@ -174,9 +174,10 @@
         <table class="table table-hover">
             <thead class="thead-light">
             <tr>
-                <th scope="col">ID заказа</th>
+                <th scope="col">№ заказа</th>
                 <th scope="col">Имя покупателя</th>
                 <th scope="col">Фамилия покупателя</th>
+                <th scope="col">Отчество покупателя</th>
                 <th scope="col">Телефон</th>
                 <th scope="col">Дата оформления</th>
                 <th scope="col">Статус</th>
@@ -189,6 +190,7 @@
                     <th scope="row"><?php echo $order['id']; ?></th>
                     <td><?php echo $order['user_name']; ?></td>
                     <td><?php echo $order['user_surname']; ?></td>
+                    <td><?php echo $order['user_patronymic']; ?></td>
                     <td><?php echo $order['user_phone']; ?></td>
                     <td><?php echo $order['date']; ?></td>
                     <td><?php echo Order::getStatusText($order['status']); ?></td>

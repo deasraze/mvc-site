@@ -91,7 +91,7 @@ class Order
 
         // Используем подготовленный запрос
         $sql = 'SELECT id, user_name, user_surname, 
-                user_phone, date, status 
+                user_patronymic, user_phone, date, status 
                 FROM ticket_order ORDER BY id DESC LIMIT :limit OFFSET :offset';
         // Подготавливаем запрос к выполнению
         $result = $db->prepare($sql);
@@ -108,6 +108,7 @@ class Order
             $orderList[$i]['id'] = $row['id'];
             $orderList[$i]['user_name'] = $row['user_name'];
             $orderList[$i]['user_surname'] = $row['user_surname'];
+            $orderList[$i]['user_patronymic'] = $row['user_patronymic'];
             $orderList[$i]['user_phone'] = $row['user_phone'];
             $orderList[$i]['date'] = $row['date'];
             $orderList[$i]['status'] = $row['status'];
@@ -147,6 +148,7 @@ class Order
                 SET 
                     user_name = :user_name, 
                     user_surname = :user_surname, 
+                    user_patronymic = :user_patronymic, 
                     user_phone = :user_phone, 
                     user_comment = :user_comment, 
                     date = :date, 
@@ -159,6 +161,7 @@ class Order
         $result->bindParam(':id', $id, PDO::PARAM_INT);
         $result->bindParam(':user_name', $options['user_name'], PDO::PARAM_STR);
         $result->bindParam(':user_surname', $options['user_surname'], PDO::PARAM_STR);
+        $result->bindParam(':user_patronymic', $options['user_patronymic'], PDO::PARAM_STR);
         $result->bindParam(':user_phone', $options['user_phone'], PDO::PARAM_STR);
         $result->bindParam(':user_comment', $options['user_comment'], PDO::PARAM_STR);
         $result->bindParam(':date', $options['date'], PDO::PARAM_STR);

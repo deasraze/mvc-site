@@ -188,6 +188,13 @@
                 <br>
                 <div>
                     <div>
+                        <label>Отчество клиента:</label>
+                        <input type="text" name="user_patronymic" value="<?php echo $order['user_patronymic']; ?>">
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <div>
                         <label>Телефон:</label>
                         <input type="tel" name="user_phone" value="<?php echo $order['user_phone']; ?>">
                     </div>

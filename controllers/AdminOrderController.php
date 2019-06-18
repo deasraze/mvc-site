@@ -49,6 +49,9 @@ class AdminOrderController extends AdminBase
             // Получаем данные о конкретном заказе
             $order = Order::getOrderById($id);
 
+            // Получаемый информацию о пользователе (если был зарегистрирован)
+            $user = User::getUserById($order['user_id']);
+
             // Получаем массив с идентификаторами и количеством билетов
             $ticketsQuantity = json_decode($order['tickets'], true);
 
@@ -86,6 +89,7 @@ class AdminOrderController extends AdminBase
                 // Если форма была отправлена, считываем данные
                 $options['user_name'] = $_POST['user_name'];
                 $options['user_surname'] = $_POST['user_surname'];
+                $options['user_patronymic'] = $_POST['user_patronymic'];
                 $options['user_phone'] = $_POST['user_phone'];
                 $options['user_comment'] = $_POST['user_comment'];
                 $options['date'] = $_POST['date'];
@@ -96,6 +100,7 @@ class AdminOrderController extends AdminBase
 
                 if (!isset($options['user_name']) || empty($options['user_name']) ||
                     !isset($options['user_surname']) || empty($options['user_surname']) ||
+                    !isset($options['user_patronymic']) || empty($options['user_patronymic']) ||
                     !isset($options['user_phone']) || empty($options['user_phone']) ||
                     !isset($options['date']) || empty($options['date'])) {
                     $errors[] = 'Заполните поля';
