@@ -222,13 +222,15 @@ class Order
         $db = Db::getConnection();
 
         // Испольуем подготовленный запрос
-        $sql = "SELECT * FROM ticket_order WHERE user_name LIKE :query_name OR user_surname LIKE :query_surname limit 5";
+        $sql = "SELECT * FROM ticket_order WHERE user_name LIKE :query_name 
+                OR user_surname LIKE :query_surname OR user_patronymic LIKE :query_patronymic limit 5";
 
         // Подготавливаем запрос
         $result = $db->prepare($sql);
         // Привязываем параметры
         $result->bindValue(':query_name', "%{$query}%", PDO::PARAM_STR);
         $result->bindValue(':query_surname', "%{$query}%", PDO::PARAM_STR);
+        $result->bindValue(':query_patronymic', "%{$query}%", PDO::PARAM_STR);
         // Выполняем
         $result->execute();
 
@@ -238,7 +240,7 @@ class Order
 					<table class=table table bordered>";
 
             while ($row = $result->fetch()) {
-                $output .= '<tr><td><a href="/admin/order/view/' . $row['id'] . '">' . $row['user_surname'] . '</a></td></tr>';
+                $output .= '<tr><td><a href="/admin/order/view/' . $row['id'] . '">' . $row['user_surname'] . ' ' . $row['user_patronymic'] . '</a></td></tr>';
             }
             echo $output;
         }
