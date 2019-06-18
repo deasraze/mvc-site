@@ -10,24 +10,27 @@ class Order
 {
 
     const SHOW_BY_DEFAULT = 10;
+
     /**
      * Сохранение заказа
      * @param $userName - имя
      * @param $userSurname - фамилия
+     * @param $userPatronymic - отчество
      * @param $userPhone - телефон
      * @param $userComment - комментарий
      * @param $userId - id пользователя, если авторизован
+     * @param $totalPrice - итоговая стоимость
      * @param $tickets - билеты
      * @return bool - результат выполнения метода
      */
-    public static function save($userName, $userSurname, $userPhone, $userComment, $userId, $tickets)
+    public static function save($userName, $userSurname, $userPatronymic, $userPhone, $userComment, $userId, $totalPrice, $tickets)
     {
 
         $db = Db::getConnection();
 
         // Делаем подготовленный запрос
-        $sql = 'INSERT INTO ticket_order (user_name, user_surname, user_phone, user_comment, user_id, tickets) '
-            . 'VALUES (:user_name, :user_surname, :user_phone, :user_comment, :user_id, :tickets)';
+        $sql = 'INSERT INTO ticket_order (user_name, user_surname, user_patronymic, user_phone, user_comment, user_id, total_price, tickets) '
+            . 'VALUES (:user_name, :user_surname, :user_patronymic, :user_phone, :user_comment, :user_id, :total_price, :tickets)';
 
         // Преобразуем массив с билетами в строку формата json
         $tickets = json_encode($tickets);
@@ -37,9 +40,11 @@ class Order
         // Привязываем параметры к плейсхолдерам
         $result->bindParam(':user_name', $userName, PDO::PARAM_STR);
         $result->bindParam(':user_surname', $userSurname, PDO::PARAM_STR);
+        $result->bindParam(':user_patronymic', $userPatronymic, PDO::PARAM_STR);
         $result->bindParam(':user_phone', $userPhone, PDO::PARAM_STR);
         $result->bindParam(':user_comment', $userComment, PDO::PARAM_STR);
-        $result->bindParam(':user_id', $userId, PDO::PARAM_STR);
+        $result->bindParam(':user_id', $userId, PDO::PARAM_INT);
+        $result->bindParam(':total_price', $totalPrice, PDO::PARAM_INT);
         $result->bindParam(':tickets', $tickets, PDO::PARAM_STR);
 
         // Запускаем запрос и возвращаем

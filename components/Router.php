@@ -24,8 +24,7 @@ class Router
     private function getURI()
     {
         if (!empty($_SERVER['REQUEST_URI'])) { // Если переменная не пуста
-            return trim($_SERVER['REQUEST_URI'], '/'); // Функция trim удаляет '/'
-                                                             // из начала и конца строки, по умолчанию удаляет пробелы
+            return trim($_SERVER['REQUEST_URI'], '/'); // Функция trim удаляет '/' из начала и конца строки
         }
     }
 

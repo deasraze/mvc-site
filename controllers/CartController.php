@@ -4,9 +4,14 @@
  * Class CartController
  * Корзина
  */
+
 class CartController
 {
 
+    /**
+     * Главная страница корзины
+     * @return bool
+     */
     public function actionIndex()
     {
         // Получаем фото пользователя по id
@@ -34,6 +39,11 @@ class CartController
         return true;
     }
 
+    /**
+     * Добавление билета
+     * @param $id
+     * @return bool
+     */
     public function actionAdd($id)
     {
         // Добавляем в корзину и выводим результат (кол-во билетов в корзине)
@@ -42,18 +52,30 @@ class CartController
 
     }
 
+    /**
+     * Удаление билета
+     * @param $id
+     */
     public function actionDelete($id)
     {
         // Удаляем билет из корзины
         Cart::deleteTicket($id);
     }
 
+    /**
+     * Удаление билета поштучно
+     * @param $id
+     */
     public function actionDelamount($id)
     {
         // Удаляем 1 шт одного билета, если их несколько
         Cart::deleteAmountTicket($id);
     }
 
+    /**
+     * Страница оформления заказа
+     * @return bool
+     */
     public function actionCheckout()
     {
         // Получаем фото пользователя по id
@@ -67,13 +89,14 @@ class CartController
             // Считываем данные с формы
             $userName = $_POST['userName'];
             $userSurname = $_POST['userSurname'];
+            $userPatronymic = $_POST['userPatronymic'];
             $userPhone = $_POST['userPhone'];
             $userComment = $_POST['userComment'];
 
             // Валидация полей
             $errors = false;
-            if (!User::checkName($userName) || !User::checkName($userSurname))
-                $errors[] = 'Неправильное имя или фамилия';
+            if (!User::checkName($userName) || !User::checkName($userSurname) || !User::checkName($userPatronymic))
+                $errors[] = 'Неправильное имя, фамилия или отчество';
             if (!User::checkPhone($userPhone))
                 $errors[] = 'Неправильный телефон';
 
@@ -83,6 +106,10 @@ class CartController
 
                 // Получаем инф-ю о заказе
                 $ticketsInCart = Cart::getTickets(); // Получаем билеты из корзины (сессии)
+                $ticketsIds = array_keys($ticketsInCart); // Получаем только id билетов из корзины
+                $tickets = Tickets::getTicketsByIds($ticketsIds); // Получаем полную инф-ю билетов по id
+                $totalPrice = Cart::getTotalPrice($tickets); // Считаем итоговую стоимость
+
                 // Проверяем, является ли пользователь гостем
                 if (User::isGuest()) {
                     $userId = false;
@@ -91,7 +118,7 @@ class CartController
                 }
 
                 // Сохраняем заказ в БД
-                $result = Order::save($userName, $userSurname, $userPhone, $userComment, $userId, $ticketsInCart);
+                $result = Order::save($userName, $userSurname, $userPatronymic, $userPhone, $userComment, $userId, $totalPrice, $ticketsInCart);
 
                 if ($result) {
                     // Отправляем письмо на почту администратора
@@ -133,6 +160,7 @@ class CartController
 
                 $userName = false;
                 $userSurname = false;
+                $userPatronymic = false;
                 $userPhone = false;
                 $userComment = false;
 

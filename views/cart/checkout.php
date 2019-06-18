@@ -117,6 +117,7 @@
                     <p>Для оформления заказа заполните форму. Наш менеджер свяжется с Вами.</p>
                     <input type="text" placeholder="Имя" name="userName" value="<?php echo $userName; ?>">
                     <input type="text" placeholder="Фамилия" name="userSurname" value="<?php echo $userSurname; ?>">
+                    <input type="text" placeholder="Отчество" name="userPatronymic" value="<?php echo $userPatronymic; ?>">
                     <input type="text" placeholder="Телефон" id="phone" name="userPhone">
                     <textarea placeholder="Комментарий к заказу" name="userComment"><?php echo $userComment; ?></textarea>
                     <button type="submit" name="submit">Оформить</button>
