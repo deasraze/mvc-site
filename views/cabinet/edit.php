@@ -116,8 +116,8 @@
                     </div>
                     <div class="user-data">
                         <h3>Данные пользователя</h3>
-                        <input type="text" placeholder="Имя" name="name" value="<?php echo $name; ?>">
-                        <input type="text" placeholder="Фамиля" name="surname" value="<?php echo $surname; ?>">
+                        <input type="text" placeholder="Имя" name="name" value="<?php SiteConfig::html($name); ?>">
+                        <input type="text" placeholder="Фамиля" name="surname" value="<?php SiteConfig::html($surname); ?>">
                         <input type="password" placeholder="Пароль для подтверждения" name="password">
                         <button type="submit" name="submit">Сохранить</button>
                     </div>

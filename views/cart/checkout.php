@@ -115,11 +115,11 @@
                     <h3>Выбрано товаров: <span><?php echo $totalQuantity; ?></span>, на сумму:
                         <span><?php echo $totalPrice; ?></span><span> р.</span></h3>
                     <p>Для оформления заказа заполните форму. Наш менеджер свяжется с Вами.</p>
-                    <input type="text" placeholder="Имя" name="userName" value="<?php echo $userName; ?>">
-                    <input type="text" placeholder="Фамилия" name="userSurname" value="<?php echo $userSurname; ?>">
-                    <input type="text" placeholder="Отчество" name="userPatronymic" value="<?php echo $userPatronymic; ?>">
+                    <input type="text" placeholder="Имя" name="userName" value="<?php SiteConfig::html($userName); ?>">
+                    <input type="text" placeholder="Фамилия" name="userSurname" value="<?php SiteConfig::html($userSurname); ?>">
+                    <input type="text" placeholder="Отчество" name="userPatronymic" value="<?php SiteConfig::html($userPatronymic); ?>">
                     <input type="text" placeholder="Телефон" id="phone" name="userPhone">
-                    <textarea placeholder="Комментарий к заказу" name="userComment"><?php echo $userComment; ?></textarea>
+                    <textarea placeholder="Комментарий к заказу" name="userComment"><?php SiteConfig::html($userComment); ?></textarea>
                     <button type="submit" name="submit">Оформить</button>
                 </form>
             <?php endif; ?>

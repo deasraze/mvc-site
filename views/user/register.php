@@ -115,8 +115,8 @@
             </ul>
         <?php endif; ?>
         <form action="#" method="post" class="login-form">
-            <input placeholder="Имя" type="text" name="name" value="<?php echo $name; ?>"> <br>
-            <input placeholder="Фамилия" type="text" name="surname" value="<?php echo $surname; ?>"> <br>
+            <input placeholder="Имя" type="text" name="name" value="<?php SiteConfig::html($name); ?>"> <br>
+            <input placeholder="Фамилия" type="text" name="surname" value="<?php SiteConfig::html($surname); ?>"> <br>
             <input placeholder="E-mail" type="email" name="email" value="<?php echo $email; ?>"> <br>
             <input placeholder="Пароль" type="password" name="password" value="<?php echo $password; ?>"> <br>
             <input placeholder="Повторите пароль" type="password" name="re_password" value="<?php echo $re_password; ?>"> <br>

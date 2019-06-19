@@ -52,6 +52,9 @@ class CabinetController
             $surname = $_POST['surname'];
             $password = $_POST['password'];
 
+            $name = SiteConfig::html($name, false);
+            $surname = SiteConfig::html($surname, false);
+
             $errors = false;
 
             if (!User::checkName($name) || !User::checkName($surname)) {

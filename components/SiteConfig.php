@@ -58,4 +58,22 @@ class SiteConfig
         // Выполняем и возвращаем
         return $result->execute();
     }
+
+    /**
+     * Возвращаем строку безопасную для HTML
+     * @param $string
+     * @param bool $print
+     * @return string|void
+     */
+    public static function html($string, $print = true)
+    {
+        // Преобразуем все возможные символы в соответствующие HTML сущности
+        $string = htmlentities($string, ENT_QUOTES, 'UTF-8');
+
+        if ($print) {
+            echo $string;
+            return;
+        }
+        return $string;
+    }
 }

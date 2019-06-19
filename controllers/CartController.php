@@ -93,8 +93,14 @@ class CartController
             $userPhone = $_POST['userPhone'];
             $userComment = $_POST['userComment'];
 
+            $userName = SiteConfig::html($userName, false);
+            $userSurname = SiteConfig::html($userSurname, false);
+            $userPatronymic = SiteConfig::html($userPatronymic, false);
+            $userComment = SiteConfig::html($userComment, false);
+
             // Валидация полей
             $errors = false;
+
             if (!User::checkName($userName) || !User::checkName($userSurname) || !User::checkName($userPatronymic))
                 $errors[] = 'Неправильное имя, фамилия или отчество';
             if (!User::checkPhone($userPhone))

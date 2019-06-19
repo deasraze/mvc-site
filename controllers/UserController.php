@@ -33,6 +33,9 @@ class UserController
             $password = $_POST['password'];
             $re_password = $_POST['re_password'];
 
+            $name = SiteConfig::html($name, false);
+            $surname = SiteConfig::html($surname, false);
+
             // Создаем переменную для ошибок
             $errors = false;
 
