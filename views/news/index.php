@@ -123,7 +123,7 @@
                 <?php foreach ($newsListForSlider as $newsSlider): ?>
                 <a class="slider-item-check" href="/news/<?php echo $newsSlider['id']; ?>">
                     <div class="slider-item slider-item-<?php echo $newsSlider['id']; ?>">
-                        <img src="/template/museums_pictures/slider1.jpg" alt="">
+                        <img src="<?php echo News::getImage($newsSlider['id']); ?>" alt="">
                         <div class="slider-title">
                             <h3><i class="fas fa-newspaper"></i> <?php echo $newsSlider['title']; ?></h3>
                             <p><?php echo $newsSlider['short_content']; ?></p>
@@ -141,7 +141,7 @@
         <div class="news-wrap">
             <?php foreach ($newsList as $news): ?>
             <div class="news-item">
-                <a href="/news/<?php echo $news['id']; ?>"><img src="/template/museums_pictures/slide3.jpg" alt=""></a>
+                <a href="/news/<?php echo $news['id']; ?>"><img src="<?php echo News::getImage($news['id']); ?>" alt=""></a>
                 <h3><?php echo $news['title']; ?></h3>
                 <p><?php echo $news['short_content']; ?></p>
             </div>

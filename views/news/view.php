@@ -117,7 +117,7 @@
             <div class="text-information">
                 <h2><?php echo $newsItem['title']; ?></h2>
                 <div class="image-new">
-                    <img src="/template/museums_pictures/slider1.jpg" alt="">
+                    <img src="<?php echo News::getImage($newsItem['id']); ?>" alt="">
                 </div>
                 <p><?php echo $newsItem['content']; ?></p>
                 <div class="price">
