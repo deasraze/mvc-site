@@ -83,7 +83,7 @@ class SiteController
      */
     public function actionError()
     {
-        echo '404 - не найдено';
+        require_once (ROOT . '/views/404/404.html');
         return true;
     }
 }
