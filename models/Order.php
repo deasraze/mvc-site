@@ -120,21 +120,29 @@ class Order
     /**
      * Возвращаем список заказов конкретного пользователя
      * @param $idUser
+     * @param $page
      * @return array
      */
-    public static function getOrderByIdUser($idUser)
+    public static function getOrderByIdUser($idUser, $page)
     {
+        $page = intval($page);
+        $limit = self::SHOW_BY_DEFAULT;
+        // Считаем сдвиг для запроса
+        $offset = ($page - 1) * $limit;
+
         $db = Db::getConnection();
 
         // Используем подготовленный запрос
         $sql = 'SELECT id, user_name, user_surname, 
                 user_patronymic, user_phone, date, status 
-                FROM ticket_order WHERE user_id = :user_id ORDER BY id DESC';
+                FROM ticket_order WHERE user_id = :user_id ORDER BY id DESC LIMIT :limit OFFSET :offset';
 
         // Подготавливаем запрос к выполнению
         $result = $db->prepare($sql);
         // Привязываем параметры
         $result->bindParam(':user_id', $idUser, PDO::PARAM_INT);
+        $result->bindParam(':limit', $limit, PDO::PARAM_INT);
+        $result->bindParam(':offset', $offset, PDO::PARAM_INT);
         // Выполняем запрос
         $result->execute();
 
@@ -168,6 +176,30 @@ class Order
         // Получаем
         $row = $result->fetch();
         // Возвращаем
+        return $row['count'];
+    }
+
+    /**
+     * Получаем количество заказов конкретного юзера
+     * @param $idUser
+     * @return mixed
+     */
+    public static function getTotalOrderByUser($idUser)
+    {
+        $db = Db::getConnection();
+
+        // Используем подготовленный запрос
+        $sql = 'SELECT count(id) AS count FROM ticket_order WHERE user_id = :user_id';
+
+        // Подготавливаем запрос
+        $result = $db->prepare($sql);
+        // Привязываем параметры
+        $result->bindParam(':user_id', $idUser, PDO::PARAM_INT);
+        // Выполняем
+        $result->execute();
+
+        // Получаем и возвращаем
+        $row = $result->fetch();
         return $row['count'];
     }
 
