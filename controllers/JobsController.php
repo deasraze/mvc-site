@@ -30,6 +30,7 @@ class JobsController
             $date = $_POST['date'];
             $address = $_POST['address'];
             $phone = $_POST['phone'];
+            $timeToCall = $_POST['time_to_call'];
             $email = $_POST['email'];
             $education = $_POST['education'];
             $specialty = $_POST['specialty'];
@@ -47,6 +48,7 @@ class JobsController
                 'Дата рождения: ' . $date . PHP_EOL .
                 'Адрес проживания: ' . $address . PHP_EOL .
                 'Телефон: ' . $phone . PHP_EOL .
+                'Удобное время для звонка: ' . $timeToCall . PHP_EOL .
                 'E-mail: ' . $email . PHP_EOL .
                 'Образование: ' . $education . PHP_EOL .
                 'Специальность: ' . $specialty . PHP_EOL .

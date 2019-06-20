@@ -147,7 +147,7 @@
                     </div>
                     <div class="birth-date">
                         <label  for="">Дата рождения<span>*</span></label> <br>
-                        <input type="text" name="birth-date_" class="birth-date_">
+                        <input type="text" name="date" class="birth-date_">
                     </div>
                 </div>
                 <div class="live-place">
