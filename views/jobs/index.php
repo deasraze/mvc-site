@@ -142,8 +142,8 @@
                 </div>
                 <div class="job-info">
                     <div class="nationality">
-                        <label class="nationality_" for="">Гражданство<span>*</span></label> <br>
-                        <input type="text" name="citizenship">
+                        <label for="">Гражданство<span>*</span></label> <br>
+                        <input type="text" class="nationality_" name="citizenship">
                     </div>
                     <div class="birth-date">
                         <label  for="">Дата рождения<span>*</span></label> <br>
@@ -171,18 +171,18 @@
                     <div class="nationality">
                         <br>
                         <label class="email" for="">Ваш E-mail<span>*</span></label> <br>
-                        <input type="text" name="email">
+                        <input class="email_" type="text" name="email">
                     </div>
                     <div class="birth-date">
                         <br>
-                        <label class="education_" for="">Образование<span>*</span></label> <br>
-                        <input type="text" name="education">
+                        <label  for="">Образование<span>*</span></label> <br>
+                        <input class="education_" type="text" name="education">
                     </div>
                 </div>
                 <div class="job-info">
                     <div class="nationality">
                         <br>
-                        <label class="specialty" for="">Специальность<span>*</span></label> <br>
+                        <label class="specialty" for="">Специальность</label> <br>
                         <input type="text" name="specialty">
                     </div>
                     <div class="birth-date">
@@ -204,8 +204,8 @@
                 <div class="job-info">
                     <div class="birth-date">
                         <br>
-                        <label class="go_work" for="">Могу приступить к работе с<span>*</span></label> <br>
-                        <input type="text" name="start_date" class="start_date">
+                        <label class="go_work" for="">Могу приступить к работе с</label> <br>
+                        <input type="text" name="start_date" class="start_date_">
                         <br>
                     </div>
                 </div>
