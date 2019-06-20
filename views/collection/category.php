@@ -28,6 +28,7 @@
     <link rel="stylesheet" href="/template/stylesheet/all.css">
     <link rel="stylesheet" href="/template/stylesheet/scrollBar.css">
     <link rel="stylesheet" href="/template/stylesheet/animate.css">
+    <link rel="stylesheet" href="/template/stylesheet/animation.css">
     <link rel="stylesheet" href="/template/stylesheet/default.css">
     <link rel="stylesheet" href="/template/stylesheet/arts.css">
     <link rel="stylesheet" href="/template/stylesheet/checkboxStyle.css">
