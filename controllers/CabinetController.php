@@ -11,8 +11,9 @@ class CabinetController
     /**
      * Главная страница кабинета
      * @return bool
+     * @param $page
      */
-    public function actionIndex()
+    public function actionIndex($page = 1)
     {
         // Получаем id пользователя из сессии
         $userId = User::checkLogged();
@@ -22,7 +23,13 @@ class CabinetController
 
         // Получаем массив заказов пользователя
         $orderList = array();
-        $orderList = Order::getOrderByIdUser($userId);
+        $orderList = Order::getOrderByIdUser($userId, $page);
+
+        // Получаем количество заказов пользователя
+        $total = Order::getTotalOrderByUser($userId);
+
+        // Создаем новый объект класса
+        $pagination = new Pagination($total, $page, Order::SHOW_BY_DEFAULT, 'page-');
 
         // Подключаем вид
         require_once (ROOT . '/views/cabinet/index.php');

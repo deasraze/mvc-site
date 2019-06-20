@@ -135,6 +135,7 @@
                 </tbody>
                 <?php endforeach; ?>
             </table>
+            <?php echo $pagination->get(); ?>
         </div>
     </div>
 </section>
