@@ -6,6 +6,24 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Вакансии</title>
+    <!--    favicon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="/template/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/template/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/template/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/template/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/template/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/template/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/template/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/template/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/template/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/template/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/template/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/template/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/template/icon/favicon-16x16.png">
+    <link rel="manifest" href="/template/icon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/template/icon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 <!--    stylesheets-->
     <link rel="stylesheet" href="/template/stylesheet/all.css">
     <link rel="stylesheet" href="/template/stylesheet/scrollBar.css">
@@ -124,12 +142,12 @@
                 </div>
                 <div class="job-info">
                     <div class="nationality">
-                        <label for="">Гражданство<span>*</span></label> <br>
+                        <label class="nationality_" for="">Гражданство<span>*</span></label> <br>
                         <input type="text" name="citizenship">
                     </div>
                     <div class="birth-date">
-                        <label for="">Дата рождения<span>*</span></label> <br>
-                        <input type="date" name="date">
+                        <label  for="">Дата рождения<span>*</span></label> <br>
+                        <input type="text" name="birth-date_" class="birth-date_">
                     </div>
                 </div>
                 <div class="live-place">
@@ -140,7 +158,7 @@
                 <div class="job-info">
                     <div class="nationality">
                         <br>
-                        <label for="">Телефон для связи<span>*</span></label> <br>
+                        <label class="phone_" for="">Телефон для связи<span>*</span></label> <br>
                         <input type="text" id="phone" name="phone">
                     </div>
                     <div class="birth-date">
@@ -152,24 +170,24 @@
                 <div class="job-info">
                     <div class="nationality">
                         <br>
-                        <label for="">Ваш E-mail<span>*</span></label> <br>
+                        <label class="email" for="">Ваш E-mail<span>*</span></label> <br>
                         <input type="text" name="email">
                     </div>
                     <div class="birth-date">
                         <br>
-                        <label for="">Образование<span>*</span></label> <br>
+                        <label class="education_" for="">Образование<span>*</span></label> <br>
                         <input type="text" name="education">
                     </div>
                 </div>
                 <div class="job-info">
                     <div class="nationality">
                         <br>
-                        <label for="">Специальность<span>*</span></label> <br>
+                        <label class="specialty" for="">Специальность<span>*</span></label> <br>
                         <input type="text" name="specialty">
                     </div>
                     <div class="birth-date">
                         <br>
-                        <label for="">Годы обучения в ВУЗе<span>*</span></label> <br>
+                        <label for="">Годы обучения в ВУЗе</label> <br>
                         <input type="text" name="years_of_education">
                     </div>
                 </div>
@@ -186,12 +204,12 @@
                 <div class="job-info">
                     <div class="birth-date">
                         <br>
-                        <label for="">Могу приступить к работе с<span>*</span></label> <br>
-                        <input type="date" name="start_date">
+                        <label class="go_work" for="">Могу приступить к работе с<span>*</span></label> <br>
+                        <input type="text" name="start_date" class="start_date">
                         <br>
                     </div>
                 </div>
-                <div><input type="checkbox" id="cb3"> <label for="cb3">Я соглесен на обработку моих персональных данных<span>*</span></label></div>
+                <div><input type="checkbox" class="i_agree" id="cb3"> <label for="cb3">Я соглесен на обработку моих персональных данных<span>*</span></label></div>
                 <br>
                 <button class="send-profile" name="submit" type="submit">Отправить</button>
             </div>
@@ -203,5 +221,6 @@
 <script src="/template/scripts/scrollToAnchor.js"></script>
 <script src="/template/scripts/masks.js"></script>
 <script src="/template/scripts/loader.js"></script>
+<script src="/template/scripts/jobs.js"></script>
 </body>
 </html>

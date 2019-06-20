@@ -6,6 +6,24 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Оформление заказа</title>
+    <!--    favicon-->
+    <link rel="apple-touch-icon" sizes="57x57" href="/template/icon/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/template/icon/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/template/icon/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/template/icon/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/template/icon/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/template/icon/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/template/icon/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/template/icon/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/template/icon/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" sizes="192x192"  href="/template/icon/android-icon-192x192.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/template/icon/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="96x96" href="/template/icon/favicon-96x96.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/template/icon/favicon-16x16.png">
+    <link rel="manifest" href="/template/icon/manifest.json">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="msapplication-TileImage" content="/template/icon/ms-icon-144x144.png">
+    <meta name="theme-color" content="#ffffff">
 <!--    styles-->
     <link rel="stylesheet" href="/template/stylesheet/all.css">
     <link rel="stylesheet" href="/template/stylesheet/fonts.css">
@@ -126,38 +144,6 @@
         </div>
     </div>
 </section>
-<footer id="footer">
-    <div class="main-container-two">
-        <div class="last-information-about-museum">
-            <ul class="navs">
-                <li><a href="">Help</a></li>
-                <li><a href="">Contact</a></li>
-                <li><a href="">Gift Cards</a></li>
-                <li><a href="">Dealers</a></li>
-                <li><a href="">Foundation</a></li>
-            </ul>
-        </div>
-        <div class="last-social-network">
-            <ul class="navs">
-                <li><a href=""><i class="fab fa-vk vk"></i></a></li>
-                <li><a href=""><i class="fab fa-instagram inst"></i></a></li>
-                <li><a href=""><i class="fab fa-twitter twit"></i></a></li>
-                <li><a href=""><i class="fas fa-rss rss"></i></a></li>
-                <li><a href=""><i class="fab fa-twitch twitch"></i></a></li>
-            </ul>
-        </div>
-        <div class="last-polity">
-            <ul class="navs">
-                <li><a href="">social compliance</a></li>
-                <li><a href="">terms</a></li>
-                <li><a href="">privacy policy</a></li>
-            </ul>
-        </div>
-        <div class="info-about-creature">
-            <p>Site by Chopper & Condecrom</p>
-        </div>
-    </div>
-</footer>
 <!--scripts-->
 <script src="/template/scripts/animationMobilMenu.js"></script>
 <script src="/template/scripts/loader.js"></script>
