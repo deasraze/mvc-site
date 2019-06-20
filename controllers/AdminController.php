@@ -23,7 +23,7 @@ class AdminController extends AdminBase
             return true;
         }
 
-        die('Доступ запрещен');
+        die(require_once (ROOT . '/views/404/404.html'));
     }
 
     /**
@@ -121,7 +121,7 @@ class AdminController extends AdminBase
             return true;
         }
 
-        die('Доступ запрещен');
+        die(require_once (ROOT . '/views/404/404.html'));
     }
 
     /**
@@ -179,6 +179,6 @@ class AdminController extends AdminBase
             return true;
         }
 
-        die('Доступ запрещен');
+        die(require_once (ROOT . '/views/404/404.html'));
     }
 }
